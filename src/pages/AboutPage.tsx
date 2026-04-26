@@ -341,7 +341,7 @@ const AboutPage: React.FC = () => {
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Leadership Team</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-4">Founded with Purpose. Built for the Future.</h2>
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              Acooya is founder-led and actively building a world-class leadership team. If you are an experienced executive who believes in the power of human-AI collaboration, we would love to hear from you.
+              Acooya is actively building a world-class leadership team. If you are an experienced executive who believes in the power of human-AI collaboration, we would love to hear from you.
             </p>
           </div>
 
