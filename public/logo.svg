@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Icon Group - Centered at top -->
+  <g transform="translate(200, 100)">
+    <!-- Top Bird (Blue) - pointing left -->
+    <g transform="rotate(0)">
+      <path d="M0,-45 C-20,-45 -35,-25 -35,-5 C-25,-5 -15,-8 -8,-15 C-5,-10 5,-5 15,-2 C12,-15 8,-30 0,-45 Z" fill="#447EB8"/>
+      <path d="M-30,-15 Q-25,-5 -28,5" stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <path d="M-25,-20 Q-18,-12 -22,0" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.3"/>
+    </g>
+
+    <!-- Right Bird (Orange) - pointing down -->
+    <g transform="rotate(90)">
+      <path d="M0,-45 C-20,-45 -35,-25 -35,-5 C-25,-5 -15,-8 -8,-15 C-5,-10 5,-5 15,-2 C12,-15 8,-30 0,-45 Z" fill="#F2AF4A"/>
+      <path d="M-30,-15 Q-25,-5 -28,5" stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <path d="M-25,-20 Q-18,-12 -22,0" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.3"/>
+    </g>
+
+    <!-- Bottom Bird (Green) - pointing right -->
+    <g transform="rotate(180)">
+      <path d="M0,-45 C-20,-45 -35,-25 -35,-5 C-25,-5 -15,-8 -8,-15 C-5,-10 5,-5 15,-2 C12,-15 8,-30 0,-45 Z" fill="#66AB4E"/>
+      <path d="M-30,-15 Q-25,-5 -28,5" stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <path d="M-25,-20 Q-18,-12 -22,0" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.3"/>
+    </g>
+
+    <!-- Left Bird (Pink) - pointing up -->
+    <g transform="rotate(270)">
+      <path d="M0,-45 C-20,-45 -35,-25 -35,-5 C-25,-5 -15,-8 -8,-15 C-5,-10 5,-5 15,-2 C12,-15 8,-30 0,-45 Z" fill="#D55491"/>
+      <path d="M-30,-15 Q-25,-5 -28,5" stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <path d="M-25,-20 Q-18,-12 -22,0" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- Text Group -->
+  <g fill="#555555">
+    <!-- ACOOOYA - Custom geometric letters -->
+    <text x="200" y="180" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="bold" text-anchor="middle" letter-spacing="12">ACOOOYA</text>
+
+    <!-- Decorative lines around CONSULTING -->
+    <line x1="70" y1="205" x2="145" y2="205" stroke="#555555" stroke-width="2"/>
+    <line x1="255" y1="205" x2="330" y2="205" stroke="#555555" stroke-width="2"/>
+
+    <!-- CONSULTING -->
+    <text x="200" y="212" font-family="Arial, Helvetica, sans-serif" font-size="16" text-anchor="middle" letter-spacing="4">CONSULTING</text>
+  </g>
+</svg>

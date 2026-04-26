@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <!-- Top Bird (Blue) -->
+  <g>
+    <path d="M40,5 C55,8 65,20 62,35 C52,30 45,25 40,18 C35,25 28,30 18,35 C15,20 25,8 40,5 Z" fill="#447EB8"/>
+    <path d="M55,22 Q50,28 52,35" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M52,18 Q46,22 48,32" stroke="#FFFFFF" stroke-width="0.8" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Right Bird (Orange) -->
+  <g>
+    <path d="M75,40 C72,55 60,65 45,62 C50,52 55,45 62,40 C55,35 50,28 45,18 C60,15 72,25 75,40 Z" fill="#F2AF4A"/>
+    <path d="M58,55 Q52,50 45,52" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M62,52 Q56,46 48,48" stroke="#FFFFFF" stroke-width="0.8" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Bottom Bird (Green) -->
+  <g>
+    <path d="M40,75 C25,72 15,60 18,45 C28,50 35,55 40,62 C45,55 52,50 62,45 C65,60 55,72 40,75 Z" fill="#66AB4E"/>
+    <path d="M25,58 Q30,52 28,45" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M28,62 Q34,56 32,48" stroke="#FFFFFF" stroke-width="0.8" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Left Bird (Pink) -->
+  <g>
+    <path d="M5,40 C8,25 20,15 35,18 C30,28 25,35 18,40 C25,45 30,52 35,62 C20,65 8,55 5,40 Z" fill="#D55491"/>
+    <path d="M22,25 Q28,30 26,35" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M18,28 Q24,34 22,40" stroke="#FFFFFF" stroke-width="0.8" fill="none" opacity="0.3"/>
+  </g>
+</svg>
