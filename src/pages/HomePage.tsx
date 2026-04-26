@@ -49,9 +49,9 @@ const HomePage: React.FC = () => {
               </div>
 
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-                Where Human Expertise
+                Human-AI Synergy for
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                  Meets AI Intelligence
+                  Enterprise Transformation
                 </span>
               </h1>
 
