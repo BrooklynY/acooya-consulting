@@ -257,7 +257,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
             <div>
               <h3 className="font-semibold mb-4">Contact</h3>
               <ul className="space-y-3 text-sm text-gray-400">
-                <li>contact@acooyaconsulting.com</li>
+               <li><a href="mailto:contact@acooyaconsulting.com" className="hover:text-white transition-colors">contact@acooyaconsulting.com</a></li>
                 <li>+61 428 112 376</li>
                 <li>Sydney, NSW, Australia</li>
               </ul>
