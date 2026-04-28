@@ -537,37 +537,62 @@ const AboutPage: React.FC = () => {
             </div>
 
             <form className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100" onSubmit={handleContactSubmit}>
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                  <input 
-                    type="text" 
-                    name="name"
-                    className="input"
-                    placeholder="Your name"
-                    value={contactForm.name}
-                    onChange={handleContactFormChange}
-                    required/>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input type="email" className="input" placeholder="your@email.com" />
-                </div>
-              </div>
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
-                <input type="text" className="input" placeholder="Your company" />
-              </div>
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">How can we help?</label>
-                <textarea rows={4} className="input resize-none" placeholder="Tell us about your challenges and goals..."></textarea>
-              </div>
-              <button type="submit" className="btn btn-primary w-full">
-                Submit Your Request
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </button>
-              <p className="text-sm text-gray-500 text-center mt-4">We typically respond within 2 business hours</p>
-            </form>
+  <div className="grid md:grid-cols-2 gap-6 mb-6">
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+      <input
+        type="text"
+        name="name"
+        className="input"
+        placeholder="Your name"
+        value={contactForm.name}
+        onChange={handleContactFormChange}
+        required
+      />
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+      <input
+        type="email"
+        name="email"
+        className="input"
+        placeholder="your@email.com"
+        value={contactForm.email}
+        onChange={handleContactFormChange}
+        required
+      />
+    </div>
+  </div>
+  <div className="mb-6">
+    <label className="block text-sm font-medium text-gray-700 mb-2">Company *</label>
+    <input
+      type="text"
+      name="company"
+      className="input"
+      placeholder="Your company"
+      value={contactForm.company}
+      onChange={handleContactFormChange}
+      required
+    />
+  </div>
+  <div className="mb-6">
+    <label className="block text-sm font-medium text-gray-700 mb-2">How can we help? *</label>
+    <textarea
+      name="message"
+      rows={4}
+      className="input resize-none"
+      placeholder="Tell us about your challenges and goals..."
+      value={contactForm.message}
+      onChange={handleContactFormChange}
+      required
+    ></textarea>
+  </div>
+  <button type="submit" className="btn btn-primary w-full">
+    Submit Your Request
+    <ArrowRight className="w-5 h-5 ml-2" />
+  </button>
+  <p className="text-sm text-gray-500 text-center mt-4">We typically respond within 2 business hours</p>
+</form>
           </div>
         </div>
       </section>
