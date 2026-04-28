@@ -509,7 +509,7 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
 
-            <form className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+            <form className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100" onSubmit={handleContactSubmit}>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
