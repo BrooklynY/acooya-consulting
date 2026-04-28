@@ -513,7 +513,14 @@ const AboutPage: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                  <input type="text" className="input" placeholder="Your name" />
+                  <input 
+                    type="text" 
+                    name="name"
+                    className="input"
+                    placeholder="Your name"
+                    value={contactForm.name}
+                    onChange={handleContactFormChange}
+                    required/>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
