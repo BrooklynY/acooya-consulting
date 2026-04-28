@@ -225,6 +225,33 @@ const InterestModal: React.FC<{ role: typeof leadershipRoles[0]; isOpen: boolean
 
 const AboutPage: React.FC = () => {
   const [selectedRole, setSelectedRole] = useState<typeof leadershipRoles[0] | null>(null);
+    const [contactForm, setContactForm] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+
+  const handleContactFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setContactForm({ ...contactForm, [e.target.name]: e.target.value });
+  };
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`New Contact Request from ${contactForm.name}`);
+    const body = encodeURIComponent(
+      `Name: ${contactForm.name}\nEmail: ${contactForm.email}\nCompany: ${contactForm.company}\n\nMessage:\n${contactForm.message}`
+    );
+    window.location.href = `mailto:contact@acooyaconsulting.com?subject=${subject}&body=${body}`;
+    setContactSubmitted(true);
+    // Reset form after short delay
+    setTimeout(() => {
+      setContactForm({ name: '', email: '', company: '', message: '' });
+      setContactSubmitted(false);
+    }, 3000);
+  };
 
   return (
     <div className="overflow-hidden">
