@@ -529,7 +529,7 @@ const AboutPage: React.FC = () => {
                 <textarea rows={4} className="input resize-none" placeholder="Tell us about your challenges and goals..."></textarea>
               </div>
               <button type="submit" className="btn btn-primary w-full">
-                Book Free Consultation
+                Submit Your Request
                 <ArrowRight className="w-5 h-5 ml-2" />
               </button>
               <p className="text-sm text-gray-500 text-center mt-4">We typically respond within 2 business hours</p>
