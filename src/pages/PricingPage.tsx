@@ -79,7 +79,7 @@ const featureComparison = [
     features: [
       { name: 'Aria (Research Agent)', starter: true, professional: true, enterprise: true },
       { name: 'Nova (Analytics Agent)', starter: true, professional: true, enterprise: true },
-      { name: 'Atlas (Advisory Agent)', starter: false, professional: true, enterprise: true },
+      { name: 'Atlas (Strategy Agent)', starter: false, professional: true, enterprise: true },
       { name: 'Zenith (Orchestration Agent)', starter: false, professional: true, enterprise: true },
       { name: 'Custom AI agent development', starter: false, professional: false, enterprise: true },
       { name: 'AI agent marketplace access', starter: true, professional: true, enterprise: true }
