@@ -169,7 +169,7 @@ const faqs = [
   },
   {
     q: 'Are you an AI agent developer?',
-    a: 'Creating a developer account and listing your agents is completely free. Founding Developer spots — zero commission on your first AUD $5,000 earned, then a locked 15% commission rate — are limited to the first 50 verified developers. The optional Developer Pro plan ($29/month) offers reduced commission (15%) and advanced analytics.'
+    a: 'Creating a developer account and listing your agents is completely free. Founding Developer spots — zero commission on your first A$5,000 earned, then a locked 15% commission rate — are limited to the first 50 verified developers. The optional Developer Pro plan (A$29/month) offers reduced commission (15%) and advanced analytics.'
   },
   {
     q: 'Do you offer discounts for nonprofits?',
@@ -229,23 +229,23 @@ const PricingPage: React.FC = () => {
 
           {/* Billing Toggle */}
           <div className="flex items-center justify-center gap-4">
-            <span className={`text-sm font-medium ${!isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
+            <span className={`text-sm font-medium A${!isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
               Monthly
             </span>
             <button
               onClick={() => setIsAnnual(!isAnnual)}
-              className={`relative w-14 h-7 rounded-full transition-colors ${
+              className={`relative w-14 h-7 rounded-full transition-colors A${
                 isAnnual ? 'bg-blue-600' : 'bg-gray-300'
               }`}
               aria-label="Toggle billing period"
             >
               <span
-                className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${
+                className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform A${
                   isAnnual ? 'left-8' : 'left-1'
                 }`}
               />
             </button>
-            <span className={`text-sm font-medium ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
+            <span className={`text-sm font-medium A${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
               Annual
               <span className="ml-2 px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
                 Save 15%
@@ -266,7 +266,7 @@ const PricingPage: React.FC = () => {
             return (
               <div
                 key={tier.id}
-                className={`relative flex flex-col bg-white rounded-2xl ${
+                className={`relative flex flex-col bg-white rounded-2xl A${
                   tier.highlighted
                     ? 'ring-2 ring-blue-600 shadow-2xl md:scale-105 z-10'
                     : 'shadow-lg border border-gray-200'
@@ -283,14 +283,14 @@ const PricingPage: React.FC = () => {
                 <div className="p-6 md:p-8 flex flex-col flex-1">
                   {/* Tier Header */}
                   <div className="mb-6">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 A${
                       tier.highlighted
                         ? 'bg-gradient-to-br from-blue-500 to-purple-600'
                         : tier.color === 'slate'
                         ? 'bg-slate-100'
                         : 'bg-purple-100'
                     }`}>
-                      <Icon className={`w-6 h-6 ${
+                      <Icon className={`w-6 h-6 A${
                         tier.highlighted ? 'text-white' : tier.color === 'slate' ? 'text-slate-600' : 'text-purple-600'
                       }`} />
                     </div>
@@ -302,18 +302,18 @@ const PricingPage: React.FC = () => {
                   <div className="mb-6">
                     <div className="flex items-baseline gap-1">
                       <span className="text-4xl font-bold text-gray-900">
-                        ${monthlyEquivalent.toLocaleString()}
+                        A${monthlyEquivalent.toLocaleString()}
                       </span>
                       <span className="text-gray-500">/mo</span>
                     </div>
                     {isAnnual && (
                       <p className="text-sm text-gray-500 mt-1">
-                        ${price.toLocaleString()} billed annually
+                        A${price.toLocaleString()} billed annually
                       </p>
                     )}
                     {!isAnnual && (
                       <p className="text-sm text-green-600 mt-1 font-medium">
-                        Or ${Math.round(tier.annualPrice / 12).toLocaleString()}/mo billed annually
+                        Or A${Math.round(tier.annualPrice / 12).toLocaleString()}/mo billed annually
                       </p>
                     )}
                   </div>
@@ -322,7 +322,7 @@ const PricingPage: React.FC = () => {
                   <button
                     onClick={() => handleSelectPlan(tier.id)}
                     disabled={isLoading === tier.id}
-                    className={`w-full py-3 px-4 rounded-xl font-semibold transition-all mb-6 flex items-center justify-center gap-2 cursor-pointer ${
+                    className={`w-full py-3 px-4 rounded-xl font-semibold transition-all mb-6 flex items-center justify-center gap-2 cursor-pointer A${
                       tier.highlighted
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
                         : tier.id === currentTier
@@ -330,7 +330,7 @@ const PricingPage: React.FC = () => {
                         : tier.id === 'enterprise'
                         ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
                         : 'bg-gradient-to-r from-slate-600 to-gray-700 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
-                    } ${isLoading === tier.id ? 'opacity-75 cursor-wait' : ''}`}
+                    } A${isLoading === tier.id ? 'opacity-75 cursor-wait' : ''}`}
                   >
                     {isLoading === tier.id ? (
                       <>
