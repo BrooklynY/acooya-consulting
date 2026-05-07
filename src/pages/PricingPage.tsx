@@ -68,7 +68,7 @@ const featureComparison = [
     icon: Bot,
     features: [
       { name: 'Monthly AI Agent Credits', starter: '200', professional: '1,000', enterprise: '5,000' },
-      { name: 'Overage rate per additional credit', starter: 'A$0.22', professional: 'A$0.15', enterprise: 'A$0.07' },
+      { name: 'Overage rate per additional credit', starter: 'A $0.22', professional: 'A $0.15', enterprise: 'A $0.07' },
       { name: 'Credit usage notifications (80% and 95%)', starter: true, professional: true, enterprise: true },
       { name: 'Pre-task credit confirmation', starter: true, professional: true, enterprise: true }
     ]
@@ -169,7 +169,7 @@ const faqs = [
   },
   {
     q: 'Are you an AI agent developer?',
-    a: 'Creating a developer account and listing your agents is completely free. Founding Developer spots — zero commission on your first A$5,000 earned, then a locked 15% commission rate — are limited to the first 50 verified developers. The optional Developer Pro plan (A$29/month) offers reduced commission (15%) and advanced analytics.'
+    a: 'Creating a developer account and listing your agents is completely free. Founding Developer spots — zero commission on your first A $5,000 earned, then a locked 15% commission rate — are limited to the first 50 verified developers. The optional Developer Pro plan (A $29/month) offers reduced commission (15%) and advanced analytics.'
   },
   {
     q: 'Do you offer discounts for nonprofits?',
@@ -229,23 +229,23 @@ const PricingPage: React.FC = () => {
 
           {/* Billing Toggle */}
           <div className="flex items-center justify-center gap-4">
-            <span className={`text-sm font-medium A${!isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
+            <span className={`text-sm font-medium A ${!isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
               Monthly
             </span>
             <button
               onClick={() => setIsAnnual(!isAnnual)}
-              className={`relative w-14 h-7 rounded-full transition-colors A${
+              className={`relative w-14 h-7 rounded-full transition-colors A ${
                 isAnnual ? 'bg-blue-600' : 'bg-gray-300'
               }`}
               aria-label="Toggle billing period"
             >
               <span
-                className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform A${
+                className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform A ${
                   isAnnual ? 'left-8' : 'left-1'
                 }`}
               />
             </button>
-            <span className={`text-sm font-medium A${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
+            <span className={`text-sm font-medium A ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
               Annual
               <span className="ml-2 px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
                 Save 15%
@@ -266,7 +266,7 @@ const PricingPage: React.FC = () => {
             return (
               <div
                 key={tier.id}
-                className={`relative flex flex-col bg-white rounded-2xl A${
+                className={`relative flex flex-col bg-white rounded-2xl A ${
                   tier.highlighted
                     ? 'ring-2 ring-blue-600 shadow-2xl md:scale-105 z-10'
                     : 'shadow-lg border border-gray-200'
@@ -283,7 +283,7 @@ const PricingPage: React.FC = () => {
                 <div className="p-6 md:p-8 flex flex-col flex-1">
                   {/* Tier Header */}
                   <div className="mb-6">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 A${
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 A ${
                       tier.highlighted
                         ? 'bg-gradient-to-br from-blue-500 to-purple-600'
                         : tier.color === 'slate'
@@ -302,18 +302,18 @@ const PricingPage: React.FC = () => {
                   <div className="mb-6">
                     <div className="flex items-baseline gap-1">
                       <span className="text-4xl font-bold text-gray-900">
-                        A${monthlyEquivalent.toLocaleString()}
+                        A ${monthlyEquivalent.toLocaleString()}
                       </span>
                       <span className="text-gray-500">/mo</span>
                     </div>
                     {isAnnual && (
                       <p className="text-sm text-gray-500 mt-1">
-                        A${price.toLocaleString()} billed annually
+                        A ${price.toLocaleString()} billed annually
                       </p>
                     )}
                     {!isAnnual && (
                       <p className="text-sm text-green-600 mt-1 font-medium">
-                        Or A${Math.round(tier.annualPrice / 12).toLocaleString()}/mo billed annually
+                        Or A ${Math.round(tier.annualPrice / 12).toLocaleString()}/mo billed annually
                       </p>
                     )}
                   </div>
@@ -330,7 +330,7 @@ const PricingPage: React.FC = () => {
                         : tier.id === 'enterprise'
                         ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
                         : 'bg-gradient-to-r from-slate-600 to-gray-700 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
-                    } A${isLoading === tier.id ? 'opacity-75 cursor-wait' : ''}`}
+                    } ${isLoading === tier.id ? 'opacity-75 cursor-wait' : ''}`}
                   >
                     {isLoading === tier.id ? (
                       <>
@@ -403,7 +403,7 @@ const PricingPage: React.FC = () => {
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 md:p-8 border border-green-200">
             <div className="text-center mb-6">
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                40–60% lower cost than traditional consulting — built into every engagement
+                Up to 75% lower cost than traditional consulting — built into every engagement
               </h3>
               <p className="text-gray-600">
                 Compare Acooya engagement pricing against traditional consulting firms
@@ -420,18 +420,18 @@ const PricingPage: React.FC = () => {
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-100">
-                    <td className="p-3 text-gray-700">Advisory Session: A$1,200–1,800</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$450</td>
+                    <td className="p-3 text-gray-700">Advisory Session: A $1,200–1,800</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A $450</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 64%</td>
                   </tr>
                   <tr className="border-b border-gray-100">
-                    <td className="p-3 text-gray-700">Sprint Engagement: A$15k–25k</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$4,500</td>
+                    <td className="p-3 text-gray-700">Sprint Engagement: A $15k–25k</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A $4,500</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 70%</td>
                   </tr>
                   <tr>
-                    <td className="p-3 text-gray-700">Full Engagement: A$45k–120k</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$12,000</td>
+                    <td className="p-3 text-gray-700">Full Engagement: A $45k–120k</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A $12,000</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 75%</td>
                   </tr>
                 </tbody>
