@@ -68,7 +68,7 @@ const featureComparison = [
     icon: Bot,
     features: [
       { name: 'Monthly AI Agent Credits', starter: '200', professional: '1,000', enterprise: '5,000' },
-      { name: 'Overage rate per additional credit', starter: 'AUD $0.22', professional: 'AUD $0.15', enterprise: 'AUD $0.07' },
+      { name: 'Overage rate per additional credit', starter: 'A$0.22', professional: 'A$0.15', enterprise: 'A$0.07' },
       { name: 'Credit usage notifications (80% and 95%)', starter: true, professional: true, enterprise: true },
       { name: 'Pre-task credit confirmation', starter: true, professional: true, enterprise: true }
     ]
@@ -420,18 +420,18 @@ const PricingPage: React.FC = () => {
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-100">
-                    <td className="p-3 text-gray-700">Advisory Session: $1,200–1,800</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from $450</td>
+                    <td className="p-3 text-gray-700">Advisory Session: A$1,200–1,800</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$450</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 64%</td>
                   </tr>
                   <tr className="border-b border-gray-100">
-                    <td className="p-3 text-gray-700">Sprint Engagement: $15k–25k</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from $4,500</td>
+                    <td className="p-3 text-gray-700">Sprint Engagement: A$15k–25k</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$4,500</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 70%</td>
                   </tr>
                   <tr>
-                    <td className="p-3 text-gray-700">Full Engagement: $45k–120k</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from $12,000</td>
+                    <td className="p-3 text-gray-700">Full Engagement: A$45k–120k</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$12,000</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 75%</td>
                   </tr>
                 </tbody>
