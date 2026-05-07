@@ -290,7 +290,7 @@ const PricingPage: React.FC = () => {
                         ? 'bg-slate-100'
                         : 'bg-purple-100'
                     }`}>
-                      <Icon className={`w-6 h-6 A${
+                      <Icon className={`w-6 h-6 ${
                         tier.highlighted ? 'text-white' : tier.color === 'slate' ? 'text-slate-600' : 'text-purple-600'
                       }`} />
                     </div>
