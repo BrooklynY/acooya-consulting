@@ -3,10 +3,10 @@
 
 export const consultingServices = [
   {
-    id: 'business-architecture',
-    title: 'Business Architecture & Operating Model',
+    id: 'operating-model',
+    title: 'Operating Model',
     shortDescription: 'Transform your organisational structure for maximum efficiency and AI readiness',
-    fullDescription: `Our Business Architecture & Operating Model practice helps organisations redesign their core business structures to optimise for the digital age. We combine deep industry expertise with AI-augmented analysis to deliver operating models that are agile, scalable, and future-proof.`,
+    fullDescription: `Our Operating Model practice helps organisations redesign their core business structures to optimise for the digital age. We combine deep industry expertise with AI-augmented analysis to deliver operating models that are agile, scalable, and future-proof.`,
     features: [
       'Enterprise-wide operating model design',
       'Organisational restructuring & optimisation',
@@ -51,10 +51,10 @@ export const consultingServices = [
     icon: 'rocket'
   },
   {
-    id: 'strategic-insights',
-    title: 'Strategic Insight & Reporting',
+    id: 'insight-reporting',
+    title: 'Insight & Reporting',
     shortDescription: 'Make data-driven decisions with AI-powered analytics and reporting',
-    fullDescription: `Transform raw data into strategic advantages with our Strategic Insight & Reporting practice. We design and implement comprehensive analytics ecosystems that provide real-time visibility into your business performance, competitive landscape, and emerging opportunities.`,
+    fullDescription: `Transform raw data into strategic advantages with our Insight & Reporting practice. We design and implement comprehensive analytics ecosystems that provide real-time visibility into your business performance, competitive landscape, and emerging opportunities.`,
     features: [
       'Executive dashboard design',
       'Predictive analytics implementation',
@@ -81,19 +81,19 @@ export const humanConsultants = [
     id: 'h0',
     name: 'Brooklyn Yang',
     title: 'Lead Consultant, Strategy & Operations',
-    expertise: ['Business Architecture', 'Operating Model Design', 'Delivery Enablement', 'Strategic Insight', 'Change Management'],
+    expertise: ['Operating Model Design', 'Delivery Enablement', 'Insight & Reporting', 'Continuous Improvement'],
     experience: '14 years',
     rating: 4.9,
     projects: 42,
     hourlyRate: 250,
     availability: 'Available Now',
-    bio: 'Acooya\'s Lead Consultant with deep expertise across Business Architecture, Operating Model Design, Delivery Enablement, and Strategic Insight. Trusted advisor to global enterprises across diverse industries.',
+    bio: 'Acooya\'s Lead Consultant with deep expertise across Operating Model Design, Delivery Enablement, and Insight & Reporting. Trusted advisor to global enterprises across diverse industries.',
     image: '/brooklyn-yang.jpg'
   },
   {
     id: 'h1',
     name: 'Senior Consultant',
-    title: 'Strategy & Operating Model',
+    title: 'Target Operating Model',
     expertise: ['Operating Model Design', 'Strategic Insight', 'Change Management'],
     experience: 'Senior-level',
     rating: 4.9,
@@ -107,7 +107,7 @@ export const humanConsultants = [
     id: 'h2',
     name: 'Senior Consultant',
     title: 'Technology & Delivery Enablement',
-    expertise: ['Business Architecture', 'Delivery Enablement', 'AI Integration'],
+    expertise: ['Enterprise Architecture', 'Delivery Enablement', 'AI Integration'],
     experience: 'Senior-level',
     rating: 4.8,
     projects: 62,
