@@ -233,9 +233,9 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
             <div>
               <h3 className="font-semibold mb-4">Services</h3>
               <ul className="space-y-3 text-sm text-gray-400">
-                <li><Link to="/services#business-architecture" className="hover:text-white transition-colors">Business Architecture</Link></li>
+                <li><Link to="/services#operating-model" className="hover:text-white transition-colors">Operating Model</Link></li>
                 <li><Link to="/services#delivery-enablement" className="hover:text-white transition-colors">Delivery Enablement</Link></li>
-                <li><Link to="/services#strategic-insights" className="hover:text-white transition-colors">Strategic Insights</Link></li>
+                <li><Link to="/services#insight-reporting" className="hover:text-white transition-colors">Insight & Reporting</Link></li>
                 <li><Link to="/marketplace" className="hover:text-white transition-colors">Human Consultants</Link></li>
                 <li><Link to="/marketplace?tab=ai" className="hover:text-white transition-colors">AI Agents</Link></li>
               </ul>
