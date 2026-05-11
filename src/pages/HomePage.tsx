@@ -486,7 +486,7 @@ const HomePage: React.FC = () => {
                 </p>
                 <div className="space-y-4">
                   {[
-                    { icon: Shield, title: 'SOC 2 Type II Standard', desc: 'Designed and built to SOC 2 Type II standards. Independent certification is on our roadmap' },
+                    { icon: Shield, title: 'SOC 2 Type II Standard', desc: 'Designed to SOC 2 Type II standards. Independent certification is on our roadmap' },
                     { icon: Lock, title: 'Enterprise-Grade Encryption', desc: 'AES-256 encryption at rest. TLS 1.3 encryption in transit. Your data is protected at every layer' },
                     { icon: FileText, title: 'Privacy Act & GDPR Aligned', desc: 'Built to meet Australian Privacy Act and GDPR requirements. Privacy-first architecture with documented data handling practices' },
                   ].map((item, index) => (
