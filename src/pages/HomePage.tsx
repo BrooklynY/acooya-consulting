@@ -280,7 +280,7 @@ const HomePage: React.FC = () => {
             {[
               {
                 icon: 'building',
-                title: 'Business Architecture',
+                title: 'Operating Model',
                 description: 'Transform your organisational structure for maximum efficiency and AI readiness',
                 features: ['Operating Model Design', 'Digital Transformation', 'Change Management']
               },
@@ -292,7 +292,7 @@ const HomePage: React.FC = () => {
               },
               {
                 icon: 'chart',
-                title: 'Strategic Insights',
+                title: 'Insight & Reporting',
                 description: 'Make data-driven decisions with AI-powered analytics and reporting',
                 features: ['Market Intelligence', 'Competitive Analysis', 'Growth Strategy']
               }
