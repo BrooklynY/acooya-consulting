@@ -273,7 +273,7 @@ const LoginPage: React.FC = () => {
               <span className="text-gray-300">|</span>
               <div className="flex items-center gap-1 text-xs text-gray-500">
                 <Shield className="w-4 h-4 text-green-500" />
-                <span>Built to SOC 2 standards</span>
+                <span>Designed to SOC 2 standards</span>
               </div>
               <span className="text-gray-300">|</span>
               <div className="flex items-center gap-1 text-xs text-gray-500">
