@@ -225,7 +225,11 @@ const MarketplacePage: React.FC = () => {
                         className={`w-20 h-20 rounded-xl flex items-center justify-center${agent.availability === 'Available' ? '' : ' bg-gradient-to-br from-purple-500 to-pink-500 opacity-60'}`}
                         style={agent.availability === 'Available' ? { backgroundColor: '#E91E63' } : undefined}
                       >
-                        <Bot className="w-10 h-10 text-white" />
+                        {agent.name.startsWith('Aria') && agent.availability === 'Available' ? (
+                          <img src="/aria-mark.svg" alt="" className="w-12 h-12" />
+                        ) : (
+                          <Bot className="w-10 h-10 text-white" />
+                        )}
                       </div>
                       <div className="flex-1">
                         <div>
