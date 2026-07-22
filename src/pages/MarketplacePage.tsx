@@ -215,9 +215,16 @@ const MarketplacePage: React.FC = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 {aiAgents.map((agent) => (
-                  <div key={agent.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-purple-300 transition-all hover:shadow-lg relative">
+                  <div
+                    key={agent.id}
+                    className={`bg-white rounded-2xl p-6 border transition-all hover:shadow-lg relative ${agent.availability === 'Available' ? '' : 'border-gray-200 hover:border-purple-300'}`}
+                    style={agent.availability === 'Available' ? { borderColor: '#E91E63' } : undefined}
+                  >
                     <div className="flex items-start gap-4 mb-4">
-                      <div className={`w-20 h-20 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center${agent.availability === 'Available' ? '' : ' opacity-60'}`}>
+                      <div
+                        className={`w-20 h-20 rounded-xl flex items-center justify-center${agent.availability === 'Available' ? '' : ' bg-gradient-to-br from-purple-500 to-pink-500 opacity-60'}`}
+                        style={agent.availability === 'Available' ? { backgroundColor: '#E91E63' } : undefined}
+                      >
                         <Bot className="w-10 h-10 text-white" />
                       </div>
                       <div className="flex-1">
@@ -227,7 +234,7 @@ const MarketplacePage: React.FC = () => {
                         </div>
                         <div className="flex items-center gap-4 mt-2">
                           {agent.availability === 'Available' ? (
-                            <span className="text-sm font-semibold text-green-600">Available now</span>
+                            <span className="text-sm font-semibold" style={{ color: '#E91E63' }}>Available now</span>
                           ) : (
                             <span className="text-sm text-gray-500">Launching Soon</span>
                           )}
@@ -262,7 +269,7 @@ const MarketplacePage: React.FC = () => {
                           <Bot className="w-4 h-4" />
                         </button>
                         {agent.availability === 'Available' ? (
-                          <Link to="/pricing" className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
+                          <Link to="/pricing" className="px-5 py-2.5 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center" style={{ backgroundColor: '#E91E63' }}>
                             Get started
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Link>
