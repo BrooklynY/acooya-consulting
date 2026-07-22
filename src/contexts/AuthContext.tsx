@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User, UserRole, SubscriptionTier, AuthState } from '../types/auth';
 
-interface AuthContextType extends AuthState {}
+type AuthContextType = AuthState;
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
