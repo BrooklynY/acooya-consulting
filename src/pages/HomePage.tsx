@@ -413,7 +413,11 @@ const HomePage: React.FC = () => {
                           <p className="text-sm text-gray-600">{agent.category}</p>
                         </div>
                       </div>
-                      <span className="badge badge-purple">Launching Soon</span>
+                      {agent.availability === 'Available' ? (
+                        <span className="badge badge-green">Available now</span>
+                      ) : (
+                        <span className="badge badge-purple">Launching Soon</span>
+                      )}
                     </div>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {agent.capabilities.slice(0, 2).map((cap, i) => (
