@@ -217,7 +217,7 @@ const MarketplacePage: React.FC = () => {
                 {aiAgents.map((agent) => (
                   <div key={agent.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-purple-300 transition-all hover:shadow-lg relative">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center opacity-60">
+                      <div className={`w-20 h-20 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center${agent.availability === 'Available' ? '' : ' opacity-60'}`}>
                         <Bot className="w-10 h-10 text-white" />
                       </div>
                       <div className="flex-1">
@@ -226,7 +226,11 @@ const MarketplacePage: React.FC = () => {
                           <p className="text-gray-600">{agent.category}</p>
                         </div>
                         <div className="flex items-center gap-4 mt-2">
-                          <span className="text-sm text-gray-500">Launching Soon</span>
+                          {agent.availability === 'Available' ? (
+                            <span className="text-sm font-semibold text-green-600">Available now</span>
+                          ) : (
+                            <span className="text-sm text-gray-500">Launching Soon</span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -251,16 +255,23 @@ const MarketplacePage: React.FC = () => {
                           <p className="text-sm text-gray-600">Standard tasks — 1 credit</p>
                           <p className="text-sm text-gray-600">Deep tasks — 3 credits</p>
                         </div>
-                        <p className="text-xs text-gray-400 mt-2">Included in subscription plans. Pay-as-you-go from $0.22/credit.</p>
+                        <p className="text-xs text-gray-400 mt-2">Included in subscription plans. Overage from $0.07/credit, plan-dependent.</p>
                       </div>
                       <div className="flex gap-2">
                         <button className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">
                           <Bot className="w-4 h-4" />
                         </button>
-                        <button className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
-                          Join Waitlist
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </button>
+                        {agent.availability === 'Available' ? (
+                          <Link to="/pricing" className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
+                            Get started
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Link>
+                        ) : (
+                          <button className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
+                            Join Waitlist
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

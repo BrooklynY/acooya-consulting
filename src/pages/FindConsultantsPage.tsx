@@ -176,14 +176,11 @@ const FindConsultantsPage: React.FC = () => {
                           <h3 className="text-xl font-semibold">{agent.name}</h3>
                           <p className="text-gray-600">{agent.category}</p>
                         </div>
-                        <span className="badge badge-blue">24/7 Active</span>
-                      </div>
-                      <div className="flex items-center gap-4 mt-2">
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                          <span className="font-semibold">{agent.rating}</span>
-                        </div>
-                        <span className="text-sm text-gray-500">{agent.usageCount.toLocaleString()} sessions</span>
+                        {agent.availability === 'Available' ? (
+                          <span className="badge badge-green">Available now</span>
+                        ) : (
+                          <span className="badge badge-purple">Launching Soon</span>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -202,17 +199,24 @@ const FindConsultantsPage: React.FC = () => {
 
                   <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                     <div>
-                      <p className="text-sm text-gray-500">Per Session</p>
-                      <p className="font-bold text-lg">${agent.pricePerSession}</p>
+                      <p className="text-sm text-gray-500">Pricing</p>
+                      <p className="text-sm font-semibold text-gray-700">Credits, included in plans</p>
                     </div>
                     <div className="flex gap-2">
                       <button className="btn btn-ghost border border-gray-200">
                         <Bot className="w-4 h-4" />
                       </button>
-                      <Link to="/engagements" state={{ agent: agent.id }} className="btn btn-primary bg-purple-600 hover:bg-purple-700">
-                        Deploy Agent
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
+                      {agent.availability === 'Available' ? (
+                        <Link to="/pricing" className="btn btn-primary bg-purple-600 hover:bg-purple-700">
+                          Get started
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      ) : (
+                        <button className="btn btn-primary bg-purple-600 hover:bg-purple-700">
+                          Join Waitlist
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

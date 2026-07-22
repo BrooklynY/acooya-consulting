@@ -158,8 +158,8 @@ export const aiAgents = [
     usageCount: 12450,
     rating: 4.8,
     pricePerSession: 150,
-    availability: 'Launching Soon',
-    description: 'Advanced AI agent specialised in comprehensive market research and competitive intelligence gathering.',
+    availability: 'Available',
+    description: 'Research agent grounded in your own documents. Every draft is reviewed and released by a human — you stay in control of what counts.',
     icon: 'search'
   },
   {
