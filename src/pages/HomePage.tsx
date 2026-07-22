@@ -405,8 +405,15 @@ const HomePage: React.FC = () => {
                   <div key={agent.id} className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-purple-300 transition-colors">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                          <Bot className="w-5 h-5 text-white" />
+                        <div
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center${agent.name.startsWith('Aria') && agent.availability === 'Available' ? '' : ' bg-gradient-to-br from-purple-500 to-pink-500'}`}
+                          style={agent.name.startsWith('Aria') && agent.availability === 'Available' ? { backgroundColor: '#E91E63' } : undefined}
+                        >
+                          {agent.name.startsWith('Aria') && agent.availability === 'Available' ? (
+                            <img src="/aria-mark.svg" alt="" className="w-8 h-8" />
+                          ) : (
+                            <Bot className="w-5 h-5 text-white" />
+                          )}
                         </div>
                         <div>
                           <h4 className="font-semibold">{agent.name}</h4>
@@ -414,7 +421,7 @@ const HomePage: React.FC = () => {
                         </div>
                       </div>
                       {agent.availability === 'Available' ? (
-                        <span className="badge badge-green">Available now</span>
+                        <span className="badge text-white" style={{ backgroundColor: '#E91E63' }}>Available now</span>
                       ) : (
                         <span className="badge badge-purple">Launching Soon</span>
                       )}

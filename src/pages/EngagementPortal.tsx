@@ -338,8 +338,15 @@ const EngagementPortal: React.FC = () => {
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                              <Bot className="w-6 h-6 text-white" />
+                            <div
+                              className={`w-12 h-12 rounded-lg flex items-center justify-center${agent.name.startsWith('Aria') && agent.availability === 'Available' ? '' : ' bg-gradient-to-br from-purple-500 to-pink-500'}`}
+                              style={agent.name.startsWith('Aria') && agent.availability === 'Available' ? { backgroundColor: '#E91E63' } : undefined}
+                            >
+                              {agent.name.startsWith('Aria') && agent.availability === 'Available' ? (
+                                <img src="/aria-mark.svg" alt="" className="w-9 h-9" />
+                              ) : (
+                                <Bot className="w-6 h-6 text-white" />
+                              )}
                             </div>
                             <div className="flex-1">
                               <h4 className="font-medium">{agent.name}</h4>
