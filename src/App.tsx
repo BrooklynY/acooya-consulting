@@ -6,7 +6,6 @@ import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import FindConsultantsPage from './pages/FindConsultantsPage';
 import EngagementPortal from './pages/EngagementPortal';
-import DashboardPage from './pages/DashboardPage';
 import KnowledgeBasePage from './pages/KnowledgeBasePage';
 import ResourceDetailPage from './pages/ResourceDetailPage';
 import InsightDetailPage from './pages/InsightDetailPage';
@@ -76,7 +75,6 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/consultants" element={<FindConsultantsPage />} />
             <Route path="/engagements" element={<EngagementPortal />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/knowledge" element={<KnowledgeBasePage />} />
             <Route path="/resources" element={<KnowledgeBasePage />} />
             <Route path="/resource/:id" element={<ResourceDetailPage />} />
