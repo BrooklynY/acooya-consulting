@@ -11,7 +11,8 @@ import {
   CheckCircle,
   MessageSquare,
   Calendar,
-  ChevronDown
+  ChevronDown,
+  Briefcase
 } from 'lucide-react';
 import { humanConsultants, aiAgents } from '../data/mockData';
 
@@ -107,11 +108,17 @@ const FindConsultantsPage: React.FC = () => {
               {filteredHumans.map((consultant) => (
                 <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 transition-all hover:shadow-lg">
                   <div className="flex items-start gap-4 mb-4">
-                    <img
-                      src={consultant.image}
-                      alt={consultant.name}
-                      className="w-20 h-20 rounded-xl object-cover"
-                    />
+                    {consultant.id === 'h0' ? (
+                      <img
+                        src={consultant.image}
+                        alt={consultant.name}
+                        className="w-20 h-20 rounded-xl object-cover"
+                      />
+                    ) : (
+                      <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                        <Briefcase className="w-10 h-10 text-white" />
+                      </div>
+                    )}
                     <div className="flex-1">
                       <div className="flex items-start justify-between">
                         <div>
@@ -123,12 +130,7 @@ const FindConsultantsPage: React.FC = () => {
                         </span>
                       </div>
                       <div className="flex items-center gap-4 mt-2">
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                          <span className="font-semibold">{consultant.rating}</span>
-                        </div>
-                        <span className="text-sm text-gray-500">{consultant.experience}</span>
-                        <span className="text-sm text-gray-500">{consultant.projects} projects</span>
+                        <span className="text-sm text-gray-500">{consultant.experience} experience</span>
                       </div>
                     </div>
                   </div>
@@ -143,8 +145,8 @@ const FindConsultantsPage: React.FC = () => {
 
                   <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                     <div>
-                      <p className="text-sm text-gray-500">Hourly Rate</p>
-                      <p className="font-bold text-lg">${consultant.hourlyRate}</p>
+                      <p className="text-sm text-gray-500">Rate</p>
+                      <p className="font-bold text-lg">Rate on Enquiry</p>
                     </div>
                     <div className="flex gap-2">
                       <button className="btn btn-ghost border border-gray-200">
