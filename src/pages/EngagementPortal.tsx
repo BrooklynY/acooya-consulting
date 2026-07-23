@@ -15,7 +15,8 @@ import {
   MessageSquare,
   Send,
   ChevronRight,
-  Clock
+  Clock,
+  Briefcase
 } from 'lucide-react';
 import { humanConsultants, aiAgents, consultingServices, hybridSolutions } from '../data/mockData';
 
@@ -299,7 +300,13 @@ const EngagementPortal: React.FC = () => {
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <img src={consultant.image} alt={consultant.name} className="w-12 h-12 rounded-lg object-cover" />
+                            {consultant.id === 'h0' ? (
+                              <img src={consultant.image} alt={consultant.name} className="w-12 h-12 rounded-lg object-cover" />
+                            ) : (
+                              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                                <Briefcase className="w-6 h-6 text-white" />
+                              </div>
+                            )}
                             <div className="flex-1">
                               <h4 className="font-medium">{consultant.name}</h4>
                               <p className="text-sm text-gray-500">{consultant.title}</p>
