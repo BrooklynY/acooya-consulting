@@ -182,25 +182,15 @@ const PricingPage: React.FC = () => {
   const [showAllFeatures, setShowAllFeatures] = useState<string | null>(null);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<SubscriptionTier | null>(null);
-  const { user, updateSubscription, isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
-  const handleSelectPlan = async (tierId: SubscriptionTier) => {
-    if (tierId === currentTier) {
-      navigate('/portal');
-      return;
-    }
-    setIsLoading(tierId);
-
-    if (!isAuthenticated) {
-      // Store the selected tier in sessionStorage for after registration
-      sessionStorage.setItem('selectedTier', tierId);
-      navigate('/register');
-      return;
-    }
-
-    updateSubscription(tierId);
-    navigate('/portal');
+  const handleSelectPlan = (tierId: SubscriptionTier) => {
+    // Pre-launch: plan selection opens a pilot enquiry (no live checkout yet).
+    window.location.href =
+      `mailto:contact@acooyaconsulting.com?subject=${encodeURIComponent(
+        `Acooya pilot enquiry — ${tierId} plan`
+      )}`;
   };
 
   const currentTier = user?.subscription || 'starter';
@@ -339,7 +329,7 @@ const PricingPage: React.FC = () => {
                       </>
                     ) : tier.id === 'starter' ? (
                       <>
-                        Start Free Trial
+                        Enquire About This Plan
                         <ArrowRight className="w-4 h-4" />
                       </>
                     ) : tier.id === currentTier ? (
@@ -354,7 +344,7 @@ const PricingPage: React.FC = () => {
                       </>
                     ) : (
                       <>
-                        Start Free Trial
+                        Enquire About This Plan
                         <ArrowRight className="w-4 h-4" />
                       </>
                     )}
@@ -598,10 +588,10 @@ const PricingPage: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => navigate(isAuthenticated ? '/portal' : '/register')}
+              onClick={() => { window.location.href = 'mailto:contact@acooyaconsulting.com?subject=Acooya%20pilot%20enquiry'; }}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg"
             >
-              {isAuthenticated ? 'Go to Your Portal' : 'Start Free Trial'}
+              Enquire About a Pilot
               <ArrowRight className="w-5 h-5" />
             </button>
             <button
