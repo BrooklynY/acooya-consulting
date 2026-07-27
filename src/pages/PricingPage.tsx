@@ -112,7 +112,7 @@ const featureComparison = [
     category: 'Security & Compliance',
     icon: Shield,
     features: [
-      { name: 'Built to SOC 2 Type II', starter: true, professional: true, enterprise: true },
+      { name: 'Designed to SOC 2 Type II standards', starter: true, professional: true, enterprise: true },
       { name: 'High Availability / Enterprise-grade infrastructure', starter: true, professional: true, enterprise: true },
       { name: 'Custom integrations', starter: '—', professional: '—', enterprise: 'Scoped on request' },
       { name: 'Privacy Act & GDPR aligned', starter: true, professional: true, enterprise: true },
@@ -518,7 +518,7 @@ const PricingPage: React.FC = () => {
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Shield className="w-6 h-6 text-green-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Built to SOC 2 standards</h4>
+                <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Designed to SOC 2 standards</h4>
                 <p className="text-xs md:text-sm text-gray-600">Enterprise-grade security</p>
               </div>
               <div className="text-center">

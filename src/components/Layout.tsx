@@ -31,7 +31,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-2 text-sm">
         <div className="container mx-auto flex items-center justify-center gap-2">
           <Shield className="w-4 h-4" />
-          <span>Designed to enterprise-grade security with SOC 2 Type II standard</span>
+          <span>Designed to SOC 2 Type II standards — enterprise-grade security by design</span>
         </div>
       </div>
 
