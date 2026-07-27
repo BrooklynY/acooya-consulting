@@ -299,9 +299,9 @@ const PrivacyPolicyPage: React.FC = () => {
                 </div>
               </AccordionItem>
 
-              <AccordionItem title="SOC 2 Type II Compliance">
+              <AccordionItem title="SOC 2 Type II Standards">
                 <p className="mb-4">
-                  Our platform is built on infrastructure that meets SOC 2 Type II compliance requirements, ensuring:
+                  Our platform is designed to SOC 2 Type II standards, and is built on infrastructure providers that hold their own SOC 2 attestations. Independent certification of the Acooya platform is on our roadmap. Our design addresses:
                 </p>
                 <ul className="list-disc list-inside space-y-2">
                   <li><strong>Security:</strong> Protection against unauthorized access</li>
