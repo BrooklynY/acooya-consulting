@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { Menu, X, Shield, Lock, User, LogIn, UserPlus, CreditCard } from 'lucide-react';
+import { Link, useLocation, Outlet } from 'react-router-dom';
+import { Menu, X, Shield, Lock, LogIn, UserPlus, CreditCard } from 'lucide-react';
 
 const Logo = () => (
   <img src="/logo_white.png" alt="Acooya Consulting" className="h-20 w-auto" />
@@ -14,8 +13,6 @@ const FooterLogo = () => (
 const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user, isAuthenticated, logout } = useAuth();
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -27,11 +24,6 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -79,41 +71,20 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
                 Pricing
               </Link>
 
-              {isAuthenticated ? (
-                <>
-                  <Link
-                    to="/portal"
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-                  >
-                    <User className="w-4 h-4" />
-                    My Portal
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                  >
-                    <Lock className="w-4 h-4" />
-                    Sign Out
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link
-                    to="/login"
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-                  >
-                    <LogIn className="w-4 h-4" />
-                    Sign In
-                  </Link>
-                  <Link
-                    to="/register"
-                    className="btn btn-primary text-sm"
-                  >
-                    <UserPlus className="w-4 h-4 mr-2" />
-                    Get Started
-                  </Link>
-                </>
-              )}
+              <a
+                href="https://demo.acooyaconsulting.com/login"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <LogIn className="w-4 h-4" />
+                Sign In
+              </a>
+              <a
+                href="mailto:contact@acooyaconsulting.com?subject=Acooya pilot enquiry"
+                className="btn btn-primary text-sm"
+              >
+                <UserPlus className="w-4 h-4 mr-2" />
+                Get Started
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -152,47 +123,22 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
                     <CreditCard className="w-5 h-5" />
                     Pricing
                   </Link>
-                  {isAuthenticated ? (
-                    <>
-                      <Link
-                        to="/portal"
-                        className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <User className="w-5 h-5" />
-                        My Portal
-                      </Link>
-                      <button
-                        onClick={() => {
-                          handleLogout();
-                          setMobileMenuOpen(false);
-                        }}
-                        className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg w-full"
-                      >
-                        <Lock className="w-5 h-5" />
-                        Sign Out
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <Link
-                        to="/login"
-                        className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <LogIn className="w-5 h-5" />
-                        Sign In
-                      </Link>
-                      <Link
-                        to="/register"
-                        className="btn btn-primary w-full"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <UserPlus className="w-5 h-5 mr-2" />
-                        Get Started
-                      </Link>
-                    </>
-                  )}
+                  <a
+                    href="https://demo.acooyaconsulting.com/login"
+                    className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <LogIn className="w-5 h-5" />
+                    Sign In
+                  </a>
+                  <a
+                    href="mailto:contact@acooyaconsulting.com?subject=Acooya pilot enquiry"
+                    className="btn btn-primary w-full"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <UserPlus className="w-5 h-5 mr-2" />
+                    Get Started
+                  </a>
                 </div>
               </div>
             </div>
@@ -246,7 +192,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
               <h3 className="font-semibold mb-4">Platform</h3>
               <ul className="space-y-3 text-sm text-gray-400">
                 <li><Link to="/engagements#overview" className="hover:text-white transition-colors">Engagement Portal</Link></li>
-                <li><Link to="/portal#overview" className="hover:text-white transition-colors">Customer Portal</Link></li>
+                <li><a href="https://demo.acooyaconsulting.com/login" className="hover:text-white transition-colors">Customer Portal</a></li>
                 <li><Link to="/knowledge#overview" className="hover:text-white transition-colors">Resources</Link></li>
                 <li><Link to="/pricing#overview" className="hover:text-white transition-colors">Pricing</Link></li>
                 <li><Link to="/about#overview" className="hover:text-white transition-colors">About Acooya</Link></li>

@@ -10,59 +10,13 @@ import KnowledgeBasePage from './pages/KnowledgeBasePage';
 import ResourceDetailPage from './pages/ResourceDetailPage';
 import InsightDetailPage from './pages/InsightDetailPage';
 import AboutPage from './pages/AboutPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 import PricingPage from './pages/PricingPage';
 import MarketplacePage from './pages/MarketplacePage';
-import ClientPortal from './pages/ClientPortal';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
 import './styles/globals.css';
 
-// Protected Route Component
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return <>{children}</>;
-};
-
-// Public Route (redirect to portal if authenticated)
-const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (isAuthenticated) {
-    return <Navigate to="/portal" replace />;
-  }
-
-  return <>{children}</>;
-};
 
 function App() {
   return (
@@ -87,42 +41,7 @@ function App() {
             <Route path="/terms-of-service" element={<TermsOfServicePage />} />
             <Route path="/cookie-policy" element={<CookiePolicyPage />} />
 
-            {/* Auth Routes (Public) - wrapped in PublicRoute for redirect logic */}
-            <Route
-              path="/login"
-              element={
-                <PublicRoute>
-                  <LoginPage />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <PublicRoute>
-                  <RegisterPage />
-                </PublicRoute>
-              }
-            />
           </Route>
-
-          {/* Protected Routes - outside Layout to allow full-screen portal */}
-          <Route
-            path="/portal"
-            element={
-              <ProtectedRoute>
-                <ClientPortal />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/portal/:tab"
-            element={
-              <ProtectedRoute>
-                <ClientPortal />
-              </ProtectedRoute>
-            }
-          />
 
           {/* Fallback Routes */}
           <Route path="*" element={<Navigate to="/" replace />} />
