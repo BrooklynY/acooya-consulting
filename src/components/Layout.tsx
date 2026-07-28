@@ -72,7 +72,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
               </Link>
 
               <a
-                href="https://demo.acooyaconsulting.com/login"
+                href="https://app.acooyaconsulting.com/login"
                 className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               >
                 <LogIn className="w-4 h-4" />
@@ -124,7 +124,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
                     Pricing
                   </Link>
                   <a
-                    href="https://demo.acooyaconsulting.com/login"
+                    href="https://app.acooyaconsulting.com/login"
                     className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -192,7 +192,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
               <h3 className="font-semibold mb-4">Platform</h3>
               <ul className="space-y-3 text-sm text-gray-400">
                 <li><Link to="/engagements#overview" className="hover:text-white transition-colors">Engagement Portal</Link></li>
-                <li><a href="https://demo.acooyaconsulting.com/login" className="hover:text-white transition-colors">Customer Portal</a></li>
+                <li><a href="https://app.acooyaconsulting.com/login" className="hover:text-white transition-colors">Customer Portal</a></li>
                 <li><Link to="/knowledge#overview" className="hover:text-white transition-colors">Resources</Link></li>
                 <li><Link to="/pricing#overview" className="hover:text-white transition-colors">Pricing</Link></li>
                 <li><Link to="/about#overview" className="hover:text-white transition-colors">About Acooya</Link></li>
