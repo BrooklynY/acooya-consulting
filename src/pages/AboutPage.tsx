@@ -17,7 +17,6 @@ import {
   Rocket,
   Star,
   Linkedin,
-  Twitter,
   Mail,
   Phone,
   MapPin,
