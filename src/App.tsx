@@ -12,6 +12,7 @@ import InsightDetailPage from './pages/InsightDetailPage';
 import AboutPage from './pages/AboutPage';
 import PricingPage from './pages/PricingPage';
 import MarketplacePage from './pages/MarketplacePage';
+import GetStartedPage from './pages/GetStartedPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
@@ -35,6 +36,7 @@ function App() {
             <Route path="/insight/:id" element={<InsightDetailPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/get-started" element={<GetStartedPage />} />
             <Route path="/marketplace" element={<MarketplacePage />} />
             <Route path="/marketplace/:type/:id" element={<MarketplacePage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
