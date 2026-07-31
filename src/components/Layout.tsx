@@ -166,11 +166,11 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
               <div className="flex items-center gap-4 mt-6">
                 <div className="flex items-center gap-2 text-sm text-gray-400">
                   <Lock className="w-4 h-4" />
-                  Designed to SOC 2 Standards
+                  Designed to SOC 2 Type II standards
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-400">
                   <Shield className="w-4 h-4" />
-                  Privacy Act & GDPR Aligned
+                  Privacy Act aligned
                 </div>
               </div>
             </div>

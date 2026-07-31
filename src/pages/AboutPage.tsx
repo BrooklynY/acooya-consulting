@@ -465,7 +465,7 @@ const AboutPage: React.FC = () => {
               <div className="space-y-4">
                 {[
                   { icon: Bot, title: 'Purpose-Built AI Agents', desc: 'Specialised agents built around consulting methodologies and best-practice frameworks' },
-                  { icon: Shield, title: 'Enterprise Security', desc: 'Designed to SOC 2 Type II standards. Designed for GDPR and Australian Privacy Act compliance. AES-256 encryption throughout.' },
+                  { icon: Shield, title: 'Enterprise Security', desc: 'Designed to SOC 2 Type II standards, with Australian Privacy Principles built into the design. AES-256 encryption throughout.' },
                   { icon: Zap, title: 'Real-Time Intelligence', desc: 'Instant analysis, research, and response generation 24/7' },
                   { icon: BarChart3, title: 'Advanced Analytics', desc: 'Comprehensive insights and KPI tracking for engagement performance' },
                 ].map((item, i) => (
@@ -489,8 +489,8 @@ const AboutPage: React.FC = () => {
                   { icon: Bot, color: 'text-blue-400', title: 'AI & Agent Framework', desc: 'Purpose-built agent workflows on enterprise LLM infrastructure' },
                   { icon: Lock, color: 'text-green-400', title: 'Security Architecture', desc: 'AES-256 encryption, role-based access controls, full audit logging' },
                   { icon: Zap, color: 'text-yellow-400', title: 'Real-Time Processing', desc: 'Live data pipelines delivering insights as they emerge' },
-                  { icon: Link2, color: 'text-purple-400', title: 'Open Integration', desc: 'API-first design connecting with your existing enterprise tools' },
-                  { icon: Server, color: 'text-cyan-400', title: 'Australian Data Residency', desc: 'Data hosted in Australian data centres for compliance-sensitive clients' },
+                  { icon: Link2, color: 'text-purple-400', title: 'PII Screening', desc: 'Documents are screened for personal information before any AI model sees them' },
+                  { icon: Server, color: 'text-cyan-400', title: 'Asia-Pacific Data Residency', desc: 'Data hosted in Singapore on enterprise infrastructure, with row-level isolation between every engagement' },
                   { icon: Eye, color: 'text-pink-400', title: 'Full Observability', desc: 'Complete traceability of every AI output for governance and accountability' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
