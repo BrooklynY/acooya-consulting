@@ -348,9 +348,9 @@ const MarketplacePage: React.FC = () => {
                   'Processing large volumes of data rapidly',
                   'Pattern recognition across millions of data points',
                   'Automated report generation and synthesis',
-                  '24/7 availability and instant response times',
+                  'Available whenever you need them — most tasks complete in minutes',
                   'Consistent execution of standardized processes',
-                  'Real-time monitoring and anomaly detection'
+                  'Consistent, repeatable analysis across every engagement'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
