@@ -105,7 +105,7 @@ const featureComparison = [
       { name: 'Team collaboration', starter: false, professional: true, enterprise: true },
       { name: 'Document collaboration', starter: false, professional: true, enterprise: true },
       { name: 'Advanced analytics dashboard', starter: false, professional: true, enterprise: true },
-      { name: 'Australian data residency (ap-southeast-2)', starter: false, professional: false, enterprise: true }
+      { name: 'Asia-Pacific data residency (Singapore)', starter: false, professional: false, enterprise: true }
     ]
   },
   {

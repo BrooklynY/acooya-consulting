@@ -117,7 +117,7 @@ const subscriptionFeatures: Record<SubscriptionTier, string[]> = {
     'Custom AI agent development',
     'Dedicated lead consultant + engagement SLA',
     'Engagement history — unlimited retention',
-    'Australian data residency (ap-southeast-2)',
+    'Asia-Pacific data residency (Singapore)',
     'Dedicated Customer Success Manager',
     'On-site workshops and executive briefings',
     'White-glove concierge support',
