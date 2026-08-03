@@ -466,7 +466,7 @@ const AboutPage: React.FC = () => {
                 {[
                   { icon: Bot, title: 'Purpose-Built AI Agents', desc: 'Specialised agents built around consulting methodologies and best-practice frameworks' },
                   { icon: Shield, title: 'Enterprise Security', desc: 'Designed to SOC 2 Type II standards, with Australian Privacy Principles built into the design. AES-256 encryption throughout.' },
-                  { icon: Zap, title: 'Real-Time Intelligence', desc: 'Instant analysis, research, and response generation 24/7' },
+                  { icon: Zap, title: 'On-Demand Intelligence', desc: 'Research, analysis, and drafting whenever you need it — typically in minutes' },
                   { icon: BarChart3, title: 'Advanced Analytics', desc: 'Comprehensive insights and KPI tracking for engagement performance' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
@@ -488,7 +488,7 @@ const AboutPage: React.FC = () => {
                 {[
                   { icon: Bot, color: 'text-blue-400', title: 'AI & Agent Framework', desc: 'Purpose-built agent workflows on enterprise LLM infrastructure' },
                   { icon: Lock, color: 'text-green-400', title: 'Security Architecture', desc: 'AES-256 encryption, role-based access controls, full audit logging' },
-                  { icon: Zap, color: 'text-yellow-400', title: 'Real-Time Processing', desc: 'Live data pipelines delivering insights as they emerge' },
+                  { icon: Zap, color: 'text-yellow-400', title: 'Document-Grounded Analysis', desc: 'Agents reason over your engagement documents, with PII screened before any model sees them' },
                   { icon: Link2, color: 'text-purple-400', title: 'PII Screening', desc: 'Documents are screened for personal information before any AI model sees them' },
                   { icon: Server, color: 'text-cyan-400', title: 'Asia-Pacific Data Residency', desc: 'Data hosted in Singapore on enterprise infrastructure, with row-level isolation between every engagement' },
                   { icon: Eye, color: 'text-pink-400', title: 'Full Observability', desc: 'Complete traceability of every AI output for governance and accountability' },

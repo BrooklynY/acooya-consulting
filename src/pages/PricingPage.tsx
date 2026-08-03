@@ -113,7 +113,7 @@ const featureComparison = [
     icon: Shield,
     features: [
       { name: 'Designed to SOC 2 Type II standards', starter: true, professional: true, enterprise: true },
-      { name: 'High Availability / Enterprise-grade infrastructure', starter: true, professional: true, enterprise: true },
+      { name: 'Managed cloud infrastructure', starter: true, professional: true, enterprise: true },
       { name: 'Custom integrations', starter: '—', professional: '—', enterprise: 'Scoped on request' },
       { name: 'Privacy Act & GDPR aligned', starter: true, professional: true, enterprise: true },
       { name: 'Engagement SLA', starter: false, professional: false, enterprise: true },
@@ -126,7 +126,6 @@ const featureComparison = [
     features: [
       { name: 'Monthly reports', starter: true, professional: true, enterprise: true },
       { name: 'Weekly reports & analytics', starter: false, professional: true, enterprise: true },
-      { name: 'Real-time dashboards', starter: false, professional: false, enterprise: true },
       { name: 'Executive reporting', starter: false, professional: false, enterprise: true }
     ]
   },
@@ -135,7 +134,7 @@ const featureComparison = [
     icon: Headphones,
     features: [
       { name: 'Email support', starter: '48-hour response', professional: '24-hour response', enterprise: 'White-glove concierge' },
-      { name: '24/7 priority support', starter: false, professional: true, enterprise: true },
+      { name: 'Priority support', starter: false, professional: true, enterprise: true },
       { name: 'Resources and frameworks library', starter: true, professional: true, enterprise: true },
       { name: 'Executive briefings', starter: false, professional: false, enterprise: true }
     ]
@@ -525,8 +524,8 @@ const PricingPage: React.FC = () => {
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Zap className="w-6 h-6 text-blue-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">High Availability</h4>
-                <p className="text-xs md:text-sm text-gray-600">Enterprise-grade infrastructure</p>
+                <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Managed Infrastructure</h4>
+                <p className="text-xs md:text-sm text-gray-600">Built on enterprise cloud providers</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">

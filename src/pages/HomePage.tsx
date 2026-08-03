@@ -109,7 +109,7 @@ const HomePage: React.FC = () => {
                   />
                   <div>
                     <h3 className="font-semibold text-xl text-white">Human-AI Synergy</h3>
-                    <p className="text-sm text-gray-300">Real-time collaboration</p>
+                    <p className="text-sm text-gray-300">Shared engagement workspace</p>
                   </div>
                 </div>
 
@@ -207,7 +207,7 @@ const HomePage: React.FC = () => {
               {
                 icon: 'clock',
                 title: 'Continuous Value',
-                description: 'AI agents work 24/7, providing ongoing monitoring and support between human consulting sessions',
+                description: 'AI agents are available whenever you need them, so work continues between human consulting sessions',
                 color: 'from-green-500 to-emerald-500'
               },
               {

@@ -204,7 +204,7 @@ const ServicesPage: React.FC = () => {
             {[
               { icon: Zap, title: '40% Faster', desc: 'AI-powered research and analysis accelerate every phase of engagement without sacrificing depth' },
               { icon: DollarSign, title: '40-60% Savings', desc: 'Hybrid model delivers premium quality at a fraction of traditional consulting costs' },
-              { icon: Clock, title: '24/7 Intelligence', desc: 'AI agents continuously monitor markets, track KPIs, and flag opportunities around the clock' },
+              { icon: Clock, title: 'On-Demand Intelligence', desc: 'AI agents research, analyse, and draft on request — grounded in your engagement documents, with human review before anything reaches you' },
               { icon: Users, title: 'Expert Network', desc: 'Tap into our rapidly expanding ecosystem of top-tier talent, bringing proven experience from global industry leaders directly to your team' },
             ].map((item, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
