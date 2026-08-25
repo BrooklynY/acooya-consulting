@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+/** Where engagement requests are sent. Matches GetStartedPage. */
+const CONTACT_EMAIL = 'contact@acooyaconsulting.com';
 import { useLocation } from 'react-router-dom';
 import {
   ArrowRight,
@@ -29,6 +32,24 @@ const EngagementPortal: React.FC = () => {
   const [selectedAgents, setSelectedAgents] = useState<string[]>([]);
   const [projectBrief, setProjectBrief] = useState('');
 
+  // Start date and budget were UNCONTROLLED inputs — rendered, filled in by the
+  // visitor, and never captured. Anything assembled from state alone silently
+  // omitted two fields they had answered.
+  const [startDate, setStartDate] = useState('');
+  const [budgetRange, setBudgetRange] = useState('');
+
+  // Who to reply to. The wizard collected an entire engagement brief without
+  // ever asking for a name or an email, so even a working submit had nobody to
+  // contact.
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactOrg, setContactOrg] = useState('');
+
+  // Set once the request has been assembled and handed to the mail client, so
+  // the confirmation view can show the brief back rather than an alert().
+  const [submittedBody, setSubmittedBody] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+
   const steps = [
     { num: 1, title: 'Engagement Type' },
     { num: 2, title: 'Select Service' },
@@ -37,8 +58,61 @@ const EngagementPortal: React.FC = () => {
     { num: 5, title: 'Review & Submit' },
   ];
 
+  /**
+   * Assemble the request into an email to Acooya.
+   *
+   * BEFORE THIS (25 Aug 2026) the wizard collected engagement type, service,
+   * partners, a full brief, start date and budget — then showed an alert()
+   * saying the team would be in touch within 24 hours, and discarded all of
+   * it. Nothing was sent, nothing was stored. A prospect could write a detailed
+   * brief and walk away believing Acooya had received it.
+   *
+   * mailto: is the honest stopgap, matching GetStartedPage. Its weakness
+   * matters more here because there is far more to lose: if no mail client
+   * opens, a long brief would vanish. So the confirmation view shows the
+   * assembled request back with a copy button — the text survives either way.
+   *
+   * The durable version is a public API route on the platform storing the
+   * request and sending via Resend. That also unlocks real document upload
+   * (signed URLs) which mailto cannot carry at all.
+   */
+  const buildRequestBody = (): string => {
+    const consultantNames = selectedConsultants
+      .map((id) => humanConsultants.find((h) => h.id === id)?.name)
+      .filter(Boolean);
+    const agentNames = selectedAgents
+      .map((id) => aiAgents.find((ag) => ag.id === id)?.name)
+      .filter(Boolean);
+    const serviceTitle =
+      consultingServices.find((s) => s.id === selectedService)?.title || 'Custom Solution';
+
+    const lines: string[] = [];
+    lines.push('ENGAGEMENT REQUEST');
+    lines.push('');
+    lines.push(`Name: ${contactName}`);
+    lines.push(`Email: ${contactEmail}`);
+    if (contactOrg) lines.push(`Organisation: ${contactOrg}`);
+    lines.push('');
+    lines.push(`Engagement type: ${engagementType ?? 'not selected'}`);
+    lines.push(`Service area: ${serviceTitle}`);
+    lines.push(`Consultants: ${consultantNames.length ? consultantNames.join(', ') : 'none selected'}`);
+    lines.push(`AI agents: ${agentNames.length ? agentNames.join(', ') : 'none selected'}`);
+    lines.push(`Preferred start: ${startDate || 'not specified'}`);
+    lines.push(`Budget range: ${budgetRange || 'not specified'}`);
+    lines.push('');
+    lines.push('PROJECT BRIEF');
+    lines.push(projectBrief);
+    lines.push('');
+    lines.push('Sent from the Acooya engagement portal.');
+    return lines.join('\n');
+  };
+
   const handleSubmit = () => {
-    alert('Engagement request submitted! Our team will contact you within 24 hours.');
+    const body = buildRequestBody();
+    setSubmittedBody(body);
+    const subject = `Acooya engagement request — ${contactOrg || contactName || 'new enquiry'}`;
+    window.location.href =
+      `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -411,27 +485,45 @@ const EngagementPortal: React.FC = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Upload Documents (Optional)
+                      Documents
                     </label>
-                    <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
+                    <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center">
                       <Upload className="w-10 h-10 text-gray-400 mx-auto mb-3" />
-                      <p className="text-gray-600 mb-1">Drag and drop files here or click to browse</p>
-                      <p className="text-sm text-gray-500">PDF, DOCX, PPTX up to 50MB</p>
+                      <p className="text-gray-600 mb-1">Share documents once we&apos;re in touch</p>
+                      <p className="text-sm text-gray-500">Your engagement workspace handles documents securely, with a privacy screen before anything reaches an AI agent. Mention them in your brief and we&apos;ll pick it up from there.</p>
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Your name *
+                      </label>
+                      <input type="text" value={contactName} onChange={(e) => setContactName(e.target.value)} placeholder="Alexandra Mitchell" className="input" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Work email *
+                      </label>
+                      <input type="email" value={contactEmail} onChange={(e) => setContactEmail(e.target.value)} placeholder="alexandra@company.com.au" className="input" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Organisation
+                      </label>
+                      <input type="text" value={contactOrg} onChange={(e) => setContactOrg(e.target.value)} placeholder="Acme Group" className="input" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
                         Preferred Start Date
                       </label>
-                      <input type="date" className="input" />
+                      <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="input" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Budget Range
                       </label>
-                      <select className="input">
+                      <select value={budgetRange} onChange={(e) => setBudgetRange(e.target.value)} className="input">
                         <option>Select budget range</option>
                         <option>$25,000 - $50,000</option>
                         <option>$50,000 - $100,000</option>
@@ -448,7 +540,7 @@ const EngagementPortal: React.FC = () => {
                   </button>
                   <button
                     onClick={() => setCurrentStep(5)}
-                    disabled={!projectBrief.trim()}
+                    disabled={!projectBrief.trim() || !contactName.trim() || !contactEmail.trim()}
                     className="btn btn-primary"
                   >
                     Continue
@@ -458,8 +550,49 @@ const EngagementPortal: React.FC = () => {
               </div>
             )}
 
+            {/* Submitted — the request has been handed to the mail client.
+                Shown INSTEAD of the wizard, with the assembled text visible and
+                copyable. mailto: can fail silently (no mail client, webmail
+                only); on a page where someone has just written a long brief,
+                losing it would be the worst outcome. This makes the text
+                recoverable either way. */}
+            {submittedBody !== null && (
+              <div className="animate-fade-in">
+                <h2 className="text-2xl font-bold mb-2">One last step — send it</h2>
+                <p className="text-gray-600 mb-2">
+                  We&apos;ve opened your email app with the request below already written. <strong className="text-gray-900">Press send there and it&apos;s with us.</strong>
+                </p>
+                <p className="text-gray-600 mb-6">
+                  Nothing has reached Acooya until you do. If your email app didn&apos;t open, copy the request and send it to{' '}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a>.
+                  Brooklyn reads these personally and replies within one business day.
+                </p>
+
+                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+                  <pre className="whitespace-pre-wrap text-sm text-gray-700 font-sans">{submittedBody}</pre>
+                </div>
+
+                <div className="flex flex-wrap gap-3 mt-6">
+                  <button
+                    onClick={() => {
+                      void navigator.clipboard.writeText(submittedBody).then(() => {
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                      });
+                    }}
+                    className="btn btn-primary"
+                  >
+                    {copied ? 'Copied' : 'Copy request'}
+                  </button>
+                  <button onClick={() => setSubmittedBody(null)} className="btn btn-secondary">
+                    Back to edit
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Step 5: Review & Submit */}
-            {currentStep === 5 && (
+            {submittedBody === null && currentStep === 5 && (
               <div className="animate-fade-in">
                 <h2 className="text-2xl font-bold mb-2">Review Your Engagement</h2>
                 <p className="text-gray-600 mb-8">Confirm your engagement details before submitting</p>
@@ -528,9 +661,9 @@ const EngagementPortal: React.FC = () => {
                   <div className="flex items-start gap-3">
                     <Shield className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold text-green-800">Secure Engagement</h4>
+                      <h4 className="font-semibold text-green-800">What happens to this request</h4>
                       <p className="text-sm text-green-700">
-                        All engagement data is encrypted end-to-end. You'll receive a secure workspace for collaboration.
+                        It comes straight to Brooklyn — no sales team, no automated pipeline. If we proceed, your engagement runs in a private workspace where every AI output is reviewed by a human before it reaches you.
                       </p>
                     </div>
                   </div>
@@ -541,7 +674,7 @@ const EngagementPortal: React.FC = () => {
                     Back
                   </button>
                   <button onClick={handleSubmit} className="btn btn-primary text-lg px-8 py-4">
-                    Submit Engagement Request
+                    Compose Engagement Request
                     <Send className="w-5 h-5 ml-2" />
                   </button>
                 </div>
@@ -558,7 +691,7 @@ const EngagementPortal: React.FC = () => {
             <h3 className="text-xl font-bold text-center mb-8">What Happens After You Submit?</h3>
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { icon: Clock, title: 'Within 24 Hours', desc: 'Our team reviews your request' },
+                { icon: Clock, title: 'One business day', desc: 'Brooklyn reads your request personally' },
                 { icon: MessageSquare, title: 'Discovery Call', desc: '30-minute consultation scheduled' },
                 { icon: FileText, title: 'Proposal', desc: 'Detailed engagement plan delivered' },
                 { icon: Sparkles, title: 'Kickoff', desc: 'Engagement begins' },
