@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth, getSubscriptionFeatures } from '../contexts/AuthContext';
-import { SubscriptionTier } from '../types/auth';
+import { getSubscriptionFeatures, type SubscriptionTier } from '../lib/subscriptionFeatures';
 import { Link } from 'react-router-dom';
 import {
   Check, X, Shield, Zap, Users, Bot, ArrowRight,
@@ -181,7 +180,6 @@ const PricingPage: React.FC = () => {
   const [showAllFeatures, setShowAllFeatures] = useState<string | null>(null);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<SubscriptionTier | null>(null);
-  const { user } = useAuth();
   const navigate = useNavigate();
 
   const handleSelectPlan = (tierId: SubscriptionTier) => {
@@ -192,7 +190,15 @@ const PricingPage: React.FC = () => {
       )}`;
   };
 
-  const currentTier = user?.subscription || 'starter';
+  // The marketing site has no auth, so `user` was permanently null and this
+  // resolved to 'starter' for EVERY visitor — highlighting a plan as "current"
+  // to people who have no account. Kept as a widened constant so rendering is
+  // byte-identical to before this cleanup; narrowing it to the literal made
+  // tsc flag the tier comparison below as unreachable, which it already was at
+  // runtime. Both the false "current plan" highlight and the now-provably-dead
+  // branch are worth removing when this page is next revisited — a logged-out
+  // visitor has no current tier at all.
+  const currentTier: SubscriptionTier = 'starter';
 
   const renderFeatureValue = (value: boolean | string) => {
     if (value === true) return <Check className="w-5 h-5 text-green-500 mx-auto" />;
@@ -329,11 +335,6 @@ const PricingPage: React.FC = () => {
                     ) : tier.id === 'starter' ? (
                       <>
                         Enquire About This Plan
-                        <ArrowRight className="w-4 h-4" />
-                      </>
-                    ) : tier.id === currentTier ? (
-                      <>
-                        Current Plan
                         <ArrowRight className="w-4 h-4" />
                       </>
                     ) : tier.id === 'enterprise' ? (
