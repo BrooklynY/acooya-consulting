@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Briefcase, Users, Bot, Check, Mail, UserPlus, Award, Info, Shield } from 'lucide-react';
 
 type EnquiryRole = 'client' | 'consultant' | 'developer';
@@ -174,6 +174,18 @@ const roleConfigs: Record<EnquiryRole, RoleConfig> = {
 const roleOrder: EnquiryRole[] = ['client', 'consultant', 'developer'];
 
 const GetStartedPage: React.FC = () => {
+  // Marketplace CTAs arrive here carrying what the visitor was looking at:
+  // ?interest=Brooklyn%20Yang for a consultant card, ?interest=Aria%20—%20Research%20Agent
+  // for an agent, ?interest=Hybrid%20engagement for the combined CTA. Before this,
+  // every marketplace button routed to a page that could not act on the choice,
+  // so the selection was lost and enquiries arrived with no context.
+  //
+  // The value is a display NAME, not an id. Ids here come from mockData ("h0"),
+  // which would be meaningless in an inbox — and a name survives the later swap
+  // to real profile data unchanged.
+  const [searchParams] = useSearchParams();
+  const interest = (searchParams.get('interest') ?? '').trim().slice(0, 120);
+
   const [role, setRole] = useState<EnquiryRole>('client');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -197,6 +209,9 @@ const GetStartedPage: React.FC = () => {
     lines.push(`Role: ${config.label}`);
     lines.push(`Name: ${name}`);
     lines.push(`Email: ${email}`);
+    if (interest) {
+      lines.push(`Interested in: ${interest}`);
+    }
     config.extraFields.forEach((field) => {
       lines.push(`${field.mailLabel || field.label}: ${extras[field.key] || ''}`);
     });
@@ -220,6 +235,9 @@ const GetStartedPage: React.FC = () => {
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Get started with Acooya</h1>
             <p className="text-gray-600">Tell us who you are and we&apos;ll take it from there.</p>
+            {interest && (
+              <p className="mt-3 inline-block rounded-full bg-blue-50 px-4 py-1.5 text-sm text-blue-800">Enquiring about <span className="font-medium">{interest}</span></p>
+            )}
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">

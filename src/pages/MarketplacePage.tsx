@@ -174,22 +174,22 @@ const MarketplacePage: React.FC = () => {
                       <p className="font-bold text-lg">Rate on Enquiry</p>
                     </div>
                     <div className="flex gap-2">
-                      <button className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">
+                      <Link to={`/get-started?interest=${encodeURIComponent(`Question — ${consultant.name}`)}`} title="Send a question — we'll reply by email" aria-label={`Send a question about ${consultant.name}`} className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">
                         <MessageSquare className="w-4 h-4" />
-                      </button>
-                      <button className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">
+                      </Link>
+                      <Link to={`/get-started?interest=${encodeURIComponent(`Discovery call — ${consultant.name}`)}`} title="Request a discovery call" aria-label={`Request a discovery call about ${consultant.name}`} className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">
                         <Calendar className="w-4 h-4" />
-                      </button>
+                      </Link>
                       {consultant.id === 'h0' ? (
-                        <Link to="/engagements" state={{ consultant: consultant.id }} className="px-5 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center">
+                        <Link to={`/get-started?interest=${encodeURIComponent(consultant.name)}`} className="px-5 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center">
                           Engage
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       ) : (
-                        <button className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
+                        <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${consultant.title}`)}`} className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
                           Join Waitlist
                           <ArrowRight className="w-4 h-4 ml-2" />
-                        </button>
+                        </Link>
                       )}
                     </div>
                   </div>
@@ -269,19 +269,19 @@ const MarketplacePage: React.FC = () => {
                         <p className="text-xs text-gray-400 mt-2">Included in subscription plans. Overage from $0.07/credit, plan-dependent.</p>
                       </div>
                       <div className="flex gap-2">
-                        <button className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">
+                        <Link to={`/get-started?interest=${encodeURIComponent(`Question — ${agent.name}`)}`} title="Ask about this agent — we'll reply by email" aria-label={`Ask a question about ${agent.name}`} className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">
                           <Bot className="w-4 h-4" />
-                        </button>
+                        </Link>
                         {agent.availability === 'Available' ? (
-                          <Link to="/pricing" className="px-5 py-2.5 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center" style={{ backgroundColor: '#E91E63' }}>
+                          <Link to={`/get-started?interest=${encodeURIComponent(agent.name)}`} className="px-5 py-2.5 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center" style={{ backgroundColor: '#E91E63' }}>
                             Get started
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Link>
                         ) : (
-                          <button className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
+                          <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${agent.name}`)}`} className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
                             Join Waitlist
                             <ArrowRight className="w-4 h-4 ml-2" />
-                          </button>
+                          </Link>
                         )}
                       </div>
                     </div>
@@ -362,7 +362,7 @@ const MarketplacePage: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <Link to="/engagements" className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:opacity-90 transition-opacity text-lg">
+            <Link to={`/get-started?interest=${encodeURIComponent('Hybrid engagement — consultant + AI agents')}`} className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:opacity-90 transition-opacity text-lg">
               Create a Hybrid Engagement
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
