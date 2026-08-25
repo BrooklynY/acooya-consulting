@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
@@ -21,7 +20,6 @@ import './styles/globals.css';
 
 function App() {
   return (
-    <AuthProvider>
       <BrowserRouter>
         <Routes>
           {/* Public Routes with Layout - includes all main pages */}
@@ -49,7 +47,6 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
   );
 }
 
