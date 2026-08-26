@@ -104,7 +104,8 @@ const roleConfigs: Record<EnquiryRole, RoleConfig> = {
     ],
     benefitsTitle: 'What you get as a consultant',
     benefits: [
-      "80% of every engagement fee — our facilitation fee is 20%, only on completed engagements",
+      '80% of every engagement fee — our facilitation fee is 20%, only on completed engagements',
+      'A team of AI agents alongside you on every engagement — research, analytics, strategy and orchestration, at no cost to you',
       'Net fees remitted within 14 business days of engagement completion',
       'Advisory sessions, sprints, full engagements, retainers',
       'Applications reviewed within 5 business days',
@@ -115,6 +116,17 @@ const roleConfigs: Record<EnquiryRole, RoleConfig> = {
       'We set up your consultant portal and profile',
       'Payout details when your first engagement is agreed',
     ],
+    founding: {
+      title: 'Founding consultant — the first cohort',
+      points: [
+        'Shape how the network works as it is built',
+        'Direct onboarding with Brooklyn',
+        'Permanent founding consultant badge on your marketplace profile',
+        'Priority review within 5 business days',
+      ],
+      footnote:
+        'Acooya is in pilot. Founding consultants help set how the network operates — and we will always tell you before anything material changes.',
+    },
   },
   developer: {
     value: 'developer',
