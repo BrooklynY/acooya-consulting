@@ -12,18 +12,25 @@ import {
   MessageSquare,
   Calendar,
   ChevronDown,
-  Briefcase
+  Briefcase,
+  Linkedin
 } from 'lucide-react';
-import { humanConsultants, aiAgents } from '../data/mockData';
+import { aiAgents } from '../data/mockData';
+import { useConsultants } from '../hooks/use-consultants';
 
 const FindConsultantsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'human' | 'ai'>('human');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedExpertise, setSelectedExpertise] = useState<string | null>(null);
 
-  const allExpertise = [...new Set(humanConsultants.flatMap(c => c.expertise))];
+  // Live consultants from the platform, prepended ahead of the staged roles.
+  // Same source as MarketplacePage — the two pages must not disagree about
+  // who is on the marketplace.
+  const consultants = useConsultants();
 
-  const filteredHumans = humanConsultants.filter(consultant => {
+  const allExpertise = [...new Set(consultants.flatMap(c => c.expertise))];
+
+  const filteredHumans = consultants.filter(consultant => {
     const matchesSearch = consultant.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       consultant.expertise.some(e => e.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesExpertise = !selectedExpertise || consultant.expertise.includes(selectedExpertise);
@@ -58,7 +65,7 @@ const FindConsultantsPage: React.FC = () => {
               >
                 <Users className="w-4 h-4 mr-2" />
                 Human Consultants
-                <span className="ml-2 bg-white/20 px-2 py-0.5 rounded text-xs">{humanConsultants.length}</span>
+                <span className="ml-2 bg-white/20 px-2 py-0.5 rounded text-xs">{consultants.length}</span>
               </button>
               <button
                 onClick={() => setActiveTab('ai')}
@@ -108,7 +115,7 @@ const FindConsultantsPage: React.FC = () => {
               {filteredHumans.map((consultant) => (
                 <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 transition-all hover:shadow-lg">
                   <div className="flex items-start gap-4 mb-4">
-                    {consultant.id === 'h0' ? (
+                    {consultant.isLive && consultant.image ? (
                       <img
                         src={consultant.image}
                         alt={consultant.name}
@@ -122,7 +129,14 @@ const FindConsultantsPage: React.FC = () => {
                     <div className="flex-1">
                       <div className="flex items-start justify-between">
                         <div>
-                          <h3 className="text-xl font-semibold">{consultant.name}</h3>
+                          <div className="flex items-center gap-2">
+                            <h3 className="text-xl font-semibold">{consultant.name}</h3>
+                            {consultant.linkedinUrl && (
+                              <a href={consultant.linkedinUrl} target="_blank" rel="noopener noreferrer" title={`${consultant.name} on LinkedIn`} aria-label={`${consultant.name} on LinkedIn`} className="text-gray-400 hover:text-blue-600 transition-colors">
+                                <Linkedin className="w-4 h-4" />
+                              </a>
+                            )}
+                          </div>
                           <p className="text-gray-600">{consultant.title}</p>
                         </div>
                         <span className={`badge ${consultant.availability === 'Available Now' ? 'badge-green' : 'badge-orange'}`}>
@@ -130,12 +144,14 @@ const FindConsultantsPage: React.FC = () => {
                         </span>
                       </div>
                       <div className="flex items-center gap-4 mt-2">
-                        <span className="text-sm text-gray-500">{consultant.experience} experience</span>
+                        <span className="text-sm text-gray-500">{consultant.experience}</span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 text-sm mb-4">{consultant.bio}</p>
+                  {consultant.sectors.length > 0 && (
+                    <p className="text-gray-500 text-sm mb-4">{consultant.sectors.join(' · ')}</p>
+                  )}
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {consultant.expertise.map((exp, i) => (
@@ -148,17 +164,24 @@ const FindConsultantsPage: React.FC = () => {
                       <p className="text-sm text-gray-500">Rate</p>
                       <p className="font-bold text-lg">Rate on Enquiry</p>
                     </div>
-                    <div className="flex gap-2">
-                      <button className="btn btn-ghost border border-gray-200">
+                                        <div className="flex gap-2">
+                      <Link to={`/get-started?interest=${encodeURIComponent(`Question — ${consultant.name}`)}`} title="Send a question — we'll reply by email" aria-label={`Send a question about ${consultant.name}`} className="btn btn-ghost border border-gray-200">
                         <MessageSquare className="w-4 h-4" />
-                      </button>
-                      <button className="btn btn-ghost border border-gray-200">
-                        <Calendar className="w-4 h-4" />
-                      </button>
-                      <Link to="/engagements" state={{ consultant: consultant.id }} className="btn btn-primary">
-                        Engage
-                        <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
+                      <Link to={`/get-started?interest=${encodeURIComponent(`Discovery call — ${consultant.name}`)}`} title="Request a discovery call" aria-label={`Request a discovery call about ${consultant.name}`} className="btn btn-ghost border border-gray-200">
+                        <Calendar className="w-4 h-4" />
+                      </Link>
+                      {consultant.isLive ? (
+                        <Link to={`/get-started?interest=${encodeURIComponent(consultant.name)}`} className="btn btn-primary">
+                          Engage
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      ) : (
+                        <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${consultant.title}`)}`} className="btn btn-primary">
+                          Join Waitlist
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

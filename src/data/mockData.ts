@@ -76,26 +76,32 @@ export const consultingServices = [
   }
 ];
 
+/**
+ * Staged consultant roles for the marketplace. NOT people — no invented
+ * names, and the card renders no rating or project count for anyone.
+ *
+ * Real consultants come from the platform API via useConsultants() and are
+ * prepended ahead of these. Brooklyn's entry (h0) was removed on 28 August
+ * 2026 when the live fetch shipped: he now arrives from consultant_profiles
+ * with his real headline, bio, photo and experience years, and keeping a
+ * hardcoded copy would have shown him twice with two different titles.
+ *
+ * `experience` carries its own noun — "Senior-level experience", not
+ * "Senior-level" — because the card renders the string verbatim. A live
+ * consultant's label is computed from two years and reads "18 years
+ * experience · 10 in consulting", which no appended word can produce.
+ *
+ * rating, projects and hourlyRate are retained but NOT rendered anywhere.
+ * They predate the current card design and should go when these placeholders
+ * retire; nothing should start reading them.
+ */
 export const humanConsultants = [
-  {
-    id: 'h0',
-    name: 'Brooklyn Yang',
-    title: 'Lead Consultant, Strategy & Operations',
-    expertise: ['Operating Model Design', 'Delivery Enablement', 'Insight & Reporting', 'Continuous Improvement'],
-    experience: '14 years',
-    rating: 4.9,
-    projects: 42,
-    hourlyRate: 250,
-    availability: 'Available Now',
-    bio: 'Acooya\'s Lead Consultant with deep expertise across Operating Model Design, Delivery Enablement, and Insight & Reporting. Trusted advisor to global enterprises across diverse industries.',
-    image: '/brooklyn-yang.jpg'
-  },
   {
     id: 'h1',
     name: 'Senior Consultant',
     title: 'Target Operating Model',
     expertise: ['Operating Model Design', 'Strategic Insight', 'Change Management'],
-    experience: 'Senior-level',
+    experience: 'Senior-level experience',
     rating: 4.9,
     projects: 78,
     hourlyRate: 450,
@@ -108,7 +114,7 @@ export const humanConsultants = [
     name: 'Senior Consultant',
     title: 'Technology & Delivery Enablement',
     expertise: ['Enterprise Architecture', 'Delivery Enablement', 'AI Integration'],
-    experience: 'Senior-level',
+    experience: 'Senior-level experience',
     rating: 4.8,
     projects: 62,
     hourlyRate: 350,
@@ -121,7 +127,7 @@ export const humanConsultants = [
     name: 'Senior Consultant',
     title: 'Analytics & Reporting',
     expertise: ['Strategic Insight', 'Performance Analytics', 'Reporting Automation'],
-    experience: '12 years',
+    experience: '12 years experience',
     rating: 4.9,
     projects: 49,
     hourlyRate: 380,
@@ -134,7 +140,7 @@ export const humanConsultants = [
     name: 'Principal Consultant',
     title: 'Operations & Delivery',
     expertise: ['Delivery Enablement', 'Process Optimisation', 'Program Management'],
-    experience: '20 years',
+    experience: '20 years experience',
     rating: 4.7,
     projects: 89,
     hourlyRate: 500,
