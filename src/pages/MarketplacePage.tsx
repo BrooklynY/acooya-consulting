@@ -10,9 +10,11 @@ import {
   MessageSquare,
   Calendar,
   ChevronDown,
-  Briefcase
+  Briefcase,
+  Linkedin
 } from 'lucide-react';
-import { humanConsultants, aiAgents } from '../data/mockData';
+import { aiAgents } from '../data/mockData';
+import { useConsultants } from '../hooks/use-consultants';
 
 const MarketplacePage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -28,9 +30,14 @@ const MarketplacePage: React.FC = () => {
     }
   }, [searchParams]);
 
-  const allExpertise = [...new Set(humanConsultants.flatMap(c => c.expertise))];
+  // Live consultants from the platform, prepended ahead of the staged roles.
+  // Returns the staged roles alone until the fetch resolves, and on failure —
+  // the page is never empty and never blocks. See the hook's docstring.
+  const consultants = useConsultants();
 
-  const filteredHumans = humanConsultants.filter(consultant => {
+  const allExpertise = [...new Set(consultants.flatMap(c => c.expertise))];
+
+  const filteredHumans = consultants.filter(consultant => {
     const matchesSearch = consultant.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       consultant.expertise.some(e => e.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesExpertise = !selectedExpertise || consultant.expertise.includes(selectedExpertise);
@@ -71,7 +78,7 @@ const MarketplacePage: React.FC = () => {
                 Human Consultants
                 <span className={`ml-2 px-2 py-0.5 rounded text-xs ${
                   activeTab === 'human' ? 'bg-white/20' : 'bg-gray-200'
-                }`}>{humanConsultants.length}</span>
+                }`}>{consultants.length}</span>
               </button>
               <button
                 onClick={() => setActiveTab('ai')}
@@ -127,7 +134,7 @@ const MarketplacePage: React.FC = () => {
               {filteredHumans.map((consultant) => (
                 <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 transition-all hover:shadow-lg">
                   <div className="flex items-start gap-4 mb-4">
-                    {consultant.id === 'h0' ? (
+                    {consultant.isLive && consultant.image ? (
                       <img
                         src={consultant.image}
                         alt={consultant.name}
@@ -141,7 +148,14 @@ const MarketplacePage: React.FC = () => {
                     <div className="flex-1">
                       <div className="flex items-start justify-between">
                         <div>
-                          <h3 className="text-xl font-semibold">{consultant.name}</h3>
+                          <div className="flex items-center gap-2">
+                            <h3 className="text-xl font-semibold">{consultant.name}</h3>
+                            {consultant.linkedinUrl && (
+                              <a href={consultant.linkedinUrl} target="_blank" rel="noopener noreferrer" title={`${consultant.name} on LinkedIn`} aria-label={`${consultant.name} on LinkedIn`} className="text-gray-400 hover:text-blue-600 transition-colors">
+                                <Linkedin className="w-4 h-4" />
+                              </a>
+                            )}
+                          </div>
                           <p className="text-gray-600">{consultant.title}</p>
                         </div>
                         <span className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -155,12 +169,14 @@ const MarketplacePage: React.FC = () => {
                         </span>
                       </div>
                       <div className="flex items-center gap-4 mt-2">
-                        <span className="text-sm text-gray-500">{consultant.experience} experience</span>
+                        <span className="text-sm text-gray-500">{consultant.experience}</span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 text-sm mb-4">{consultant.bio}</p>
+                  {consultant.sectors.length > 0 && (
+                    <p className="text-gray-500 text-sm mb-4">{consultant.sectors.join(' · ')}</p>
+                  )}
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {consultant.expertise.map((exp, i) => (
@@ -180,7 +196,7 @@ const MarketplacePage: React.FC = () => {
                       <Link to={`/get-started?interest=${encodeURIComponent(`Discovery call — ${consultant.name}`)}`} title="Request a discovery call" aria-label={`Request a discovery call about ${consultant.name}`} className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">
                         <Calendar className="w-4 h-4" />
                       </Link>
-                      {consultant.id === 'h0' ? (
+                      {consultant.isLive ? (
                         <Link to={`/get-started?interest=${encodeURIComponent(consultant.name)}`} className="px-5 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center">
                           Engage
                           <ArrowRight className="w-4 h-4 ml-2" />
