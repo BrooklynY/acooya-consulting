@@ -21,7 +21,8 @@ import {
   Award,
   Briefcase
 } from 'lucide-react';
-import { stats, testimonials, partnershipConcept, consultingServices, aiAgents, humanConsultants } from '../data/mockData';
+import { stats, testimonials, partnershipConcept, consultingServices, aiAgents } from '../data/mockData';
+import { useConsultants } from '../hooks/use-consultants';
 
 const LogoIcon = () => (
   <img src="/icon_final.png" alt="Acooya Consulting" className="w-20 h-20 object-contain" />
@@ -29,6 +30,12 @@ const LogoIcon = () => (
 
 const HomePage: React.FC = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  // Live consultants ahead of the staged roles. slice(0, 3) then shows real
+  // people first — the homepage was the fourth consumer of humanConsultants
+  // and, after h0 was removed, was showing three "Joining Soon" placeholders
+  // and no available consultant at all.
+  const consultants = useConsultants();
 
   return (
     <div className="overflow-hidden">
@@ -351,9 +358,9 @@ const HomePage: React.FC = () => {
               </div>
 
               <div className="space-y-4">
-                {humanConsultants.slice(0, 3).map((consultant) => (
+                {consultants.slice(0, 3).map((consultant) => (
                   <div key={consultant.id} className="flex items-center gap-4 bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-blue-300 transition-colors">
-                    {consultant.id === 'h0' ? (
+                    {consultant.isLive && consultant.image ? (
                       <img
                         src={consultant.image}
                         alt={consultant.name}
