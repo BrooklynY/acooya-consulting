@@ -21,7 +21,8 @@ import {
   Clock,
   Briefcase
 } from 'lucide-react';
-import { humanConsultants, aiAgents, consultingServices, hybridSolutions } from '../data/mockData';
+import { aiAgents, consultingServices, hybridSolutions } from '../data/mockData';
+import { useConsultants } from '../hooks/use-consultants';
 
 const EngagementPortal: React.FC = () => {
   const location = useLocation();
@@ -49,6 +50,11 @@ const EngagementPortal: React.FC = () => {
   // the confirmation view can show the brief back rather than an alert().
   const [submittedBody, setSubmittedBody] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+
+  // Live consultants from the platform, ahead of the staged roles. Same hook
+  // as both marketplace pages — the wizard must not offer a different set of
+  // consultants from the one a visitor just browsed.
+  const consultants = useConsultants();
 
   const steps = [
     { num: 1, title: 'Engagement Type' },
@@ -78,7 +84,7 @@ const EngagementPortal: React.FC = () => {
    */
   const buildRequestBody = (): string => {
     const consultantNames = selectedConsultants
-      .map((id) => humanConsultants.find((h) => h.id === id)?.name)
+      .map((id) => consultants.find((h) => h.id === id)?.name)
       .filter(Boolean);
     const agentNames = selectedAgents
       .map((id) => aiAgents.find((ag) => ag.id === id)?.name)
@@ -357,7 +363,7 @@ const EngagementPortal: React.FC = () => {
                       Human Consultants
                     </h3>
                     <div className="grid md:grid-cols-2 gap-4">
-                      {humanConsultants.map((consultant) => (
+                      {consultants.map((consultant) => (
                         <button
                           key={consultant.id}
                           onClick={() => {
@@ -374,7 +380,7 @@ const EngagementPortal: React.FC = () => {
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            {consultant.id === 'h0' ? (
+                            {consultant.isLive && consultant.image ? (
                               <img src={consultant.image} alt={consultant.name} className="w-12 h-12 rounded-lg object-cover" />
                             ) : (
                               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
@@ -626,7 +632,7 @@ const EngagementPortal: React.FC = () => {
                         <h3 className="font-semibold mb-1">Selected Partners</h3>
                         <div className="flex flex-wrap gap-2 mt-2">
                           {selectedConsultants.map(id => {
-                            const c = humanConsultants.find(h => h.id === id);
+                            const c = consultants.find(h => h.id === id);
                             return c ? (
                               <span key={id} className="badge badge-blue">{c.name}</span>
                             ) : null;
