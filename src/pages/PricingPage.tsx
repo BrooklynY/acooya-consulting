@@ -111,7 +111,7 @@ const featureComparison = [
     category: 'Security & Compliance',
     icon: Shield,
     features: [
-      { name: 'Designed to SOC 2 Type II standards', starter: true, professional: true, enterprise: true },
+      { name: 'Designed to SOC 2 standards', starter: true, professional: true, enterprise: true },
       { name: 'Managed cloud infrastructure', starter: true, professional: true, enterprise: true },
       { name: 'Custom integrations', starter: '—', professional: '—', enterprise: 'Scoped on request' },
       { name: 'Privacy Act & GDPR aligned', starter: true, professional: true, enterprise: true },

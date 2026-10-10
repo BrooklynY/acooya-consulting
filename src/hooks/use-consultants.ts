@@ -25,19 +25,33 @@
  * not. They are the staged recruiting roles (decision 25 Aug 2026), badged
  * "Joining Soon" with a waitlist CTA, and they are not people — no invented
  * names, and the card never shows a rating or project count for anyone.
+ *
+ * PROFILE LINKS (10 Oct 2026). Each live consultant has a public profile page
+ * on the PLATFORM at /consultants/<slug>, server-rendered so link previews
+ * work. Cards link straight to it on the platform host — deliberately not a
+ * www rewrite (Design Decisions Log, 10 Oct, "Step 4 decision"). Staged roles
+ * have no page and get an empty profileUrl.
+ *
+ * HAND-MIRRORED ON THE PLATFORM. AVAILABILITY_LABEL and experienceLabel below
+ * are copied in acooya-platform src/lib/consultant-display.ts so the profile
+ * page says exactly what the card says. Change both together.
  */
 
 import { useEffect, useState } from "react";
 import { humanConsultants } from "../data/mockData";
 
-/** The shape list_public_consultant_profiles() returns, as of Migration 0038. */
+/** The shape list_public_consultant_profiles() returns, as of Migration 0039. */
 interface PublicConsultantProfile {
+  /** The public profile URL segment. Null only for a consultant whose name
+   *  produced no slug at listing time — no page, so no link. */
+  slug: string | null;
   full_name: string | null;
   headline: string | null;
   bio: string | null;
   linkedin_url: string | null;
   practice_areas: string[];
   sector_experience: string[];
+  qualifications: string[];
   availability_status: string;
   availability_note: string | null;
   professional_since: number | null;
@@ -60,6 +74,9 @@ export interface ConsultantCard {
    *  replaces the platform history a new marketplace does not have. */
   linkedinUrl: string;
   image: string;
+  /** Absolute URL of the consultant's public profile page on the platform,
+   *  or "" for a staged role (no page). Render a link only when non-empty. */
+  profileUrl: string;
   /** True for a real consultant from the platform, false for a staged role. */
   isLive: boolean;
 }
@@ -98,11 +115,16 @@ function experienceLabel(
   return "";
 }
 
+/** The platform profile page for a slug, or "" when there is no slug. */
+function profileUrlFor(slug: string | null): string {
+  return slug ? `${API_BASE}/consultants/${encodeURIComponent(slug)}` : "";
+}
+
 function toCard(p: PublicConsultantProfile, index: number): ConsultantCard {
   return {
-    // No user_id in the payload by design, so the key is positional. Stable
-    // within a render because the API orders by updated_at.
-    id: `live-${String(index)}`,
+    // The slug is unique and immutable once set (Migration 0039 trigger), so
+    // it is a stable key. Positional fallback only for the no-slug edge case.
+    id: p.slug ? `live-${p.slug}` : `live-${String(index)}`,
     name: p.full_name ?? "Acooya consultant",
     title: p.headline ?? "",
     expertise: p.practice_areas,
@@ -111,6 +133,7 @@ function toCard(p: PublicConsultantProfile, index: number): ConsultantCard {
     sectors: p.sector_experience,
     linkedinUrl: p.linkedin_url ?? "",
     image: p.avatar_url ?? "",
+    profileUrl: profileUrlFor(p.slug),
     isLive: true,
   };
 }
@@ -128,6 +151,8 @@ const staged: ConsultantCard[] = humanConsultants.map((c) => ({
   sectors: [],
   linkedinUrl: "",
   image: c.image,
+  // No page exists for a role, so no profile link.
+  profileUrl: "",
   isLive: false,
 }));
 

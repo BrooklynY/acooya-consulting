@@ -481,7 +481,7 @@ const GetStartedPage: React.FC = () => {
             </p>
             <p className="text-xs text-gray-500 pt-2">
               <Shield className="w-3 h-3 inline mr-1 -mt-0.5" />
-              AES-256 encrypted infrastructure · Designed to SOC 2 Type II standards · Australian
+              AES-256 encrypted infrastructure · Designed to SOC 2 standards · Australian
               Privacy Act aligned
             </p>
             <p className="text-sm text-gray-600 pt-2">

@@ -465,7 +465,7 @@ const AboutPage: React.FC = () => {
               <div className="space-y-4">
                 {[
                   { icon: Bot, title: 'Purpose-Built AI Agents', desc: 'Specialised agents built around consulting methodologies and best-practice frameworks' },
-                  { icon: Shield, title: 'Enterprise Security', desc: 'Designed to SOC 2 Type II standards, with Australian Privacy Principles built into the design. AES-256 encryption throughout.' },
+                  { icon: Shield, title: 'Enterprise Security', desc: 'Designed to SOC 2 standards, with Australian Privacy Principles built into the design. AES-256 encryption throughout.' },
                   { icon: Zap, title: 'On-Demand Intelligence', desc: 'Research, analysis, and drafting whenever you need it — typically in minutes' },
                   { icon: BarChart3, title: 'Advanced Analytics', desc: 'Comprehensive insights and KPI tracking for engagement performance' },
                 ].map((item, i) => (

@@ -372,7 +372,7 @@ const HomePage: React.FC = () => {
                       </div>
                     )}
                     <div className="flex-1">
-                      <h4 className="font-semibold">{consultant.name}</h4>
+                      {consultant.profileUrl ? (<h4 className="font-semibold"><a href={consultant.profileUrl} className="hover:text-blue-600 transition-colors">{consultant.name}</a></h4>) : (<h4 className="font-semibold">{consultant.name}</h4>)}
                       <p className="text-sm text-gray-600">{consultant.title}</p>
                       <p className="text-xs text-gray-500 mt-1">{consultant.experience}</p>
                     </div>
@@ -504,7 +504,7 @@ const HomePage: React.FC = () => {
                 </p>
                 <div className="space-y-4">
                   {[
-                    { icon: Shield, title: 'SOC 2 Type II Standard', desc: 'Designed to SOC 2 Type II standards. Independent certification is on our roadmap' },
+                    { icon: Shield, title: 'SOC 2 Standard', desc: 'Designed to SOC 2 standards. Independent certification is on our roadmap' },
                     { icon: Lock, title: 'Enterprise-Grade Encryption', desc: 'AES-256 encryption at rest. TLS 1.3 encryption in transit. Your data is protected at every layer' },
                     { icon: FileText, title: 'Privacy Act & GDPR Aligned', desc: 'Built to meet Australian Privacy Act and GDPR requirements. Privacy-first architecture with documented data handling practices' },
                   ].map((item, index) => (

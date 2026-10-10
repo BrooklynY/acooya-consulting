@@ -130,7 +130,7 @@ const FindConsultantsPage: React.FC = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <div className="flex items-center gap-2">
-                            <h3 className="text-xl font-semibold">{consultant.name}</h3>
+                            {consultant.profileUrl ? (<h3 className="text-xl font-semibold"><a href={consultant.profileUrl} className="hover:text-blue-600 transition-colors">{consultant.name}</a></h3>) : (<h3 className="text-xl font-semibold">{consultant.name}</h3>)}
                             {consultant.linkedinUrl && (
                               <a href={consultant.linkedinUrl} target="_blank" rel="noopener noreferrer" title={`${consultant.name} on LinkedIn`} aria-label={`${consultant.name} on LinkedIn`} className="text-gray-400 hover:text-blue-600 transition-colors">
                                 <Linkedin className="w-4 h-4" />
@@ -145,6 +145,7 @@ const FindConsultantsPage: React.FC = () => {
                       </div>
                       <div className="flex items-center gap-4 mt-2">
                         <span className="text-sm text-gray-500">{consultant.experience}</span>
+                        {consultant.profileUrl && (<a href={consultant.profileUrl} className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">View profile →</a>)}
                       </div>
                     </div>
                   </div>

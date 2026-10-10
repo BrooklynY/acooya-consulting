@@ -31,7 +31,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-2 text-sm">
         <div className="container mx-auto flex items-center justify-center gap-2">
           <Shield className="w-4 h-4" />
-          <span>Designed to SOC 2 Type II standards — enterprise-grade security by design</span>
+          <span>Designed to SOC 2 standards — enterprise-grade security by design</span>
         </div>
       </div>
 
@@ -166,7 +166,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
               <div className="flex items-center gap-4 mt-6">
                 <div className="flex items-center gap-2 text-sm text-gray-400">
                   <Lock className="w-4 h-4" />
-                  Designed to SOC 2 Type II standards
+                  Designed to SOC 2 standards
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-400">
                   <Shield className="w-4 h-4" />
