@@ -22,8 +22,8 @@ export const consultingServices = [
       'ROI Analysis & Business Case',
       'Governance Framework'
     ],
-    priceRange: '$12,000 - $75,000',
-    duration: '4-12 weeks',
+    priceRange: 'From A$4,500',
+    duration: '2-week Sprint or 4-week Full Engagement',
     icon: 'building'
   },
   {
@@ -46,8 +46,8 @@ export const consultingServices = [
       'Dashboard & Reporting Suite',
       'Continuous Improvement Framework'
     ],
-    priceRange: '$8,000 - $45,000',
-    duration: '3-8 weeks',
+    priceRange: 'From A$4,500',
+    duration: '2-week Sprint or 4-week Full Engagement',
     icon: 'rocket'
   },
   {
@@ -70,9 +70,33 @@ export const consultingServices = [
       'Automated Reporting Templates',
       'Insights & Recommendations Report'
     ],
-    priceRange: '$10,000 - $60,000',
-    duration: '6-16 weeks',
+    priceRange: 'From A$4,500',
+    duration: '2-week Sprint or 4-week Full Engagement',
     icon: 'chart'
+  },
+  {
+    id: 'ai-transformation',
+    title: 'AI Transformation',
+    shortDescription: 'Redesign work around what AI makes possible, then pilot and embed it under governance',
+    fullDescription: 'Our AI Transformation practice helps organisations decide where AI is worth using, design the service around it, and prove it in a controlled pilot before anything scales. We work on the AI platform you have chosen, draw the line between human-only, AI-assisted and fully automated work explicitly, and take no referral fee from any AI vendor.',
+    features: [
+      'AI opportunity assessment and prioritisation',
+      'Process redesign around AI-enabled work',
+      'Human–AI operating model and automation boundary',
+      'Use-case and agent specification',
+      'Responsible-AI risk assessment',
+      'Evaluation, UAT and controlled pilots'
+    ],
+    deliverables: [
+      'AI Opportunity Heatmap & Prioritised Backlog',
+      'Future-State Service Blueprint',
+      'Agent Specification & Traceability Matrix',
+      'Evaluation & UAT Strategy',
+      'Pilot Findings & Scale Recommendation'
+    ],
+    priceRange: 'From A$4,500',
+    duration: '2-week Sprint or 4-week Full Engagement',
+    icon: 'workflow'
   }
 ];
 
