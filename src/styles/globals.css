@@ -280,3 +280,9 @@ body {
 .tooltip {
   @apply absolute z-50 px-3 py-2 text-sm bg-gray-900 text-white rounded-lg shadow-lg;
 }
+
+/* Anchored sections land below the sticky 80px nav (h-20) with breathing
+   room. Used by ScrollManager and by native #links on the legal pages. */
+[id] {
+  scroll-margin-top: 6rem;
+}

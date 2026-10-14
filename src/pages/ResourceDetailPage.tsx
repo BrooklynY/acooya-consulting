@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { useBackTo } from '../components/scroll-history';
 import {
   ArrowLeft,
   Download,
@@ -33,7 +34,7 @@ const getStorageKey = (id: string, key: string) => `acooya_resource_${id}_${key}
 
 const ResourceDetailPage: React.FC = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const backTo = useBackTo();
   const [bookmarked, setBookmarked] = useState(false);
   const [expandedSections, setExpandedSections] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState<'overview' | 'methodology' | 'outcomes'>('overview');
@@ -60,10 +61,6 @@ const ResourceDetailPage: React.FC = () => {
       setBookmarked(storedBookmarked === 'true');
     }
   }, [id, resource]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
 
   if (!resource) {
     return (
@@ -257,13 +254,10 @@ const ResourceDetailPage: React.FC = () => {
       {/* Hero Section */}
       <section className={`bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-16`}>
         <div className="container-custom">
-          <button
-            onClick={() => navigate('/knowledge')}
-            className="flex items-center gap-2 text-blue-300 hover:text-white mb-8 transition-colors"
-          >
+          <Link to="/knowledge" onClick={(e) => backTo('/knowledge', ['/resources'], e)} className="flex w-fit items-center gap-2 text-blue-300 hover:text-white mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Back to Knowledge Base
-          </button>
+          </Link>
 
           <div className="max-w-4xl">
             <div className="flex items-center gap-3 mb-4">
