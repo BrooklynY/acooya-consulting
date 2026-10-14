@@ -177,7 +177,7 @@ const KnowledgeBasePage: React.FC = () => {
                   </span>
 
                   <h3 className="text-lg font-semibold mb-2 group-hover:text-blue-600 transition-colors">
-                    {resource.title}
+                    <Link to={'/resource/' + resource.id} className="outline-none hover:underline focus-visible:underline">{resource.title}</Link>
                   </h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                     {resource.description}
@@ -248,8 +248,8 @@ const KnowledgeBasePage: React.FC = () => {
                       {insight.readTime}
                     </span>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 hover:text-blue-600 cursor-pointer">
-                    {insight.title}
+                  <h3 className="text-lg font-semibold mb-2 hover:text-blue-600">
+                    <Link to={'/insight/' + insight.id} className="outline-none hover:underline focus-visible:underline">{insight.title}</Link>
                   </h3>
                   <p className="text-gray-600 text-sm line-clamp-2 mb-4">
                     {insight.excerpt}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { useBackTo } from '../components/scroll-history';
 import {
   ArrowLeft,
   Clock,
@@ -19,7 +20,7 @@ import { insightsArticles } from '../data/mockData';
 
 const InsightDetailPage: React.FC = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const backTo = useBackTo();
   const [bookmarked, setBookmarked] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
   const [readingProgress, setReadingProgress] = useState(0);
@@ -90,13 +91,10 @@ const InsightDetailPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/50" />
         <div className="absolute inset-0 flex items-end">
           <div className="container-custom pb-12">
-            <button
-              onClick={() => navigate('/resources')}
-              className="flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
-            >
+            <Link to="/resources" onClick={(e) => backTo('/resources', ['/knowledge'], e)} className="flex w-fit items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors">
               <ArrowLeft className="w-5 h-5" />
               Back to Resources
-            </button>
+            </Link>
             <div className="flex flex-wrap items-center gap-4 mb-4">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-400/30">
                 <FileText className="w-4 h-4" />
@@ -323,6 +321,7 @@ const InsightDetailPage: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <Link
               to="/resources"
+              onClick={(e) => backTo('/resources', ['/knowledge'], e)}
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />

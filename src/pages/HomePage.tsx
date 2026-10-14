@@ -286,24 +286,28 @@ const HomePage: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
+                id: 'operating-model',
                 icon: 'building',
                 title: 'Operating Model',
                 description: 'Transform your organisational structure for maximum efficiency and AI readiness',
                 features: ['Operating Model Design', 'Digital Transformation', 'Change Management']
               },
               {
+                id: 'delivery-enablement',
                 icon: 'rocket',
                 title: 'Delivery Enablement',
                 description: 'Empower your teams with AI-augmented tools and methodologies',
                 features: ['Program Management', 'Agile Transformation', 'PMO Setup']
               },
               {
+                id: 'insight-reporting',
                 icon: 'chart',
                 title: 'Insight & Reporting',
                 description: 'Make data-driven decisions with AI-powered analytics and reporting',
                 features: ['Market Intelligence', 'Competitive Analysis', 'Growth Strategy']
               },
               {
+                id: 'ai-transformation',
                 icon: 'workflow',
                 title: 'AI Transformation',
                 description: 'Redesign work around AI, then pilot and embed it under governance',
@@ -312,7 +316,7 @@ const HomePage: React.FC = () => {
             ].map((service, index) => (
               <Link
                 key={index}
-                to="/services"
+                to={'/services#' + service.id}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 hover:border-blue-500 transition-all group"
               >
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">

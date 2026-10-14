@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { Menu, X, Shield, Lock, LogIn, UserPlus, CreditCard } from 'lucide-react';
+import ScrollManager from './ScrollManager';
 
 const Logo = () => (
   <img src="/logo_white.png" alt="Acooya Consulting" className="h-20 w-auto" />
@@ -27,6 +28,8 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
 
   return (
     <div className="min-h-screen bg-white">
+      <ScrollManager />
+
       {/* Top Banner */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-2 text-sm">
         <div className="container mx-auto flex items-center justify-center gap-2">
