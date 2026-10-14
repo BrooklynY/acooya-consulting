@@ -287,7 +287,7 @@ const EngagementPortal: React.FC = () => {
                 <h2 className="text-2xl font-bold mb-2">Select Your Service Area</h2>
                 <p className="text-gray-600 mb-8">Choose the primary service you need help with</p>
 
-                <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
                   {consultingServices.map((service) => (
                     <button
                       key={service.id}

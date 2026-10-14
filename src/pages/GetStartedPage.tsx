@@ -154,7 +154,7 @@ const roleConfigs: Record<EnquiryRole, RoleConfig> = {
         label: 'Agent category',
         placeholder: 'Select category',
         kind: 'select',
-        options: ['Operating Model', 'Delivery Enablement', 'Insight & Reporting', 'Other'],
+        options: ['Operating Model', 'Delivery Enablement', 'Insight & Reporting', 'AI Transformation', 'Other'],
       },
     ],
     benefitsTitle: 'What you get as a developer',

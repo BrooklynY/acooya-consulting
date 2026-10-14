@@ -5,7 +5,7 @@ import {
   CheckCircle,
   Building2,
   Rocket,
-  BarChart3,
+  BarChart3, Workflow,
   Users,
   Bot,
   Zap,
@@ -25,7 +25,7 @@ const ServicesPage: React.FC = () => {
           <div className="max-w-3xl">
             <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Our Services</span>
             <h1 className="text-4xl lg:text-5xl font-bold mt-4 mb-4">
-              Three Practice Areas for Enterprise Transformation
+              Four Practice Areas for Enterprise Transformation
             </h1>
             <p className="text-xl text-gray-300 mb-8">
               Comprehensive consulting services powered by our unique Human-AI Synergy Model, designed to deliver measurable business outcomes at every engagement.
@@ -58,6 +58,7 @@ const ServicesPage: React.FC = () => {
                     {service.icon === 'building' && <Building2 className="w-5 h-5" />}
                     {service.icon === 'rocket' && <Rocket className="w-5 h-5" />}
                     {service.icon === 'chart' && <BarChart3 className="w-5 h-5" />}
+                    {service.icon === 'workflow' && <Workflow className="w-5 h-5" />}
                     <span className="font-semibold">Service</span>
                   </div>
 

@@ -182,6 +182,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
                 <li><Link to="/services#operating-model" className="hover:text-white transition-colors">Operating Model</Link></li>
                 <li><Link to="/services#delivery-enablement" className="hover:text-white transition-colors">Delivery Enablement</Link></li>
                 <li><Link to="/services#insight-reporting" className="hover:text-white transition-colors">Insight & Reporting</Link></li>
+                <li><Link to="/services#ai-transformation" className="hover:text-white transition-colors">AI Transformation</Link></li>
                 <li><Link to="/marketplace" className="hover:text-white transition-colors">Human Consultants</Link></li>
                 <li><Link to="/marketplace?tab=ai" className="hover:text-white transition-colors">AI Agents</Link></li>
               </ul>

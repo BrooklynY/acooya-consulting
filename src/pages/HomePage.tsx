@@ -7,7 +7,7 @@ import {
   Bot,
   Shield,
   Zap,
-  BarChart3,
+  BarChart3, Workflow,
   Building2,
   Rocket,
   Brain,
@@ -277,13 +277,13 @@ const HomePage: React.FC = () => {
         <div className="container-custom">
           <div className="text-center mb-16">
             <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Our Services</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Three Core Practice Areas</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Four Core Practice Areas</h2>
             <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
               Comprehensive consulting services designed for the modern enterprise, powered by our unique Human-AI Synergy Model
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: 'building',
@@ -302,6 +302,12 @@ const HomePage: React.FC = () => {
                 title: 'Insight & Reporting',
                 description: 'Make data-driven decisions with AI-powered analytics and reporting',
                 features: ['Market Intelligence', 'Competitive Analysis', 'Growth Strategy']
+              },
+              {
+                icon: 'workflow',
+                title: 'AI Transformation',
+                description: 'Redesign work around AI, then pilot and embed it under governance',
+                features: ['AI Opportunity Assessment', 'Use-Case Design & Specification', 'Pilot & Evaluation']
               }
             ].map((service, index) => (
               <Link
@@ -313,6 +319,7 @@ const HomePage: React.FC = () => {
                   {service.icon === 'building' && <Building2 className="w-7 h-7 text-white" />}
                   {service.icon === 'rocket' && <Rocket className="w-7 h-7 text-white" />}
                   {service.icon === 'chart' && <BarChart3 className="w-7 h-7 text-white" />}
+                  {service.icon === 'workflow' && <Workflow className="w-7 h-7 text-white" />}
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                 <p className="text-gray-400 text-sm mb-6">{service.description}</p>
