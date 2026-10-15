@@ -562,6 +562,7 @@ export const knowledgeBase = [
           },
           {
             "title": "Automation Boundary",
+            "figure": "automation-line",
             "description": "Deciding what stays human, what AI assists and what can be automated.",
             "items": [
               "Human-only / AI-assisted / automated guide",
@@ -776,6 +777,7 @@ export const knowledgeBase = [
         "sections": [
           {
             "title": "Six Phases",
+            "figure": "six-phases",
             "description": "The sequence every engagement follows, at the depth chosen up front.",
             "items": [
               "Frame",
@@ -954,6 +956,7 @@ export const insightsArticles = [
         },
         {
           "title": "Adoption Has Run Ahead of Results",
+          "figure": "adoption-results",
           "content": "Use of AI is now the norm. In McKinsey’s 2025 global survey, 88% of organisations used AI regularly in at least one business function, up from 78% a year earlier. But only 39% reported any impact on earnings (EBIT), and for most of those it was under 5%. Agents are earlier still: 23% were scaling an agentic AI system anywhere in the business (McKinsey, 2025). Professional services follow the same pattern. Organisation-wide AI use nearly doubled in a year, from 22% to 40%, yet only 18% of respondents knew their organisation tracks return on its AI investment (Thomson Reuters Institute, 2026). The gap between use and measured value is the first sign that adoption alone is not the point. How the work is governed is."
         },
         {
@@ -1148,6 +1151,7 @@ export const insightsArticles = [
         },
         {
           "title": "Draw the Line Explicitly",
+          "figure": "automation-line",
           "content": "Every design should say, activity by activity, which of three categories applies. The line is a decision the business makes and signs, not a property of the technology.",
           "subsections": [
             {
@@ -1221,6 +1225,7 @@ export const insightsArticles = [
         },
         {
           "title": "Six Phases, Chosen Up Front",
+          "figure": "six-phases",
           "content": "Depth is agreed at the start and written into the engagement charter, so the scope cannot drift unnoticed. A two-week Sprint covers Frame and Discover. A four-week Full Engagement runs from Frame to Decide. Pilot and Embed follow when you want them.",
           "subsections": [
             {

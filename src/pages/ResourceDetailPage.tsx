@@ -19,6 +19,7 @@ import {
   X
 } from 'lucide-react';
 import { knowledgeBase } from '../data/mockData';
+import ContentFigure from '../components/ContentFigure';
 import { toast } from 'sonner';
 
 // Generate a consistent ID for localStorage
@@ -301,6 +302,7 @@ const ResourceDetailPage: React.FC = () => {
                             {expandedSections.includes(section.title) && (
                               <div className="px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-100">
                                 <p className="text-gray-600 mb-3 md:mb-4 pt-3 md:pt-4 text-sm md:text-base">{section.description}</p>
+                                <ContentFigure id={section.figure} />
                                 <div className="grid sm:grid-cols-2 gap-2 md:gap-3">
                                   {section.items.map((item, itemIndex) => (
                                     <div key={itemIndex} className="flex items-start gap-2 text-sm">
