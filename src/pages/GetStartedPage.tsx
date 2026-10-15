@@ -62,7 +62,7 @@ const roleConfigs: Record<EnquiryRole, RoleConfig> = {
     ],
     benefitsTitle: 'What you get',
     benefits: [
-      'Up to 75% lower cost than traditional consulting',
+      'Fixed fees, published up front',
       'Human review on every AI output — always',
       'Scope as a 2-week sprint or 4-week full engagement',
     ],

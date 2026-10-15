@@ -427,6 +427,7 @@ const PricingPage: React.FC = () => {
                 </tbody>
               </table>
             </div>
+            <p className="mt-4 text-center text-xs text-gray-500">Traditional-firm ranges are Acooya’s estimates of typical Australian market rates.</p>
           </div>
         </div>
 

@@ -31,7 +31,6 @@ import {
   Server,
   Lock
 } from 'lucide-react';
-import { stats, testimonials, partnershipConcept } from '../data/mockData';
 
 const leadershipRoles = [
   {
@@ -291,7 +290,7 @@ const AboutPage: React.FC = () => {
                 Too many organisations pay too much, wait too long, and receive too little from traditional consulting firms. After 14 years on the inside, I decided to build something better.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Acooya combines world-class strategic expertise with purpose-built AI agents — delivering deeper insights, faster delivery, and 40–60% lower costs than the traditional model.
+                Acooya combines world-class strategic expertise with purpose-built AI agents, with a named consultant approving every AI output before it reaches you.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 The consulting industry is overdue for reinvention. <span className="font-semibold text-blue-600">Acooya is that reinvention.</span>
@@ -327,7 +326,7 @@ const AboutPage: React.FC = () => {
                     <Globe className="w-10 h-10 text-green-600 mb-4" />
                     <h3 className="font-bold text-lg mb-2">Our Promise</h3>
                     <p className="text-gray-600 text-sm">
-                      40–60% lower cost than traditional consulting — not a claim, a design principle built into every engagement.
+                      No AI output reaches you without a named consultant’s approval, enforced by the platform.
                     </p>
                   </div>
                 </div>

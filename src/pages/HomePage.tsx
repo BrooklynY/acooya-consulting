@@ -21,7 +21,8 @@ import {
   Award,
   Briefcase
 } from 'lucide-react';
-import { stats, testimonials, partnershipConcept, consultingServices, aiAgents } from '../data/mockData';
+import { stats, testimonials, consultingServices, aiAgents } from '../data/mockData';
+import ContentFigure from '../components/ContentFigure';
 import { useConsultants } from '../hooks/use-consultants';
 
 const LogoIcon = () => (
@@ -202,13 +203,13 @@ const HomePage: React.FC = () => {
               {
                 icon: 'zap',
                 title: 'Speed & Scale',
-                description: 'AI agents handle research, analysis, and reporting at 10x speed while humans focus on strategy and judgment',
+                description: 'AI agents draft research, analysis and reports; consultants spend their time on judgement',
                 color: 'from-blue-500 to-blue-600'
               },
               {
                 icon: 'brain',
                 title: 'Deeper Insights',
-                description: 'AI augments human analysis with pattern recognition across millions of data points humans couldn\'t process',
+                description: 'AI agents work through the documents and data you share, screened for personal identifiers before any AI reads them',
                 color: 'from-purple-500 to-pink-500'
               },
               {
@@ -220,7 +221,7 @@ const HomePage: React.FC = () => {
               {
                 icon: 'dollar',
                 title: 'Cost Efficiency',
-                description: 'Hybrid engagements deliver 40-60% cost savings versus traditional consulting while maintaining quality',
+                description: 'Fixed fees by engagement type, published on our Pricing page',
                 color: 'from-amber-500 to-orange-500'
               },
             ].map((benefit, index) => (
@@ -239,35 +240,13 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Process Flow */}
+      {/* How every engagement runs: the same figure as insight 3 and kb7 */}
       <section className="py-20 bg-white">
         <div className="container-custom">
-          <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg border border-gray-100">
-            <h3 className="text-2xl font-bold text-center mb-4">From Kickoff to Impact in 4 Weeks</h3>
-            <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Our streamlined engagement process gets you from initial brief to actionable strategy faster than traditional consulting firms.</p>
-            <div className="grid md:grid-cols-5 gap-4">
-              {[
-                { phase: 'Discovery', duration: 'Days 1-5', description: 'Deep-dive workshops to understand your challenges, goals, and competitive landscape' },
-                { phase: 'AI Research', duration: 'Days 6-12', description: 'Purpose-built agents analyse market data, competitor intelligence, and industry trends' },
-                { phase: 'Strategy', duration: 'Days 13-18', description: 'Expert consultants synthesise AI insights into strategic recommendations' },
-                { phase: 'Validation', duration: 'Days 19-24', description: 'Rigorous testing and refinement of recommendations with your leadership team' },
-                { phase: 'Delivery', duration: 'Days 25-28', description: 'Comprehensive strategy document with implementation roadmap and KPIs' },
-              ].map((step, index) => (
-                <div key={index} className="relative">
-                  {index < 4 && (
-                    <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 -translate-x-1/2"></div>
-                  )}
-                  <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 relative z-10 h-full">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 text-white flex items-center justify-center text-sm font-bold mb-3">
-                      {index + 1}
-                    </div>
-                    <h4 className="font-semibold mb-1">{step.phase}</h4>
-                    <p className="text-xs text-gray-500 mb-2">{step.duration}</p>
-                    <p className="text-sm text-gray-600">{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold text-center mb-4">How every engagement runs</h3>
+            <p className="text-gray-600 text-center mb-4 max-w-2xl mx-auto">Six phases, a gate after each, and two approvals at every gate. How many phases you need is agreed at the start and written into the charter.</p>
+            <ContentFigure id="six-phases" />
           </div>
         </div>
       </section>

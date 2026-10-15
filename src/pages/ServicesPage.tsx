@@ -6,15 +6,14 @@ import {
   Building2,
   Rocket,
   BarChart3, Workflow,
-  Users,
-  Bot,
-  Zap,
   Clock,
-  DollarSign,
+  ShieldCheck,
+  Receipt,
+  UserCheck,
   FileText,
   ChevronRight
 } from 'lucide-react';
-import { consultingServices, hybridSolutions } from '../data/mockData';
+import { consultingServices, retainerOffering } from '../data/mockData';
 
 const ServicesPage: React.FC = () => {
   return (
@@ -124,70 +123,41 @@ const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Hybrid Solutions */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+      {/* Catalog offerings */}
+      <section id="offerings" className="py-20 bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Most Popular</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Hybrid Solutions: The Best of Both Worlds</h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              Our most requested engagements combine the strategic thinking of senior consultants with AI-powered research, analysis, and monitoring. The result? Faster insights, deeper analysis, and 40-60% cost savings compared to traditional consulting.
-            </p>
+          <div className="text-center mb-12">
+            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">The Catalog</span>
+            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Ten offerings, one way of working</h2>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">Every offering is a Sprint, a Full Engagement or a Retainer, and runs on the same six phases. A named senior consultant leads it; AI agents draft evidence that the consultant reviews before you see it.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {hybridSolutions.map((solution, index) => (
-              <div key={index} className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700 hover:border-blue-500 transition-all">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                    {index === 0 && <Zap className="w-5 h-5 text-white" />}
-                    {index === 1 && <Building2 className="w-5 h-5 text-white" />}
-                    {index === 2 && <BarChart3 className="w-5 h-5 text-white" />}
-                  </div>
-                  {index === 0 && <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Most Popular</span>}
-                </div>
-
-                <h3 className="text-xl font-semibold mb-3">{solution.title}</h3>
-                <p className="text-gray-400 text-sm mb-6">{solution.description}</p>
-
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">Human Consultant</p>
-                      <p className="text-sm">{solution.humanRole}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Bot className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">AI Agent</p>
-                      <p className="text-sm">{solution.aiRole}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-6 border-t border-gray-700">
-                  <div>
-                    <p className="text-sm text-gray-500">{solution.duration}</p>
-                    <p className="font-bold text-lg">{solution.price}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xs text-green-400 mb-1">Efficiency Gain</p>
-                    <p className="font-semibold text-green-400">{solution.savings}</p>
-                  </div>
-                </div>
-
-                <Link
-                  to="/engagements"
-                  state={{ solution: solution.id }}
-                  className="btn btn-primary w-full mt-6"
-                >
-                  Start This Engagement
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
+          <div className="grid md:grid-cols-2 gap-6">
+            {consultingServices.map((service) => (
+              <div key={service.id} className="bg-white rounded-2xl border border-gray-200 p-6">
+                <Link to={'/services#' + service.id} className="text-lg font-semibold text-gray-900 hover:text-blue-600">{service.title}</Link>
+                <ul className="mt-4 space-y-4">
+                  {service.offerings.map((offering) => (
+                    <li key={offering.name} className="border-t border-gray-100 pt-4">
+                      <p className="font-medium text-gray-900">{offering.name}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{offering.type} · {offering.phases}</p>
+                      <p className="text-sm text-gray-600 mt-2">{offering.summary}</p>
+                      <Link to={'/get-started?interest=' + encodeURIComponent(offering.name)} className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium mt-2 hover:underline">Discuss this offering<ArrowRight className="w-4 h-4" /></Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
+          </div>
+
+          <div className="mt-6 bg-white rounded-2xl border border-gray-200 p-6 md:flex md:items-center md:justify-between md:gap-6">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-gray-500">After any engagement</p>
+              <p className="font-medium text-gray-900 mt-1">{retainerOffering.name}</p>
+              <p className="text-xs text-gray-500 mt-0.5">{retainerOffering.type} · {retainerOffering.phases}</p>
+              <p className="text-sm text-gray-600 mt-2">{retainerOffering.summary}</p>
+            </div>
+            <Link to={'/get-started?interest=' + encodeURIComponent(retainerOffering.name)} className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium mt-4 md:mt-0 flex-shrink-0 hover:underline">Discuss this offering<ArrowRight className="w-4 h-4" /></Link>
           </div>
         </div>
       </section>
@@ -197,16 +167,16 @@ const ServicesPage: React.FC = () => {
         <div className="container-custom">
           <div className="text-center mb-16">
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">The Acooya Advantage</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Why Leading Organisations Choose Acooya</h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">We've reimagined consulting from the ground up—focusing on outcomes, not just deliverables.</p>
+            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Why Work With Acooya</h2>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">What you can check on every engagement.</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { icon: Zap, title: '40% Faster', desc: 'AI-powered research and analysis accelerate every phase of engagement without sacrificing depth' },
-              { icon: DollarSign, title: '40-60% Savings', desc: 'Hybrid model delivers premium quality at a fraction of traditional consulting costs' },
+              { icon: ShieldCheck, title: 'Human review on every AI output', desc: 'A named consultant approves every AI-drafted deliverable before you see it, and the platform enforces it' },
+              { icon: Receipt, title: 'Fixed fees', desc: 'Priced by engagement type and published up front on our Pricing page' },
               { icon: Clock, title: 'On-Demand Intelligence', desc: 'AI agents research, analyse, and draft on request — grounded in your engagement documents, with human review before anything reaches you' },
-              { icon: Users, title: 'Expert Network', desc: 'Tap into our rapidly expanding ecosystem of top-tier talent, bringing proven experience from global industry leaders directly to your team' },
+              { icon: UserCheck, title: 'Senior-led', desc: 'Every engagement is led by a named senior consultant, with a public profile you can read first' },
             ].map((item, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mx-auto mb-4">
