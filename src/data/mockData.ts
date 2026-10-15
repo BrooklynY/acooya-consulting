@@ -347,24 +347,24 @@ export const testimonials = [
   {
     id: 't1',
     name: '',
-    title: 'Acooya\'s Human-AI Synergy Model',
-    quote: 'Acooya\'s hybrid approach is designed to transform operating models faster than traditional consulting — combining human expertise and AI capabilities to deliver measurably better outcomes.',
+    title: 'Example engagement · Programme Health Check',
+    quote: 'A programme rated medium-low on delivery confidence, with a review weeks away. We assess it independently from its own artefacts and interviews, rate every area against evidence, and hand the sponsor a recovery list ordered by what the review will look at first.',
     rating: 0,
     image: ''
   },
   {
     id: 't2',
     name: '',
-    title: 'Financial Services Sector | Operating Model Engagement',
-    quote: 'Operating model redesigned for a 200-person financial services firm: 40% reduction in manual reporting time within 8 weeks of engagement.',
+    title: 'Example engagement · AI Opportunity Assessment',
+    quote: 'A customer query takes up to 16 days, and most of that is waiting. We trace each case through its systems, separate waiting from work, and draw the line between what AI should do, what it should assist with, and what stays human.',
     rating: 0,
     image: ''
   },
   {
     id: 't3',
     name: '',
-    title: 'Technology Sector | Strategic Analytics Platform',
-    quote: 'AI-powered analytics platform delivered for a global technology company: 60% faster market intelligence and 3x increase in strategic decision velocity.',
+    title: 'Example engagement · Operating Model Health Check',
+    quote: 'Two divisions have merged and nobody can say who owns which decisions. We map how accountabilities actually work against the new structure, and agree in writing where they break and which three fixes come first.',
     rating: 0,
     image: ''
   }
@@ -418,13 +418,13 @@ export const knowledgeBase = [
   {
     id: 'kb1',
     title: 'Digital Maturity Assessment Framework',
-    description: 'Comprehensive framework for assessing your organisation\'s digital readiness across 6 key dimensions. Includes scoring methodology, benchmarking data, and action planning templates.',
+    description: 'Comprehensive framework for assessing your organisation\'s digital readiness across 6 key dimensions. Includes a scoring method and action-planning templates.',
     category: 'Assessment Tools',
     downloads: 0,
     date: 'March 28, 2026',
     type: 'framework',
     content: {
-      overview: 'The Digital Maturity Assessment Framework is a battle-tested tool developed by Acooya\'s team of digital transformation experts. Used by over 500 organisations globally, this framework provides a holistic view of your organisation\'s digital readiness.',
+      overview: 'The Digital Maturity Assessment Framework provides a holistic view of your organisation\'s digital readiness.',
       sections: [
         {
           title: 'Strategic Foundation',
@@ -458,19 +458,19 @@ export const knowledgeBase = [
         }
       ],
       methodology: 'The framework uses a 5-point maturity scale across 24 sub-dimensions, aggregated into 6 core dimensions. Scoring is based on evidence-based assessment across self-evaluation, stakeholder interviews, and document review.',
-      outcomes: ['Digital Maturity Score (0-100)', 'Gap Analysis Report', 'Priority Action Plan', 'Benchmark Comparison', 'Transformation Roadmap Template']
+      outcomes: ['Digital Maturity Score (0-100)', 'Gap Analysis Report', 'Priority Action Plan', 'Dimension Profile', 'Transformation Roadmap Template']
     }
   },
   {
     id: 'kb2',
     title: 'Operating Model Design Template',
-    description: 'Industry-leading template for redesigning operating models. Includes current state canvas, target state blueprint, and implementation roadmap templates.',
+    description: 'Template for redesigning operating models. Includes current state canvas, target state blueprint, and implementation roadmap templates.',
     category: 'Templates',
     downloads: 0,
     date: 'March 15, 2026',
     type: 'template',
     content: {
-      overview: 'This Operating Model Design Template distils lessons from 200+ operating model transformations across 15 industries. It provides a structured approach to diagnosing current state, defining target state, and sequencing transformation initiatives.',
+      overview: 'This Operating Model Design Template provides a structured approach to diagnosing current state, defining target state, and sequencing transformation initiatives.',
       sections: [
         {
           title: 'Current State Assessment',
@@ -501,7 +501,7 @@ export const knowledgeBase = [
     date: 'March 10, 2026',
     type: 'toolkit',
     content: {
-      overview: 'Developed in partnership with leading AI researchers and practitioners, this toolkit provides a pragmatic approach to AI integration that balances ambition with practical constraints. Used by Fortune 500 companies and scale-ups alike.',
+      overview: 'This toolkit provides a pragmatic approach to AI integration that balances ambition with practical constraints.',
       sections: [
         {
           title: 'AI Readiness Assessment',
@@ -524,20 +524,20 @@ export const knowledgeBase = [
           items: ['CoE charter template', 'Team structure blueprint', 'Skill development programme', 'Governance framework', 'Success metrics dashboard']
         }
       ],
-      methodology: 'The toolkit follows a proven 6-month programme structure, with built-in checkpoints and iteration points. Each phase includes facilitator guides, participant materials, and output templates.',
+      methodology: 'The toolkit is structured as a phased programme, with built-in checkpoints and iteration points. Each phase includes facilitator guides, participant materials, and output templates.',
       outcomes: ['AI Readiness Report', 'Prioritised Use Case Portfolio', 'Implementation Roadmap', 'CoE Setup Blueprint', 'Governance Framework']
     }
   },
   {
     id: 'kb4',
     title: 'Strategic Planning Framework',
-    description: 'Annual strategic planning methodology used by top consulting firms. Includes market analysis templates, competitive positioning tools, and execution roadmaps.',
+    description: 'Annual strategic planning methodology. Includes market analysis templates, competitive positioning tools, and execution roadmaps.',
     category: 'Methodology',
     downloads: 0,
     date: 'February 28, 2026',
     type: 'methodology',
     content: {
-      overview: 'This Strategic Planning Framework integrates the best practices from McKinsey, BCG, and Bain methodologies with Acooya\'s proprietary AI-augmented research capabilities. It provides a comprehensive yet agile approach to annual strategic planning.',
+      overview: 'This Strategic Planning Framework combines widely used strategy tools with AI-assisted research, reviewed by a consultant. It provides a comprehensive yet agile approach to annual strategic planning.',
       sections: [
         {
           title: 'Situation Assessment',
@@ -560,20 +560,20 @@ export const knowledgeBase = [
           items: ['BSC translation template', 'OKR framework', 'Initiative one-pagers', 'Resource allocation model', 'Risk mitigation plan']
         }
       ],
-      methodology: 'The framework uses a 10-week intensive planning cycle, with built-in stakeholder alignment checkpoints. AI agents support each phase with automated research, data synthesis, and scenario modelling.',
+      methodology: 'The framework uses a 10-week intensive planning cycle, with built-in stakeholder alignment checkpoints. AI-assisted research and synthesis can support each phase, with every output reviewed by a consultant.',
       outcomes: ['Strategic Assessment Report', 'Strategic Choice Document', '3-Year Roadmap', 'Annual Plan with OKRs', 'Risk Management Plan']
     }
   },
   {
     id: 'kb5',
     title: 'Change Readiness Survey Template',
-    description: 'Proven survey instrument for assessing organisational change readiness. Includes question bank, scoring methodology, and action planning guide.',
+    description: 'Survey instrument for assessing organisational change readiness. Includes question bank, scoring methodology, and action planning guide.',
     category: 'Assessment Tools',
     downloads: 0,
     date: 'February 20, 2026',
     type: 'assessment',
     content: {
-      overview: 'This Change Readiness Survey Template draws on research across 150+ change programmes to identify the key factors that predict successful change adoption. The survey takes 10 minutes to complete and provides actionable insights.',
+      overview: 'This Change Readiness Survey Template measures the factors commonly associated with successful change adoption. The survey takes about 10 minutes to complete.',
       sections: [
         {
           title: 'Awareness & Understanding',
@@ -596,7 +596,7 @@ export const knowledgeBase = [
           items: ['Innovation culture index', 'Collaboration readiness', 'Risk tolerance score', 'Agility assessment']
         }
       ],
-      methodology: 'The survey uses validated psychometric scales with country-specific norming. Results are benchmarked against industry and organisational history. Action planning follows a structured workshop format.',
+      methodology: 'The survey uses agreement-scale questions grouped into four factors. Results can be compared across teams and over time. Action planning follows a structured workshop format.',
       outcomes: ['Readiness Score Report', 'Segment Analysis', 'Barrier Identification', 'Action Planning Guide', 'Communication Strategy']
     }
   },
@@ -609,11 +609,11 @@ export const knowledgeBase = [
     date: 'February 15, 2026',
     type: 'template',
     content: {
-      overview: 'This Executive Dashboard Template provides a proven framework for translating strategy into measurable daily management. Developed with input from 50+ CHROs and CFOs, it balances comprehensiveness with executive attention constraints.',
+      overview: 'This Executive Dashboard Template provides a framework for translating strategy into measurable management, balancing comprehensiveness with the limits of executive attention.',
       sections: [
         {
           title: 'Strategic KPI Framework',
-          description: 'Set of proven KPIs aligned to strategic objectives.',
+          description: 'Set of KPIs aligned to strategic objectives.',
           items: ['Financial performance metrics', 'Customer experience indicators', 'Internal process measures', 'Learning & growth metrics']
         },
         {
@@ -627,7 +627,7 @@ export const knowledgeBase = [
           items: ['Review cadence guide', 'Escalation matrix', 'Accountability framework', 'Decision rights template']
         }
       ],
-      methodology: 'The template is designed in Microsoft Excel and Power BI formats, with built-in data connection guides. Implementation typically takes 2-3 weeks with IT support.',
+      methodology: 'The template is designed in Microsoft Excel and Power BI formats, with built-in data connection guides. IT support is usually needed for data connections.',
       outcomes: ['KPI Framework Document', 'Excel Dashboard Template', 'Power BI Dashboard Template', 'Governance Guide', 'IT Integration Specification']
     }
   },
@@ -640,7 +640,7 @@ export const knowledgeBase = [
     date: 'February 10, 2026',
     type: 'methodology',
     content: {
-      overview: 'The Hybrid Engagement Playbook codifies Acooya\'s approach to combining human consultants with AI agents. It provides frameworks for engagement design, team composition, workflow integration, and quality management that have been refined across 500+ engagements.',
+      overview: 'The Hybrid Engagement Playbook codifies Acooya\'s approach to combining human consultants with AI agents. It provides frameworks for engagement design, team composition, workflow integration, and quality management, with every AI output reviewed by a named consultant before a client sees it.',
       sections: [
         {
           title: 'Engagement Architecture',
@@ -663,20 +663,20 @@ export const knowledgeBase = [
           items: ['Quality framework', 'Review checklist template', 'Client communication template', 'Escalation procedures', 'Success metrics']
         }
       ],
-      methodology: 'The playbook uses a modular approach that can be adapted to different engagement types and complexities. Implementation includes facilitated sessions with Acooya\'s engagement management team.',
+      methodology: 'The playbook uses a modular approach that can be adapted to different engagement types and complexities. Implementation includes facilitated sessions with an Acooya consultant.',
       outcomes: ['Engagement Design Document', 'Team Structure Blueprint', 'Workflow Integration Plan', 'Quality Management Framework', 'Client Communication Templates']
     }
   },
   {
     id: 'kb8',
     title: 'Value Creation Calculator',
-    description: 'Interactive tool for estimating the financial value of consulting interventions. Includes ROI methodology, benchmarking data, and business case templates.',
+    description: 'Interactive tool for estimating the financial value of consulting interventions. Includes ROI methodology and business case templates.',
     category: 'Assessment Tools',
     downloads: 0,
     date: 'January 30, 2026',
     type: 'calculator',
     content: {
-      overview: 'The Value Creation Calculator helps organisations move beyond soft benefits to quantify the financial impact of consulting interventions. It provides a rigorous yet practical methodology that has been validated against actual delivery outcomes.',
+      overview: 'The Value Creation Calculator helps organisations move beyond soft benefits to quantify the financial impact of consulting interventions. It provides a rigorous yet practical methodology.',
       sections: [
         {
           title: 'Benefit Quantification',
@@ -702,71 +702,6 @@ export const knowledgeBase = [
 
 export const insightsArticles = [
   {
-    id: 'insights-1',
-    title: 'The Future of AI in Management Consulting: 2026 Report',
-    category: 'Research Report',
-    readTime: '15 min read',
-    date: 'April 1, 2026',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop',
-    excerpt: 'Our comprehensive analysis reveals how AI is reshaping the consulting landscape, with hybrid human-AI teams delivering 40-60% better outcomes.',
-    content: {
-      introduction: 'The management consulting industry stands at a pivotal inflection point. As artificial intelligence capabilities accelerate, the traditional consulting model is being fundamentally reimagined. This report synthesises findings from 500+ engagements, interviews with 200+ industry leaders, and proprietary data from our Human-AI Synergy Model deployments.',
-      sections: [
-        {
-          title: 'Executive Summary',
-          content: 'AI is not replacing consultants—it is amplifying their impact. Our data shows that consultants equipped with AI agents deliver client outcomes 40-60% faster while maintaining or improving quality scores. The winners in this transition are not those who adopt AI fastest, but those who integrate it most thoughtfully into human-centric workflows.'
-        },
-        {
-          title: 'The Current State of AI in Consulting',
-          content: 'Today, 78% of large consulting engagements now include some AI component, up from 23% in 2023. However, only 31% of firms have a structured approach to human-AI collaboration. This gap represents both a risk and an opportunity for forward-thinking organisations.'
-        },
-        {
-          title: 'Key Findings',
-          subsections: [
-            {
-              title: 'Efficiency Gains',
-              content: 'AI-augmented consulting teams complete research and analysis tasks at 10x the speed of traditional approaches. Time savings are most significant in data gathering (87% faster), report drafting (65% faster), and competitive analysis (72% faster).'
-            },
-            {
-              title: 'Quality Improvements',
-              content: 'Contrary to concerns about AI diluting quality, our analysis shows a 23% improvement in recommendation accuracy when AI handles data synthesis while humans focus on judgment and interpretation. Client satisfaction scores are 15% higher for hybrid engagements.'
-            },
-            {
-              title: 'Cost Structure Evolution',
-              content: 'The economics of consulting are shifting. Traditional hourly billing is giving way to value-based pricing enabled by AI efficiency gains. Firms with mature hybrid models report 35% higher profit margins while offering clients 25-40% cost savings.'
-            },
-            {
-              title: 'Talent Implications',
-              content: 'The skills required for consulting success are evolving. Data literacy, AI collaboration skills, and prompt engineering are joining traditional consulting capabilities. Firms investing in upskilling their workforce are seeing 2.3x better adoption rates.'
-            }
-          ]
-        },
-        {
-          title: 'The Human-AI Synergy Model',
-          content: 'Based on our research, we have identified four archetypes for human-AI collaboration in consulting. The most effective is what we call the "Orchestrator" model, where senior consultants lead with judgment and context while AI agents handle research, analysis, and production. This model outperforms others by 40% on client outcomes and 60% on delivery speed.'
-        },
-        {
-          title: 'Implementation Considerations',
-          content: 'Moving to AI-augmented consulting requires careful change management. Key success factors include: executive sponsorship for the operating model change, investment in AI literacy training, clear protocols for AI output validation, and redesigned quality assurance processes. Organisations that skip these fundamentals see 3x higher failure rates.'
-        },
-        {
-          title: 'Looking Ahead: 2026-2028 Projections',
-          content: 'We project that by 2028, fully AI-augmented consulting will become the norm rather than the exception. Key trends include: autonomous research agents handling 70% of information gathering, AI-assisted synthesis producing first-draft deliverables, and human consultants focusing on strategic interpretation, stakeholder management, and change leadership. Firms that prepare now will capture disproportionate market share.'
-        }
-      ],
-      keyTakeaways: [
-        'AI is amplifying, not replacing, human consultant value',
-        'Hybrid teams deliver 40-60% better outcomes',
-        'Structured integration protocols are critical for success',
-        'Cost structures are shifting toward value-based models',
-        'Investment in AI literacy is now a competitive necessity'
-      ],
-      author: 'Brooklyn Yang',
-      authorTitle: 'Founder & Lead Consultant',
-      authorImage: '/brooklyn-yang.jpg'
-    }
-  },
-  {
     id: 'insights-2',
     title: 'Building AI-Ready Organizations: A Complete Framework',
     category: 'Whitepaper',
@@ -775,11 +710,11 @@ export const insightsArticles = [
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop',
     excerpt: 'A comprehensive guide to transforming your organisation for the AI era, covering technology, people, process, and culture dimensions.',
     content: {
-      introduction: 'Becoming an AI-ready organisation requires more than deploying new technology. It demands a holistic transformation across four interconnected dimensions: strategic readiness, technical infrastructure, human capabilities, and organisational culture. This whitepaper provides a battle-tested framework developed through 200+ transformation programmes.',
+      introduction: 'Becoming an AI-ready organisation requires more than deploying new technology. It demands a holistic transformation across four interconnected dimensions: strategic readiness, technical infrastructure, human capabilities, and organisational culture. This whitepaper sets out a framework for assessing and building that readiness.',
       sections: [
         {
           title: 'Why AI Readiness Matters',
-          content: 'Organisations that achieve true AI readiness outperform peers by 2.5x on revenue growth, 3x on operational efficiency, and 4x on new market entry speed. Yet only 12% of organisations globally are truly AI-ready. The gap is widening between leaders and laggards, with implications for competitive survival.'
+          content: 'The constraint on value from AI is rarely the technology. It is whether the organisation has the strategy, data, skills and culture to use it. Organisations that buy tools before building these foundations tend to collect pilots that never scale.'
         },
         {
           title: 'The Four Dimensions Framework',
@@ -805,7 +740,7 @@ export const insightsArticles = [
         },
         {
           title: 'The Assessment Process',
-          content: 'Our assessment methodology combines quantitative scoring across 24 sub-dimensions with qualitative insights from stakeholder interviews and document review. The process typically takes 4-6 weeks and produces an actionable maturity score, prioritised gap analysis, and transformation roadmap.'
+          content: 'Our assessment methodology combines quantitative scoring across 24 sub-dimensions with qualitative insights from stakeholder interviews and document review. The process is designed to take 4-6 weeks and produces an actionable maturity score, prioritised gap analysis, and transformation roadmap.'
         },
         {
           title: 'Building Your AI-Ready Organisation',
@@ -813,12 +748,12 @@ export const insightsArticles = [
         },
         {
           title: 'Common Pitfalls to Avoid',
-          content: 'Based on our transformation experience, we have catalogued the most common failure modes: technology-first thinking, siloed implementation, underinvesting in change management, unrealistic timelines, and missing executive sponsorship. Addressing these proactively dramatically improves success rates.'
+          content: 'The most common failure modes are well recognised: technology-first thinking, siloed implementation, underinvesting in change management, unrealistic timelines, and missing executive sponsorship. Addressing them early improves the odds of success.'
         }
       ],
       keyTakeaways: [
         'AI readiness requires transformation across four dimensions',
-        'Only 12% of organisations are truly AI-ready',
+        'AI readiness is an organisational question, not a technology one',
         'Assessment should combine quantitative and qualitative methods',
         'Transformation takes 18-36 months, not weeks',
         'Most failures stem from avoidable implementation pitfalls'
@@ -845,7 +780,7 @@ export const insightsArticles = [
         },
         {
           title: 'What Clients Actually Value',
-          content: 'Our client research reveals that what clients value most in consulting is not the information gathering or analysis—they can do much of that themselves with modern tools. What they value is: interpretation of findings in their specific context, strategic judgment about what matters most, stakeholder management and change leadership, and accountability for outcomes. These are distinctly human capabilities that AI augments but does not replace.'
+          content: 'In my experience, what clients value most in consulting is not the information gathering or analysis—they can do much of that themselves with modern tools. What they value is: interpretation of findings in their specific context, strategic judgment about what matters most, stakeholder management and change leadership, and accountability for outcomes. These are distinctly human capabilities that AI augments but does not replace.'
         },
         {
           title: 'The Hybrid Team Structure',
@@ -857,7 +792,7 @@ export const insightsArticles = [
             },
             {
               title: 'AI Agent Roles',
-              content: 'AI agents bring 24/7 availability, superhuman data processing, consistent output quality, and scalable capacity. They work in the background, producing drafts, gathering information, and identifying patterns that humans might miss.'
+              content: 'AI agents bring constant availability, fast processing of large volumes of material, and scalable capacity. They work in the background, producing drafts, gathering information, and identifying patterns that humans might miss.'
             }
           ]
         },
@@ -871,18 +806,18 @@ export const insightsArticles = [
             },
             {
               title: 'Quality Management',
-              content: 'Quality management in hybrid teams requires new approaches. AI outputs must be validated by humans, but that validation can be intelligent sampling rather than comprehensive review. The key is establishing clear quality criteria and escalation protocols.'
+              content: 'Quality management in hybrid teams requires new approaches. Every AI output must be reviewed and approved by a named person before it reaches a client. The key is establishing clear quality criteria and escalation protocols.'
             }
           ]
         },
         {
-          title: 'The Results Speak',
-          content: 'Our hybrid engagements consistently outperform traditional approaches on multiple dimensions: 40-60% faster delivery, 15-20% higher client satisfaction scores, 25-40% cost savings for clients, and 35% higher margin for the firm. The model works—for consultants and clients alike.'
+          title: 'What to Measure',
+          content: 'Hybrid delivery should be judged on the same terms as any engagement: did the client get a decision they could act on, on time, with evidence they could check? Speed and cost matter, but only after accountability.'
         }
       ],
       keyTakeaways: [
         'Clients value human judgment, not just analysis',
-        'Hybrid teams deliver faster with better outcomes',
+        'Every AI output needs a named human reviewer',
         'Workflow design optimises human time allocation',
         'Quality management requires new approaches',
         'Both clients and consultants benefit from hybrid models'

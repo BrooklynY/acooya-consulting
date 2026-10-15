@@ -468,13 +468,13 @@ const HomePage: React.FC = () => {
       <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <span className="text-blue-200 font-semibold text-sm uppercase tracking-wider">Proven Impact</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-4">The Outcomes We Deliver</h2>
+            <span className="text-blue-200 font-semibold text-sm uppercase tracking-wider">How We Work</span>
+            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Example Engagements</h2>
+            <p className="text-blue-100 mt-4 max-w-2xl mx-auto">Illustrative examples of the problems we take on, drawn from our service catalog. Client case studies will follow as engagements complete.</p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 lg:p-12 relative">
-              <div className="absolute top-6 left-8 text-8xl text-white/20">"</div>
               <div className="relative">
                 <p className="text-xl lg:text-2xl mb-8 leading-relaxed">
                   {testimonials[activeTestimonial].quote}

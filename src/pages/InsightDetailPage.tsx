@@ -296,18 +296,11 @@ const InsightDetailPage: React.FC = () => {
                 <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-2xl p-6 text-white">
                   <h3 className="font-bold mb-2">Stay Informed</h3>
                   <p className="text-sm text-gray-300 mb-4">
-                    Get weekly insights from our team of consultants and AI experts.
+                    New articles are published as they are written. Tell us what you are working on and we will send them to you.
                   </p>
-                  <div className="space-y-3">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white text-sm"
-                    />
-                    <button className="w-full btn bg-white text-blue-600 hover:bg-gray-100 text-sm py-2">
-                      Subscribe Free
-                    </button>
-                  </div>
+                  <Link to={'/get-started?interest=' + encodeURIComponent('Insights updates')} className="w-full btn bg-white text-blue-600 hover:bg-gray-100 text-sm py-2 flex justify-center">
+                    Get in Touch
+                  </Link>
                 </div>
               </div>
             </div>
