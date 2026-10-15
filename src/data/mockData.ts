@@ -702,6 +702,174 @@ export const knowledgeBase = [
 
 export const insightsArticles = [
   {
+    "id": "ai-review-gap",
+    "title": "AI in Consulting: The Gains Are Real, and So Is the Review Gap",
+    "category": "Analysis",
+    "readTime": "6 min read",
+    "date": "October 15, 2026",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
+    "excerpt": "The evidence on AI in consulting points two ways: real gains on the right tasks, and costly errors without human review. What it means for anyone buying consulting work.",
+    "content": {
+      "introduction": "AI has moved from experiment to daily tool in professional work faster than most firms have learned to check it. The evidence now points in two directions at once. Used well, AI makes skilled people faster and better. Used without review, it puts confident errors in front of clients, and Australian buyers have already paid for one. This piece looks at what the published evidence says, and what it means for anyone buying or delivering consulting work.",
+      "sections": [
+        {
+          "title": "Executive Summary",
+          "content": "Adoption is near-universal, but results are not. Most organisations use AI somewhere; only a minority can point to a financial return, and fewer still measure one. The best controlled study of consultants using AI found large gains on tasks the AI handled well, and worse answers on a task it could not. The tool was the same in both cases. What separated a gain from a loss was the person’s judgement about when to trust it. Buyers and governments have noticed. Australian agencies now require named owners for AI use, quality checks on AI outputs from suppliers, and disclosure. A named human reviewer on every output is becoming the price of entry, not a premium."
+        },
+        {
+          "title": "Adoption Has Run Ahead of Results",
+          "content": "Use of AI is now the norm. In McKinsey’s 2025 global survey, 88% of organisations used AI regularly in at least one business function, up from 78% a year earlier. But only 39% reported any impact on earnings (EBIT), and for most of those it was under 5%. Agents are earlier still: 23% were scaling an agentic AI system anywhere in the business (McKinsey, 2025). Professional services follow the same pattern. Organisation-wide AI use nearly doubled in a year, from 22% to 40%, yet only 18% of respondents knew their organisation tracks return on its AI investment (Thomson Reuters Institute, 2026). The gap between use and measured value is the first sign that adoption alone is not the point. How the work is governed is."
+        },
+        {
+          "title": "The Jagged Frontier",
+          "content": "The strongest evidence on AI and consulting work comes from a pre-registered field experiment with 758 BCG consultants, published as a Harvard Business School working paper in 2023. The same tool produced both of the results below. The difference was whether a person with the right judgement checked the output before relying on it.",
+          "subsections": [
+            {
+              "title": "Inside the frontier",
+              "content": "On tasks the AI handled well, consultants using it completed 12.2% more tasks, finished 25.1% faster and produced work rated more than 40% higher in quality. The gains were largest for weaker performers: 43% for those below average, against 17% for those above (Dell’Acqua et al., 2023)."
+            },
+            {
+              "title": "Outside the frontier",
+              "content": "On a task just beyond the AI’s ability, consultants using AI were 19 percentage points less likely to reach the correct answer than those working without it. The AI’s answer was persuasive and wrong, and many accepted it. The study used GPT-4 in 2023; today’s models move the frontier out but do not remove it."
+            }
+          ]
+        },
+        {
+          "title": "When Review Fails",
+          "content": "Australia has already seen the cost. In 2025, Deloitte delivered an assurance review of the Targeted Compliance Framework to the Department of Employment and Workplace Relations. The report was replaced in September to correct references and footnotes (DEWR, 2025). The original cited a report attributed to a University of Sydney law professor that does not exist, a non-existent report by a Swedish professor, and a fabricated quote attributed to a judge. The revised version disclosed that a generative AI tool chain had been used. The contract was worth just under A$440,000, and Deloitte agreed to a partial refund (ACS Information Age, 2025). The errors were found by an outside academic, not by the firm’s own review.",
+          "subsections": [
+            {
+              "title": "The checking gap",
+              "content": "The pattern is common. In a University of Melbourne and KPMG study of more than 48,000 people, 57% of Australian workers said they rely on AI output without evaluating its accuracy, and 59% had made mistakes at work because of AI (2025). Globally, 51% of organisations have experienced at least one negative consequence from AI (McKinsey, 2025)."
+            }
+          ]
+        },
+        {
+          "title": "What Buyers and Government Now Expect",
+          "content": "The rules are catching up with the practice. The common thread is accountability: a named person, a record of what AI did, and a check before anything reaches the client.",
+          "subsections": [
+            {
+              "title": "Commonwealth agencies",
+              "content": "The updated policy for the responsible use of AI in government took effect on 15 December 2025. It requires an accountable owner for each AI use case, an internal register and an impact assessment before deployment (Digital Transformation Agency, 2026)."
+            },
+            {
+              "title": "Suppliers to government",
+              "content": "The DTA’s model contract clauses require written agency approval before a supplier uses AI to deliver services, quality-assurance checks on AI outputs, and records of AI use."
+            },
+            {
+              "title": "Procurement",
+              "content": "In May 2026 the Commonwealth announced that bidders would declare planned AI use in quotes and remain fully responsible for what they deliver."
+            },
+            {
+              "title": "NSW",
+              "content": "The modernised AI Assessment Framework, released in January 2026 with CSIRO’s Data61, sends high-risk systems to mandatory safeguards and an AI Review Committee."
+            },
+            {
+              "title": "Private clients",
+              "content": "In the Thomson Reuters Institute’s 2026 survey, 40% of professional firms had received instructions both to use AI and not to use it, from different clients. Most clients wanted the firm to raise the subject first."
+            }
+          ]
+        },
+        {
+          "title": "What This Means for Buying Consulting",
+          "content": "For anyone commissioning consulting work, three questions now matter as much as the consultant’s experience. This is how Acooya works: every AI-drafted deliverable must be approved by a named consultant before a client can see it, enforced by the platform rather than left to habit, and each deliverable records the model, the documents used and the reviewer. AI amplifies a consultant’s work; it does not replace the judgement that decides what is true.",
+          "subsections": [
+            {
+              "title": "Who reviewed it?",
+              "content": "Every AI-assisted output should have a named person who approved it before you saw it, not a sample check."
+            },
+            {
+              "title": "What did AI do?",
+              "content": "You should be able to see which parts were drafted with AI, from which sources, and which model was used."
+            },
+            {
+              "title": "What was it based on?",
+              "content": "Sources should be real, cited and checkable, and confidential material should be screened before it reaches an AI model."
+            }
+          ]
+        }
+      ],
+      "keyTakeaways": [
+        "Most organisations use AI; few can show it pays",
+        "AI makes skilled people faster and better on the right tasks, and worse on the wrong ones",
+        "Unreviewed AI output has already cost an Australian government client",
+        "Australian agencies now expect named owners, quality checks and disclosure",
+        "A named human reviewer on every output is becoming the minimum standard"
+      ],
+      "sources": [
+        {
+          "title": "The state of AI in 2025",
+          "publisher": "McKinsey",
+          "date": "November 2025",
+          "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-state-of-ai-2025"
+        },
+        {
+          "title": "2026 AI in Professional Services Report",
+          "publisher": "Thomson Reuters Institute",
+          "date": "February 2026",
+          "url": "https://www.thomsonreuters.com/en/institute/articles/ai-in-professional-services-report-2026"
+        },
+        {
+          "title": "Navigating the Jagged Technological Frontier",
+          "publisher": "Harvard Business School working paper",
+          "date": "September 2023",
+          "url": "https://mitsloan.mit.edu/sites/default/files/2023-10/SSRN-id4573321.pdf"
+        },
+        {
+          "title": "Targeted Compliance Framework Assurance Review",
+          "publisher": "Department of Employment and Workplace Relations",
+          "date": "September 2025",
+          "url": "https://www.dewr.gov.au/assuring-integrity-targeted-compliance-framework/resources/targeted-compliance-framework-assurance-review-final-report"
+        },
+        {
+          "title": "Deloitte to refund government over AI errors",
+          "publisher": "ACS Information Age",
+          "date": "October 2025",
+          "url": "https://ia.acs.org.au/article/2025/deloitte-to-refund-government-over-ai-errors.html"
+        },
+        {
+          "title": "Deloitte admits AI hallucinated quotes in government report",
+          "publisher": "TechSpot",
+          "date": "October 2025",
+          "url": "https://www.techspot.com/news/109758-deloitte-admits-ai-hallucinated-quotes-government-report-offers.html"
+        },
+        {
+          "title": "Trust, attitudes and use of AI: Australia snapshot",
+          "publisher": "University of Melbourne and KPMG",
+          "date": "May 2025",
+          "url": "https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/05/trust-attitudes-and-use-of-ai-australia-snapshot.pdf"
+        },
+        {
+          "title": "AI policy update: strengthening responsible use across government",
+          "publisher": "Digital Transformation Agency",
+          "date": "January 2026",
+          "url": "https://www.dta.gov.au/articles/ai-policy-update-strengthening-responsible-use-across-government"
+        },
+        {
+          "title": "The DTA’s model AI clauses",
+          "publisher": "King & Wood Mallesons",
+          "date": "August 2025",
+          "url": "https://www.mallesons.com/au/en/insights/latest-thinking/the-dtas-model-ai-clauses-suppliers-using-ai-in-service-delivery-to-government.html"
+        },
+        {
+          "title": "Suppliers face strict new AI rules in procurement shake-up",
+          "publisher": "InnovationAus",
+          "date": "May 2026",
+          "url": "https://www.innovationaus.com/suppliers-face-strict-new-ai-rules-in-procurement-shake-up/"
+        },
+        {
+          "title": "NSW strengthens AI oversight with modernised framework",
+          "publisher": "NSW Department of Customer Service",
+          "date": "January 2026",
+          "url": "https://www.nsw.gov.au/departments-and-agencies/customer-service/media-releases/nsw-strengthens-ai-oversight-modernised-framework"
+        }
+      ],
+      "author": "Brooklyn Yang",
+      "authorTitle": "Founder & Lead Consultant",
+      "authorImage": "/brooklyn-yang.jpg"
+    }
+  },
+  {
     id: 'insights-2',
     title: 'Building AI-Ready Organizations: A Complete Framework',
     category: 'Whitepaper',
