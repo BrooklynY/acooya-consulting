@@ -213,6 +213,21 @@ const InsightDetailPage: React.FC = () => {
                   ))}
                 </div>
               </div>
+
+              {/* Sources */}
+              {'sources' in article.content && article.content.sources && article.content.sources.length > 0 && (
+                <div className="mt-8 bg-white rounded-2xl border border-gray-200 p-8">
+                  <h2 className="text-xl font-bold text-gray-900 mb-4">Sources</h2>
+                  <ol className="space-y-3 list-decimal pl-5">
+                    {article.content.sources.map((source, index) => (
+                      <li key={index} className="text-sm text-gray-600">
+                        <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{source.title}</a>
+                        <span className="text-gray-500"> · {source.publisher}, {source.date}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}
