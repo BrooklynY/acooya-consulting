@@ -24,6 +24,10 @@ export const consultingServices = [
     ],
     priceRange: 'From A$4,500',
     duration: '2-week Sprint or 4-week Full Engagement',
+    offerings: [
+      { name: "Operating Model Health Check", type: "Sprint", phases: "Frame, Discover", summary: "Where accountabilities and capabilities break, with a baseline and prioritised fixes." },
+      { name: "Target Operating Model Blueprint", type: "Full Engagement", phases: "Frame to Decide", summary: "A target operating model, a proportionate business case and a transition roadmap." }
+    ],
     icon: 'building'
   },
   {
@@ -48,6 +52,10 @@ export const consultingServices = [
     ],
     priceRange: 'From A$4,500',
     duration: '2-week Sprint or 4-week Full Engagement',
+    offerings: [
+      { name: "Programme Health Check", type: "Sprint", phases: "Frame, Discover", summary: "An independent, evidenced view of delivery confidence and what to fix first." },
+      { name: "Programme Reset", type: "Full Engagement", phases: "Frame to Decide", summary: "A re-baselined plan, redesigned governance and a recovery path the board can approve." }
+    ],
     icon: 'rocket'
   },
   {
@@ -72,6 +80,11 @@ export const consultingServices = [
     ],
     priceRange: 'From A$4,500',
     duration: '2-week Sprint or 4-week Full Engagement',
+    offerings: [
+      { name: "Reporting & KPI Audit", type: "Sprint", phases: "Frame, Discover", summary: "What you measure today, where reporting falls short, and the fixes in order." },
+      { name: "Executive & Board Reporting Blueprint", type: "Full Engagement", phases: "Frame to Pilot", summary: "Metric definitions, report design and a pilot pack run for one real reporting cycle." },
+      { name: "Business Case Accelerator", type: "Full Engagement", phases: "Frame to Decide", summary: "An options appraisal and a business case sized to the decision, with benefits profiles." }
+    ],
     icon: 'chart'
   },
   {
@@ -96,9 +109,26 @@ export const consultingServices = [
     ],
     priceRange: 'From A$4,500',
     duration: '2-week Sprint or 4-week Full Engagement',
+    offerings: [
+      { name: "AI Opportunity Assessment", type: "Sprint", phases: "Frame, Discover", summary: "A scored, ranked backlog of AI use cases, with the human line drawn for each." },
+      { name: "AI Use-Case Design & Specification", type: "Full Engagement", phases: "Frame to Decide", summary: "A build-ready specification: workflow, automation boundary, controls and evaluation plan." },
+      { name: "AI Pilot & Evaluation", type: "Full Engagement, two waves", phases: "Pilot", summary: "A prototype configured on your platform, evaluated against agreed measures, and a scale decision." }
+    ],
     icon: 'workflow'
   }
 ];
+
+/**
+ * The continuation offering, open to every practice area (catalog v1.0 §3.6).
+ * Kept apart from the per-area offerings so Services can show it once and the
+ * engagement wizard can offer it under whichever area the visitor picked.
+ */
+export const retainerOffering = {
+  name: 'Embed & Realise Retainer',
+  type: 'Monthly Retainer',
+  phases: 'Pilot, Embed',
+  summary: 'Senior support through rollout and benefits tracking, with the capability handed to your own people.'
+};
 
 /**
  * Staged consultant roles for the marketplace. NOT people — no invented
@@ -245,104 +275,6 @@ export const aiAgents = [
   }
 ];
 
-export const hybridSolutions = [
-  {
-    id: 'hy1',
-    title: 'AI-Augmented Strategy Engagement',
-    description: 'Combine human strategic thinking with AI-powered research and analysis for faster, deeper insights.',
-    humanRole: 'Strategic direction, client alignment, final recommendations',
-    aiRole: 'Research, data analysis, scenario modelling, report drafting',
-    duration: '6 weeks',
-    price: 'from $28,000',
-    savings: '40% faster delivery'
-  },
-  {
-    id: 'hy2',
-    title: 'Hybrid Operating Model Design',
-    description: 'Human-led transformation with AI-powered process discovery and optimisation analysis.',
-    humanRole: 'Change management, stakeholder engagement, final design',
-    aiRole: 'Process mining, efficiency analysis, benchmarking',
-    duration: '10 weeks',
-    price: 'from $45,000',
-    savings: '60% deeper analysis'
-  },
-  {
-    id: 'hy3',
-    title: 'Continuous Intelligence Platform',
-    description: 'AI-powered analytics with human strategic interpretation and quarterly business reviews.',
-    humanRole: 'Quarterly reviews, strategic interpretation, action planning',
-    aiRole: 'Real-time monitoring, automated reports, anomaly detection',
-    duration: 'Ongoing',
-    price: 'from $5,500/month',
-    savings: '80% reduction in reporting time'
-  }
-];
-
-export const mockEngagements = [
-  {
-    id: 'eng1',
-    title: 'Global Tech Corp - Operating Model Transformation',
-    client: 'Global Tech Corp',
-    type: 'hybrid',
-    status: 'active',
-    progress: 65,
-    startDate: '2026-02-15',
-    endDate: '2026-04-30',
-    value: '$150,000',
-    consultants: ['Dr. Sarah Chen', 'Atlas AI'],
-    recentActivity: [
-      { date: '2026-04-02', action: 'Phase 2 analysis completed', user: 'Atlas AI' },
-      { date: '2026-04-01', action: 'Stakeholder workshop conducted', user: 'Dr. Sarah Chen' },
-      { date: '2026-03-28', action: 'Current state report delivered', user: 'Atlas AI' }
-    ],
-    documents: [
-      { name: 'Phase 1 Assessment Report.pdf', date: '2026-03-28' },
-      { name: 'Stakeholder Workshop Notes.pdf', date: '2026-04-01' },
-      { name: 'Phase 2 Analysis Summary.pdf', date: '2026-04-02' }
-    ]
-  },
-  {
-    id: 'eng2',
-    title: 'Meridian Financial - Analytics Platform',
-    client: 'Meridian Financial',
-    type: 'hybrid',
-    status: 'active',
-    progress: 30,
-    startDate: '2026-03-20',
-    endDate: '2026-06-15',
-    value: '$200,000',
-    consultants: ['Emma Richards', 'Nova AI'],
-    recentActivity: [
-      { date: '2026-04-01', action: 'Dashboard prototype review', user: 'Emma Richards' },
-      { date: '2026-03-25', action: 'Data integration completed', user: 'Nova AI' }
-    ],
-    documents: [
-      { name: 'Requirements Document.pdf', date: '2026-03-22' },
-      { name: 'Dashboard Wireframes.pdf', date: '2026-04-01' }
-    ]
-  },
-  {
-    id: 'eng3',
-    title: 'Nexus Industries - Strategic Planning',
-    client: 'Nexus Industries',
-    type: 'human',
-    status: 'completed',
-    progress: 100,
-    startDate: '2025-11-01',
-    endDate: '2026-01-31',
-    value: '$95,000',
-    consultants: ['Dr. Sarah Chen'],
-    recentActivity: [
-      { date: '2026-01-31', action: 'Final strategy delivered', user: 'Dr. Sarah Chen' },
-      { date: '2026-01-28', action: 'Board presentation completed', user: 'Dr. Sarah Chen' }
-    ],
-    documents: [
-      { name: 'Final Strategy Report.pdf', date: '2026-01-31' },
-      { name: 'Board Presentation.pptx', date: '2026-01-28' }
-    ]
-  }
-];
-
 export const testimonials = [
   {
     id: 't1',
@@ -378,41 +310,6 @@ export const stats = [
   { label: 'Client Satisfaction', value: '98%', icon: 'star' },
   { label: 'Time to Value', value: '40%', icon: 'zap' }
 ];
-
-export const partnershipConcept = {
-  title: 'The Human-AI Synergy Model',
-  subtitle: 'Bridging Expertise with Intelligence',
-  description: 'Acooya pioneered the Human-AI Synergy Model—a revolutionary partnership framework that combines the strategic thinking, emotional intelligence, and domain expertise of world-class consultants with the analytical power, speed, and scalability of purpose-built AI agents.',
-  benefits: [
-    {
-      title: 'Speed & Scale',
-      description: 'AI agents handle research, analysis, and reporting at 10x speed while humans focus on strategy and judgement',
-      icon: 'zap'
-    },
-    {
-      title: 'Deeper Insights',
-      description: 'AI augments human analysis with pattern recognition across millions of data points humans couldn\'t process',
-      icon: 'brain'
-    },
-    {
-      title: 'Continuous Value',
-      description: 'AI agents work 24/7, providing ongoing monitoring and support between human consulting sessions',
-      icon: 'clock'
-    },
-    {
-      title: 'Cost Efficiency',
-      description: 'Hybrid engagements deliver 40-60% cost savings versus traditional consulting while maintaining quality',
-      icon: 'dollar'
-    }
-  ],
-  process: [
-    { phase: 'Intake', description: 'Human consultant understands your needs, AI agent prepares relevant research', duration: 'Week 1' },
-    { phase: 'Diagnose', description: 'AI analyses your data at scale, human consultant interprets findings', duration: 'Weeks 2-3' },
-    { phase: 'Design', description: 'AI generates options and models, human refines and validates', duration: 'Weeks 4-6' },
-    { phase: 'Deliver', description: 'AI produces reports and tools, human guides implementation', duration: 'Weeks 7-12' },
-    { phase: 'Enable', description: 'AI monitors and reports, human provides ongoing advisory', duration: 'Ongoing' }
-  ]
-};
 
 export const knowledgeBase = [
     {

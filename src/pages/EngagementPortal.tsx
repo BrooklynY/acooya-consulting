@@ -21,14 +21,23 @@ import {
   Clock,
   Briefcase
 } from 'lucide-react';
-import { aiAgents, consultingServices, hybridSolutions } from '../data/mockData';
+import { aiAgents, consultingServices, retainerOffering } from '../data/mockData';
 import { useConsultants } from '../hooks/use-consultants';
 
 const EngagementPortal: React.FC = () => {
   const location = useLocation();
   const [currentStep, setCurrentStep] = useState(1);
   const [engagementType, setEngagementType] = useState<'human' | 'ai' | 'hybrid' | null>(null);
-  const [selectedService, setSelectedService] = useState('');
+  const [selectedService, setSelectedService] = useState<string>(() => {
+    // "Request This Service" on Services passes the practice area in router
+    // state. Accept it only when it names a real area.
+    const fromServices = (location.state as { service?: unknown } | null)?.service;
+    return typeof fromServices === 'string' && consultingServices.some((s) => s.id === fromServices) ? fromServices : '';
+  });
+  // Optional catalog offering within the chosen area. Replaces the old
+  // hybridSolutions picker, whose ids matched no practice area, so the email
+  // always said "Custom Solution" and the visitor's choice was lost.
+  const [selectedOffering, setSelectedOffering] = useState('');
   const [selectedConsultants, setSelectedConsultants] = useState<string[]>([]);
   const [selectedAgents, setSelectedAgents] = useState<string[]>([]);
   const [projectBrief, setProjectBrief] = useState('');
@@ -101,6 +110,7 @@ const EngagementPortal: React.FC = () => {
     lines.push('');
     lines.push(`Engagement type: ${engagementType ?? 'not selected'}`);
     lines.push(`Service area: ${serviceTitle}`);
+    lines.push(`Offering: ${selectedOffering || 'not chosen'}`);
     lines.push(`Consultants: ${consultantNames.length ? consultantNames.join(', ') : 'none selected'}`);
     lines.push(`AI agents: ${agentNames.length ? agentNames.join(', ') : 'none selected'}`);
     lines.push(`Preferred start: ${startDate || 'not specified'}`);
@@ -262,20 +272,17 @@ const EngagementPortal: React.FC = () => {
                     <ul className="space-y-2 text-sm text-gray-500">
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-500" />
-                        40% faster delivery
+                        Consultant-led, AI-drafted
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-500" />
-                        Deeper insights
+                        Human review on every AI output
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-500" />
-                        Best ROI
+                        Fixed fee
                       </li>
                     </ul>
-                    <span className="inline-block mt-4 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
-                      Most Popular
-                    </span>
                   </button>
                 </div>
               </div>
@@ -291,7 +298,7 @@ const EngagementPortal: React.FC = () => {
                   {consultingServices.map((service) => (
                     <button
                       key={service.id}
-                      onClick={() => setSelectedService(service.id)}
+                      onClick={() => { setSelectedService(service.id); setSelectedOffering(''); }}
                       className={`p-6 rounded-xl border-2 text-left transition-all ${
                         selectedService === service.id
                           ? 'border-blue-500 bg-blue-50'
@@ -308,22 +315,15 @@ const EngagementPortal: React.FC = () => {
                   ))}
                 </div>
 
-                {engagementType === 'hybrid' && (
+                {selectedService && (
                   <div className="bg-gray-50 rounded-xl p-6">
-                    <h3 className="font-semibold mb-4">Recommended Hybrid Solutions</h3>
+                    <h3 className="font-semibold mb-1">Offerings in this area (optional)</h3>
+                    <p className="text-sm text-gray-500 mb-4">Pick one if it fits, or leave it and tell us more in your brief.</p>
                     <div className="grid md:grid-cols-3 gap-4">
-                      {hybridSolutions.map((solution) => (
-                        <button
-                          key={solution.id}
-                          onClick={() => setSelectedService(solution.id)}
-                          className={`p-4 rounded-lg border text-left ${
-                            selectedService === solution.id
-                              ? 'border-green-500 bg-white'
-                              : 'border-gray-200 bg-white'
-                          }`}
-                        >
-                          <h4 className="font-medium text-sm mb-1">{solution.title}</h4>
-                          <p className="text-xs text-gray-500">{solution.price}</p>
+                      {[...(consultingServices.find((s) => s.id === selectedService)?.offerings ?? []), retainerOffering].map((offering) => (
+                        <button key={offering.name} type="button" onClick={() => setSelectedOffering(selectedOffering === offering.name ? '' : offering.name)} className={'p-4 rounded-lg border text-left bg-white ' + (selectedOffering === offering.name ? 'border-green-500' : 'border-gray-200')}>
+                          <h4 className="font-medium text-sm mb-1">{offering.name}</h4>
+                          <p className="text-xs text-gray-500">{offering.type}</p>
                         </button>
                       ))}
                     </div>
@@ -620,6 +620,7 @@ const EngagementPortal: React.FC = () => {
                       <p className="text-gray-600">
                         {consultingServices.find(s => s.id === selectedService)?.title || 'Custom Solution'}
                       </p>
+                      {selectedOffering && <p className="text-gray-500 text-sm mt-1">Offering: {selectedOffering}</p>}
                     </div>
                     <button onClick={() => setCurrentStep(2)} className="text-blue-600 text-sm hover:underline">
                       Edit
