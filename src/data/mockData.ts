@@ -415,290 +415,526 @@ export const partnershipConcept = {
 };
 
 export const knowledgeBase = [
-  {
-    id: 'kb1',
-    title: 'Digital Maturity Assessment Framework',
-    description: 'Comprehensive framework for assessing your organisation\'s digital readiness across 6 key dimensions. Includes a scoring method and action-planning templates.',
-    category: 'Assessment Tools',
-    downloads: 0,
-    date: 'March 28, 2026',
-    type: 'framework',
-    content: {
-      overview: 'The Digital Maturity Assessment Framework provides a holistic view of your organisation\'s digital readiness.',
-      sections: [
-        {
-          title: 'Strategic Foundation',
-          description: 'Evaluates your digital strategy alignment, vision clarity, and leadership commitment to digital transformation.',
-          items: ['Digital vision articulation', 'Strategy integration score', 'Leadership digital quotient', 'Investment appetite assessment']
-        },
-        {
-          title: 'Technology Infrastructure',
-          description: 'Assesses your current technology stack, integration capabilities, and scalability of systems.',
-          items: ['Core system audit', 'Integration maturity score', 'Data architecture review', 'Security posture evaluation']
-        },
-        {
-          title: 'Human Capital & Culture',
-          description: 'Measures digital skills, cultural readiness, and organisational agility for digital ways of working.',
-          items: ['Digital skills inventory', 'Change readiness assessment', 'Innovation culture index', 'Learning velocity score']
-        },
-        {
-          title: 'Customer Experience',
-          description: 'Analyses customer touchpoints, digital channels, and experience consistency across journeys.',
-          items: ['Digital channel audit', 'Customer effort score', 'Personalisation maturity', 'Omnichannel readiness']
-        },
-        {
-          title: 'Operations & Process',
-          description: 'Evaluates process digitisation, automation levels, and operational efficiency gains.',
-          items: ['Process digitisation score', 'Automation opportunity matrix', 'Efficiency benchmarking', 'Scalability assessment']
-        },
-        {
-          title: 'Innovation Pipeline',
-          description: 'Assesses your innovation capability, experimentation culture, and future-readiness.',
-          items: ['Innovation velocity index', 'R&D investment analysis', 'Partnership ecosystem map', 'Emerging tech adoption rate']
-        }
-      ],
-      methodology: 'The framework uses a 5-point maturity scale across 24 sub-dimensions, aggregated into 6 core dimensions. Scoring is based on evidence-based assessment across self-evaluation, stakeholder interviews, and document review.',
-      outcomes: ['Digital Maturity Score (0-100)', 'Gap Analysis Report', 'Priority Action Plan', 'Dimension Profile', 'Transformation Roadmap Template']
+    {
+      "id": "kb1",
+      "title": "AI & Digital Readiness Assessment",
+      "category": "Assessment Tools",
+      "type": "framework",
+      "relatedService": {
+        "label": "AI Opportunity Assessment",
+        "href": "/services#ai-transformation"
+      },
+      "description": "An organisation-wide assessment of readiness to use AI responsibly, across strategy, data, people and governance.",
+      "content": {
+        "overview": "This assessment gives a whole-of-organisation view of readiness to use AI responsibly. It complements the AI Opportunity Scorecard, which assesses individual use cases one at a time.",
+        "sections": [
+          {
+            "title": "Strategy and Ownership",
+            "description": "Whether AI has an executive owner and a place in corporate priorities.",
+            "items": [
+              "Executive owner",
+              "Link to corporate priorities",
+              "Investment approach",
+              "Use-case pipeline"
+            ]
+          },
+          {
+            "title": "Data and Technology",
+            "description": "Whether the data and platforms can support AI in production.",
+            "items": [
+              "Data quality and access",
+              "Platform choices",
+              "Integration capability",
+              "Security posture"
+            ]
+          },
+          {
+            "title": "People and Ways of Working",
+            "description": "Whether people are ready to work with AI, and have already started.",
+            "items": [
+              "AI literacy",
+              "Capacity for change",
+              "Specialist skills",
+              "Adoption to date"
+            ]
+          },
+          {
+            "title": "Governance and Assurance",
+            "description": "Whether AI already in use is known, owned and assessed.",
+            "items": [
+              "Inventory of AI in use",
+              "Risk tiers under the applicable framework",
+              "Accountable owners",
+              "Monitoring"
+            ]
+          }
+        ],
+        "methodology": "Each dimension is scored on a five-point maturity scale, from document review and short interviews with the people who own the area.",
+        "outcomes": [
+          "Assessment workbook",
+          "Interview guide",
+          "Maturity profile",
+          "Gap and priority summary"
+        ]
+      }
+    },
+    {
+      "id": "kb2",
+      "title": "Operating Model Health Check Kit",
+      "category": "Templates",
+      "type": "template",
+      "relatedService": {
+        "label": "Operating Model Health Check",
+        "href": "/services#operating-model"
+      },
+      "description": "Templates for finding where an operating model breaks: capabilities, accountabilities and decision rights, with a baseline to build on.",
+      "content": {
+        "overview": "This kit holds the templates Acooya uses in an Operating Model Health Check: a capability map, an accountability and decision-rights view, and a prioritised list of fixes with a baseline the next step can build on.",
+        "sections": [
+          {
+            "title": "Capabilities",
+            "description": "What the organisation does, where it is duplicated, and what each part costs.",
+            "items": [
+              "Capability map",
+              "Duplication and gap view",
+              "Cost-to-serve baseline"
+            ]
+          },
+          {
+            "title": "Accountabilities and Decision Rights",
+            "description": "Who owns what, who decides what, and how wide each span is.",
+            "items": [
+              "Accountability matrix",
+              "Decision-rights register",
+              "Span-of-control profile"
+            ]
+          },
+          {
+            "title": "Findings and Next Steps",
+            "description": "The fixes in order, and the framing for a target operating model if one is needed.",
+            "items": [
+              "Prioritised fix list",
+              "Options framing for a target operating model",
+              "Day-1 / Day-100 plan"
+            ]
+          }
+        ],
+        "methodology": "Leadership interviews plus a review of org charts, delegations and position descriptions. Each template comes with a worked layout.",
+        "outcomes": [
+          "Capability map template",
+          "Accountability matrix",
+          "Decision-rights register",
+          "Prioritised fix list",
+          "Day-1 / Day-100 plan"
+        ]
+      }
+    },
+    {
+      "id": "kb3",
+      "title": "AI Opportunity Scorecard",
+      "category": "Assessment Tools",
+      "type": "toolkit",
+      "relatedService": {
+        "label": "AI Opportunity Assessment",
+        "href": "/services#ai-transformation"
+      },
+      "description": "The nine-criterion weighted scorecard Acooya uses to rank AI use cases, with a guide to drawing the line between human-only, AI-assisted and automated work.",
+      "content": {
+        "overview": "The scorecard turns a queue of AI requests into a ranked backlog the executive can challenge. Every candidate is scored on the same nine weighted criteria, and every design states where the human line sits.",
+        "sections": [
+          {
+            "title": "Candidate Inventory",
+            "description": "Capturing requests as processes, not tools, with the time measured.",
+            "items": [
+              "Request intake template",
+              "Process walk guide",
+              "Touch-time versus elapsed-time capture"
+            ]
+          },
+          {
+            "title": "Scoring",
+            "description": "The nine weighted criteria and the workshop that applies them.",
+            "items": [
+              "Nine weighted criteria",
+              "Scoring workshop guide",
+              "Opportunity heatmap"
+            ]
+          },
+          {
+            "title": "Automation Boundary",
+            "description": "Deciding what stays human, what AI assists and what can be automated.",
+            "items": [
+              "Human-only / AI-assisted / automated guide",
+              "Controls-outside-the-model checklist"
+            ]
+          },
+          {
+            "title": "Backlog and Value",
+            "description": "The ranked backlog and the value case for the first wave.",
+            "items": [
+              "Ranked backlog",
+              "Initial value case"
+            ]
+          }
+        ],
+        "methodology": "Scored in a facilitated workshop with the teams that own the work. Weights are agreed before scoring starts, so the ranking cannot be reverse-engineered.",
+        "outcomes": [
+          "Scorecard workbook",
+          "Automation boundary guide",
+          "Backlog template",
+          "Value case template"
+        ]
+      }
+    },
+    {
+      "id": "kb4",
+      "title": "Strategic Options & Appraisal Framework",
+      "category": "Methodology",
+      "type": "methodology",
+      "relatedService": {
+        "label": "Target Operating Model Blueprint",
+        "href": "/services#operating-model"
+      },
+      "description": "A structured way to widen the options and then narrow them to one the executive can defend.",
+      "content": {
+        "overview": "This framework is the Design-phase options paper as a tool. It widens the options first, then appraises them against criteria agreed before any scoring, so the recommendation can be defended.",
+        "sections": [
+          {
+            "title": "Situation and Question",
+            "description": "The problem stated in the form every gate document uses.",
+            "items": [
+              "Problem statement (situation, complication, question)",
+              "Decision criteria",
+              "Constraints"
+            ]
+          },
+          {
+            "title": "Generating Options",
+            "description": "Widening the field before narrowing it.",
+            "items": [
+              "Long-list canvas",
+              "Do-nothing and do-minimum baselines",
+              "Scenario tests"
+            ]
+          },
+          {
+            "title": "Appraising Options",
+            "description": "Comparing options on the agreed criteria.",
+            "items": [
+              "Weighted appraisal matrix",
+              "Trade-off summary",
+              "Risks per option"
+            ]
+          },
+          {
+            "title": "Recommendation",
+            "description": "The paper the executive decides on.",
+            "items": [
+              "Options paper template",
+              "Executive decision note"
+            ]
+          }
+        ],
+        "methodology": "The criteria are agreed before any option is scored, so the choice cannot be reverse-engineered from a preferred answer.",
+        "outcomes": [
+          "Options canvas",
+          "Appraisal workbook",
+          "Options paper template",
+          "Executive decision note"
+        ]
+      }
+    },
+    {
+      "id": "kb5",
+      "title": "Change Readiness Survey Template",
+      "category": "Assessment Tools",
+      "type": "assessment",
+      "relatedService": {
+        "label": "Programme Reset",
+        "href": "/services#delivery-enablement"
+      },
+      "description": "A short survey for gauging how ready the affected teams are for a change. Includes a question bank, scoring sheet and action planning guide.",
+      "content": {
+        "overview": "This survey gauges how ready the affected teams are for a change. It feeds the change impact summary in a Programme Reset or an operating model transition; it is a diagnostic input, not a change-strategy service.",
+        "sections": [
+          {
+            "title": "Awareness and Understanding",
+            "description": "Whether people understand the need for change and the vision.",
+            "items": [
+              "Need for change",
+              "Vision",
+              "Expected impact"
+            ]
+          },
+          {
+            "title": "Capability and Confidence",
+            "description": "Whether people believe they can work in the new way.",
+            "items": [
+              "Skills",
+              "Resources",
+              "Support for the new ways of working"
+            ]
+          },
+          {
+            "title": "Leadership and Trust",
+            "description": "Confidence in leaders and in how decisions are communicated.",
+            "items": [
+              "Confidence in leaders",
+              "Adequacy of communication",
+              "Transparency of decisions"
+            ]
+          },
+          {
+            "title": "Culture and Environment",
+            "description": "The cultural factors that help or hinder a change.",
+            "items": [
+              "Collaboration",
+              "Tolerance of risk",
+              "Agility"
+            ]
+          }
+        ],
+        "methodology": "Agreement-scale questions in four groups, about 10 minutes to complete, with results compared across teams and over time.",
+        "outcomes": [
+          "Question bank",
+          "Scoring sheet",
+          "Action planning guide"
+        ]
+      }
+    },
+    {
+      "id": "kb6",
+      "title": "KPI & Reporting Audit Template",
+      "category": "Templates",
+      "type": "template",
+      "relatedService": {
+        "label": "Reporting & KPI Audit",
+        "href": "/services#insight-reporting"
+      },
+      "description": "Templates for taking stock of what an organisation measures, grading each metric, and designing reports people make decisions from.",
+      "content": {
+        "overview": "This template set takes stock of every report and metric an organisation produces, grades each one, and designs reports people actually make decisions from.",
+        "sections": [
+          {
+            "title": "Inventory",
+            "description": "Every report, metric and source, and the effort each takes to produce.",
+            "items": [
+              "Report and metric register",
+              "Source system map",
+              "Production effort log"
+            ]
+          },
+          {
+            "title": "Grading",
+            "description": "Each metric graded on definition, source and usefulness for decisions.",
+            "items": [
+              "Grading rubric",
+              "Duplicate and conflicting metrics",
+              "Metrics worth standardising"
+            ]
+          },
+          {
+            "title": "Report Design",
+            "description": "Definitions and layouts for each audience.",
+            "items": [
+              "Metric definition template",
+              "Layered design (operational, executive, board)",
+              "Power BI starter layout"
+            ]
+          },
+          {
+            "title": "Cadence",
+            "description": "Who produces what, when, and how it is challenged.",
+            "items": [
+              "Reporting calendar",
+              "Owners",
+              "Challenge process"
+            ]
+          }
+        ],
+        "methodology": "Definitions are extracted from the existing packs and graded with the people who use them.",
+        "outcomes": [
+          "Register and grading workbook",
+          "Metric definition template",
+          "Power BI starter file",
+          "Reporting calendar"
+        ]
+      }
+    },
+    {
+      "id": "kb7",
+      "title": "Acooya Engagement Framework Guide",
+      "category": "Methodology",
+      "type": "methodology",
+      "relatedService": {
+        "label": "Any Acooya engagement",
+        "href": "/services"
+      },
+      "description": "How Acooya runs every engagement: six phases, a gate at the end of each, and two approvals at every gate.",
+      "content": {
+        "overview": "This guide describes how every Acooya engagement runs: six phases, a gate at the end of each, and two approvals at every gate. A named consultant approves every AI output, and the client sponsor approves each outcome.",
+        "sections": [
+          {
+            "title": "Six Phases",
+            "description": "The sequence every engagement follows, at the depth chosen up front.",
+            "items": [
+              "Frame",
+              "Discover",
+              "Design",
+              "Decide",
+              "Pilot",
+              "Embed"
+            ]
+          },
+          {
+            "title": "Gates and Two Keys",
+            "description": "What is approved at each gate, and by whom.",
+            "items": [
+              "Gates G0 (charter) to G5 (handover)",
+              "Quality key: a named consultant approves every AI output",
+              "Decision key: the client sponsor approves each outcome"
+            ]
+          },
+          {
+            "title": "Choosing Depth",
+            "description": "How the engagement types map onto the phases.",
+            "items": [
+              "Sprint (2 weeks)",
+              "Full Engagement (4 weeks)",
+              "Two-wave engagement",
+              "Monthly retainer"
+            ]
+          },
+          {
+            "title": "Working Standards",
+            "description": "The standards that run through every phase.",
+            "items": [
+              "SCQA writing standard",
+              "Stakeholder and change track",
+              "Benefits tracked from the baseline"
+            ]
+          }
+        ],
+        "methodology": "Read before a Discovery Call, and used to agree depth in the engagement charter.",
+        "outcomes": [
+          "The framework guide",
+          "One-page summary"
+        ]
+      }
+    },
+    {
+      "id": "kb8",
+      "title": "Business Case & Benefits Templates",
+      "category": "Templates",
+      "type": "template",
+      "relatedService": {
+        "label": "Business Case Accelerator",
+        "href": "/services#insight-reporting"
+      },
+      "description": "Templates for a business case proportionate to the decision, from options appraisal to benefits profiles, aligned to NSW Treasury’s business case tiers.",
+      "content": {
+        "overview": "These templates produce a business case proportionate to the decision it supports, from options appraisal through to benefits profiles, aligned to the business case tiers NSW Treasury uses.",
+        "sections": [
+          {
+            "title": "Choosing the Tier",
+            "description": "Matching the case to the size of the decision.",
+            "items": [
+              "Short-form, lean or preliminary",
+              "The decision the case supports"
+            ]
+          },
+          {
+            "title": "Options and Costs",
+            "description": "The options compared, and what each costs.",
+            "items": [
+              "Options appraisal",
+              "Cost model",
+              "Risk and sensitivity"
+            ]
+          },
+          {
+            "title": "Benefits",
+            "description": "What the investment is expected to deliver, and how it will be measured.",
+            "items": [
+              "Benefits map",
+              "Benefit profile template",
+              "Baseline and measures"
+            ]
+          },
+          {
+            "title": "Tracking",
+            "description": "Following benefits after the decision.",
+            "items": [
+              "Benefits register",
+              "Realisation report"
+            ]
+          }
+        ],
+        "methodology": "The tier is set first, then each section is drafted and reviewed against it.",
+        "outcomes": [
+          "Business case template",
+          "Cost and benefits workbook",
+          "Benefits register",
+          "Realisation report template"
+        ]
+      }
+    },
+    {
+      "id": "kb9",
+      "title": "Programme Health Check Template",
+      "category": "Toolkits",
+      "type": "toolkit",
+      "relatedService": {
+        "label": "Programme Health Check",
+        "href": "/services#delivery-enablement"
+      },
+      "description": "An evidence-based assessment of delivery confidence, in which every rating cites its evidence.",
+      "content": {
+        "overview": "This template produces an independent assessment of delivery confidence in which every rating cites its evidence, and the schedule and cost position is rebuilt from source data rather than status reports.",
+        "sections": [
+          {
+            "title": "Evidence Index",
+            "description": "What the programme’s own artefacts and people say.",
+            "items": [
+              "Artefact register",
+              "Interview guide for the senior responsible officer, delivery leads and vendor"
+            ]
+          },
+          {
+            "title": "Assessment",
+            "description": "Delivery confidence by area, with the evidence for each rating.",
+            "items": [
+              "Delivery-confidence rating by area",
+              "Evidence cited per rating",
+              "Schedule and cost reconciled from source data"
+            ]
+          },
+          {
+            "title": "Recovery",
+            "description": "What to fix first, and whether governance can act on it.",
+            "items": [
+              "Actions ordered by what a review will look at first",
+              "Check that governance has the information and authority to act"
+            ]
+          },
+          {
+            "title": "Gate Readiness",
+            "description": "Readiness against the criteria of an upcoming gate or review.",
+            "items": [
+              "Criterion-by-criterion readiness view",
+              "Fix list"
+            ]
+          }
+        ],
+        "methodology": "The position is rebuilt from source data rather than from status reports, and every rating names the evidence behind it.",
+        "outcomes": [
+          "Assessment workbook",
+          "Interview guide",
+          "Readiness checklist"
+        ]
+      }
     }
-  },
-  {
-    id: 'kb2',
-    title: 'Operating Model Design Template',
-    description: 'Template for redesigning operating models. Includes current state canvas, target state blueprint, and implementation roadmap templates.',
-    category: 'Templates',
-    downloads: 0,
-    date: 'March 15, 2026',
-    type: 'template',
-    content: {
-      overview: 'This Operating Model Design Template provides a structured approach to diagnosing current state, defining target state, and sequencing transformation initiatives.',
-      sections: [
-        {
-          title: 'Current State Assessment',
-          description: 'Comprehensive current state analysis including value chain mapping, capability inventory, and organisational audit.',
-          items: ['Value chain canvas', 'Capability heatmap', 'Organisation structure analysis', 'Process inventory template', 'Stakeholder mapping']
-        },
-        {
-          title: 'Target State Design',
-          description: 'Future-state definition tools including blueprint templates, capability model, and governance framework.',
-          items: ['Target operating model blueprint', 'Capability target model', 'Governance design template', 'KPI framework', 'Risk assessment matrix']
-        },
-        {
-          title: 'Transition Planning',
-          description: 'Roadmapping and sequencing tools for managing the journey from current to target state.',
-          items: ['Initiative prioritisation matrix', 'Phasing strategy template', 'Resource allocation model', 'Change impact assessment', 'Communication plan']
-        }
-      ],
-      methodology: 'The template follows a structured workshop methodology with 8 facilitated sessions, each building upon the previous to create a comprehensive transformation roadmap.',
-      outcomes: ['Current State Assessment Report', 'Target Operating Model Blueprint', 'Implementation Roadmap', 'Governance Framework', 'Change Management Plan']
-    }
-  },
-  {
-    id: 'kb3',
-    title: 'AI Integration Roadmap Toolkit',
-    description: 'Complete toolkit for planning and executing AI integration across your organisation. Includes readiness assessment, use case prioritisation, and implementation playbooks.',
-    category: 'Toolkits',
-    downloads: 0,
-    date: 'March 10, 2026',
-    type: 'toolkit',
-    content: {
-      overview: 'This toolkit provides a pragmatic approach to AI integration that balances ambition with practical constraints.',
-      sections: [
-        {
-          title: 'AI Readiness Assessment',
-          description: 'Comprehensive assessment of your organisation\'s readiness for AI adoption across data, technology, people, and governance dimensions.',
-          items: ['Data readiness audit', 'Infrastructure assessment', 'Skills gap analysis', 'Governance gap analysis', 'Cultural readiness index']
-        },
-        {
-          title: 'Use Case Discovery',
-          description: 'Structured methodology for identifying and prioritising high-value AI use cases.',
-          items: ['Use case ideation canvas', 'Value-effort prioritisation matrix', 'Technical feasibility rubric', 'ROI estimation template', 'Risk assessment framework']
-        },
-        {
-          title: 'Implementation Playbooks',
-          description: 'Detailed playbooks for implementing different types of AI solutions.',
-          items: ['ML model deployment playbook', 'LLM integration guide', 'Automation playbook', 'Monitoring and governance guide', 'Change management toolkit']
-        },
-        {
-          title: 'Centre of Excellence Setup',
-          description: 'Template for establishing an AI Centre of Excellence to drive ongoing AI capability building.',
-          items: ['CoE charter template', 'Team structure blueprint', 'Skill development programme', 'Governance framework', 'Success metrics dashboard']
-        }
-      ],
-      methodology: 'The toolkit is structured as a phased programme, with built-in checkpoints and iteration points. Each phase includes facilitator guides, participant materials, and output templates.',
-      outcomes: ['AI Readiness Report', 'Prioritised Use Case Portfolio', 'Implementation Roadmap', 'CoE Setup Blueprint', 'Governance Framework']
-    }
-  },
-  {
-    id: 'kb4',
-    title: 'Strategic Planning Framework',
-    description: 'Annual strategic planning methodology. Includes market analysis templates, competitive positioning tools, and execution roadmaps.',
-    category: 'Methodology',
-    downloads: 0,
-    date: 'February 28, 2026',
-    type: 'methodology',
-    content: {
-      overview: 'This Strategic Planning Framework combines widely used strategy tools with AI-assisted research, reviewed by a consultant. It provides a comprehensive yet agile approach to annual strategic planning.',
-      sections: [
-        {
-          title: 'Situation Assessment',
-          description: 'Rigorous external and internal analysis using proven frameworks.',
-          items: ['PESTEL analysis template', 'Five Forces analysis', 'Value chain analysis', 'SWOT synthesis', 'Competitive positioning matrix']
-        },
-        {
-          title: 'Strategic Choices',
-          description: 'Structured approach to generating and selecting strategic options.',
-          items: ['Strategic options canvas', 'Scenario planning templates', 'Decision criteria framework', 'Trade-off analysis', 'Strategic bets matrix']
-        },
-        {
-          title: 'Growth Architecture',
-          description: 'Tools for defining growth vectors and sequencing initiatives.',
-          items: ['Growth vectors analysis', 'Market expansion playbook', 'Product portfolio matrix', 'Geographic prioritisation', 'M&A screening template']
-        },
-        {
-          title: 'Execution Planning',
-          description: 'From strategy to actionable plans with clear ownership and milestones.',
-          items: ['BSC translation template', 'OKR framework', 'Initiative one-pagers', 'Resource allocation model', 'Risk mitigation plan']
-        }
-      ],
-      methodology: 'The framework uses a 10-week intensive planning cycle, with built-in stakeholder alignment checkpoints. AI-assisted research and synthesis can support each phase, with every output reviewed by a consultant.',
-      outcomes: ['Strategic Assessment Report', 'Strategic Choice Document', '3-Year Roadmap', 'Annual Plan with OKRs', 'Risk Management Plan']
-    }
-  },
-  {
-    id: 'kb5',
-    title: 'Change Readiness Survey Template',
-    description: 'Survey instrument for assessing organisational change readiness. Includes question bank, scoring methodology, and action planning guide.',
-    category: 'Assessment Tools',
-    downloads: 0,
-    date: 'February 20, 2026',
-    type: 'assessment',
-    content: {
-      overview: 'This Change Readiness Survey Template measures the factors commonly associated with successful change adoption. The survey takes about 10 minutes to complete.',
-      sections: [
-        {
-          title: 'Awareness & Understanding',
-          description: 'Measures whether employees understand the need for change and the vision.',
-          items: ['Vision comprehension score', 'Need for change awareness', 'Benefits understanding', 'Impact perception']
-        },
-        {
-          title: 'Capability & Confidence',
-          description: 'Assesses employees\' belief in their ability to adopt new ways of working.',
-          items: ['Skill confidence index', 'Resource adequacy perception', 'Support availability awareness', 'Learning orientation score']
-        },
-        {
-          title: 'Leadership & Trust',
-          description: 'Evaluates confidence in leadership and organisational support systems.',
-          items: ['Leadership credibility score', 'Trust index', 'Communication adequacy', 'Decision transparency']
-        },
-        {
-          title: 'Culture & Environment',
-          description: 'Assesses cultural factors that enable or hinder change.',
-          items: ['Innovation culture index', 'Collaboration readiness', 'Risk tolerance score', 'Agility assessment']
-        }
-      ],
-      methodology: 'The survey uses agreement-scale questions grouped into four factors. Results can be compared across teams and over time. Action planning follows a structured workshop format.',
-      outcomes: ['Readiness Score Report', 'Segment Analysis', 'Barrier Identification', 'Action Planning Guide', 'Communication Strategy']
-    }
-  },
-  {
-    id: 'kb6',
-    title: 'Executive Dashboard Template',
-    description: 'Ready-to-use executive dashboard template for tracking strategic initiatives. Includes KPI definitions, visualisation best practices, and refresh protocols.',
-    category: 'Templates',
-    downloads: 0,
-    date: 'February 15, 2026',
-    type: 'template',
-    content: {
-      overview: 'This Executive Dashboard Template provides a framework for translating strategy into measurable management, balancing comprehensiveness with the limits of executive attention.',
-      sections: [
-        {
-          title: 'Strategic KPI Framework',
-          description: 'Set of KPIs aligned to strategic objectives.',
-          items: ['Financial performance metrics', 'Customer experience indicators', 'Internal process measures', 'Learning & growth metrics']
-        },
-        {
-          title: 'Visualisation Templates',
-          description: 'Dashboard templates following executive information design principles.',
-          items: ['Strategy map visual', 'KPI hierarchy template', 'Trend analysis views', 'Exception highlighting template']
-        },
-        {
-          title: 'Governance Templates',
-          description: 'Templates for defining review rhythms and escalation protocols.',
-          items: ['Review cadence guide', 'Escalation matrix', 'Accountability framework', 'Decision rights template']
-        }
-      ],
-      methodology: 'The template is designed in Microsoft Excel and Power BI formats, with built-in data connection guides. IT support is usually needed for data connections.',
-      outcomes: ['KPI Framework Document', 'Excel Dashboard Template', 'Power BI Dashboard Template', 'Governance Guide', 'IT Integration Specification']
-    }
-  },
-  {
-    id: 'kb7',
-    title: 'Hybrid Engagement Playbook',
-    description: 'Complete guide to designing and managing human-AI hybrid consulting engagements. Includes engagement design templates, team structures, and delivery protocols.',
-    category: 'Methodology',
-    downloads: 0,
-    date: 'February 10, 2026',
-    type: 'methodology',
-    content: {
-      overview: 'The Hybrid Engagement Playbook codifies Acooya\'s approach to combining human consultants with AI agents. It provides frameworks for engagement design, team composition, workflow integration, and quality management, with every AI output reviewed by a named consultant before a client sees it.',
-      sections: [
-        {
-          title: 'Engagement Architecture',
-          description: 'Framework for structuring hybrid engagements for maximum impact.',
-          items: ['Engagement type selection guide', 'Scope definition template', 'Human-AI task allocation matrix', 'Timeline template', 'Budget allocation model']
-        },
-        {
-          title: 'Team Composition',
-          description: 'Guidance on building effective hybrid teams.',
-          items: ['Consultant selection criteria', 'AI agent pairing guide', 'Team structure template', 'Role definition templates', 'Collaboration protocols']
-        },
-        {
-          title: 'Workflow Integration',
-          description: 'Templates for integrating AI and human workstreams.',
-          items: ['Handoff protocol templates', 'Quality gates definition', 'Review cycle template', 'Feedback loop design', 'Continuous improvement framework']
-        },
-        {
-          title: 'Quality Management',
-          description: 'Systems for ensuring consistent quality across hybrid engagements.',
-          items: ['Quality framework', 'Review checklist template', 'Client communication template', 'Escalation procedures', 'Success metrics']
-        }
-      ],
-      methodology: 'The playbook uses a modular approach that can be adapted to different engagement types and complexities. Implementation includes facilitated sessions with an Acooya consultant.',
-      outcomes: ['Engagement Design Document', 'Team Structure Blueprint', 'Workflow Integration Plan', 'Quality Management Framework', 'Client Communication Templates']
-    }
-  },
-  {
-    id: 'kb8',
-    title: 'Value Creation Calculator',
-    description: 'Interactive tool for estimating the financial value of consulting interventions. Includes ROI methodology and business case templates.',
-    category: 'Assessment Tools',
-    downloads: 0,
-    date: 'January 30, 2026',
-    type: 'calculator',
-    content: {
-      overview: 'The Value Creation Calculator helps organisations move beyond soft benefits to quantify the financial impact of consulting interventions. It provides a rigorous yet practical methodology.',
-      sections: [
-        {
-          title: 'Benefit Quantification',
-          description: 'Framework for identifying and measuring different categories of benefit.',
-          items: ['Revenue uplift estimation', 'Cost reduction methodology', 'Risk mitigation valuation', 'Productivity gain calculation', 'Innovation value framework']
-        },
-        {
-          title: 'Investment Analysis',
-          description: 'Templates for comprehensive investment sizing.',
-          items: ['Full cost accounting template', 'Resource loading model', 'Risk contingency framework', 'Opportunity cost analysis']
-        },
-        {
-          title: 'ROI Modelling',
-          description: 'Models for calculating and presenting return on investment.',
-          items: ['ROI calculation template', 'NPV modelling tool', 'Payback period analysis', 'Sensitivity analysis framework']
-        }
-      ],
-      methodology: 'The calculator uses a structured workshop format with finance and business unit representatives. Outputs include a board-ready business case and an ongoing tracking dashboard.',
-      outcomes: ['Benefits Register', 'Investment Model', 'ROI Analysis', 'Business Case Document', 'Tracking Dashboard']
-    }
-  }
-];
+  ];
 
 export const insightsArticles = [
   {
@@ -869,130 +1105,201 @@ export const insightsArticles = [
       "authorImage": "/brooklyn-yang.jpg"
     }
   },
-  {
-    id: 'insights-2',
-    title: 'Building AI-Ready Organizations: A Complete Framework',
-    category: 'Whitepaper',
-    readTime: '20 min read',
-    date: 'March 28, 2026',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop',
-    excerpt: 'A comprehensive guide to transforming your organisation for the AI era, covering technology, people, process, and culture dimensions.',
-    content: {
-      introduction: 'Becoming an AI-ready organisation requires more than deploying new technology. It demands a holistic transformation across four interconnected dimensions: strategic readiness, technical infrastructure, human capabilities, and organisational culture. This whitepaper sets out a framework for assessing and building that readiness.',
-      sections: [
+{
+    "id": "insights-2",
+    "title": "Which AI Work Is Worth Doing? Start With the Process, Not the Tool",
+    "category": "Article",
+    "readTime": "5 min read",
+    "date": "October 15, 2026",
+    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop",
+    "excerpt": "Most AI requests arrive as tool ideas. A practical way to decide which are worth doing, where the human line sits, and what to measure first.",
+    "content": {
+      "introduction": "In most organisations, demand for AI now arrives faster than anyone can assess it. Requests come in as tools (“can we get a chatbot for this?”) rather than problems, and the team responsible has no consistent way to say yes, not yet, or no. The result is a backlog of pilots, few of which become services. This article sets out the approach Acooya uses to decide which AI work is worth doing first.",
+      "sections": [
         {
-          title: 'Why AI Readiness Matters',
-          content: 'The constraint on value from AI is rarely the technology. It is whether the organisation has the strategy, data, skills and culture to use it. Organisations that buy tools before building these foundations tend to collect pilots that never scale.'
+          "title": "Executive Summary",
+          "content": "Start from the process, not the tool. Walk the real work, measure where the time goes, and score every candidate on the same criteria. Then draw an explicit line between what stays human, what AI assists and what can be automated, and keep mandatory controls outside the AI model. Set a baseline before any pilot, so the result can be measured rather than claimed."
         },
         {
-          title: 'The Four Dimensions Framework',
-          content: 'Our AI Readiness Framework evaluates organisations across four critical dimensions, each containing multiple sub-dimensions with specific assessment criteria and maturity indicators.',
-          subsections: [
+          "title": "Start From the Process",
+          "content": "A request describes a tool; the value sits in a process. Before scoring anything, walk the work as it is actually done, not as the procedure says it is done. Separate touch time, when someone is working on a case, from elapsed time, when it is waiting. Take an illustrative customer query that takes 16 days from first contact to resolution. If most of those days are queues, transfers and approvals, an assistant that drafts replies faster saves minutes of a 16-day problem. The bigger gain is usually in routing, retrieval and removing hand-offs."
+        },
+        {
+          "title": "Score Every Candidate the Same Way",
+          "content": "A consistent scorecard turns a queue of opinions into a ranked backlog the executive can challenge. Ours weighs nine criteria, which fall into four groups.",
+          "subsections": [
             {
-              title: 'Dimension 1: Strategic Readiness',
-              content: 'Strategic readiness assesses whether your organisation has a clear vision for AI, aligned leadership commitment, and appropriate investment appetite. Key indicators include: executive ownership of AI strategy, AI integrated into corporate strategy, board-level AI literacy, and clear use case prioritisation.'
+              "title": "Value",
+              "content": "How often the work happens, how long it takes, and what it costs today."
             },
             {
-              title: 'Dimension 2: Technical Infrastructure',
-              content: 'Technical readiness evaluates data architecture, integration capabilities, and scalability. Critical factors include: data quality and accessibility, cloud infrastructure maturity, API-first architecture, security and compliance posture, and technology stack flexibility.'
+              "title": "Suitability",
+              "content": "How repeatable the work is, how knowledge-intensive, and how much judgement it needs."
             },
             {
-              title: 'Dimension 3: Human Capabilities',
-              content: 'Human capability readiness measures your workforce\'s ability to work effectively with AI. Core competencies include: AI literacy across the organisation, data science and ML engineering talent, change management capability, and leadership agility.'
+              "title": "Feasibility",
+              "content": "Whether the data is ready, and whether the systems can be connected."
             },
             {
-              title: 'Dimension 4: Organisational Culture',
-              content: 'Cultural readiness determines whether your organisation supports AI adoption. Key factors include: experimentation tolerance, failure learning culture, cross-functional collaboration, and data-driven decision making norms.'
+              "title": "Consequence of error",
+              "content": "What happens when the answer is wrong, to whom, and whether it can be reversed."
             }
           ]
         },
         {
-          title: 'The Assessment Process',
-          content: 'Our assessment methodology combines quantitative scoring across 24 sub-dimensions with qualitative insights from stakeholder interviews and document review. The process is designed to take 4-6 weeks and produces an actionable maturity score, prioritised gap analysis, and transformation roadmap.'
+          "title": "Draw the Line Explicitly",
+          "content": "Every design should say, activity by activity, which of three categories applies. The line is a decision the business makes and signs, not a property of the technology.",
+          "subsections": [
+            {
+              "title": "Human-only",
+              "content": "Decisions with legal, financial or safety consequences, such as a fraud decision or a finding on the cause of a safety incident."
+            },
+            {
+              "title": "AI-assisted",
+              "content": "AI drafts, a person approves, such as a reply to a complaint or a first classification of a case."
+            },
+            {
+              "title": "Automated",
+              "content": "Low-consequence, reversible steps such as retrieving a policy or routing a case to the right team."
+            },
+            {
+              "title": "Rules stay outside the model",
+              "content": "Matching rules, tolerances and approval limits belong in systems and decision tables an auditor can read, never only in an AI prompt."
+            }
+          ]
         },
         {
-          title: 'Building Your AI-Ready Organisation',
-          content: 'Transformation to AI-readiness is not a single initiative but a programme of work spanning 18-36 months. Key phases include: Foundation Setting (months 1-6), Pilot Deployment (months 7-12), Scaled Rollout (months 13-24), and Maturity Achievement (months 25-36). Each phase has specific milestones and success criteria.'
+          "title": "Govern From Day One",
+          "content": "In government this is no longer optional. Commonwealth agencies now need an accountable owner for each AI use case, an internal register and an impact assessment before deployment (Digital Transformation Agency, 2026). NSW’s modernised AI Assessment Framework sends high-risk systems to mandatory safeguards and an AI Review Committee (NSW Government, 2026). The practical first step is the same everywhere: inventory the AI already in use, because business units rarely wait for a strategy."
         },
         {
-          title: 'Common Pitfalls to Avoid',
-          content: 'The most common failure modes are well recognised: technology-first thinking, siloed implementation, underinvesting in change management, unrealistic timelines, and missing executive sponsorship. Addressing them early improves the odds of success.'
+          "title": "Measure Before You Pilot",
+          "content": "A pilot without a baseline produces opinions. Before any user sees an AI tool, capture today’s volume, cycle time and quality, and agree the thresholds the pilot must meet. Build a set of real test cases with an agreed marking guide, so quality is measured before rollout rather than discovered after it."
         }
       ],
-      keyTakeaways: [
-        'AI readiness requires transformation across four dimensions',
-        'AI readiness is an organisational question, not a technology one',
-        'Assessment should combine quantitative and qualitative methods',
-        'Transformation takes 18-36 months, not weeks',
-        'Most failures stem from avoidable implementation pitfalls'
+      "keyTakeaways": [
+        "Requests describe tools; the value sits in processes",
+        "Most delay is waiting, not work, so measure both",
+        "Score every candidate on the same criteria",
+        "Decide what stays human before deciding what to automate",
+        "Keep mandatory rules outside the AI model",
+        "Set the baseline before the pilot"
       ],
-      author: 'Brooklyn Yang',
-      authorTitle: 'Founder & Lead Consultant',
-      authorImage: '/brooklyn-yang.jpg'
+      "sources": [
+        {
+          "title": "AI policy update: strengthening responsible use across government",
+          "publisher": "Digital Transformation Agency",
+          "date": "January 2026",
+          "url": "https://www.dta.gov.au/articles/ai-policy-update-strengthening-responsible-use-across-government"
+        },
+        {
+          "title": "NSW strengthens AI oversight with modernised framework",
+          "publisher": "NSW Department of Customer Service",
+          "date": "January 2026",
+          "url": "https://www.nsw.gov.au/departments-and-agencies/customer-service/media-releases/nsw-strengthens-ai-oversight-modernised-framework"
+        }
+      ],
+      "author": "Brooklyn Yang",
+      "authorTitle": "Founder & Lead Consultant",
+      "authorImage": "/brooklyn-yang.jpg"
     }
   },
-  {
-    id: 'insights-3',
-    title: 'Hybrid Teams: The New Model for Strategic Consulting',
-    category: 'Article',
-    readTime: '8 min read',
-    date: 'March 25, 2026',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop',
-    excerpt: 'How leading consulting firms are combining human expertise with AI agents to deliver faster, deeper insights to clients.',
-    content: {
-      introduction: 'The consulting industry is undergoing its most significant transformation since the advent of strategy consulting. The emergence of capable AI agents is reshaping how consultants work, what clients expect, and what value looks like. This article explores the hybrid team model that is emerging as the new standard for strategic consulting.',
-      sections: [
+{
+    "id": "insights-3",
+    "title": "How a Hybrid Engagement Actually Runs",
+    "category": "Article",
+    "readTime": "5 min read",
+    "date": "October 15, 2026",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop",
+    "excerpt": "Senior consultants and AI agents on one engagement: who does what, where you decide, and how every AI draft is checked before it reaches you.",
+    "content": {
+      "introduction": "“Hybrid” is easy to say and hard to picture. This piece describes how an Acooya engagement runs: what the consultant does, what the AI agents do, where you make the decisions, and what you can check afterwards.",
+      "sections": [
         {
-          title: 'The Traditional Model Under Pressure',
-          content: 'Traditional consulting\'s time-and-materials model worked when information was scarce and analysis was labour-intensive. Today, AI can gather and synthesise information at superhuman scale. The question is not whether to integrate AI, but how to do so in ways that enhance rather than diminish the human elements that clients truly value.'
+          "title": "Executive Summary",
+          "content": "Every engagement runs through the same six phases, and you choose how many at the start. AI agents draft the evidence, consultants judge it, and you decide. Each phase ends at a gate that needs two approvals: a named consultant approves the work, and your sponsor approves the outcome. Every deliverable records which AI model was used, which documents it drew on, and who reviewed it."
         },
         {
-          title: 'What Clients Actually Value',
-          content: 'In my experience, what clients value most in consulting is not the information gathering or analysis—they can do much of that themselves with modern tools. What they value is: interpretation of findings in their specific context, strategic judgment about what matters most, stakeholder management and change leadership, and accountability for outcomes. These are distinctly human capabilities that AI augments but does not replace.'
-        },
-        {
-          title: 'The Hybrid Team Structure',
-          content: 'In the hybrid model, consulting teams are structured around complementary human and AI roles. Senior consultants focus on client relationship, strategic guidance, and quality judgment. Analysts are elevated to synthesis and insight development with AI assistance. AI agents handle research, data processing, document drafting, and routine analysis.',
-          subsections: [
+          "title": "Six Phases, Chosen Up Front",
+          "content": "Depth is agreed at the start and written into the engagement charter, so the scope cannot drift unnoticed. A two-week Sprint covers Frame and Discover. A four-week Full Engagement runs from Frame to Decide. Pilot and Embed follow when you want them.",
+          "subsections": [
             {
-              title: 'Human Roles',
-              content: 'The human consultants bring contextual understanding, creative problem-solving, relationship skills, and ultimate accountability. They focus their time on high-value activities that require judgment and human connection.'
+              "title": "Frame",
+              "content": "The question, scope, success measures and decision-maker, agreed in a charter."
             },
             {
-              title: 'AI Agent Roles',
-              content: 'AI agents bring constant availability, fast processing of large volumes of material, and scalable capacity. They work in the background, producing drafts, gathering information, and identifying patterns that humans might miss.'
+              "title": "Discover",
+              "content": "The current state, with a baseline to measure change against."
+            },
+            {
+              "title": "Design",
+              "content": "Options, widened first and then narrowed to a preferred one."
+            },
+            {
+              "title": "Decide",
+              "content": "A business case or roadmap proportionate to the decision."
+            },
+            {
+              "title": "Pilot",
+              "content": "A bounded test against the measures set in Decide."
+            },
+            {
+              "title": "Embed",
+              "content": "Rollout, benefits tracking and handover to your own people."
             }
           ]
         },
         {
-          title: 'Making Hybrid Teams Work',
-          content: 'Effective hybrid teams require deliberate design. Key success factors include: clear handoff protocols between human and AI work, robust quality assurance processes, effective prompt engineering for AI agents, regular team retrospectives, and psychological safety around AI usage.',
-          subsections: [
+          "title": "Who Does What",
+          "content": "The division of work is simple: agents produce evidence, people make judgements.",
+          "subsections": [
             {
-              title: 'Workflow Design',
-              content: 'Workflow design should optimise for human time allocation. Every task should be evaluated: Can AI do this faster and adequately? Can AI assist humans to do this better? Is human judgment essential here? Answers drive task allocation decisions.'
+              "title": "The consultant",
+              "content": "Frames the question, runs the interviews and workshops, weighs the evidence, writes the findings and recommendations, and is accountable for them."
             },
             {
-              title: 'Quality Management',
-              content: 'Quality management in hybrid teams requires new approaches. Every AI output must be reviewed and approved by a named person before it reaches a client. The key is establishing clear quality criteria and escalation protocols.'
+              "title": "The AI agents",
+              "content": "Synthesise documents, analyse data, and draft first versions of maps, matrices, options and business cases."
+            },
+            {
+              "title": "You",
+              "content": "Own the question, and make every decision at every gate."
             }
           ]
         },
         {
-          title: 'What to Measure',
-          content: 'Hybrid delivery should be judged on the same terms as any engagement: did the client get a decision they could act on, on time, with evidence they could check? Speed and cost matter, but only after accountability.'
+          "title": "Two Keys at Every Gate",
+          "content": "No AI output is ever a decision, and no AI draft reaches you unchecked.",
+          "subsections": [
+            {
+              "title": "The quality key",
+              "content": "A named consultant approves every AI-drafted output before you can see it. On Acooya’s platform this is enforced by the system, not left to habit."
+            },
+            {
+              "title": "The decision key",
+              "content": "Your sponsor approves the outcome of each phase before the next begins."
+            }
+          ]
+        },
+        {
+          "title": "What You Can Check",
+          "content": "Each deliverable records the AI model used, the documents it drew on, and the consultant who reviewed it. Documents you share are screened for personal identifiers before any AI model can read them, and flagged documents are kept out. If you ask “where did this come from?”, there is an answer on record."
+        },
+        {
+          "title": "What We Measure",
+          "content": "AI makes evidence faster to assemble; it does not make judgement better. So we judge a hybrid engagement on the same terms as any other: did you get a decision you could act on, on time, with evidence you could check?"
         }
       ],
-      keyTakeaways: [
-        'Clients value human judgment, not just analysis',
-        'Every AI output needs a named human reviewer',
-        'Workflow design optimises human time allocation',
-        'Quality management requires new approaches',
-        'Both clients and consultants benefit from hybrid models'
+      "keyTakeaways": [
+        "AI agents draft the evidence, consultants judge it, and you decide",
+        "Depth is agreed at the start and written into the charter",
+        "A named consultant approves every AI draft before you see it",
+        "Each deliverable records its model, sources and reviewer",
+        "Success is a decision you can act on, with evidence you can check"
       ],
-      author: 'Brooklyn Yang',
-      authorTitle: 'Founder & Lead Consultant',
-      authorImage: '/brooklyn-yang.jpg'
+      "author": "Brooklyn Yang",
+      "authorTitle": "Founder & Lead Consultant",
+      "authorImage": "/brooklyn-yang.jpg"
     }
   }
 ];
