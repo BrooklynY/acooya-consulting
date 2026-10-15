@@ -283,7 +283,7 @@ const MarketplacePage: React.FC = () => {
                           <p className="text-sm text-gray-600">Standard tasks — 1 credit</p>
                           <p className="text-sm text-gray-600">Deep tasks — 3 credits</p>
                         </div>
-                        <p className="text-xs text-gray-400 mt-2">Included in subscription plans. Overage from $0.07/credit, plan-dependent.</p>
+                        <p className="text-xs text-gray-400 mt-2">Included in subscription plans. Overage A$0.55 per credit on every plan.</p>
                       </div>
                       <div className="flex gap-2">
                         <Link to={`/get-started?interest=${encodeURIComponent(`Question — ${agent.name}`)}`} title="Ask about this agent — we'll reply by email" aria-label={`Ask a question about ${agent.name}`} className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors">

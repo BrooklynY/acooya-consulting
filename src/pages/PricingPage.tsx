@@ -66,8 +66,9 @@ const featureComparison = [
     category: 'AI Agent Credits',
     icon: Bot,
     features: [
-      { name: 'Monthly AI Agent Credits', starter: '200', professional: '1,000', enterprise: '5,000' },
-      { name: 'Overage rate per additional credit', starter: 'A $0.22', professional: 'A $0.15', enterprise: 'A $0.07' },
+      { name: 'Monthly AI Agent Credits', starter: '200', professional: '400', enterprise: '1,200' },
+      { name: 'Overage rate per additional credit', starter: 'A$0.55', professional: 'A$0.55', enterprise: 'A$0.55' },
+      { name: 'Top-up credit packs (100, 500 or 2,000 credits)', starter: true, professional: true, enterprise: true },
       { name: 'Credit usage notifications (80% and 95%)', starter: true, professional: true, enterprise: true },
       { name: 'Pre-task credit confirmation', starter: true, professional: true, enterprise: true }
     ]
@@ -76,10 +77,10 @@ const featureComparison = [
     category: 'AI Agents',
     icon: Bot,
     features: [
-      { name: 'Aria (Research Agent)', starter: true, professional: true, enterprise: true },
-      { name: 'Nova (Analytics Agent)', starter: true, professional: true, enterprise: true },
-      { name: 'Atlas (Strategy Agent)', starter: false, professional: true, enterprise: true },
-      { name: 'Zenith (Orchestration Agent)', starter: false, professional: true, enterprise: true },
+      { name: 'Research agent', starter: true, professional: true, enterprise: true },
+      { name: 'Analytics agent (in development)', starter: true, professional: true, enterprise: true },
+      { name: 'Strategy agent (in development)', starter: false, professional: true, enterprise: true },
+      { name: 'Multi-agent orchestration (in development)', starter: false, professional: true, enterprise: true },
       { name: 'Custom AI agent development', starter: false, professional: false, enterprise: true },
       { name: 'AI agent marketplace access', starter: true, professional: true, enterprise: true }
     ]
@@ -143,11 +144,15 @@ const featureComparison = [
 const faqs = [
   {
     q: 'Is there a free trial?',
-    a: 'Yes. Growth and Professional plans include a 14-day free trial with no credit card required. During the trial you get full access to your chosen plan\'s features, including AI agent credits (50 credits on Growth, 200 credits on Professional) and one free human consultant interaction. You will receive a reminder on Day 12. If you do not cancel before Day 14, your account automatically converts to a monthly subscription. Enterprise clients receive a guided demonstration instead of a self-serve trial.'
+    a: 'Yes. Growth and Professional plans include a 14-day free trial with no credit card required. You receive 50 trial credits on Growth or 100 trial credits on Professional. Trials auto-convert to paid subscriptions on Day 14 unless cancelled, and we send a reminder on Day 12. Enterprise clients receive a guided demonstration instead of a self-serve trial.'
   },
   {
     q: 'How are AI agent credits measured?',
-    a: 'Credits are measured based on task complexity — ensuring you only pay for what your task actually requires. Micro tasks (0.5 credits): Quick, single-step tasks such as summaries, simple Q&A, or formatting. Standard tasks (1 credit): Multi-step tasks such as research briefs, strategy memos, or KPI reports. Deep tasks (3 credits): Complex analyses such as full competitive landscapes, strategic reports, or orchestrated multi-agent workflows. Your credit cost is always shown before a task runs.'
+    a: 'Each agent task is priced in credits based on complexity. Micro tasks (0.5 credits) are quick single-step tasks. Standard tasks (1 credit) are multi-step tasks like research briefs or strategy memos. Deep tasks (3 credits) are complex multi-source analyses. Credit cost is always displayed before a task runs, and you approve it before any credits are used.'
+  },
+  {
+    q: 'What happens if I run out of credits?',
+    a: 'Nothing stops working. You can buy a top-up pack at any time — 100, 500 or 2,000 credits at A$0.55 each — which sits alongside your monthly allowance and stays valid for 12 months. If you would rather not pre-buy, additional usage is billed at A$0.55 per credit at the end of your cycle. Top-up credits are always used before any billed overage, so you never pay twice for the same usage. We notify you at 80% and 95% of your monthly allowance.'
   },
   {
     q: 'Can I change plans later?',
@@ -163,11 +168,11 @@ const faqs = [
   },
   {
     q: 'Are you a consultant looking to join Acooya?',
-    a: 'We are actively building our consultant network. Signing up and listing on the Acooya marketplace is completely free — no joining fee, no subscription required. Acooya earns only when your engagement is completed, via a 20% facilitation fee. If you have 10+ years of consulting experience and a passion for human-AI collaboration, contact us at contact@acooyaconsulting.com to express your interest.'
+    a: 'We are actively building our consultant network. Signing up and listing on the Acooya marketplace is free — no joining fee, no subscription required, and nothing to pay to be paid. Acooya earns only when an engagement completes, through a 20% facilitation fee, so you receive 80% of gross engagement value. On clients you introduce to Acooya, you also receive 20% of that facilitation fee for 24 months from the client\'s first engagement — declared when the engagement is created and agreed by both sides before work starts. Put simply: Acooya takes 20%, and you take 20% of that on the clients you bring. Our AI agents come with the work at no extra cost when you are delivering an engagement. If you have 10+ years of consulting experience and a passion for human-AI collaboration, contact us at contact@acooyaconsulting.com to express your interest.'
   },
   {
     q: 'Are you an AI agent developer?',
-    a: 'Creating a developer account and listing your agents is completely free. Founding Developer spots — zero commission on your first A $5,000 earned, then a locked 15% commission rate — are limited to the first 50 verified developers. The optional Developer Pro plan (A $29/month) offers reduced commission (15%) and advanced analytics.'
+    a: 'Creating a developer account and listing your agents is completely free. Founding Developer spots — zero commission on your first A$5,000 of cumulative gross transaction value, then a locked 15% commission rate — are limited to the first 50 verified developers. The optional Developer Pro plan (A$29/month) offers reduced commission (15%) and advanced analytics.'
   },
   {
     q: 'Do you offer discounts for nonprofits?',
