@@ -17,6 +17,7 @@ import {
   FileText
 } from 'lucide-react';
 import { insightsArticles } from '../data/mockData';
+import ContentFigure from '../components/ContentFigure';
 
 const InsightDetailPage: React.FC = () => {
   const { id } = useParams();
@@ -174,6 +175,7 @@ const InsightDetailPage: React.FC = () => {
                           <p className="text-gray-600 leading-relaxed mb-4">
                             {section.content}
                           </p>
+                          <ContentFigure id={section.figure} />
                           {section.subsections && (
                             <div className="mt-6 space-y-4">
                               {section.subsections.map((sub, subIndex) => (
