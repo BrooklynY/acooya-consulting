@@ -24,7 +24,9 @@
  * A$169 against Pricing v3.1's A$49 / A$149 / A$499. It had no consumers, so
  * the stale figures never reached a visitor. Deleted rather than moved.
  *
- * The authoritative source for pricing is Acooya_Pricing_Model_v3_1.docx.
+ * The authoritative source for pricing is Acooya_Pricing_Model_v3_2.docx
+ * (26 Aug 2026; brought into line 15 Oct 2026, overage, allowances and agent
+ * wording per its section 10).
  * Anything here that contradicts it is a bug in here.
  */
 
@@ -47,9 +49,10 @@ const subscriptionFeatures: Record<SubscriptionTier, string[]> = {
     'Up to 3 active engagements',
     'Up to 3 users per organisation',
     '200 AI agent credits per month',
-    'Aria (Research) + Nova (Analytics) agents',
+    'Research and analytics agents (analytics in development)',
     '14-day free trial — no credit card required',
     'Pre-task credit confirmation — no surprises',
+    'Top-up credit packs — A$0.55 per credit',
     'Standard human consultant access',
     'Secure encrypted workspace',
     'Engagement history — 6 months',
@@ -60,22 +63,21 @@ const subscriptionFeatures: Record<SubscriptionTier, string[]> = {
     'Everything in Growth, plus:',
     'Up to 15 active engagements',
     'Up to 15 users per organisation',
-    '1,000 AI agent credits per month',
-    'All 4 AI agents (Aria, Atlas, Nova, Zenith)',
-    'Zenith orchestration — multi-agent workflows',
+    '400 AI agent credits per month',
+    'The full agent team, including strategy and multi-agent orchestration (in development)',
     'Priority access to senior human consultants',
     'Engagement history — 2 years',
     'Advanced workspace with team collaboration',
     'Quarterly strategic reviews',
     'Priority support — 24-hour response',
     'Advanced analytics dashboard',
-    'Lower overage rate — $0.15 per credit'
+    'Top-up credit packs — A$0.55 per credit'
   ],
   enterprise: [
     'Everything in Professional, plus:',
     'Unlimited active engagements',
     'Unlimited users per organisation',
-    '5,000 AI agent credits per month',
+    '1,200 AI agent credits per month',
     'Custom AI agent development',
     'Dedicated lead consultant + engagement SLA',
     'Engagement history — unlimited retention',
@@ -84,7 +86,7 @@ const subscriptionFeatures: Record<SubscriptionTier, string[]> = {
     'On-site workshops and executive briefings',
     'White-glove concierge support',
     'Custom integrations — scoped on request',
-    'Lowest overage rate — $0.07 per credit'
+    'Top-up credit packs — A$0.55 per credit'
   ]
 };
 
