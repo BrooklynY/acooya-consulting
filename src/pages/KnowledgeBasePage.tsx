@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Search,
-  Download,
   FileText,
   BookOpen,
   Wrench,
@@ -83,7 +82,7 @@ const KnowledgeBasePage: React.FC = () => {
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Free Resources</span>
             <h1 className="text-4xl lg:text-5xl font-bold mt-4 mb-6">
-              Your Strategic Toolkit—Free to Download
+              Your Strategic Toolkit—Free on Request
             </h1>
             <p className="text-xl text-gray-300 mb-8">
               Access battle-tested frameworks, templates, and tools refined through many years of consulting practice. Accelerate your strategic planning with proven resources.
@@ -185,12 +184,7 @@ const KnowledgeBasePage: React.FC = () => {
 
                   <div className="flex items-center justify-between text-sm text-gray-500">
                     <div className="flex items-center gap-1">
-                      <Download className="w-4 h-4" />
-                      {resource.downloads > 0 ? `${resource.downloads.toLocaleString()} downloads` : 'Available'}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {resource.date}
+                      Available on request
                     </div>
                   </div>
                 </div>
@@ -207,8 +201,7 @@ const KnowledgeBasePage: React.FC = () => {
                     to={`/resource/${resource.id}`}
                     className="btn btn-primary text-sm py-2"
                   >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download
+                    View Details
                   </Link>
                 </div>
               </div>
@@ -234,7 +227,7 @@ const KnowledgeBasePage: React.FC = () => {
             <p className="text-gray-600 mt-4">Stay ahead with actionable research from our team of consultants and AI experts</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className={'grid gap-8 ' + (insightsArticles.length < 3 ? 'md:grid-cols-2 max-w-4xl mx-auto' : 'md:grid-cols-3')}>
             {insightsArticles.map((insight) => (
               <article key={insight.id} className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow">
                 <img src={insight.image} alt={insight.title} className="w-full h-48 object-cover" />
@@ -271,24 +264,14 @@ const KnowledgeBasePage: React.FC = () => {
       <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Weekly Insights</span>
-            <h2 className="text-3xl font-bold mt-4 mb-4">Get Strategic Insights Delivered Weekly</h2>
+            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Stay in Touch</span>
+            <h2 className="text-3xl font-bold mt-4 mb-4">Want New Insights When They Publish?</h2>
             <p className="text-xl text-gray-300 mb-8">
-              Join our weekly digest for frameworks, case studies, and AI-powered insights — delivered straight to your inbox.
+              Tell us what you are working on and we will send you new frameworks and articles as they are published.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white"
-              />
-              <button className="btn bg-white text-blue-600 hover:bg-gray-100 px-8">
-                Subscribe Free
-              </button>
-            </div>
-            <p className="text-sm text-gray-400 mt-4">
-              Weekly insights. No spam. Unsubscribe anytime.
-            </p>
+            <Link to={'/get-started?interest=' + encodeURIComponent('Insights updates')} className="btn bg-white text-blue-600 hover:bg-gray-100 px-8">
+              Get in Touch
+            </Link>
           </div>
         </div>
       </section>
@@ -354,16 +337,12 @@ const KnowledgeBasePage: React.FC = () => {
             </div>
 
             <div className="sticky bottom-0 bg-white border-t border-gray-200 px-6 py-4 flex items-center justify-between">
-              <div className="text-sm text-gray-500">
-                <Clock className="w-4 h-4 inline mr-1" />
-                Last updated: {previewResource.date}
-              </div>
+              <div className="text-sm text-gray-500">Available on request</div>
               <Link
                 to={`/resource/${previewResource.id}`}
                 className="btn btn-primary"
               >
-                <Download className="w-4 h-4 mr-2" />
-                Download Full Resource
+                View Full Details
               </Link>
             </div>
           </div>
