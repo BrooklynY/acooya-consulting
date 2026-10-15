@@ -3,11 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import { useBackTo } from '../components/scroll-history';
 import {
   ArrowLeft,
+  ArrowRight,
   Printer,
   Share2,
   Bookmark,
   CheckCircle,
-  Clock,
   FileText,
   BarChart3,
   Layers,
@@ -15,14 +15,7 @@ import {
   Wrench,
   ChevronDown,
   ChevronUp,
-  Users,
   Target,
-  TrendingUp,
-  Award,
-  Zap,
-  Shield,
-  Star,
-  ThumbsUp,
   X
 } from 'lucide-react';
 import { knowledgeBase } from '../data/mockData';
@@ -37,8 +30,6 @@ const ResourceDetailPage: React.FC = () => {
   const [bookmarked, setBookmarked] = useState(false);
   const [expandedSections, setExpandedSections] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState<'overview' | 'methodology' | 'outcomes'>('overview');
-  const [userRating, setUserRating] = useState(0);
-  const [hasRated, setHasRated] = useState(false);
   const [showPrintPreview, setShowPrintPreview] = useState(false);
   const [showShareToast, setShowShareToast] = useState(false);
 
@@ -47,13 +38,7 @@ const ResourceDetailPage: React.FC = () => {
   // Load state from localStorage on mount
   useEffect(() => {
     if (id && resource) {
-      const storedRating = localStorage.getItem(getStorageKey(id, 'rating'));
       const storedBookmarked = localStorage.getItem(getStorageKey(id, 'bookmarked'));
-
-      if (storedRating) {
-        setUserRating(parseInt(storedRating));
-        setHasRated(true);
-      }
       setBookmarked(storedBookmarked === 'true');
     }
   }, [id, resource]);
@@ -143,40 +128,6 @@ const ResourceDetailPage: React.FC = () => {
     }, 500);
   };
 
-  const handleRating = (rating: number) => {
-    setUserRating(rating);
-    setHasRated(true);
-    localStorage.setItem(getStorageKey(id!, 'rating'), rating.toString());
-    toast.success(`Thanks for your ${rating}-star rating!`);
-  };
-
-  // Render star rating component
-  const StarRating = ({ rating, onRate, interactive = false }: {
-    rating: number;
-    onRate?: (rating: number) => void;
-    interactive?: boolean;
-  }) => (
-    <div className="flex items-center gap-1">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <button
-          key={star}
-          type="button"
-          disabled={!interactive}
-          onClick={() => interactive && onRate && onRate(star)}
-          className={`${interactive ? 'cursor-pointer hover:scale-110 transition-transform' : 'cursor-default'} p-0.5`}
-        >
-          <Star
-            className={`w-5 h-5 ${
-              star <= rating
-                ? 'fill-yellow-400 text-yellow-400'
-                : 'fill-gray-200 text-gray-300'
-            }`}
-          />
-        </button>
-      ))}
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Print Preview Modal */}
@@ -207,7 +158,7 @@ const ResourceDetailPage: React.FC = () => {
                 <p>{resource.content.methodology}</p>
               </div>
               <div className="mt-8 pt-4 border-t text-sm text-gray-500">
-                <p>Downloaded from Acooya Consulting</p>
+                <p>Printed from acooyaconsulting.com</p>
                 <p>Date: {new Date().toLocaleDateString()}</p>
               </div>
             </div>
@@ -313,7 +264,7 @@ const ResourceDetailPage: React.FC = () => {
                           <h3 className="text-base md:text-lg font-semibold text-gray-900">Key Sections</h3>
                         </div>
                         <p className="text-gray-600 text-sm md:text-base">
-                          This resource contains {resource.content.sections.length} comprehensive sections:
+                          This resource has {resource.content.sections.length} sections:
                         </p>
                         <ul className="mt-4 space-y-2">
                           {resource.content.sections.map((section, index) => (
@@ -371,41 +322,23 @@ const ResourceDetailPage: React.FC = () => {
                       <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Methodology</h2>
                       <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-4 md:p-6 mb-6 md:mb-8">
                         <div className="flex items-center gap-3 mb-4">
-                          <Award className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
-                          <h3 className="text-base md:text-lg font-semibold text-gray-900">Proven Approach</h3>
+                          <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+                          <h3 className="text-base md:text-lg font-semibold text-gray-900">How It Is Used</h3>
                         </div>
                         <p className="text-gray-600 leading-relaxed text-sm md:text-base">{resource.content.methodology}</p>
                       </div>
 
-                      <div className="grid md:grid-cols-3 gap-3 md:gap-4">
-                        <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 text-center">
-                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-3 md:mb-4">
-                            <BarChart3 className="w-5 h-5 md:w-6 md:h-6" />
-                          </div>
-                          <h4 className="font-semibold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">Evidence-Based</h4>
-                          <p className="text-xs md:text-sm text-gray-600">Built on data from 500+ engagements</p>
-                        </div>
-                        <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 text-center">
-                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mx-auto mb-3 md:mb-4">
-                            <Users className="w-5 h-5 md:w-6 md:h-6" />
-                          </div>
-                          <h4 className="font-semibold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">Expert Validated</h4>
-                          <p className="text-xs md:text-sm text-gray-600">Reviewed by industry leaders</p>
-                        </div>
-                        <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 text-center">
-                          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-3 md:mb-4">
-                            <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />
-                          </div>
-                          <h4 className="font-semibold text-gray-900 mb-1 md:mb-2 text-sm md:text-base">Continuously Updated</h4>
-                          <p className="text-xs md:text-sm text-gray-600">Regularly refined based on feedback</p>
-                        </div>
+                                            <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6">
+                        <p className="text-xs font-medium uppercase tracking-wider text-gray-500 mb-1">Related service</p>
+                        <p className="text-gray-600 text-sm md:text-base mb-3">This resource is used in the {resource.relatedService.label}. Ask us about it, or request the resource and use it yourself.</p>
+                        <Link to={resource.relatedService.href} className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline">{resource.relatedService.label}<ArrowRight className="w-4 h-4" /></Link>
                       </div>
                     </div>
                   )}
 
                   {activeTab === 'outcomes' && (
                     <div className="prose prose-blue max-w-none">
-                      <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">What You'll Receive</h2>
+                      <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">What's Inside</h2>
                       <div className="grid gap-3 md:gap-4">
                         {resource.content.outcomes.map((outcome, index) => (
                           <div key={index} className="flex items-start gap-3 md:gap-4 p-3 md:p-4 bg-white border border-gray-200 rounded-xl">
@@ -414,61 +347,10 @@ const ResourceDetailPage: React.FC = () => {
                             </div>
                             <div>
                               <h4 className="font-semibold text-gray-900 text-sm md:text-base">{outcome}</h4>
-                              <p className="text-xs md:text-sm text-gray-500 mt-0.5 md:mt-1">
-                                Ready-to-use deliverable aligned with your engagement
-                              </p>
                             </div>
                           </div>
                         ))}
                       </div>
-
-                      <div className="mt-6 md:mt-8 p-4 md:p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
-                        <div className="flex items-center gap-3 mb-4">
-                          <Zap className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
-                          <h3 className="text-base md:text-lg font-semibold text-gray-900">Value Delivered</h3>
-                        </div>
-                        <div className="grid md:grid-cols-2 gap-2 md:gap-4">
-                          <div className="flex items-center gap-2">
-                            <Clock className="w-4 h-4 text-green-500" />
-                            <span className="text-gray-700 text-sm">40-60% time savings</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <TrendingUp className="w-4 h-4 text-green-500" />
-                            <span className="text-gray-700 text-sm">Proven ROI improvement</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Shield className="w-4 h-4 text-green-500" />
-                            <span className="text-gray-700 text-sm">Enterprise-grade quality</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Award className="w-4 h-4 text-green-500" />
-                            <span className="text-gray-700 text-sm">Benchmark against peers</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Review Section */}
-              <div className="bg-white rounded-2xl border border-gray-200 p-4 md:p-8 mb-8">
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">Rate This Resource</h3>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <div>
-                    <p className="text-sm text-gray-600 mb-2">
-                      {hasRated ? 'Thank you for your rating!' : 'How useful was this resource?'}
-                    </p>
-                    <StarRating
-                      rating={userRating}
-                      onRate={handleRating}
-                      interactive={!hasRated}
-                    />
-                  </div>
-                  {hasRated && (
-                    <div className="flex items-center gap-2 text-sm text-green-600">
-                      <ThumbsUp className="w-4 h-4" />
-                      <span>Your feedback helps us improve</span>
                     </div>
                   )}
                 </div>
@@ -495,7 +377,7 @@ const ResourceDetailPage: React.FC = () => {
                             {r.title}
                           </h4>
                           <p className="text-xs md:text-sm text-gray-500 mt-1">
-                            {r.downloads > 0 ? `${r.downloads.toLocaleString()} downloads` : 'New resource'}
+                            {r.category}
                           </p>
                         </div>
                       </Link>
@@ -544,61 +426,14 @@ const ResourceDetailPage: React.FC = () => {
                   </button>
                 </div>
 
-                {/* Stats */}
-                <div className="mt-6 pt-6 border-t border-gray-100">
-                  <div className="grid grid-cols-1 gap-4 text-center">
-                    <div>
-                      <div className="flex justify-center">
-                        <StarRating rating={hasRated ? userRating : 0} />
-                      </div>
-                      <p className="text-xs md:text-sm text-gray-500 mt-1">
-                        {hasRated ? `Your rating: ${userRating}/5` : 'Not rated'}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* User Rating */}
-                <div className="mt-6 pt-6 border-t border-gray-100">
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-xs md:text-sm text-gray-600">
-                      {hasRated ? 'Change your rating:' : 'Rate this resource:'}
-                    </p>
-                    {hasRated && (
-                      <button
-                        onClick={() => {
-                          setUserRating(0);
-                          setHasRated(false);
-                          localStorage.removeItem(getStorageKey(id!, 'rating'));
-                          toast.success('Rating reset!');
-                        }}
-                        className="text-xs text-blue-600 hover:text-blue-800 underline"
-                      >
-                        Reset
-                      </button>
-                    )}
-                  </div>
-                  <StarRating
-                    rating={userRating}
-                    onRate={handleRating}
-                    interactive={true}
-                  />
-                  {hasRated && (
-                    <p className="text-xs text-green-600 mt-2 flex items-center gap-1">
-                      <CheckCircle className="w-3 h-3" />
-                      Thank you for rating {userRating} star{userRating > 1 ? 's' : ''}!
-                    </p>
-                  )}
-                </div>
-
                 {/* CTA */}
                 <div className="mt-6 p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
-                  <h4 className="font-semibold text-gray-900 mb-2">Want More?</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">Want help applying it?</h4>
                   <p className="text-sm text-gray-600 mb-4">
-                    Get access to all resources with an Acooya subscription.
+                    A free 30-minute Discovery Call maps your problem to the right engagement.
                   </p>
-                  <Link to="/pricing" className="btn btn-primary w-full text-sm">
-                    View Plans
+                  <Link to={'/get-started?interest=' + encodeURIComponent('Discovery Call — ' + resource.title)} className="btn btn-primary w-full text-sm">
+                    Book a free Discovery Call
                   </Link>
                 </div>
               </div>

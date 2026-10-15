@@ -224,7 +224,7 @@ const KnowledgeBasePage: React.FC = () => {
           <div className="text-center mb-12">
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Thought Leadership</span>
             <h2 className="text-3xl font-bold mt-4">Latest Research & Insights</h2>
-            <p className="text-gray-600 mt-4">Stay ahead with actionable research from our team of consultants and AI experts</p>
+            <p className="text-gray-600 mt-4">Practical perspectives on consulting, delivery and AI, with sources you can check</p>
           </div>
 
           <div className={'grid gap-8 ' + (insightsArticles.length < 3 ? 'md:grid-cols-2 max-w-4xl mx-auto' : 'md:grid-cols-3')}>
@@ -324,7 +324,7 @@ const KnowledgeBasePage: React.FC = () => {
                   ))}
                 </div>
 
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">What You'll Get</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">What's Inside</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   {previewResource.content.outcomes.map((outcome, index) => (
                     <div key={index} className="flex items-center gap-2 text-sm">
