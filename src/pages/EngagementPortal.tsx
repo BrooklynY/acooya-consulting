@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { aiAgents, consultingServices, retainerOffering } from '../data/mockData';
 import { useConsultants } from '../hooks/use-consultants';
+import ContentFigure from '../components/ContentFigure';
 
 const EngagementPortal: React.FC = () => {
   const location = useLocation();
@@ -712,6 +713,17 @@ const EngagementPortal: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How every engagement runs: the same figure as insight 3 and kb7. Moved from Home 19 Oct 2026; it describes what follows kickoff. */}
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold text-center mb-4">How every engagement runs</h3>
+            <p className="text-gray-600 text-center mb-4 max-w-2xl mx-auto">Six phases, a gate after each, and two approvals at every gate. How many phases you need is agreed at the start and written into the charter.</p>
+            <ContentFigure id="six-phases" />
           </div>
         </div>
       </section>
