@@ -21,7 +21,7 @@ const tiers: Array<{
   {
     id: 'starter',
     name: 'Growth',
-    tagline: 'Perfect for small teams getting started with consulting',
+    tagline: 'For small teams starting with AI research on their own work',
     monthlyPrice: 49,
     annualPrice: 500,
     highlighted: false,
@@ -31,7 +31,7 @@ const tiers: Array<{
   {
     id: 'professional',
     name: 'Professional',
-    tagline: 'For growing businesses that need advanced capabilities',
+    tagline: 'For teams using AI agents across many workstreams',
     monthlyPrice: 149,
     annualPrice: 1524,
     highlighted: true,
@@ -41,7 +41,7 @@ const tiers: Array<{
   {
     id: 'enterprise',
     name: 'Enterprise',
-    tagline: 'Custom solutions for large organisations',
+    tagline: 'For organisations at scale, with invoice billing and guided onboarding',
     monthlyPrice: 499,
     annualPrice: 5088,
     highlighted: false,
@@ -50,27 +50,29 @@ const tiers: Array<{
   }
 ];
 
+// Pricing v3.3 section 02 (approved 26 Oct 2026). A subscription is the
+// self-service AI workspace; consulting is priced per engagement and needs no
+// plan. Every row describes something the platform delivers, or is marked
+// "in development". What was removed, and why, is in v3.3 section 2.2.
 const featureComparison = [
   {
-    category: 'Engagements & Usage',
+    category: 'Workspace & Usage',
     icon: FileText,
     features: [
-      { name: 'Active engagements', starter: 'Up to 3', professional: 'Up to 15', enterprise: 'Unlimited' },
       { name: 'Users per organisation', starter: 'Up to 3', professional: 'Up to 15', enterprise: 'Unlimited' },
-      { name: 'Concurrent projects', starter: '1', professional: '5', enterprise: 'Unlimited' },
-      { name: 'Engagement history retention', starter: '6 months', professional: '2 years', enterprise: 'Unlimited' },
-      { name: 'Engagement transcripts', starter: true, professional: true, enterprise: true }
+      { name: 'Active self-service AI workspaces', starter: 'Up to 3', professional: 'Up to 15', enterprise: 'Unlimited' },
+      { name: 'Engagement history retention', starter: '6 months', professional: '2 years', enterprise: 'Unlimited' }
     ]
   },
   {
     category: 'AI Agent Credits',
     icon: Bot,
     features: [
-      { name: 'Monthly AI Agent Credits', starter: '200', professional: '400', enterprise: '1,200' },
+      { name: 'Monthly AI Agent Credits', starter: '100', professional: '400', enterprise: '1,350' },
+      { name: 'Price per included credit', starter: 'A$0.49', professional: 'A$0.37', enterprise: 'A$0.37' },
       { name: 'Overage rate per additional credit', starter: 'A$0.55', professional: 'A$0.55', enterprise: 'A$0.55' },
       { name: 'Top-up credit packs (100, 500 or 2,000 credits)', starter: true, professional: true, enterprise: true },
-      { name: 'Credit usage notifications (80% and 95%)', starter: true, professional: true, enterprise: true },
-      { name: 'Pre-task credit confirmation', starter: true, professional: true, enterprise: true }
+      { name: 'Credit notifications (80% and 95%) and pre-task confirmation', starter: true, professional: true, enterprise: true }
     ]
   },
   {
@@ -80,63 +82,36 @@ const featureComparison = [
       { name: 'Research agent', starter: true, professional: true, enterprise: true },
       { name: 'Analytics agent (in development)', starter: true, professional: true, enterprise: true },
       { name: 'Strategy agent (in development)', starter: false, professional: true, enterprise: true },
-      { name: 'Multi-agent orchestration (in development)', starter: false, professional: true, enterprise: true },
-      { name: 'Custom AI agent development', starter: false, professional: false, enterprise: true },
-      { name: 'AI agent marketplace access', starter: true, professional: true, enterprise: true }
+      { name: 'Multi-agent orchestration (in development)', starter: false, professional: true, enterprise: true }
     ]
   },
   {
-    category: 'Human Consultants',
-    icon: Users,
+    category: 'Trust & Security',
+    icon: Shield,
     features: [
-      { name: 'Human consultant access', starter: 'Standard', professional: 'Priority (senior)', enterprise: 'Exclusive' },
-      { name: 'Consultant engagement pricing', starter: "Standard 'from' pricing", professional: "Priority senior 'from' pricing", enterprise: 'Custom scoped rates' },
-      { name: 'Fixed-price packages', starter: true, professional: true, enterprise: true },
-      { name: 'Dedicated lead consultant', starter: false, professional: false, enterprise: true },
-      { name: 'Quarterly strategic reviews', starter: false, professional: true, enterprise: true },
-      { name: 'On-site workshops', starter: false, professional: false, enterprise: true }
+      { name: 'Human approval step on every AI output, with provenance', starter: true, professional: true, enterprise: true },
+      { name: 'Documents screened for personal identifiers before any AI reads them', starter: true, professional: true, enterprise: true },
+      { name: 'Designed to SOC 2 standards', starter: true, professional: true, enterprise: true },
+      { name: 'Privacy Act & GDPR aligned', starter: true, professional: true, enterprise: true }
     ]
   },
   {
     category: 'Workspace & Collaboration',
     icon: MessageSquare,
     features: [
-      { name: 'Secure encrypted workspace', starter: true, professional: true, enterprise: true },
-      { name: 'Team collaboration', starter: false, professional: true, enterprise: true },
-      { name: 'Document collaboration', starter: false, professional: true, enterprise: true },
-      { name: 'Advanced analytics dashboard', starter: false, professional: true, enterprise: true },
-      { name: 'Asia-Pacific data residency (Singapore)', starter: false, professional: false, enterprise: true }
+      { name: 'Secure workspace, data stored in the Asia-Pacific region (Singapore)', starter: true, professional: true, enterprise: true },
+      { name: 'Team messaging and shared documents', starter: true, professional: true, enterprise: true },
+      { name: 'Resources and frameworks library', starter: true, professional: true, enterprise: true }
     ]
   },
   {
-    category: 'Security & Compliance',
-    icon: Shield,
-    features: [
-      { name: 'Designed to SOC 2 standards', starter: true, professional: true, enterprise: true },
-      { name: 'Managed cloud infrastructure', starter: true, professional: true, enterprise: true },
-      { name: 'Custom integrations', starter: '—', professional: '—', enterprise: 'Scoped on request' },
-      { name: 'Privacy Act & GDPR aligned', starter: true, professional: true, enterprise: true },
-      { name: 'Engagement SLA', starter: false, professional: false, enterprise: true },
-      { name: 'Dedicated Customer Success Manager', starter: false, professional: false, enterprise: true }
-    ]
-  },
-  {
-    category: 'Reporting & Insights',
-    icon: MessageSquare,
-    features: [
-      { name: 'Monthly reports', starter: true, professional: true, enterprise: true },
-      { name: 'Weekly reports & analytics', starter: false, professional: true, enterprise: true },
-      { name: 'Executive reporting', starter: false, professional: false, enterprise: true }
-    ]
-  },
-  {
-    category: 'Support',
+    category: 'Support & Billing',
     icon: Headphones,
     features: [
-      { name: 'Email support', starter: '48-hour response', professional: '24-hour response', enterprise: 'White-glove concierge' },
-      { name: 'Priority support', starter: false, professional: true, enterprise: true },
-      { name: 'Resources and frameworks library', starter: true, professional: true, enterprise: true },
-      { name: 'Executive briefings', starter: false, professional: false, enterprise: true }
+      { name: 'Email support response', starter: '2 business days', professional: '1 business day', enterprise: '1 business day' },
+      { name: 'Billing', starter: 'Card or direct debit', professional: 'Card or direct debit', enterprise: 'Card, direct debit or invoice (net 30)' },
+      { name: 'Trial and onboarding', starter: '14-day trial, 25 credits', professional: '14-day trial, 100 credits', enterprise: 'Guided onboarding session' },
+      { name: 'Custom integrations', starter: '—', professional: '—', enterprise: 'Scoped and quoted separately' }
     ]
   }
 ];
@@ -144,7 +119,7 @@ const featureComparison = [
 const faqs = [
   {
     q: 'Is there a free trial?',
-    a: 'Yes. Growth and Professional plans include a 14-day free trial with no credit card required. You receive 50 trial credits on Growth or 100 trial credits on Professional. Trials auto-convert to paid subscriptions on Day 14 unless cancelled, and we send a reminder on Day 12. Enterprise clients receive a guided demonstration instead of a self-serve trial.'
+    a: 'Yes. Growth and Professional plans include a 14-day free trial with no credit card required. You receive 25 trial credits on Growth or 100 trial credits on Professional. Trials auto-convert to paid subscriptions on Day 14 unless cancelled, and we send a reminder on Day 12. Enterprise clients start with a guided onboarding session instead of a self-serve trial.'
   },
   {
     q: 'How are AI agent credits measured?',
@@ -224,28 +199,28 @@ const PricingPage: React.FC = () => {
             Simple, Transparent Pricing
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8">
-            Choose the plan that fits your organisation. All plans include access to our Human-AI Synergy platform with world-class consultants and purpose-built AI agents.
+            Choose the plan that fits your organisation. Every plan includes the self-service AI workspace, with purpose-built AI agents and a human approval step on every output. Consulting engagements are priced separately and need no plan.
           </p>
 
           {/* Billing Toggle */}
           <div className="flex items-center justify-center gap-4">
-            <span className={`text-sm font-medium A ${!isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
+            <span className={`text-sm font-medium ${!isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
               Monthly
             </span>
             <button
               onClick={() => setIsAnnual(!isAnnual)}
-              className={`relative w-14 h-7 rounded-full transition-colors A ${
+              className={`relative w-14 h-7 rounded-full transition-colors ${
                 isAnnual ? 'bg-blue-600' : 'bg-gray-300'
               }`}
               aria-label="Toggle billing period"
             >
               <span
-                className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform A ${
+                className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${
                   isAnnual ? 'left-8' : 'left-1'
                 }`}
               />
             </button>
-            <span className={`text-sm font-medium A ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
+            <span className={`text-sm font-medium ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
               Annual
               <span className="ml-2 px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
                 Save 15%
@@ -266,7 +241,7 @@ const PricingPage: React.FC = () => {
             return (
               <div
                 key={tier.id}
-                className={`relative flex flex-col bg-white rounded-2xl A ${
+                className={`relative flex flex-col bg-white rounded-2xl ${
                   tier.highlighted
                     ? 'ring-2 ring-blue-600 shadow-2xl md:scale-105 z-10'
                     : 'shadow-lg border border-gray-200'
@@ -283,7 +258,7 @@ const PricingPage: React.FC = () => {
                 <div className="p-6 md:p-8 flex flex-col flex-1">
                   {/* Tier Header */}
                   <div className="mb-6">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 A ${
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
                       tier.highlighted
                         ? 'bg-gradient-to-br from-blue-500 to-purple-600'
                         : tier.color === 'slate'
@@ -302,18 +277,18 @@ const PricingPage: React.FC = () => {
                   <div className="mb-6">
                     <div className="flex items-baseline gap-1">
                       <span className="text-4xl font-bold text-gray-900">
-                        A ${monthlyEquivalent.toLocaleString()}
+                        A${monthlyEquivalent.toLocaleString()}
                       </span>
                       <span className="text-gray-500">/mo</span>
                     </div>
                     {isAnnual && (
                       <p className="text-sm text-gray-500 mt-1">
-                        A ${price.toLocaleString()} billed annually
+                        A${price.toLocaleString()} billed annually
                       </p>
                     )}
                     {!isAnnual && (
                       <p className="text-sm text-green-600 mt-1 font-medium">
-                        Or A ${Math.round(tier.annualPrice / 12).toLocaleString()}/mo billed annually
+                        Or A${Math.round(tier.annualPrice / 12).toLocaleString()}/mo billed annually
                       </p>
                     )}
                   </div>
@@ -322,7 +297,7 @@ const PricingPage: React.FC = () => {
                   <button
                     onClick={() => handleSelectPlan(tier.id)}
                     disabled={isLoading === tier.id}
-                    className={`w-full py-3 px-4 rounded-xl font-semibold transition-all mb-6 flex items-center justify-center gap-2 cursor-pointer A${
+                    className={`w-full py-3 px-4 rounded-xl font-semibold transition-all mb-6 flex items-center justify-center gap-2 cursor-pointer ${
                       tier.highlighted
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
                         : tier.id === currentTier
@@ -393,6 +368,12 @@ const PricingPage: React.FC = () => {
           })}
         </div>
 
+        {/* Consulting is bought per engagement, never through a plan (Pricing v3.3, section 01) */}
+        <p className="max-w-6xl mx-auto -mt-6 mb-12 px-4 text-center text-sm md:text-base text-gray-600">
+          Want a consultant? Engagements are priced separately; no subscription needed.{' '}
+          <Link to="/services" className="font-semibold text-blue-600 hover:text-blue-700 whitespace-nowrap">See our services</Link>
+        </p>
+
         {/* Value Proposition Comparison Banner */}
         <div className="max-w-6xl mx-auto mb-8">
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 md:p-8 border border-green-200">
@@ -415,18 +396,18 @@ const PricingPage: React.FC = () => {
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-100">
-                    <td className="p-3 text-gray-700">Advisory Session: A $1,200–1,800</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A $450</td>
+                    <td className="p-3 text-gray-700">Advisory Session: A$1,200–1,800</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$450</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 64%</td>
                   </tr>
                   <tr className="border-b border-gray-100">
-                    <td className="p-3 text-gray-700">Sprint Engagement: A $15k–25k</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A $4,500</td>
+                    <td className="p-3 text-gray-700">Sprint Engagement: A$15k–25k</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$4,500</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 70%</td>
                   </tr>
                   <tr>
-                    <td className="p-3 text-gray-700">Full Engagement: A $45k–120k</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A $12,000</td>
+                    <td className="p-3 text-gray-700">Full Engagement: A$45k–120k</td>
+                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$12,000</td>
                     <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 75%</td>
                   </tr>
                 </tbody>
@@ -539,7 +520,7 @@ const PricingPage: React.FC = () => {
                   <Users className="w-6 h-6 text-amber-600" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Human Experts</h4>
-                <p className="text-xs md:text-sm text-gray-600">World-class consultants</p>
+                <p className="text-xs md:text-sm text-gray-600">Senior-led engagements</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
