@@ -222,9 +222,10 @@ const MarketplacePage: React.FC = () => {
                     <Bot className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">AI Agent Pricing & Subscriptions</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">AI Agent Pricing</h3>
                     <p className="text-gray-600 text-sm">
-                      AI agents are available through our subscription plans. Once launched, agent usage will be included in your subscription tier based on engagement volume and complexity. Contact us for custom enterprise pricing.
+                      Using our AI agents yourself comes with a subscription (Growth, Professional or Enterprise, from A$49 a month), and each plan includes a monthly credit allowance. On a consulting engagement the agents work through your consultant and are included in the engagement fee, so no plan is needed.{' '}
+                      <Link to="/pricing" className="font-semibold text-purple-700 hover:text-purple-800 whitespace-nowrap">Compare plans</Link>
                     </p>
                   </div>
                 </div>
