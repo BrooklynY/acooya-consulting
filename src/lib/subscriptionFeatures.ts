@@ -24,9 +24,11 @@
  * A$169 against Pricing v3.1's A$49 / A$149 / A$499. It had no consumers, so
  * the stale figures never reached a visitor. Deleted rather than moved.
  *
- * The authoritative source for pricing is Acooya_Pricing_Model_v3_2.docx
- * (26 Aug 2026; brought into line 15 Oct 2026, overage, allowances and agent
- * wording per its section 10).
+ * The authoritative source for pricing is Acooya_Pricing_Model_v3_3.md
+ * (approved 26 Oct 2026). These lists are its section 02: a subscription is
+ * the self-service AI workspace, consulting is priced per engagement and needs
+ * no plan, and every line describes something the platform delivers or is
+ * marked "in development".
  * Anything here that contradicts it is a bug in here.
  */
 
@@ -46,47 +48,40 @@ export type SubscriptionTier = 'starter' | 'professional' | 'enterprise';
 
 const subscriptionFeatures: Record<SubscriptionTier, string[]> = {
   starter: [
-    'Up to 3 active engagements',
     'Up to 3 users per organisation',
-    '200 AI agent credits per month',
-    'Research and analytics agents (analytics in development)',
-    '14-day free trial — no credit card required',
+    'Up to 3 active self-service AI workspaces',
+    '100 AI agent credits per month',
+    'Research agent, plus analytics (in development)',
+    'Human approval step on every AI output',
+    '14-day free trial, 25 credits — no credit card required',
+    'Documents screened for personal identifiers before any AI reads them',
     'Pre-task credit confirmation — no surprises',
     'Top-up credit packs — A$0.55 per credit',
-    'Standard human consultant access',
-    'Secure encrypted workspace',
+    'Team messaging and shared documents',
+    'Data stored in the Asia-Pacific region (Singapore)',
     'Engagement history — 6 months',
-    'Email support — 48-hour response',
-    'All resources and frameworks library'
+    'Email support — 2 business days',
+    'Resources and frameworks library'
   ],
   professional: [
     'Everything in Growth, plus:',
-    'Up to 15 active engagements',
     'Up to 15 users per organisation',
+    'Up to 15 active self-service AI workspaces',
     '400 AI agent credits per month',
     'The full agent team, including strategy and multi-agent orchestration (in development)',
-    'Priority access to senior human consultants',
-    'Engagement history — 2 years',
-    'Advanced workspace with team collaboration',
-    'Quarterly strategic reviews',
-    'Priority support — 24-hour response',
-    'Advanced analytics dashboard',
-    'Top-up credit packs — A$0.55 per credit'
+    'Email support — 1 business day',
+    '14-day free trial, 100 credits — no credit card required',
+    'Engagement history — 2 years'
   ],
   enterprise: [
     'Everything in Professional, plus:',
-    'Unlimited active engagements',
     'Unlimited users per organisation',
-    '1,200 AI agent credits per month',
-    'Custom AI agent development',
-    'Dedicated lead consultant + engagement SLA',
+    'Unlimited active self-service AI workspaces',
+    '1,350 AI agent credits per month',
+    'Invoice billing on net-30 terms (subject to credit assessment)',
+    'Guided onboarding session',
     'Engagement history — unlimited retention',
-    'Asia-Pacific data residency (Singapore)',
-    'Dedicated Customer Success Manager',
-    'On-site workshops and executive briefings',
-    'White-glove concierge support',
-    'Custom integrations — scoped on request',
-    'Top-up credit packs — A$0.55 per credit'
+    'Custom integrations — scoped and quoted separately'
   ]
 };
 
