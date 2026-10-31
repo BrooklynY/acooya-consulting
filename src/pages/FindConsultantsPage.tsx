@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { INTAKE_URL } from '../lib/intake';
 import {
   Search,
   Filter,
@@ -321,10 +322,10 @@ const FindConsultantsPage: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <Link to="/engagements" className="btn btn-primary text-lg px-8 py-4">
-              Create a Hybrid Engagement
+            <a href={INTAKE_URL} className="btn btn-primary text-lg px-8 py-4">
+              Start a Brief
               <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

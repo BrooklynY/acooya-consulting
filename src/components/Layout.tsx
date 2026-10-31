@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { INTAKE_URL } from '../lib/intake';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { Menu, X, Shield, Lock, LogIn, UserPlus, CreditCard } from 'lucide-react';
 import ScrollManager from './ScrollManager';
@@ -81,13 +82,13 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
                 <LogIn className="w-4 h-4" />
                 Sign In
               </a>
-              <Link
-                to="/get-started"
+              <a
+                href={INTAKE_URL}
                 className="btn btn-primary text-sm"
               >
                 <UserPlus className="w-4 h-4 mr-2" />
-                Get Started
-              </Link>
+                Start a Brief
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -134,14 +135,14 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
                     <LogIn className="w-5 h-5" />
                     Sign In
                   </a>
-                  <Link
-                    to="/get-started"
+                  <a
+                    href={INTAKE_URL}
                     className="btn btn-primary w-full"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <UserPlus className="w-5 h-5 mr-2" />
-                    Get Started
-                  </Link>
+                    Start a Brief
+                  </a>
                 </div>
               </div>
             </div>
@@ -195,7 +196,8 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
             <div>
               <h3 className="font-semibold mb-4">Platform</h3>
               <ul className="space-y-3 text-sm text-gray-400">
-                <li><Link to="/engagements#overview" className="hover:text-white transition-colors">Engagement Portal</Link></li>
+                <li><Link to="/engagements#overview" className="hover:text-white transition-colors">How Engagements Work</Link></li>
+                <li><Link to="/get-started" className="hover:text-white transition-colors">Get in Touch</Link></li>
                 <li><a href="https://app.acooyaconsulting.com/login" className="hover:text-white transition-colors">Customer Portal</a></li>
                 <li><Link to="/knowledge#overview" className="hover:text-white transition-colors">Resources</Link></li>
                 <li><Link to="/pricing#overview" className="hover:text-white transition-colors">Pricing</Link></li>
