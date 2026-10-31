@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { INTAKE_URL, intakeUrl } from '../lib/intake';
 import {
   ArrowRight,
   CheckCircle,
@@ -30,10 +31,10 @@ const ServicesPage: React.FC = () => {
               Comprehensive consulting services powered by our unique Human-AI Synergy Model, designed to deliver measurable business outcomes at every engagement.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/engagements" className="btn bg-white text-blue-600 hover:bg-gray-100">
-                Start Your Engagement
+              <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100">
+                Start a Brief
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
+              </a>
               <Link to="/about" className="btn border-2 border-white/30 text-white hover:bg-white/10">
                 Meet Our Team
               </Link>
@@ -76,14 +77,13 @@ const ServicesPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <Link
-                    to="/engagements"
-                    state={{ service: service.id }}
+                  <a
+                    href={intakeUrl(service.id)}
                     className="btn btn-primary"
                   >
-                    Request This Service
+                    Start a Brief
                     <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
+                  </a>
                 </div>
 
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
@@ -142,7 +142,7 @@ const ServicesPage: React.FC = () => {
                       <p className="font-medium text-gray-900">{offering.name}</p>
                       <p className="text-xs text-gray-500 mt-0.5">{offering.type} · {offering.phases}</p>
                       <p className="text-sm text-gray-600 mt-2">{offering.summary}</p>
-                      <Link to={'/get-started?interest=' + encodeURIComponent(offering.name)} className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium mt-2 hover:underline">Discuss this offering<ArrowRight className="w-4 h-4" /></Link>
+                      <a href={intakeUrl(service.id)} className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium mt-2 hover:underline">Discuss this offering<ArrowRight className="w-4 h-4" /></a>
                     </li>
                   ))}
                 </ul>
@@ -157,7 +157,7 @@ const ServicesPage: React.FC = () => {
               <p className="text-xs text-gray-500 mt-0.5">{retainerOffering.type} · {retainerOffering.phases}</p>
               <p className="text-sm text-gray-600 mt-2">{retainerOffering.summary}</p>
             </div>
-            <Link to={'/get-started?interest=' + encodeURIComponent(retainerOffering.name)} className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium mt-4 md:mt-0 flex-shrink-0 hover:underline">Discuss this offering<ArrowRight className="w-4 h-4" /></Link>
+            <a href={INTAKE_URL} className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium mt-4 md:mt-0 flex-shrink-0 hover:underline">Discuss this offering<ArrowRight className="w-4 h-4" /></a>
           </div>
         </div>
       </section>
@@ -197,10 +197,10 @@ const ServicesPage: React.FC = () => {
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
             Schedule a free consultation to discover how Acooya can transform your business.
           </p>
-          <Link to="/engagements" className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
-            Start Your Engagement
+          <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
+            Start a Brief
             <ArrowRight className="w-5 h-5 ml-2" />
-          </Link>
+          </a>
         </div>
       </section>
     </div>

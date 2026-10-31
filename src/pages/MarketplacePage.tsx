@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { INTAKE_URL } from '../lib/intake';
 import {
   Search,
   Star,
@@ -380,10 +381,10 @@ const MarketplacePage: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <Link to={`/get-started?interest=${encodeURIComponent('Hybrid engagement — consultant + AI agents')}`} className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:opacity-90 transition-opacity text-lg">
-              Create a Hybrid Engagement
+            <a href={INTAKE_URL} className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:opacity-90 transition-opacity text-lg">
+              Start a Brief
               <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { INTAKE_URL } from '../lib/intake';
 import { useBackTo } from '../components/scroll-history';
 import {
   ArrowLeft,
@@ -452,9 +453,9 @@ const ResourceDetailPage: React.FC = () => {
             Combine these resources with Acooya's expert guidance for maximum impact.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-            <Link to="/engagements" className="btn bg-white text-blue-600 hover:bg-gray-100 text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
-              Book Free Consultation
-            </Link>
+            <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
+              Start a Brief
+            </a>
             <Link to="/marketplace" className="btn border-2 border-white/30 text-white hover:bg-white/10 text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
               Explore Services
             </Link>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { INTAKE_URL } from '../lib/intake';
 import {
   ArrowRight,
   CheckCircle,
@@ -67,10 +68,10 @@ const HomePage: React.FC = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/engagements" className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4">
-                  Start Your Engagement
+                <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4">
+                  Start a Brief
                   <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
+                </a>
                 <Link to="/services" className="btn border-2 border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4">
                   Explore Services
                 </Link>
@@ -523,10 +524,10 @@ const HomePage: React.FC = () => {
             Join our successful enterprises that have accelerated their growth with Acooya's Human-AI Synergy Model.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/engagements" className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
-              Book Free Consultation
+            <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
+              Start a Brief
               <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
+            </a>
             <Link to="/pricing" className="btn border-2 border-white/30 text-white hover:bg-white/10 text-lg px-10 py-4">
               View Pricing Plans
             </Link>
