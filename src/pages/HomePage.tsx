@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { stats, testimonials, consultingServices, aiAgents } from '../data/mockData';
 import { useConsultants } from '../hooks/use-consultants';
+import HeroStory from '../components/HeroStory';
 
 const LogoIcon = () => (
   <img src="/icon_final.png" alt="Acooya Consulting" className="w-20 h-20 object-contain" />
@@ -107,55 +108,7 @@ const HomePage: React.FC = () => {
 
             <div className="hidden lg:block relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20 rounded-3xl blur-xl"></div>
-              <div className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                {/* Logo Section - 4-Bird Icon */}
-                <div className="flex items-center gap-4 mb-6 relative z-10">
-                  <img
-                    src="/icon_4bird.png"
-                    alt="Human-AI Synergy"
-                    className="w-16 h-16 object-contain align-middle"
-                  />
-                  <div>
-                    <h3 className="font-semibold text-xl text-white">Human-AI Synergy</h3>
-                    <p className="text-sm text-gray-300">How an engagement workspace looks (illustration)</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
-                      <Users className="w-4 h-4" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Your lead consultant</p>
-                      <p className="text-xs text-gray-400">Reviews and approves every AI output</p>
-                    </div>
-                    <span className="badge badge-green">Lead</span>
-                  </div>
-
-                  <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
-                      <Bot className="w-4 h-4" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Aria, research agent</p>
-                      <p className="text-xs text-gray-400">Drafts from your documents</p>
-                    </div>
-                    <span className="badge badge-blue">Drafting</span>
-                  </div>
-
-                  <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                    <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
-                      <FileText className="w-4 h-4" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Research pack</p>
-                      <p className="text-xs text-gray-400">Released only after human approval</p>
-                    </div>
-                    <span className="badge badge-blue">In review</span>
-                  </div>
-                </div>
-              </div>
+              <HeroStory />
             </div>
           </div>
         </div>
