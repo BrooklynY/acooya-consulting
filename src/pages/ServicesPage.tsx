@@ -195,7 +195,7 @@ const ServicesPage: React.FC = () => {
         <div className="container-custom text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            Schedule a free consultation to discover how Acooya can transform your business.
+            Tell us what you are working on in a short brief. A senior consultant reads it and replies by email.
           </p>
           <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
             Start a Brief

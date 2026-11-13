@@ -56,7 +56,7 @@ const MarketplacePage: React.FC = () => {
               Find Your Perfect Consulting Partner
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              Choose from world-class human consultants, powerful AI agents, or combine both for maximum impact.
+              Choose senior human consultants, purpose-built AI agents, or both together, with a person approving every AI output.
             </p>
           </div>
         </div>
@@ -364,9 +364,8 @@ const MarketplacePage: React.FC = () => {
               </div>
               <ul className="space-y-3">
                 {[
-                  'Processing large volumes of data rapidly',
-                  'Pattern recognition across millions of data points',
-                  'Automated report generation and synthesis',
+                  'Reading and cross-referencing many documents quickly',
+                  'Drafting structured reports for a person to review',
                   'Available whenever you need them — most tasks complete in minutes',
                   'Consistent execution of standardized processes',
                   'Consistent, repeatable analysis across every engagement'

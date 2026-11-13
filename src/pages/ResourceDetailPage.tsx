@@ -448,9 +448,9 @@ const ResourceDetailPage: React.FC = () => {
       {/* CTA Section */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
         <div className="container-custom text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Accelerate Your Transformation?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Want to apply this to your organisation?</h2>
           <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto">
-            Combine these resources with Acooya's expert guidance for maximum impact.
+            Send a short brief and a senior consultant will reply by email.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-base md:text-lg px-6 md:px-8 py-3 md:py-4">

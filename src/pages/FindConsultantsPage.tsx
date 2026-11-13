@@ -49,7 +49,7 @@ const FindConsultantsPage: React.FC = () => {
               Find Your Perfect Consulting Partner
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              Choose from world-class human consultants, powerful AI agents, or combine both for maximum impact.
+              Choose senior human consultants, purpose-built AI agents, or both together, with a person approving every AI output.
             </p>
           </div>
         </div>
@@ -305,12 +305,11 @@ const FindConsultantsPage: React.FC = () => {
               </div>
               <ul className="space-y-3">
                 {[
-                  'Processing large volumes of data rapidly',
-                  'Pattern recognition across millions of data points',
-                  'Automated report generation and synthesis',
-                  '24/7 availability and instant response times',
+                  'Reading and cross-referencing many documents quickly',
+                  'Drafting structured reports for a person to review',
+                  'Available whenever you need them — most tasks complete in minutes',
                   'Consistent execution of standardized processes',
-                  'Real-time monitoring and anomaly detection'
+                  'Consistent, repeatable analysis across every engagement'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />

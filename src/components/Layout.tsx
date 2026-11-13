@@ -198,7 +198,7 @@ const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
               <ul className="space-y-3 text-sm text-gray-400">
                 <li><Link to="/engagements#overview" className="hover:text-white transition-colors">How Engagements Work</Link></li>
                 <li><Link to="/get-started" className="hover:text-white transition-colors">Get in Touch</Link></li>
-                <li><a href="https://app.acooyaconsulting.com/login" className="hover:text-white transition-colors">Customer Portal</a></li>
+                <li><a href="https://app.acooyaconsulting.com/login" className="hover:text-white transition-colors">Sign in</a></li>
                 <li><Link to="/knowledge#overview" className="hover:text-white transition-colors">Resources</Link></li>
                 <li><Link to="/pricing#overview" className="hover:text-white transition-colors">Pricing</Link></li>
                 <li><Link to="/about#overview" className="hover:text-white transition-colors">About Acooya</Link></li>

@@ -210,14 +210,11 @@ export const aiAgents = [
     name: 'Aria - Research Agent',
     category: 'Research & Analysis',
     capabilities: [
-      'Market research automation',
-      'Competitive landscape analysis',
-      'Trend identification & forecasting',
-      'Data synthesis from multiple sources'
+      'Research grounded only in your own documents',
+      'An evidence register: what each document shows, and how strongly',
+      'Findings cited to their source, with confidence labels',
+      'Evidence gaps and open questions named, not filled'
     ],
-    usageCount: 12450,
-    rating: 4.8,
-    pricePerSession: 150,
     availability: 'Available',
     description: 'Research agent grounded in your own documents. Every draft is reviewed and released by a human — you stay in control of what counts.',
     icon: 'search'
@@ -232,9 +229,6 @@ export const aiAgents = [
       'Risk assessment matrices',
       'Implementation roadmapping'
     ],
-    usageCount: 8920,
-    rating: 4.9,
-    pricePerSession: 200,
     availability: 'Launching Soon',
     description: 'Strategic planning AI agent that develops comprehensive strategic options with detailed implementation pathways.',
     icon: 'target'
@@ -244,14 +238,11 @@ export const aiAgents = [
     name: 'Nova - Analytics Agent',
     category: 'Data & Insights',
     capabilities: [
-      'Real-time data processing',
+      'Analysis of your figures and data',
       'KPI dashboard generation',
       'Predictive analytics',
       'Custom report creation'
     ],
-    usageCount: 15600,
-    rating: 4.7,
-    pricePerSession: 175,
     availability: 'Launching Soon',
     description: 'Powerful analytics agent that transforms raw data into actionable insights and executive-ready reports.',
     icon: 'chart'
@@ -266,9 +257,6 @@ export const aiAgents = [
       'Document generation',
       'Progress reporting'
     ],
-    usageCount: 11800,
-    rating: 4.8,
-    pricePerSession: 125,
     availability: 'Launching Soon',
     description: 'Orchestration agent that coordinates other AI-Agents such as Aria, Atlas, and Nova to deliver end-to-end engagement workflows with automated tracking and reporting.',
     icon: 'rocket'

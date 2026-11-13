@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { stats, testimonials, consultingServices, aiAgents } from '../data/mockData';
 import { useConsultants } from '../hooks/use-consultants';
+import HeroStory from '../components/HeroStory';
 
 const LogoIcon = () => (
   <img src="/icon_final.png" alt="Acooya Consulting" className="w-20 h-20 object-contain" />
@@ -64,7 +65,7 @@ const HomePage: React.FC = () => {
               </h1>
 
               <p className="text-xl text-gray-300 mb-8 max-w-xl">
-                Acooya Consulting bridges world-class human consultants with purpose-built AI agents to deliver faster, deeper, and more impactful outcomes for your organisation.
+                Acooya Consulting pairs senior human consultants with purpose-built AI agents to deliver faster, deeper, and more impactful outcomes for your organisation.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -107,55 +108,7 @@ const HomePage: React.FC = () => {
 
             <div className="hidden lg:block relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20 rounded-3xl blur-xl"></div>
-              <div className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                {/* Logo Section - 4-Bird Icon */}
-                <div className="flex items-center gap-4 mb-6 relative z-10">
-                  <img
-                    src="/icon_4bird.png"
-                    alt="Human-AI Synergy"
-                    className="w-16 h-16 object-contain align-middle"
-                  />
-                  <div>
-                    <h3 className="font-semibold text-xl text-white">Human-AI Synergy</h3>
-                    <p className="text-sm text-gray-300">Shared engagement workspace</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
-                      <Users className="w-4 h-4" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Brooklyn Yang</p>
-                      <p className="text-xs text-gray-400">Business Architecture & Operating Design</p>
-                    </div>
-                    <span className="badge badge-green">Active</span>
-                  </div>
-
-                  <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
-                      <Bot className="w-4 h-4" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Atlas AI Agent</p>
-                      <p className="text-xs text-gray-400">Analysis & Research</p>
-                    </div>
-                    <span className="badge badge-blue">Processing</span>
-                  </div>
-
-                  <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                    <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
-                      <FileText className="w-4 h-4" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Phase 2 Report</p>
-                      <p className="text-xs text-gray-400">Generated 2 min ago</p>
-                    </div>
-                    <span className="badge badge-green">Complete</span>
-                  </div>
-                </div>
-              </div>
+              <HeroStory />
             </div>
           </div>
         </div>
@@ -195,7 +148,7 @@ const HomePage: React.FC = () => {
           </div>
 
           <p className="text-lg text-gray-600 text-center max-w-4xl mx-auto mb-16">
-            Acooya is built around the Human-AI Synergy Model—a revolutionary partnership framework that combines the strategic thinking, emotional intelligence, and domain expertise of world-class consultants with the analytical power, speed, and scalability of purpose-built AI agents.
+            Acooya is built around the Human-AI Synergy Model—a partnership framework that combines the strategic thinking, emotional intelligence, and domain expertise of senior consultants with the analytical power, speed, and scalability of purpose-built AI agents.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -258,21 +211,21 @@ const HomePage: React.FC = () => {
                 icon: 'building',
                 title: 'Operating Model',
                 description: 'Transform your organisational structure for maximum efficiency and AI readiness',
-                features: ['Operating Model Design', 'Digital Transformation', 'Change Management']
+                features: ['Target Operating Model Design', 'Organisational Redesign', 'Capability Mapping']
               },
               {
                 id: 'delivery-enablement',
                 icon: 'rocket',
                 title: 'Delivery Enablement',
                 description: 'Empower your teams with AI-augmented tools and methodologies',
-                features: ['Program Management', 'Agile Transformation', 'PMO Setup']
+                features: ['Programme Structuring', 'Change Management', 'Delivery Acceleration']
               },
               {
                 id: 'insight-reporting',
                 icon: 'chart',
                 title: 'Insight & Reporting',
                 description: 'Make data-driven decisions with AI-powered analytics and reporting',
-                features: ['Market Intelligence', 'Competitive Analysis', 'Growth Strategy']
+                features: ['Decision-grade Analytics', 'Executive Reporting', 'Business Cases']
               },
               {
                 id: 'ai-transformation',
@@ -319,7 +272,7 @@ const HomePage: React.FC = () => {
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Talent</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-4">The Perfect Blend of Human Intelligence and AI Power</h2>
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              Every engagement combines the strategic thinking of world-class consultants with the speed and scalability of purpose-built AI agents
+              Every engagement combines the strategic thinking of senior consultants with the speed and scalability of purpose-built AI agents
             </p>
           </div>
 
@@ -521,7 +474,7 @@ const HomePage: React.FC = () => {
           <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Get Started Today</span>
           <h2 className="text-3xl lg:text-5xl font-bold mt-4 mb-6">Ready to Transform Your Business?</h2>
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            Join our successful enterprises that have accelerated their growth with Acooya's Human-AI Synergy Model.
+            Tell us what you are working on in a short brief. A senior consultant reads it and replies by email.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
