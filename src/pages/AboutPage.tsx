@@ -39,7 +39,7 @@ const leadershipRoles = [
     title: 'Chief Technology Officer',
     color: 'blue',
     icon: Code2,
-    description: 'We are recruiting a world-class technology leader to drive Acooya\'s AI infrastructure, platform architecture, and engineering excellence.'
+    description: 'We are recruiting a senior technology leader to drive Acooya\'s AI infrastructure, platform architecture, and engineering excellence.'
   },
   {
     id: 'cdio',
@@ -263,7 +263,7 @@ const AboutPage: React.FC = () => {
               Pioneering the Future of Consulting
             </h1>
             <p className="text-xl lg:text-2xl text-gray-300 mb-10 leading-relaxed">
-              We're building the bridge between world-class human expertise and AI-powered intelligence to create consulting outcomes that were previously impossible.
+              We're building the bridge between senior human expertise and purpose-built AI agents, with a person accountable for every output.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
@@ -291,7 +291,7 @@ const AboutPage: React.FC = () => {
                 Too many organisations pay too much, wait too long, and receive too little from traditional consulting firms. After 14 years on the inside, I decided to build something better.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Acooya combines world-class strategic expertise with purpose-built AI agents, with a named consultant approving every AI output before it reaches you.
+                Acooya combines senior strategic expertise with purpose-built AI agents, with a named consultant approving every AI output before it reaches you.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 The consulting industry is overdue for reinvention. <span className="font-semibold text-blue-600">Acooya is that reinvention.</span>
@@ -306,7 +306,7 @@ const AboutPage: React.FC = () => {
                     <Target className="w-10 h-10 text-blue-600 mb-4" />
                     <h3 className="font-bold text-lg mb-2">Our Mission</h3>
                     <p className="text-gray-600 text-sm">
-                      Democratise access to world-class strategic thinking through human-AI collaboration.
+                      Make senior strategic thinking affordable through human-AI collaboration.
                     </p>
                   </div>
                   <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6">
@@ -367,7 +367,7 @@ const AboutPage: React.FC = () => {
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Leadership Team</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-4">Founded with Purpose. Built for the Future.</h2>
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              Acooya is actively building a world-class leadership team. If you are an experienced executive who believes in the power of human-AI collaboration, we would love to hear from you.
+              Acooya is building its senior leadership team. If you are an experienced executive who believes in the power of human-AI collaboration, we would love to hear from you.
             </p>
           </div>
 
@@ -398,7 +398,7 @@ const AboutPage: React.FC = () => {
                 <Code2 className="w-12 h-12 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-1">Chief Technology Officer</h3>
-              <p className="text-sm text-gray-600 mb-4">We are recruiting a world-class technology leader to drive Acooya's AI infrastructure, platform architecture, and engineering excellence.</p>
+              <p className="text-sm text-gray-600 mb-4">We are recruiting a senior technology leader to drive Acooya's AI infrastructure, platform architecture, and engineering excellence.</p>
               <button
                 onClick={() => setSelectedRole(leadershipRoles[0])}
                 className="inline-flex items-center text-blue-600 font-medium text-sm hover:text-blue-700 transition-colors"
