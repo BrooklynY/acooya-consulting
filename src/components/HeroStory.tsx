@@ -44,7 +44,7 @@ const Tick = ({ children }: { children: React.ReactNode }) => (
   <div className="flex items-center gap-2 text-[12px]"><span className="w-4 h-4 rounded-full bg-gray-900 flex items-center justify-center"><Check className="w-3 h-3 text-white" /></span>{children}</div>
 );
 
-type Phase = { name: string; caption: string; gate: string; ai: string; decide: string; picture: (typed: string) => JSX.Element };
+type Phase = { name: string; caption: string; gate: string; picture: (typed: string) => JSX.Element };
 
 /** Dots filled per option for Cost, Risk, Fit: shapes only, not data. */
 const OPTION_SCORES = [[1, 2, 2], [2, 1, 3], [3, 3, 1]];
@@ -55,8 +55,6 @@ const PHASES: Phase[] = [
     name: 'Frame',
     caption: 'Frame: you describe the problem. A senior consultant turns it into a charter.',
     gate: 'G0 · Charter approved',
-    ai: 'A summary of the documents you share',
-    decide: 'The question, scope and depth',
     picture: (typed) => (
       <div className="flex flex-col gap-2">
         <div className="border border-gray-200 rounded-2xl bg-white shadow-sm pl-4 pr-2 py-2 flex items-end justify-between gap-2">
@@ -71,8 +69,6 @@ const PHASES: Phase[] = [
     name: 'Discover',
     caption: 'Discover: Aria gathers the evidence from your documents. Your consultant checks it.',
     gate: 'G1 · Findings accepted',
-    ai: 'Aria: evidence from your documents',
-    decide: 'Whether the findings stand',
     picture: () => (
       <div className="flex flex-col gap-1.5">
         <Row right={<Pill tone="blue">Ready</Pill>}>Monthly operations report</Row>
@@ -85,8 +81,6 @@ const PHASES: Phase[] = [
     name: 'Design',
     caption: 'Design: the realistic options, set out and compared.',
     gate: 'G2 · Preferred option chosen',
-    ai: 'First-draft options and appraisal tables',
-    decide: 'The preferred option',
     picture: () => (
       <div className="grid grid-cols-3 gap-2">
         {['Option A', 'Option B', 'Option C'].map((o, i) => (
@@ -104,8 +98,6 @@ const PHASES: Phase[] = [
     name: 'Decide',
     caption: 'Decide: a business case sized to the decision, and a roadmap.',
     gate: 'G3 · Investment or plan approved',
-    ai: 'Financial model and roadmap drafts',
-    decide: 'Whether to invest',
     picture: () => (
       <div className="border border-gray-200 rounded-lg bg-white px-3 py-2.5 flex flex-col gap-2">
         <span className="text-[12px] font-semibold">Business case · proportionate to the risk</span>
@@ -119,8 +111,6 @@ const PHASES: Phase[] = [
     name: 'Pilot',
     caption: 'Pilot: a bounded test, judged against measures you set.',
     gate: 'G4 · Proceed, adapt or stop',
-    ai: 'Pilot data analysis and report drafts',
-    decide: 'Proceed, adapt or stop',
     picture: () => (
       <div className="flex flex-col gap-1.5">
         <Row right={<span className="text-[11px] text-gray-500">measured</span>}>Measure agreed at the last gate</Row>
@@ -133,8 +123,6 @@ const PHASES: Phase[] = [
     name: 'Embed',
     caption: 'Embed: rollout, benefits handed to their owner, lessons kept.',
     gate: 'G5 · Ownership and benefits handed over',
-    ai: 'Tracking and status report drafts',
-    decide: 'That ownership has passed to you',
     picture: () => (
       <div className="border border-gray-200 rounded-lg bg-white px-3 py-2.5 flex flex-col gap-2">
         <Tick>Rollout and change support</Tick>
@@ -145,11 +133,8 @@ const PHASES: Phase[] = [
   },
 ];
 
-const Key = ({ color, title, text }: { color: string; title: string; text: string }) => (
-  <div className="flex flex-col gap-0.5 min-w-0">
-    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold"><span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }}></span>{title}</span>
-    <span className="text-[11px] leading-snug text-gray-600">{text}</span>
-  </div>
+const Key = ({ color, title }: { color: string; title: string }) => (
+  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold whitespace-nowrap"><span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }}></span>{title}</span>
 );
 
 export default function HeroStory() {
@@ -186,8 +171,8 @@ export default function HeroStory() {
   const current = PHASES[step]!;
 
   return (
-    <div className="relative bg-white text-gray-900 rounded-3xl p-6 border border-white/20 shadow-2xl" onMouseEnter={() => setHeld(true)} onMouseLeave={() => setHeld(false)} onFocus={() => setHeld(true)} onBlur={() => setHeld(false)}>
-      <div className="flex items-start justify-between gap-4 mb-4">
+    <div className="relative bg-white text-gray-900 rounded-3xl p-5 border border-white/20 shadow-2xl" onMouseEnter={() => setHeld(true)} onMouseLeave={() => setHeld(false)} onFocus={() => setHeld(true)} onBlur={() => setHeld(false)}>
+      <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex items-center gap-3">
           <img src="/icon_4bird.png" alt="" className="w-11 h-11 object-contain" />
           <div>
@@ -202,24 +187,26 @@ export default function HeroStory() {
       </div>
 
       <div className="rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden">
-        <div className="h-[290px] px-5 pt-4 relative">
+        <div className="h-[236px] px-5 pt-3.5 relative">
           {PHASES.map((ph, i) => (
-            <div key={ph.name} aria-hidden={i !== step} className={`absolute inset-x-5 top-4 flex flex-col gap-3 transition-all duration-500 ${i === step ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+            <div key={ph.name} aria-hidden={i !== step} className={`absolute inset-x-5 top-3.5 flex flex-col gap-2.5 transition-all duration-500 ${i === step ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
               <div className="flex items-baseline justify-between gap-2"><span className="text-[20px] font-semibold leading-none">{ph.name}</span><span className="text-[12px] text-gray-500">Phase {i + 1} of {PHASES.length}</span></div>
               <div className="h-[118px]">{ph.picture(BRIEF.slice(0, chars))}</div>
-              <div className="border-t border-gray-200 pt-2.5 grid grid-cols-3 gap-3">
-                <Key color={ARIA} title="AI drafts" text={ph.ai} />
-                <Key color={APPROVED} title="Consultant approves" text="Every AI draft, before you see it" />
-                <Key color="#1A1A1B" title="You decide" text={ph.decide} />
+              <div className="border-t border-gray-200 pt-2.5 flex items-center justify-between gap-3 flex-wrap">
+                <span className="flex items-center gap-3">
+                  <Key color={ARIA} title="AI drafts" />
+                  <Key color={APPROVED} title="Consultant approves" />
+                  <Key color="#1A1A1B" title="You decide" />
+                </span>
+                <span className="text-[11px] font-semibold text-gray-700 whitespace-nowrap">Gate {ph.gate}</span>
               </div>
-              <span className="text-[12px] font-semibold text-gray-700">Gate {ph.gate}</span>
             </div>
           ))}
         </div>
-        <p aria-live="polite" className="m-0 px-5 py-3 min-h-[4rem] flex items-center bg-gray-900 text-white text-sm leading-snug">{current.caption}</p>
+        <p aria-live="polite" className="m-0 px-5 py-2.5 min-h-[3.25rem] flex items-center bg-gray-900 text-white text-sm leading-snug">{current.caption}</p>
       </div>
 
-      <div className="mt-4 grid grid-cols-6 gap-1.5" role="group" aria-label="Phases">
+      <div className="mt-3 grid grid-cols-6 gap-1.5" role="group" aria-label="Phases">
         {PHASES.map((ph, i) => (
           <button key={ph.name} type="button" onClick={() => { setStep(i); setPaused(true); }} aria-current={i === step ? 'step' : undefined} className="flex flex-col items-center gap-1.5 min-h-[44px] pt-1 text-[11px] text-gray-500 hover:text-gray-900">
             <span className={`h-1 w-full rounded-full ${i < step ? 'bg-gray-400' : i === step ? 'bg-gray-900' : 'bg-gray-200'}`}></span>
