@@ -170,16 +170,6 @@ const PricingPage: React.FC = () => {
       )}`;
   };
 
-  // The marketing site has no auth, so `user` was permanently null and this
-  // resolved to 'starter' for EVERY visitor — highlighting a plan as "current"
-  // to people who have no account. Kept as a widened constant so rendering is
-  // byte-identical to before this cleanup; narrowing it to the literal made
-  // tsc flag the tier comparison below as unreachable, which it already was at
-  // runtime. Both the false "current plan" highlight and the now-provably-dead
-  // branch are worth removing when this page is next revisited — a logged-out
-  // visitor has no current tier at all.
-  const currentTier: SubscriptionTier = 'starter';
-
   const renderFeatureValue = (value: boolean | string) => {
     if (value === true) return <Check className="w-5 h-5 text-green-500 mx-auto" />;
     if (value === false) return <X className="w-5 h-5 text-gray-300 mx-auto" />;
@@ -191,10 +181,6 @@ const PricingPage: React.FC = () => {
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
-            <Star className="w-4 h-4 fill-current" />
-            Built for all sizes of organisations worldwide
-          </div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Simple, Transparent Pricing
           </h1>
@@ -235,7 +221,6 @@ const PricingPage: React.FC = () => {
             const price = isAnnual ? tier.annualPrice : tier.monthlyPrice;
             const monthlyEquivalent = isAnnual ? Math.round(tier.annualPrice / 12) : tier.monthlyPrice;
             const features = getSubscriptionFeatures(tier.id);
-            const isCurrent = currentTier === tier.id;
             const Icon = tier.icon;
 
             return (
@@ -300,8 +285,6 @@ const PricingPage: React.FC = () => {
                     className={`w-full py-3 px-4 rounded-xl font-semibold transition-all mb-6 flex items-center justify-center gap-2 cursor-pointer ${
                       tier.highlighted
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
-                        : tier.id === currentTier
-                        ? 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-[1.02] active:scale-[0.98]'
                         : tier.id === 'enterprise'
                         ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
                         : 'bg-gradient-to-r from-slate-600 to-gray-700 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
@@ -582,11 +565,11 @@ const PricingPage: React.FC = () => {
               <ArrowRight className="w-5 h-5" />
             </button>
             <button
-              onClick={() => navigate('/marketplace')}
+              onClick={() => navigate('/get-started?interest=Pricing question')}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-50 transition-colors border border-gray-300"
             >
               <HelpCircle className="w-5 h-5" />
-              Talk to Sales
+              Ask About Pricing
             </button>
           </div>
           <p className="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
