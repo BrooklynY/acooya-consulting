@@ -15,8 +15,10 @@
  *
  * Honesty rules: an illustration of the framework, not a client engagement, and
  * no invented figures; Aria is named only where she works today (evidence from
- * documents); later phases say "AI drafts" because no other agent is live; no
- * AI reads the brief (31 Oct rule); no model names (Pricing Model §07); green
+ * documents); later phases say "AI drafts" because no other agent is live; the
+ * brief line says only that a senior consultant reads every brief (16 Nov:
+ * names no one, says nothing about AI either way); no model names (Pricing
+ * Model §07); green
  * (#2ECC71) appears only beside the consultant's approval.
  *
  * Accessibility: it advances every 5 s but has a visible pause control and
@@ -71,7 +73,7 @@ const PHASES: Phase[] = [
           <span className="text-[14px] leading-snug py-1 min-h-[2.75rem]">{typed}<span className="inline-block w-0.5 h-4 bg-gray-900 ml-0.5 align-[-2px] motion-safe:animate-pulse"></span></span>
           <span className="w-9 h-9 shrink-0 rounded-full bg-gray-900 flex items-center justify-center"><ArrowUp className="w-4 h-4 text-white" /></span>
         </div>
-        <Row right={<Pill tone="blue">Draft charter</Pill>}>Goes to a senior consultant. No AI reads it.</Row>
+        <Row right={<Pill tone="blue">Draft charter</Pill>}>A senior consultant reads every brief.</Row>
       </div>
     ),
   },
