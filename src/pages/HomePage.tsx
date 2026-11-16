@@ -27,10 +27,6 @@ import { stats, testimonials, consultingServices, aiAgents } from '../data/mockD
 import { useConsultants } from '../hooks/use-consultants';
 import HeroStory from '../components/HeroStory';
 
-const LogoIcon = () => (
-  <img src="/icon_final.png" alt="Acooya Consulting" className="w-20 h-20 object-contain" />
-);
-
 const HomePage: React.FC = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
