@@ -30,7 +30,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, defaultO
 };
 
 const PrivacyPolicyPage: React.FC = () => {
-  const lastUpdated = "13 April 2026";
+  const lastUpdated = "16 November 2026";
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -547,53 +547,9 @@ const PrivacyPolicyPage: React.FC = () => {
                 Cookies & Tracking Technologies
               </h2>
 
-              <AccordionItem title="Types of Cookies We Use" defaultOpen={true}>
-                <div className="space-y-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Essential Cookies</h4>
-                    <p className="text-sm text-gray-600 mb-2">Required for the website to function. Cannot be disabled.</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Session management</span>
-                      <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Security</span>
-                      <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Load balancing</span>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Performance Cookies</h4>
-                    <p className="text-sm text-gray-600 mb-2">Help us understand how visitors interact with our website.</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Analytics</span>
-                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Error tracking</span>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Functional Cookies</h4>
-                    <p className="text-sm text-gray-600 mb-2">Remember your preferences and settings.</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">Language preferences</span>
-                      <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">Theme settings</span>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Marketing Cookies</h4>
-                    <p className="text-sm text-gray-600 mb-2">Used to deliver relevant advertisements (with consent).</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded">Targeted advertising</span>
-                      <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded">Social media integration</span>
-                    </div>
-                  </div>
-                </div>
-              </AccordionItem>
-
-              <AccordionItem title="Managing Cookies">
-                <p className="mb-4">You can manage your cookie preferences through:</p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Our Cookie Consent Banner when you first visit</li>
-                  <li>Your browser settings (all cookies)</li>
-                  <li>Your account settings (marketing cookies)</li>
-                  <li>Industry opt-out tools (e.g., aboutads.info, youronlinechoices.com)</li>
-                </ul>
-              </AccordionItem>
+              <p className="text-gray-600 leading-relaxed">
+                We use only the cookies needed to run the platform (one keeps you signed in, one remembers a layout choice), and we count website visits with Vercel Web Analytics, which sets no cookies. We use no advertising or marketing cookies. Our <Link to="/cookie-policy" className="text-blue-600 hover:text-blue-800 font-medium">Cookie Policy</Link> lists each cookie and what your browser stores.
+              </p>
             </div>
 
             {/* Third-Party Sharing */}

@@ -15,6 +15,8 @@ import GetStartedPage from './pages/GetStartedPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
+// Vercel Web Analytics: cookieless page counts (Cookie Policy, 16 Nov 2026).
+import { Analytics } from '@vercel/analytics/react';
 import './styles/globals.css';
 
 
@@ -46,6 +48,7 @@ function App() {
           {/* Fallback Routes */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <Analytics />
       </BrowserRouter>
   );
 }
