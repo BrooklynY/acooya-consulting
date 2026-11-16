@@ -3,12 +3,13 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import sourceIdentifierPlugin from 'vite-plugin-source-identifier'
 
-const isProd = process.env.BUILD_MODE === 'prod'
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     sourceIdentifierPlugin({
-      enabled: !isProd,
+      // Dev server only: in a build it stamps every element with its source
+      // file and line (3,113 attributes in the 16 Nov bundle).
+      enabled: command === 'serve',
       attributePrefix: 'data-matrix',
       includeProps: true,
     })
@@ -18,4 +19,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-})
+}))
