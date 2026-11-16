@@ -347,7 +347,7 @@ const AboutPage: React.FC = () => {
             {[
               { value: '2026', label: 'Founded', icon: Rocket },
               { value: '4', label: 'Sectors our consultants know: Government, Aviation, Finance, Telecoms', icon: Globe },
-              { value: '4', label: 'AI Agents Launching', icon: Bot },
+              { value: '1', label: 'AI agent live, more in development', icon: Bot },
               { value: '100%', label: 'AI outputs approved by a person before release', icon: Award },
             ].map((stat, i) => (
               <div key={i} className="text-center">
