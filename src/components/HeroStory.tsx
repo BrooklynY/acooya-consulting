@@ -8,6 +8,11 @@
  * Catalog v1.0 §2.1: change the catalog first, this second.
  * It stands in for the screen-recorded film until the new home page ships.
  *
+ * Briefs (16 Nov 2026): three rotate, one per loop of the six phases. Each is
+ * a situation card's quote from the platform's src/lib/intake/situations.ts
+ * (ai-too-many-requests, de-numbers-not-trusted, om-savings), word for word,
+ * so a visitor who starts a brief meets the same words. Change the card first.
+ *
  * Honesty rules: an illustration of the framework, not a client engagement, and
  * no invented figures; Aria is named only where she works today (evidence from
  * documents); later phases say "AI drafts" because no other agent is live; no
@@ -25,7 +30,12 @@ import { ArrowUp, Check, Pause, Play } from 'lucide-react';
 const ARIA = '#E91E63';
 const APPROVED = '#2ECC71';
 const STEP_MS = 5000;
-const BRIEF = 'Two divisions were merged into us, and nobody knows who does what by 1 July.';
+type Brief = { text: string; ready: string; protectedDoc: string };
+const BRIEFS: Brief[] = [
+  { text: 'Everyone wants AI and we can’t tell which requests are worth doing.', ready: 'AI request register', protectedDoc: 'Customer complaints extract' },
+  { text: 'Over budget, past date, and the steering committee doesn’t trust the numbers.', ready: 'Programme status reports', protectedDoc: 'Contractor timesheet extract' },
+  { text: 'We have to find 5% savings without breaking frontline services.', ready: 'Monthly operations report', protectedDoc: 'Staff roster extract' },
+];
 
 const Pill = ({ children, tone }: { children: React.ReactNode; tone: 'blue' | 'amber' | 'dark' }) => {
   const tones = { blue: 'bg-blue-50 text-blue-800', amber: 'bg-amber-50 text-amber-800', dark: 'bg-gray-900 text-white' };
@@ -44,7 +54,7 @@ const Tick = ({ children }: { children: React.ReactNode }) => (
   <div className="flex items-center gap-2 text-[12px]"><span className="w-4 h-4 rounded-full bg-gray-900 flex items-center justify-center"><Check className="w-3 h-3 text-white" /></span>{children}</div>
 );
 
-type Phase = { name: string; caption: string; gate: string; picture: (typed: string) => JSX.Element };
+type Phase = { name: string; caption: string; gate: string; picture: (typed: string, brief: Brief) => JSX.Element };
 
 /** Dots filled per option for Cost, Risk, Fit: shapes only, not data. */
 const OPTION_SCORES = [[1, 2, 2], [2, 1, 3], [3, 3, 1]];
@@ -69,10 +79,10 @@ const PHASES: Phase[] = [
     name: 'Discover',
     caption: 'Discover: Aria gathers the evidence from your documents. Your consultant checks it.',
     gate: 'G1 · Findings accepted',
-    picture: () => (
+    picture: (_typed, brief) => (
       <div className="flex flex-col gap-1.5">
-        <Row right={<Pill tone="blue">Ready</Pill>}>Monthly operations report</Row>
-        <Row right={<Pill tone="amber">Protected · held back from AI</Pill>}>Staff roster extract</Row>
+        <Row right={<Pill tone="blue">Ready</Pill>}>{brief.ready}</Row>
+        <Row right={<Pill tone="amber">Protected · held back from AI</Pill>}>{brief.protectedDoc}</Row>
         <Row right={<span className="text-[11px] text-gray-500 whitespace-nowrap">source named</span>}><span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full" style={{ backgroundColor: ARIA }}></span>Finding 1 · measured data</span></Row>
       </div>
     ),
@@ -139,6 +149,7 @@ const Key = ({ color, title }: { color: string; title: string }) => (
 
 export default function HeroStory() {
   const [step, setStep] = useState(0);
+  const [briefIndex, setBriefIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [held, setHeld] = useState(false);
   const [reduced, setReduced] = useState(false);
@@ -155,18 +166,25 @@ export default function HeroStory() {
   const running = !paused && !held && !reduced;
   useEffect(() => {
     if (!running) return;
-    const t = window.setTimeout(() => setStep((s) => (s + 1) % PHASES.length), STEP_MS);
+    const t = window.setTimeout(() => {
+      // A full loop ends on Embed; the next loop opens on the next brief.
+      if (step === PHASES.length - 1) setBriefIndex((b) => (b + 1) % BRIEFS.length);
+      setStep((step + 1) % PHASES.length);
+    }, STEP_MS);
     return () => window.clearTimeout(t);
   }, [running, step]);
+
+  const brief = BRIEFS[briefIndex]!;
 
   // The brief types itself while Frame is showing; shown whole with reduced motion.
   useEffect(() => {
     if (step !== 0) return;
-    if (reduced) { setChars(BRIEF.length); return; }
+    const len = BRIEFS[briefIndex]!.text.length;
+    if (reduced) { setChars(len); return; }
     setChars(0);
-    const t = window.setInterval(() => setChars((c) => (c >= BRIEF.length ? c : c + 1)), 32);
+    const t = window.setInterval(() => setChars((c) => (c >= len ? c : c + 1)), 32);
     return () => window.clearInterval(t);
-  }, [step, reduced]);
+  }, [step, briefIndex, reduced]);
 
   const current = PHASES[step]!;
 
@@ -191,7 +209,7 @@ export default function HeroStory() {
           {PHASES.map((ph, i) => (
             <div key={ph.name} aria-hidden={i !== step} className={`absolute inset-x-5 top-3.5 flex flex-col gap-2.5 transition-all duration-500 ${i === step ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
               <div className="flex items-baseline justify-between gap-2"><span className="text-[20px] font-semibold leading-none">{ph.name}</span><span className="text-[12px] text-gray-500">Phase {i + 1} of {PHASES.length}</span></div>
-              <div className="h-[118px]">{ph.picture(BRIEF.slice(0, chars))}</div>
+              <div className="h-[118px]">{ph.picture(brief.text.slice(0, chars), brief)}</div>
               <div className="border-t border-gray-200 pt-2.5 flex items-center justify-between gap-3 flex-wrap">
                 <span className="flex items-center gap-3">
                   <Key color={ARIA} title="AI drafts" />
