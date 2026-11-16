@@ -6,5 +6,13 @@ minimumReleaseAgeExclude:
   - brace-expansion@1.1.16
 overrides:
   '@babel/core@<=7.29.0': ^7.29.1
-  brace-expansion@<1.1.16: ^1.1.16
-  postcss@<8.5.10: ^8.5.10
+  '@humanfs/node@<0.16.8': ^0.16.8
+  baseline-browser-mapping@<2.11.0: ^2.11.0
+  brace-expansion@<1.1.22: ^1.1.22
+  'brace-expansion@>=5.0.0 <5.0.13': ^5.0.13
+  browserslist@<4.28.7: ^4.28.7
+  'js-yaml@>=4.0.0 <4.3.2': ^4.3.2
+  nanoid@<3.3.18: ^3.3.18
+  postcss@<8.5.23: ^8.5.23
+  'postcss-selector-parser@>=6.0.0 <6.1.5': ^6.1.5
+  source-map-js@<1.2.2: ^1.2.2
