@@ -1,236 +1,184 @@
-import React, { useState } from 'react';
-import { INTAKE_URL } from '../lib/intake';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
-import { Menu, X, Shield, Lock, LogIn, UserPlus, CreditCard } from 'lucide-react';
+import { INTAKE_URL } from '../lib/intake';
+import { PRACTICE_AREAS } from '../lib/practiceAreas';
 import ScrollManager from './ScrollManager';
+import { LauncherPopover, LauncherSheet } from './SiteLauncher';
 
-const Logo = () => (
-  <img src="/logo_white.png" alt="Acooya Consulting" className="h-20 w-auto" />
+/**
+ * Site chrome (home page direction, 31 Oct 2026; built 16 Nov 2026): the mark
+ * beside the ACOOYA wordmark, five links, Sign in, Start a Brief and the grid
+ * launcher; a trimmed footer with one SOC 2 line. The mark is Brooklyn's own
+ * export (public/acooya-mark-sm.png, the file the platform header uses).
+ */
+const LOGIN_URL = 'https://app.acooyaconsulting.com/login';
+const LINKEDIN_URL = 'https://www.linkedin.com/company/acooya-consulting/';
+
+const NAV = [
+  { path: '/services', label: 'Services' },
+  { path: '/marketplace', label: 'Consultants' },
+  { path: '/engagements', label: 'How engagements work' },
+  { path: '/knowledge', label: 'Resources' },
+  { path: '/pricing', label: 'Pricing' },
+];
+
+const Wordmark = ({ light = false }: { light?: boolean }) => (
+  <span className="flex items-center gap-2.5">
+    <img src="/acooya-mark-sm.png" alt="" className="w-7 h-7" />
+    <span className={`font-bold tracking-[0.12em] text-[15px] ${light ? 'text-white' : 'text-[#1A1A1B]'}`}>ACOOYA</span>
+  </span>
 );
 
-const FooterLogo = () => (
-  <img src="/logo_dark.png" alt="Acooya Consulting" className="h-20 w-auto" />
+const footerLink = 'text-[#D1D1D1] hover:text-white transition-colors';
+
+const ServicesLinks = () => (
+  <>
+    {PRACTICE_AREAS.map((area) => (
+      <Link key={area.id} to={'/services#' + area.id} className={footerLink}>{area.title}</Link>
+    ))}
+  </>
 );
 
-const Layout: React.FC = ({ children }: { children?: React.ReactNode }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const AcooyaLinks = () => (
+  <>
+    <Link to="/engagements#overview" className={footerLink}>How engagements work</Link>
+    <Link to="/marketplace" className={footerLink}>Consultants</Link>
+    <Link to="/knowledge#overview" className={footerLink}>Resources &amp; insights</Link>
+    <Link to="/pricing#overview" className={footerLink}>Pricing</Link>
+    <Link to="/about#overview" className={footerLink}>About</Link>
+    <a href={LOGIN_URL} className={footerLink}>Sign in</a>
+  </>
+);
+
+const ContactLinks = () => (
+  <>
+    <a href={INTAKE_URL} className="text-white font-semibold hover:underline">Start a Brief</a>
+    <Link to="/get-started" className={footerLink}>Ask a question</Link>
+    <a href="mailto:contact@acooyaconsulting.com" className={footerLink}>contact@acooyaconsulting.com</a>
+    <span>+61 428 112 376</span>
+    <span>Sydney, NSW, Australia</span>
+    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={footerLink}>LinkedIn</a>
+  </>
+);
+
+const Layout: React.FC = () => {
+  const [launcherOpen, setLauncherOpen] = useState(false);
   const location = useLocation();
-
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/services', label: 'Services' },
-    { path: '/marketplace', label: 'Marketplace' },
-    { path: '/engagements', label: 'Engagements' },
-    { path: '/knowledge', label: 'Resources' },
-    { path: '/about', label: 'About' },
-  ];
-
+  const launcherRef = useRef<HTMLDivElement>(null);
+  const isHome = location.pathname === '/';
   const isActive = (path: string) => location.pathname === path;
+
+  // The launcher closes on navigation, on Escape and on a click outside it.
+  useEffect(() => { setLauncherOpen(false); }, [location.pathname, location.search, location.hash]);
+  useEffect(() => {
+    if (!launcherOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLauncherOpen(false); };
+    const onDown = (e: MouseEvent) => {
+      // Desktop only: on a phone the sheet has its own backdrop and close button.
+      if (!window.matchMedia('(min-width: 768px)').matches) return;
+      if (launcherRef.current && !launcherRef.current.contains(e.target as Node)) setLauncherOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onDown);
+    // On a phone the sheet covers the page, so the page behind it stops scrolling.
+    const phone = window.matchMedia('(max-width: 767px)').matches;
+    const previous = document.body.style.overflow;
+    if (phone) document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onDown);
+      if (phone) document.body.style.overflow = previous;
+    };
+  }, [launcherOpen]);
 
   return (
     <div className="min-h-screen bg-white">
       <ScrollManager />
 
-      {/* Top Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-2 text-sm">
-        <div className="container mx-auto flex items-center justify-center gap-2">
-          <Shield className="w-4 h-4" />
-          <span>Designed to SOC 2 standards — enterprise-grade security by design</span>
-        </div>
-      </div>
+      <header className={`sticky top-0 z-50 backdrop-blur-md font-geist ${isHome ? 'bg-[#F4F7FB]/85' : 'bg-white/90 border-b border-[#ECECEA]'}`}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 h-16 md:h-[72px] flex items-center gap-4">
+          <Link to="/" aria-label="Acooya Consulting, home" className="flex items-center"><Wordmark /></Link>
 
-      {/* Navigation */}
-      <nav className="sticky top-0 bg-white/95 backdrop-blur-md shadow-sm z-50">
-        <div className="container-custom">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center">
-              <Logo />
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    isActive(item.path)
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Link
-                to="/pricing"
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <CreditCard className="w-4 h-4" />
-                Pricing
+          <nav aria-label="Main" className="hidden lg:flex items-center gap-1 ml-6">
+            {NAV.map((item) => (
+              <Link key={item.path} to={item.path} aria-current={isActive(item.path) ? 'page' : undefined} className={`px-3 py-2.5 rounded-lg text-sm transition-colors hover:text-[#1A1A1B] hover:bg-black/5 ${isActive(item.path) ? 'text-[#1A1A1B] font-semibold' : 'text-[#3A3A3C]'}`}>
+                {item.label}
               </Link>
+            ))}
+          </nav>
 
-              <a
-                href="https://app.acooyaconsulting.com/login"
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <LogIn className="w-4 h-4" />
-                Sign In
-              </a>
-              <a
-                href={INTAKE_URL}
-                className="btn btn-primary text-sm"
-              >
-                <UserPlus className="w-4 h-4 mr-2" />
-                Start a Brief
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 text-gray-600 hover:text-gray-900"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <div ref={launcherRef} className="ml-auto flex items-center gap-1.5 md:gap-2 relative">
+            <a href={LOGIN_URL} className="px-2 md:px-3.5 py-3 text-sm text-[#3A3A3C] hover:text-[#1A1A1B]">Sign in</a>
+            <a href={INTAKE_URL} className="hidden sm:inline-flex items-center min-h-[44px] px-4 rounded-full bg-[#1A1A1B] text-white text-sm font-semibold hover:bg-black transition-colors">Start a Brief</a>
+            <button type="button" aria-label="Acooya menu" aria-expanded={launcherOpen} onClick={() => setLauncherOpen((o) => !o)} className={`w-11 h-11 rounded-full flex items-center justify-center transition-colors ${launcherOpen ? 'bg-[#E3E8EF]' : isHome ? 'bg-white/75 hover:bg-white' : 'bg-[#F2F2F0] hover:bg-[#E9E9E6]'}`}>
+              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><g fill="#3A3A3C"><circle cx="4" cy="4" r="2" /><circle cx="10" cy="4" r="2" /><circle cx="16" cy="4" r="2" /><circle cx="4" cy="10" r="2" /><circle cx="10" cy="10" r="2" /><circle cx="16" cy="10" r="2" /><circle cx="4" cy="16" r="2" /><circle cx="10" cy="16" r="2" /><circle cx="16" cy="16" r="2" /></g></svg>
             </button>
+            {launcherOpen && <LauncherPopover onClose={() => setLauncherOpen(false)} />}
           </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden border-t border-gray-200 py-4">
-              <div className="flex flex-col gap-2">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`px-4 py-3 rounded-lg font-medium ${
-                      isActive(item.path)
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                <div className="pt-4 border-t border-gray-200 mt-4 space-y-2">
-                  <Link
-                    to="/pricing"
-                    className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <CreditCard className="w-5 h-5" />
-                    Pricing
-                  </Link>
-                  <a
-                    href="https://app.acooyaconsulting.com/login"
-                    className="flex items-center gap-2 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <LogIn className="w-5 h-5" />
-                    Sign In
-                  </a>
-                  <a
-                    href={INTAKE_URL}
-                    className="btn btn-primary w-full"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <UserPlus className="w-5 h-5 mr-2" />
-                    Start a Brief
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
-      </nav>
+      </header>
+      {launcherOpen && <LauncherSheet onClose={() => setLauncherOpen(false)} />}
 
-      {/* Main Content */}
       <main className="min-h-screen flex flex-col">
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white">
-        <div className="container-custom py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Brand */}
-            <div>
-              <div className="mb-6">
-                <FooterLogo />
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Bridging human expertise with AI intelligence to deliver exceptional consulting outcomes for forward-thinking organisations.
-              </p>
-              <div className="flex items-center gap-4 mt-6">
-                <div className="flex items-center gap-2 text-sm text-gray-400">
-                  <Lock className="w-4 h-4" />
-                  Designed to SOC 2 standards
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-400">
-                  <Shield className="w-4 h-4" />
-                  Privacy Act aligned
-                </div>
-              </div>
+      <footer className="bg-[#1A1A1B] text-[#D1D1D1] font-geist">
+        {/* Desktop and tablet: four columns */}
+        <div className="hidden md:block max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-7">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="flex flex-col gap-3.5">
+              <Link to="/" aria-label="Acooya Consulting, home" className="flex items-center"><Wordmark light /></Link>
+              <p className="font-serif4 text-base leading-normal text-[#D1D1D1]">Human-AI Synergy for Enterprise Transformation</p>
+              <p className="text-[13px] text-[#A8A8A8]">Designed to SOC 2 standards · Privacy Act aligned</p>
             </div>
-
-            {/* Services */}
-            <div>
-              <h3 className="font-semibold mb-4">Services</h3>
-              <ul className="space-y-3 text-sm text-gray-400">
-                <li><Link to="/services#operating-model" className="hover:text-white transition-colors">Operating Model</Link></li>
-                <li><Link to="/services#delivery-enablement" className="hover:text-white transition-colors">Delivery Enablement</Link></li>
-                <li><Link to="/services#insight-reporting" className="hover:text-white transition-colors">Insight & Reporting</Link></li>
-                <li><Link to="/services#ai-transformation" className="hover:text-white transition-colors">AI Transformation</Link></li>
-                <li><Link to="/marketplace" className="hover:text-white transition-colors">Human Consultants</Link></li>
-                <li><Link to="/marketplace?tab=ai" className="hover:text-white transition-colors">AI Agents</Link></li>
-              </ul>
-            </div>
-
-            {/* Platform */}
-            <div>
-              <h3 className="font-semibold mb-4">Platform</h3>
-              <ul className="space-y-3 text-sm text-gray-400">
-                <li><Link to="/engagements#overview" className="hover:text-white transition-colors">How Engagements Work</Link></li>
-                <li><Link to="/get-started" className="hover:text-white transition-colors">Get in Touch</Link></li>
-                <li><a href="https://app.acooyaconsulting.com/login" className="hover:text-white transition-colors">Sign in</a></li>
-                <li><Link to="/knowledge#overview" className="hover:text-white transition-colors">Resources</Link></li>
-                <li><Link to="/pricing#overview" className="hover:text-white transition-colors">Pricing</Link></li>
-                <li><Link to="/about#overview" className="hover:text-white transition-colors">About Acooya</Link></li>
-              </ul>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <h3 className="font-semibold mb-4">Contact</h3>
-              <ul className="space-y-3 text-sm text-gray-400">
-               <li><a href="mailto:contact@acooyaconsulting.com" className="hover:text-white transition-colors">contact@acooyaconsulting.com</a></li>
-                <li>+61 428 112 376</li>
-                <li>Sydney, NSW, Australia</li>
-              </ul>
-              <div className="flex gap-4 mt-6">
-                <a href="https://www.linkedin.com/company/acooya-consulting/?viewAsMember=true" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-gray-400 hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
-              </div>
+            <nav aria-label="Services" className="flex flex-col gap-2.5 text-sm">
+              <p className="mb-1 font-semibold text-white">Services</p>
+              <ServicesLinks />
+            </nav>
+            <nav aria-label="Acooya" className="flex flex-col gap-2.5 text-sm">
+              <p className="mb-1 font-semibold text-white">Acooya</p>
+              <AcooyaLinks />
+            </nav>
+            <div className="flex flex-col gap-2.5 text-sm">
+              <p className="mb-1 font-semibold text-white">Get in touch</p>
+              <ContactLinks />
             </div>
           </div>
-
-          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-500">© 2026 Acooya Consulting. All rights reserved.</p>
-            <div className="flex gap-6 text-sm text-gray-500">
+          <div className="mt-12 pt-5 border-t border-[#333335] flex flex-wrap justify-between gap-3 text-[13px] text-[#A8A8A8]">
+            <span>© 2026 Acooya Pty Ltd, trading as Acooya Consulting</span>
+            <span className="flex flex-wrap gap-5">
               <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
               <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
-            </div>
+            </span>
+          </div>
+        </div>
+
+        {/* Phone: one button, then three sections that open on tap */}
+        <div className="md:hidden px-5 pt-8 pb-7 flex flex-col gap-5 text-sm">
+          <Link to="/" aria-label="Acooya Consulting, home" className="flex items-center"><Wordmark light /></Link>
+          <a href={INTAKE_URL} className="min-h-[48px] flex items-center justify-center rounded-full bg-white text-[#1A1A1B] font-semibold">Start a Brief</a>
+          <details className="border-t border-[#333335] pt-3.5">
+            <summary className="min-h-[32px] text-white font-semibold cursor-pointer">Services</summary>
+            <div className="flex flex-col gap-3 pt-2 pb-1"><ServicesLinks /></div>
+          </details>
+          <details className="border-t border-[#333335] pt-3.5">
+            <summary className="min-h-[32px] text-white font-semibold cursor-pointer">Acooya</summary>
+            <div className="flex flex-col gap-3 pt-2 pb-1"><AcooyaLinks /></div>
+          </details>
+          <details className="border-t border-[#333335] pt-3.5">
+            <summary className="min-h-[32px] text-white font-semibold cursor-pointer">Get in touch</summary>
+            <div className="flex flex-col gap-3 pt-2 pb-1"><ContactLinks /></div>
+          </details>
+          <div className="pt-3.5 border-t border-[#333335] text-xs text-[#A8A8A8] leading-relaxed">
+            <p>Designed to SOC 2 standards · Privacy Act aligned</p>
+            <p>© 2026 Acooya Pty Ltd, trading as Acooya Consulting</p>
+            <p className="flex gap-4 mt-1">
+              <Link to="/privacy-policy" className="py-2 hover:text-white">Privacy</Link>
+              <Link to="/terms-of-service" className="py-2 hover:text-white">Terms</Link>
+              <Link to="/cookie-policy" className="py-2 hover:text-white">Cookies</Link>
+            </p>
           </div>
         </div>
       </footer>

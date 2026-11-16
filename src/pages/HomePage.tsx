@@ -1,492 +1,179 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { INTAKE_URL } from '../lib/intake';
-import {
-  ArrowRight,
-  CheckCircle,
-  Users,
-  Bot,
-  Shield,
-  Zap,
-  BarChart3, Workflow,
-  Building2,
-  Rocket,
-  Brain,
-  Clock,
-  DollarSign,
-  Star,
-  ChevronRight,
-  Play,
-  FileText,
-  Lock,
-  Award,
-  Briefcase,
-  RadioTower
-} from 'lucide-react';
-import { stats, testimonials, consultingServices, aiAgents } from '../data/mockData';
-import { useConsultants } from '../hooks/use-consultants';
+import { INTAKE_URL, intakeUrl } from '../lib/intake';
+import { PRACTICE_AREAS } from '../lib/practiceAreas';
+import { consultingServices, knowledgeBase, insightsArticles } from '../data/mockData';
 import HeroStory from '../components/HeroStory';
 
-const HomePage: React.FC = () => {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
+/**
+ * Home page, Option A "front door" (chosen 31 Oct 2026, confirmed and built
+ * 16 Nov 2026; design: canvas "Acooya UI Uplift — Review Before Build", 1a).
+ *
+ * The brief box: three situation cards, each a quote from the platform's
+ * src/lib/intake/situations.ts word for word, linked by id (ids only in a
+ * URL, never typed text). Change the card on the platform first. The line
+ * under them names no consultant and says nothing about AI either way;
+ * "A senior consultant reads every brief" is true of the intake today.
+ *
+ * Honesty rules carried over: the About band shows only claimable facts
+ * (counted from the data, not typed); "approved by a person", because on AI
+ * Agent engagements the client approves; the hero colour field uses Atlas
+ * blue, Nova orange and Aria pink and never green; resources are undated.
+ */
+const SITUATIONS = [
+  { id: 'ai-too-many-requests', quote: 'Everyone wants AI and we can’t tell which requests are worth doing.' },
+  { id: 'de-numbers-not-trusted', quote: 'Over budget, past date, and the steering committee doesn’t trust the numbers.' },
+  { id: 'om-savings', quote: 'We have to find 5% savings without breaking frontline services.' },
+];
 
-  // Live consultants ahead of the staged roles. slice(0, 3) then shows real
-  // people first — the homepage was the fourth consumer of humanConsultants
-  // and, after h0 was removed, was showing three "Joining Soon" placeholders
-  // and no available consultant at all.
-  const consultants = useConsultants();
+const HERO_WASH =
+  'radial-gradient(60rem 30rem at 50% 18%, rgba(52,152,219,0.30), rgba(52,152,219,0) 70%), ' +
+  'radial-gradient(34rem 22rem at 30% 40%, rgba(233,30,99,0.16), rgba(233,30,99,0) 70%), ' +
+  'radial-gradient(34rem 22rem at 72% 42%, rgba(243,156,18,0.16), rgba(243,156,18,0) 70%), #F4F7FB';
+
+// "October 15, 2026" in the data reads "15 Oct 2026" here.
+const shortDate = (long: string) => {
+  const m = /^(\w+) (\d{1,2}), (\d{4})$/.exec(long);
+  return m ? `${m[2]} ${m[1]!.slice(0, 3)} ${m[3]}` : long;
+};
+
+const THUMB = [
+  { tint: '#FCE4EC', ink: '#880E4F' },
+  { tint: '#FDF0DC', ink: '#7A4A00' },
+  { tint: '#E3F0FA', ink: '#0F4C75' },
+];
+
+const HomePage: React.FC = () => {
+  const priceOf = (id: string) => consultingServices.find((s) => s.id === id)?.priceRange ?? '';
+  const offeringCount = consultingServices.reduce((n, s) => n + s.offerings.length, 0);
+  const scorecard = knowledgeBase.find((r) => r.id === 'kb3');
+
+  // Phone: which practice-area card is in view, for the dots under the row.
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [card, setCard] = useState(0);
+  const onRowScroll = () => {
+    const row = rowRef.current;
+    if (!row) return;
+    const step = row.scrollWidth / PRACTICE_AREAS.length;
+    setCard(Math.min(PRACTICE_AREAS.length - 1, Math.round(row.scrollLeft / step)));
+  };
+
+  const pill = 'min-h-[44px] inline-flex items-center gap-2 px-[18px] rounded-full bg-white/70 hover:bg-white text-[#1A1A1B] text-sm transition-colors';
 
   return (
-    <div className="overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl"></div>
-        </div>
+    <div className="font-geist text-[#1A1A1B] bg-white">
+      {/* Hero: the brief box */}
+      <section className="px-5 md:px-6 pb-10 md:pb-24" style={{ background: HERO_WASH }}>
+        <div className="max-w-[860px] mx-auto pt-9 md:pt-[72px] text-center">
+          <h1 className="text-[36px] leading-[1.08] md:text-[clamp(2.4rem,5vw,4rem)] md:leading-[1.05] font-bold tracking-[-0.02em]">Human-AI Synergy for Enterprise Transformation</h1>
+          <p className="mt-3.5 md:mt-5 mx-auto max-w-[640px] font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C]">Senior consultants and AI agents work together as one team, with human review on every output.</p>
 
-        <div className="container-custom relative py-24 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                <span className="text-sm font-medium">AI-Powered Consulting Platform</span>
-              </div>
-
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-                Human-AI Synergy for
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                  Enterprise Transformation
-                </span>
-              </h1>
-
-              <p className="text-xl text-gray-300 mb-8 max-w-xl">
-                Acooya Consulting pairs senior human consultants with purpose-built AI agents to deliver faster, deeper, and more impactful outcomes for your organisation.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4">
-                  Start a Brief
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </a>
-                <Link to="/services" className="btn border-2 border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4">
-                  Explore Services
-                </Link>
-              </div>
-
-              <div className="flex items-center gap-8 mt-10 pt-10 border-t border-white/10">
-                <div className="flex -space-x-3">
-                  {/* Aviation Symbol */}
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 border-2 border-white flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-                    </svg>
-                  </div>
-                  {/* Financial Services Symbol */}
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-400 border-2 border-white flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
-                    </svg>
-                  </div>
-                  {/* Government Symbol */}
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-400 border-2 border-white flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-                    </svg>
-                  </div>
-                  {/* Telecommunications Symbol */}
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-rose-400 border-2 border-white flex items-center justify-center">
-                    <RadioTower className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-300">Senior consultants from</p>
-                  <p className="font-semibold">Aviation, Finance, Government & Telecoms</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden lg:block relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20 rounded-3xl blur-xl"></div>
-              <HeroStory />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-50 border-y border-gray-200">
-        <div className="container-custom">
-          <div className="text-center mb-8">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Upcoming Target</span>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-3">
-                  {stat.icon === 'users' && <Users className="w-6 h-6" />}
-                  {stat.icon === 'briefcase' && <Rocket className="w-6 h-6" />}
-                  {stat.icon === 'award' && <Award className="w-6 h-6" />}
-                  {stat.icon === 'bot' && <Bot className="w-6 h-6" />}
-                  {stat.icon === 'star' && <Star className="w-6 h-6" />}
-                  {stat.icon === 'zap' && <Zap className="w-6 h-6" />}
-                </div>
-                <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
-                <p className="text-sm text-gray-600">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Partnership Concept Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">The Human-AI Synergy Model</span>
-            <h2 className="section-title mt-4">Bridging Expertise with Intelligence</h2>
-          </div>
-
-          <p className="text-lg text-gray-600 text-center max-w-4xl mx-auto mb-16">
-            Acooya is built around the Human-AI Synergy Model—a partnership framework that combines the strategic thinking, emotional intelligence, and domain expertise of senior consultants with the analytical power, speed, and scalability of purpose-built AI agents.
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: 'zap',
-                title: 'Speed & Scale',
-                description: 'AI agents draft research, analysis and reports; consultants spend their time on judgement',
-                color: 'from-blue-500 to-blue-600'
-              },
-              {
-                icon: 'brain',
-                title: 'Deeper Insights',
-                description: 'AI agents work through the documents and data you share, screened for personal identifiers before any AI reads them',
-                color: 'from-purple-500 to-pink-500'
-              },
-              {
-                icon: 'clock',
-                title: 'Continuous Value',
-                description: 'AI agents are available whenever you need them, so work continues between human consulting sessions',
-                color: 'from-green-500 to-emerald-500'
-              },
-              {
-                icon: 'dollar',
-                title: 'Cost Efficiency',
-                description: 'Fixed fees by engagement type, published on our Pricing page',
-                color: 'from-amber-500 to-orange-500'
-              },
-            ].map((benefit, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 card-hover">
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mb-4`}>
-                  {benefit.icon === 'zap' && <Zap className="w-7 h-7 text-white" />}
-                  {benefit.icon === 'brain' && <Brain className="w-7 h-7 text-white" />}
-                  {benefit.icon === 'clock' && <Clock className="w-7 h-7 text-white" />}
-                  {benefit.icon === 'dollar' && <DollarSign className="w-7 h-7 text-white" />}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-gray-600 text-sm">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Preview */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Our Services</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Four Core Practice Areas</h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              Comprehensive consulting services designed for the modern enterprise, powered by our unique Human-AI Synergy Model
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                id: 'operating-model',
-                icon: 'building',
-                title: 'Operating Model',
-                description: 'Transform your organisational structure for maximum efficiency and AI readiness',
-                features: ['Target Operating Model Design', 'Organisational Redesign', 'Capability Mapping']
-              },
-              {
-                id: 'delivery-enablement',
-                icon: 'rocket',
-                title: 'Delivery Enablement',
-                description: 'Empower your teams with AI-augmented tools and methodologies',
-                features: ['Programme Structuring', 'Change Management', 'Delivery Acceleration']
-              },
-              {
-                id: 'insight-reporting',
-                icon: 'chart',
-                title: 'Insight & Reporting',
-                description: 'Make data-driven decisions with AI-powered analytics and reporting',
-                features: ['Decision-grade Analytics', 'Executive Reporting', 'Business Cases']
-              },
-              {
-                id: 'ai-transformation',
-                icon: 'workflow',
-                title: 'AI Transformation',
-                description: 'Redesign work around AI, then pilot and embed it under governance',
-                features: ['AI Opportunity Assessment', 'Use-Case Design & Specification', 'Pilot & Evaluation']
-              }
-            ].map((service, index) => (
-              <Link
-                key={index}
-                to={'/services#' + service.id}
-                className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 hover:border-blue-500 transition-all group"
-              >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  {service.icon === 'building' && <Building2 className="w-7 h-7 text-white" />}
-                  {service.icon === 'rocket' && <Rocket className="w-7 h-7 text-white" />}
-                  {service.icon === 'chart' && <BarChart3 className="w-7 h-7 text-white" />}
-                  {service.icon === 'workflow' && <Workflow className="w-7 h-7 text-white" />}
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                <p className="text-gray-400 text-sm mb-6">{service.description}</p>
-                <div className="space-y-2">
-                  {service.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-gray-300">
-                      <CheckCircle className="w-4 h-4 text-green-400" />
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-center text-blue-400 text-sm font-medium mt-6">
-                  Learn More <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Consultants & AI Preview */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Talent</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-4">The Perfect Blend of Human Intelligence and AI Power</h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              Every engagement combines the strategic thinking of senior consultants with the speed and scalability of purpose-built AI agents
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Human Consultants */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                  <Users className="w-7 h-7 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">Expert Consultants</h3>
-                  <p className="text-gray-600">Senior practitioners, with more joining soon</p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {consultants.slice(0, 3).map((consultant) => (
-                  <div key={consultant.id} className="flex items-center gap-4 bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-blue-300 transition-colors">
-                    {consultant.isLive && consultant.image ? (
-                      <img
-                        src={consultant.image}
-                        alt={consultant.name}
-                        className="w-14 h-14 rounded-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                        <Briefcase className="w-6 h-6 text-white" />
-                      </div>
-                    )}
-                    <div className="flex-1">
-                      {consultant.profileUrl ? (<h4 className="font-semibold"><a href={consultant.profileUrl} className="hover:text-blue-600 transition-colors">{consultant.name}</a></h4>) : (<h4 className="font-semibold">{consultant.name}</h4>)}
-                      <p className="text-sm text-gray-600">{consultant.title}</p>
-                      <p className="text-xs text-gray-500 mt-1">{consultant.experience}</p>
-                    </div>
-                    <span className={`badge ${
-                      consultant.availability === 'Available Now'
-                        ? 'badge-green'
-                        : consultant.availability === 'Joining Soon'
-                          ? 'badge-purple'
-                          : 'badge-orange'
-                    }`}>
-                      {consultant.availability}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <Link to="/marketplace" className="btn btn-secondary w-full mt-6">
-                Meet Our Consultants
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </div>
-
-            {/* AI Agents */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                  <Bot className="w-7 h-7 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">AI Agents</h3>
-                  <p className="text-gray-600">Purpose-built for consulting excellence</p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {aiAgents.slice(0, 3).map((agent) => (
-                  <div key={agent.id} className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:border-purple-300 transition-colors">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`w-10 h-10 rounded-lg flex items-center justify-center${agent.name.startsWith('Aria') && agent.availability === 'Available' ? '' : ' bg-gradient-to-br from-purple-500 to-pink-500'}`}
-                          style={agent.name.startsWith('Aria') && agent.availability === 'Available' ? { backgroundColor: '#E91E63' } : undefined}
-                        >
-                          {agent.name.startsWith('Aria') && agent.availability === 'Available' ? (
-                            <img src="/aria-mark.svg" alt="" className="w-8 h-8" />
-                          ) : (
-                            <Bot className="w-5 h-5 text-white" />
-                          )}
-                        </div>
-                        <div>
-                          <h4 className="font-semibold">{agent.name}</h4>
-                          <p className="text-sm text-gray-600">{agent.category}</p>
-                        </div>
-                      </div>
-                      {agent.availability === 'Available' ? (
-                        <span className="badge text-white" style={{ backgroundColor: '#E91E63' }}>Available now</span>
-                      ) : (
-                        <span className="badge badge-purple">Launching Soon</span>
-                      )}
-                    </div>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {agent.capabilities.slice(0, 2).map((cap, i) => (
-                        <span key={i} className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">
-                          {cap}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Link to="/marketplace" className="btn btn-primary w-full mt-6">
-                Explore All AI Agents
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <span className="text-blue-200 font-semibold text-sm uppercase tracking-wider">How We Work</span>
-            <h2 className="text-3xl lg:text-4xl font-bold mt-4">Example Engagements</h2>
-            <p className="text-blue-100 mt-4 max-w-2xl mx-auto">Illustrative examples of the problems we take on, drawn from our service catalog. Client case studies will follow as engagements complete.</p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 lg:p-12 relative">
-              <div className="relative">
-                <p className="text-xl lg:text-2xl mb-8 leading-relaxed">
-                  {testimonials[activeTestimonial].quote}
-                </p>
-                <div className="flex items-center justify-center">
-                  <p className="text-lg text-white/80 italic">
-                    — {testimonials[activeTestimonial].title}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-center gap-2 mt-8">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === activeTestimonial ? 'bg-white' : 'bg-white/30'
-                  }`}
-                />
+          <div className="mt-7 md:mt-10 mx-auto max-w-[640px] bg-white md:bg-white/80 border border-[#D1D1D1] rounded-[22px] p-3.5 md:p-[18px] text-left shadow-[0_8px_30px_rgba(26,26,27,0.08)]">
+            <h2 className="mb-3 text-[15px] font-semibold">What’s happening in your organisation?</h2>
+            <div className="flex flex-col gap-2">
+              {SITUATIONS.map((s) => (
+                <a key={s.id} href={`${INTAKE_URL}?situation=${s.id}`} className="block px-3.5 py-3 rounded-xl bg-[#F4F7FB] hover:bg-[#E9EEF5] text-[#1A1A1B] text-sm leading-snug transition-colors">“{s.quote}”</a>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Security & Compliance */}
-      <section className="py-20">
-        <div className="container-custom">
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-8 lg:p-12 border border-gray-200">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Enterprise Security</span>
-                <h2 className="text-3xl font-bold mt-4 mb-6">Built for the Enterprise</h2>
-                <p className="text-gray-600 mb-8">
-                  Acooya is built from the ground up with security and compliance at its core. We understand that your data is your most valuable asset, and we treat it accordingly.
-                </p>
-                <div className="space-y-4">
-                  {[
-                    { icon: Shield, title: 'SOC 2 Standard', desc: 'Designed to SOC 2 standards. Independent certification is on our roadmap' },
-                    { icon: Lock, title: 'Enterprise-Grade Encryption', desc: 'AES-256 encryption at rest. TLS 1.3 encryption in transit. Your data is protected at every layer' },
-                    { icon: FileText, title: 'Privacy Act & GDPR Aligned', desc: 'Built to meet Australian Privacy Act and GDPR requirements. Privacy-first architecture with documented data handling practices' },
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-5 h-5 text-blue-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">{item.title}</h4>
-                        <p className="text-sm text-gray-600">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                <h4 className="font-semibold mb-6">Security Features</h4>
-                <div className="grid grid-cols-2 gap-4">
-                  {['Data Encryption', 'Access Control', 'Audit Logging', 'Backup & Recovery', 'Secure Development Practices', 'Data Breach Notification Process', 'Dependency & Security Monitoring', 'Security-First Architecture'].map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-3.5">
+              <span className="text-[13px] leading-snug text-[#555555]">Not quite your situation? Tell us in your own words. A senior consultant reads every brief.</span>
+              <a href={INTAKE_URL} className="shrink-0 min-h-[44px] inline-flex items-center justify-center px-5 rounded-full bg-[#1A1A1B] hover:bg-black text-white text-sm font-semibold transition-colors">Start a Brief</a>
             </div>
           </div>
+
+          {/* Desktop: three ways in. Phone: start from a practice area. */}
+          <div className="hidden md:flex flex-wrap justify-center gap-3 mt-6">
+            <Link to="/engagements" className={pill}>How engagements work</Link>
+            <Link to="/marketplace" className={pill}>Meet the consultants</Link>
+            <Link to="/marketplace?tab=ai" className={pill}><span className="w-2 h-2 rounded-full bg-[#E91E63]" aria-hidden="true"></span>Meet Aria, our first AI agent</Link>
+          </div>
+          <div className="md:hidden flex gap-2 overflow-x-auto mt-[18px] -mx-5 px-5 pb-1" aria-label="Start a brief by practice area">
+            {PRACTICE_AREAS.map((area) => (
+              <a key={area.id} href={intakeUrl(area.id)} className="flex-none min-h-[44px] inline-flex items-center gap-2 px-3.5 rounded-full bg-white/80 text-[#1A1A1B] text-sm">
+                <span className="w-2 h-2 rounded-sm" style={{ background: area.dot }} aria-hidden="true"></span>{area.title}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
-        <div className="container-custom text-center">
-          <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Get Started Today</span>
-          <h2 className="text-3xl lg:text-5xl font-bold mt-4 mb-6">Ready to Transform Your Business?</h2>
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            Tell us what you are working on in a short brief. A senior consultant reads it and replies by email.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
-              Start a Brief
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </a>
-            <Link to="/pricing" className="btn border-2 border-white/30 text-white hover:bg-white/10 text-lg px-10 py-4">
-              View Pricing Plans
+      {/* The story under the brief box: the interim for the film (13 Nov 2026) */}
+      <section className="hidden md:block px-6 pt-[72px]" aria-label="How an engagement runs">
+        <div className="max-w-[640px] mx-auto rounded-3xl shadow-[0_8px_30px_rgba(26,26,27,0.08)] border border-[#E4E4E4]">
+          <HeroStory />
+        </div>
+      </section>
+
+      {/* Four practice areas: a grid on a desktop, a swipe row on a phone */}
+      <section id="areas" className="max-w-7xl mx-auto pt-10 md:pt-[72px] pb-2 md:pb-6 md:px-6 lg:px-8 md:text-center">
+        <div className="flex items-baseline justify-between px-5 md:px-0 md:block">
+          <h2 className="text-[22px] md:text-[28px] font-semibold">Four practice areas</h2>
+          <span className="md:hidden text-[13px] text-[#555555]">Swipe</span>
+        </div>
+        <p className="hidden md:block mt-2 mb-8 text-base text-[#555555]">Each starts as a fixed-fee Sprint and can grow into a Full Engagement.</p>
+        <div ref={rowRef} onScroll={onRowScroll} className="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-px-5 px-5 pt-4 pb-2 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-4 md:overflow-visible md:p-0 text-left">
+          {PRACTICE_AREAS.map((area) => (
+            <Link key={area.id} to={'/services#' + area.id} className="flex-none w-[280px] snap-start md:w-auto flex flex-col border border-[#E4E4E4] rounded-[20px] overflow-hidden bg-white text-[#1A1A1B] hover:border-[#BDBDBD] transition-colors">
+              <div className="h-[130px] md:h-[150px] flex items-end p-[18px] md:p-5" style={{ background: area.tint }}>
+                <span className="font-serif4 text-[28px] md:text-[30px] leading-[1.05]" style={{ color: area.ink }}>{area.title}</span>
+              </div>
+              <div className="flex flex-col gap-2 px-[18px] md:px-5 pt-3.5 md:pt-[18px] pb-[18px] md:pb-[22px]">
+                <span className="text-sm leading-normal text-[#3A3A3C]">{area.blurb}</span>
+                <span className="text-[13px] text-[#555555]">{priceOf(area.id)}</span>
+              </div>
             </Link>
+          ))}
+        </div>
+        <div aria-hidden="true" className="md:hidden flex justify-center gap-1.5 pt-2">
+          {PRACTICE_AREAS.map((area, i) => (
+            <span key={area.id} className={`h-1.5 rounded-full transition-all ${i === card ? 'w-[18px] bg-[#1A1A1B]' : 'w-1.5 bg-[#D1D1D1]'}`}></span>
+          ))}
+        </div>
+      </section>
+
+      {/* Latest thinking */}
+      <section id="thinking" className="max-w-[1040px] mx-auto px-5 md:px-6 pt-9 md:pt-[72px] pb-2 md:pb-6">
+        <h2 className="text-[22px] md:text-[28px] font-semibold md:text-center">Latest thinking</h2>
+        <p className="hidden md:block mt-2 mb-9 text-center text-base text-[#555555]">Insights · Templates · Methods we actually use</p>
+        <div className="flex flex-col md:grid md:grid-cols-2 md:gap-x-14 md:gap-y-7 mt-1.5 md:mt-0">
+          {insightsArticles.slice(0, 3).map((insight, i) => (
+            <Link key={insight.id} to={'/insight/' + insight.id} className="group flex items-center md:items-start gap-3.5 md:gap-5 md:justify-between py-3.5 md:py-0 border-b border-[#F0F0EE] md:border-0 text-[#1A1A1B]">
+              <span className="order-2 md:order-1 flex flex-col gap-1 md:gap-2.5">
+                <span className="text-[15px] md:text-base font-semibold leading-[1.3] group-hover:underline">{insight.title}</span>
+                <span className="text-xs md:text-[13px] text-[#555555]">Insight · {shortDate(insight.date)}</span>
+              </span>
+              <span className="order-1 md:order-2 flex-none w-14 h-14 md:w-[88px] md:h-[88px] rounded-xl md:rounded-[14px] flex items-center justify-center font-serif4 text-xs md:text-[15px]" style={{ background: THUMB[i % THUMB.length]!.tint, color: THUMB[i % THUMB.length]!.ink }}>Insight</span>
+            </Link>
+          ))}
+          {scorecard && (
+            <Link to={'/resource/' + scorecard.id} className="group flex items-center md:items-start gap-3.5 md:gap-5 md:justify-between py-3.5 md:py-0 text-[#1A1A1B]">
+              <span className="order-2 md:order-1 flex flex-col gap-1 md:gap-2.5">
+                <span className="text-[15px] md:text-base font-semibold leading-[1.3] group-hover:underline">{scorecard.title}</span>
+                <span className="text-xs md:text-[13px] text-[#555555]">Resource · leads to the {scorecard.relatedService.label}</span>
+              </span>
+              <span className="order-1 md:order-2 flex-none w-14 h-14 md:w-[88px] md:h-[88px] rounded-xl md:rounded-[14px] flex items-center justify-center font-serif4 text-xs md:text-[15px] bg-[#EDEDED] text-[#1A1A1B]">Resource</span>
+            </Link>
+          )}
+        </div>
+        <div className="text-center mt-5 md:mt-9">
+          <Link to="/knowledge" className="inline-flex items-center min-h-[44px] px-[18px] border border-[#D1D1D1] rounded-full text-sm text-[#1A1A1B] hover:bg-[#F4F7FB] transition-colors">View all {knowledgeBase.length} resources and {insightsArticles.length} insights</Link>
+        </div>
+      </section>
+
+      {/* About band: claimable facts only */}
+      <section id="how" className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 pt-9 md:pt-[88px] pb-10 md:pb-24 grid md:grid-cols-2 gap-4 md:gap-12 items-start">
+        <div>
+          <p className="text-[40px] md:text-[56px] font-bold tracking-[-0.02em] leading-none">Acooya</p>
+          <p className="mt-1.5 md:mt-3 font-serif4 text-[19px] md:text-2xl leading-[1.3]">A senior-led, AI-augmented consultancy in Sydney</p>
+        </div>
+        <div className="flex flex-col gap-5 md:gap-7">
+          <p className="text-[15px] md:text-base leading-[1.65] text-[#3A3A3C]">Every engagement runs through six phases, Frame, Discover, Design, Decide, Pilot and Embed, with a decision gate after each. Agents produce the evidence; people make the decisions. Nothing an AI drafts reaches you until a person has approved it.</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-[18px] md:gap-5">
+            <div><p className="font-serif4 text-[30px] md:text-4xl leading-tight">{PRACTICE_AREAS.length}</p><p className="mt-0.5 md:mt-1 text-[13px] text-[#555555]">Practice areas</p></div>
+            <div><p className="font-serif4 text-[30px] md:text-4xl leading-tight">{offeringCount}</p><p className="mt-0.5 md:mt-1 text-[13px] text-[#555555]">Launch offerings</p></div>
+            <div><p className="font-serif4 text-[30px] md:text-4xl leading-tight whitespace-nowrap">G0–G5</p><p className="mt-0.5 md:mt-1 text-[13px] text-[#555555]">Decision gates per engagement</p></div>
+            <div><p className="font-serif4 text-[30px] md:text-4xl leading-tight">Every</p><p className="mt-0.5 md:mt-1 text-[13px] text-[#555555]">AI output approved by a person, enforced in the database</p></div>
           </div>
-          <p className="text-sm text-gray-400 mt-8">Free to send • A senior consultant reads every brief • No obligation</p>
         </div>
       </section>
     </div>
