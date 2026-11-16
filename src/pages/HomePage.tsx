@@ -20,7 +20,8 @@ import {
   FileText,
   Lock,
   Award,
-  Briefcase
+  Briefcase,
+  RadioTower
 } from 'lucide-react';
 import { stats, testimonials, consultingServices, aiAgents } from '../data/mockData';
 import { useConsultants } from '../hooks/use-consultants';
@@ -98,10 +99,14 @@ const HomePage: React.FC = () => {
                       <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
                     </svg>
                   </div>
+                  {/* Telecommunications Symbol */}
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-rose-400 border-2 border-white flex items-center justify-center">
+                    <RadioTower className="w-5 h-5 text-white" />
+                  </div>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-300">Trusted by leaders from different industries, including</p>
-                  <p className="font-semibold">Aviation, Financial Services & Government</p>
+                  <p className="text-sm text-gray-300">Senior consultants from</p>
+                  <p className="font-semibold">Aviation, Finance, Government & Telecoms</p>
                 </div>
               </div>
             </div>
@@ -285,7 +290,7 @@ const HomePage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">Expert Consultants</h3>
-                  <p className="text-gray-600">Trusted by industry leaders globally</p>
+                  <p className="text-gray-600">Senior practitioners, with more joining soon</p>
                 </div>
               </div>
 
@@ -485,7 +490,7 @@ const HomePage: React.FC = () => {
               View Pricing Plans
             </Link>
           </div>
-          <p className="text-sm text-gray-400 mt-8">No credit card required • 30-minute call • Cancel anytime</p>
+          <p className="text-sm text-gray-400 mt-8">Free to send • A senior consultant reads every brief • No obligation</p>
         </div>
       </section>
     </div>

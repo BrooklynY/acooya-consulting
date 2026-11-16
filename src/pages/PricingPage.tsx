@@ -250,7 +250,7 @@ const PricingPage: React.FC = () => {
                 {tier.highlighted && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg">
-                      Most Popular
+                      Recommended
                     </span>
                   </div>
                 )}
