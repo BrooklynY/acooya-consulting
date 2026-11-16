@@ -288,7 +288,7 @@ const AboutPage: React.FC = () => {
                 Born from Frustration with Traditional Consulting
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Too many organisations pay too much, wait too long, and receive too little from traditional consulting firms. After 14 years on the inside, I decided to build something better.
+                Too many organisations pay too much, wait too long, and receive too little from traditional consulting firms. After 15 years inside government, aviation and financial services, I decided to build something better.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Acooya combines senior strategic expertise with purpose-built AI agents, with a named consultant approving every AI output before it reaches you.
@@ -346,9 +346,9 @@ const AboutPage: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { value: '2026', label: 'Founded', icon: Rocket },
-              { value: '3', label: 'Sectors Served — Government, Aviation, Finance', icon: Globe },
-              { value: '4', label: 'AI Agents Launching', icon: Bot },
-              { value: '1', label: 'Standard — Exceptional Values & Results', icon: Award },
+              { value: '4', label: 'Sectors our consultants know: Government, Aviation, Finance, Telecoms', icon: Globe },
+              { value: '1', label: 'AI agent live, more in development', icon: Bot },
+              { value: '100%', label: 'AI outputs approved by a person before release', icon: Award },
             ].map((stat, i) => (
               <div key={i} className="text-center">
                 <stat.icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
