@@ -237,14 +237,14 @@ const GetStartedPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen hero-wash">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Get started with Acooya</h1>
-            <p className="text-gray-600">Tell us who you are and we&apos;ll take it from there.</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1B] mb-3">Get started with Acooya</h1>
+            <p className="font-serif4 text-lg text-[#3A3A3C]">Tell us who you are and we&apos;ll take it from there.</p>
             {interest && (
-              <p className="mt-3 inline-block rounded-full bg-[#F4F7FB] px-4 py-1.5 text-sm text-[#0F4C75]">Enquiring about <span className="font-medium">{interest}</span></p>
+              <p className="mt-3 inline-block rounded-full bg-white border border-[#E4E4E4] px-4 py-1.5 text-sm text-[#0F4C75]">Enquiring about <span className="font-medium">{interest}</span></p>
             )}
           </div>
 
