@@ -77,25 +77,25 @@ const KnowledgeBasePage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section id="overview" className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-20">
+      <section id="overview" className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Free Resources</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Free Resources</span>
             <h1 className="text-4xl lg:text-5xl font-bold mt-4 mb-6">
               Your Strategic Toolkit—Free on Request
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8">
               Access battle-tested frameworks, templates, and tools refined through many years of consulting practice. Accelerate your strategic planning with proven resources.
             </p>
 
             <div className="relative max-w-2xl mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-[#555555]" />
               <input
                 type="text"
                 placeholder="Search for frameworks, templates, tools..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-12 pr-4 py-4 rounded-xl bg-white border border-[#E4E4E4] text-[#1A1A1B] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3498DB]"
               />
             </div>
           </div>
@@ -112,7 +112,7 @@ const KnowledgeBasePage: React.FC = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${
                   activeCategory === category.id
-                    ? 'bg-blue-100 text-blue-700 font-medium'
+                    ? 'bg-[#E3F0FA] text-[#3A3A3C] font-medium'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -120,7 +120,7 @@ const KnowledgeBasePage: React.FC = () => {
                 {category.label}
                 <span className={`ml-1 px-2 py-0.5 rounded-full text-xs ${
                   activeCategory === category.id
-                    ? 'bg-blue-200 text-blue-800'
+                    ? 'bg-[#E3F0FA] text-[#0F4C75]'
                     : 'bg-gray-100 text-gray-600'
                 }`}>
                   {category.count}
@@ -143,19 +143,19 @@ const KnowledgeBasePage: React.FC = () => {
             {filteredResources.map((resource) => (
               <div
                 key={resource.id}
-                className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-blue-200 transition-all group"
+                className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-[#E4E4E4] transition-all group"
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                      resource.category === 'Assessment Tools' ? 'bg-blue-100' :
-                      resource.category === 'Templates' ? 'bg-purple-100' :
-                      resource.category === 'Methodology' ? 'bg-green-100' :
+                      resource.category === 'Assessment Tools' ? 'bg-[#E3F0FA]' :
+                      resource.category === 'Templates' ? 'bg-[#EDEDED]' :
+                      resource.category === 'Methodology' ? 'bg-[#EDEDED]' :
                       'bg-orange-100'
                     }`}>
-                      {resource.category === 'Assessment Tools' && <BarChart3 className="w-6 h-6 text-blue-600" />}
-                      {resource.category === 'Templates' && <Layers className="w-6 h-6 text-purple-600" />}
-                      {resource.category === 'Methodology' && <BookOpen className="w-6 h-6 text-green-600" />}
+                      {resource.category === 'Assessment Tools' && <BarChart3 className="w-6 h-6 text-[#1F6FA8]" />}
+                      {resource.category === 'Templates' && <Layers className="w-6 h-6 text-[#1F6FA8]" />}
+                      {resource.category === 'Methodology' && <BookOpen className="w-6 h-6 text-[#1F6FA8]" />}
                       {resource.category === 'Toolkits' && <Wrench className="w-6 h-6 text-orange-600" />}
                       {resource.category === 'Case Studies' && <FileText className="w-6 h-6 text-pink-600" />}
                     </div>
@@ -163,7 +163,7 @@ const KnowledgeBasePage: React.FC = () => {
                       onClick={() => toggleBookmark(resource.id)}
                       className={`p-2 rounded-lg transition-colors ${
                         bookmarked.includes(resource.id)
-                          ? 'text-blue-600 bg-blue-50'
+                          ? 'text-[#1F6FA8] bg-[#F4F7FB]'
                           : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
                       }`}
                     >
@@ -171,11 +171,11 @@ const KnowledgeBasePage: React.FC = () => {
                     </button>
                   </div>
 
-                  <span className="inline-block text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded mb-3">
+                  <span className="inline-block text-xs font-medium text-[#1F6FA8] bg-[#F4F7FB] px-2 py-1 rounded mb-3">
                     {resource.category}
                   </span>
 
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-[#0F4C75] transition-colors">
                     <Link to={'/resource/' + resource.id} className="outline-none hover:underline focus-visible:underline">{resource.title}</Link>
                   </h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-2">
@@ -189,7 +189,7 @@ const KnowledgeBasePage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+                <div className="px-6 py-4 bg-gray-50 border-t border-[#E4E4E4] flex items-center justify-between">
                   <button
                     onClick={() => setPreviewResource(resource)}
                     className="text-gray-600 hover:text-gray-900 flex items-center gap-1 text-sm"
@@ -219,21 +219,21 @@ const KnowledgeBasePage: React.FC = () => {
       </section>
 
       {/* Insights Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Thought Leadership</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Thought Leadership</span>
             <h2 className="text-3xl font-bold mt-4">Latest Research & Insights</h2>
             <p className="text-gray-600 mt-4">Practical perspectives on consulting, delivery and AI, with sources you can check</p>
           </div>
 
           <div className={'grid gap-8 ' + (insightsArticles.length < 3 ? 'md:grid-cols-2 max-w-4xl mx-auto' : 'md:grid-cols-3')}>
             {insightsArticles.map((insight) => (
-              <article key={insight.id} className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow">
+              <article key={insight.id} className="bg-white rounded-2xl overflow-hidden border border-gray-200 transition-shadow">
                 <img src={insight.image} alt={insight.title} className="w-full h-48 object-cover" />
                 <div className="p-6">
                   <div className="flex items-center gap-4 mb-3">
-                    <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                    <span className="text-xs font-medium text-[#1F6FA8] bg-[#F4F7FB] px-2 py-1 rounded">
                       {insight.category}
                     </span>
                     <span className="text-xs text-gray-500 flex items-center gap-1">
@@ -241,15 +241,15 @@ const KnowledgeBasePage: React.FC = () => {
                       {insight.readTime}
                     </span>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 hover:text-blue-600">
+                  <h3 className="text-lg font-semibold mb-2 hover:text-[#0F4C75]">
                     <Link to={'/insight/' + insight.id} className="outline-none hover:underline focus-visible:underline">{insight.title}</Link>
                   </h3>
                   <p className="text-gray-600 text-sm line-clamp-2 mb-4">
                     {insight.excerpt}
                   </p>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#E4E4E4]">
                     <span className="text-sm text-gray-500">{insight.date}</span>
-                    <Link to={`/insight/${insight.id}`} className="text-blue-600 text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
+                    <Link to={`/insight/${insight.id}`} className="text-[#1F6FA8] text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
                       Read More <ChevronRight className="w-4 h-4" />
                     </Link>
                   </div>
@@ -261,15 +261,15 @@ const KnowledgeBasePage: React.FC = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Stay in Touch</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Stay in Touch</span>
             <h2 className="text-3xl font-bold mt-4 mb-4">Want New Insights When They Publish?</h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8">
               Tell us what you are working on and we will send you new frameworks and articles as they are published.
             </p>
-            <Link to={'/get-started?interest=' + encodeURIComponent('Insights updates')} className="btn bg-white text-blue-600 hover:bg-gray-100 px-8">
+            <Link to={'/get-started?interest=' + encodeURIComponent('Insights updates')} className="btn btn-primary px-8">
               Get in Touch
             </Link>
           </div>
@@ -283,10 +283,10 @@ const KnowledgeBasePage: React.FC = () => {
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between z-10">
               <div className="flex items-center gap-3">
                 <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r ${
-                  previewResource.category === 'Assessment Tools' ? 'from-blue-500 to-blue-600 text-white' :
-                  previewResource.category === 'Templates' ? 'from-purple-500 to-purple-600 text-white' :
-                  previewResource.category === 'Methodology' ? 'from-green-500 to-green-600 text-white' :
-                  'from-orange-500 to-orange-600 text-white'
+                  previewResource.category === 'Assessment Tools' ? 'from-[#1A1A1B] to-[#1A1A1B] text-white' :
+                  previewResource.category === 'Templates' ? 'from-[#1A1A1B] to-[#1A1A1B] text-white' :
+                  previewResource.category === 'Methodology' ? 'from-[#1A1A1B] to-[#1A1A1B] text-white' :
+                  'from-[#1A1A1B] to-[#1A1A1B] text-white'
                 }`}>
                   {previewResource.category}
                 </span>
@@ -328,7 +328,7 @@ const KnowledgeBasePage: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-3">
                   {previewResource.content.outcomes.map((outcome, index) => (
                     <div key={index} className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-[#1F6FA8] flex-shrink-0" />
                       <span className="text-gray-700">{outcome}</span>
                     </div>
                   ))}
