@@ -2,8 +2,9 @@
  * Cookie Policy (rewritten 16 Nov 2026).
  *
  * Says only what is true of both sites, checked against their code on
- * 16 Nov 2026: the website sets no cookies; the platform sets two (Supabase
- * sign-in, the side-menu choice); Vercel Web Analytics counts visits without
+ * 16 Nov 2026 (brief-box cookie added 17 Nov 2026 with Build 2): the website
+ * sets no cookies; the platform sets three (Supabase sign-in, the side-menu
+ * choice, the brief-box hand-over); Vercel Web Analytics counts visits without
  * cookies (facts from Vercel's own documentation). The previous version
  * described Google Analytics, Hotjar, advertising cookies, a consent banner
  * and compliance badges, none of which existed.
@@ -15,7 +16,7 @@ import React from 'react';
 import { Cookie, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const LAST_UPDATED = '16 November 2026';
+const LAST_UPDATED = '17 November 2026';
 
 const Section: React.FC<{ id: string; title: string; children: React.ReactNode }> = ({ id, title, children }) => (
   <section id={id} className="border-b border-gray-200 last:border-0 py-8 first:pt-0">
@@ -27,6 +28,7 @@ const Section: React.FC<{ id: string; title: string; children: React.ReactNode }
 const PLATFORM_COOKIES = [
   { name: 'sb-…-auth-token', purpose: 'Keeps you signed in (set by Supabase, our authentication provider)', type: 'Necessary', duration: 'Up to 400 days, or until you sign out' },
   { name: 'acooya_rail_collapsed', purpose: 'Remembers whether you collapsed the side menu', type: 'Functional', duration: '1 year' },
+  { name: 'acooya_brief_draft', purpose: 'Carries what you type in the home page brief box to the brief page, so you do not have to type it again', type: 'Functional', duration: 'Removed when the brief page opens, or after 10 minutes' },
 ];
 
 const CookiePolicyPage: React.FC = () => (
@@ -53,7 +55,7 @@ const CookiePolicyPage: React.FC = () => (
 
           <Section id="in-short" title="In short">
             <p>
-              We use no advertising or tracking cookies, and we do not share browsing data with advertisers. The website sets no cookies. The platform sets two: one keeps you signed in, the other remembers a layout choice. We count website visits with Vercel Web Analytics, which uses no cookies.
+              We use no advertising or tracking cookies, and we do not share browsing data with advertisers. The website sets no cookies. The platform sets three: one keeps you signed in, one remembers a layout choice, and one briefly carries what you type in the home page brief box to the brief page. We count website visits with Vercel Web Analytics, which uses no cookies.
             </p>
           </Section>
 

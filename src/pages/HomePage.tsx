@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { INTAKE_URL, intakeUrl } from '../lib/intake';
+import { INTAKE_URL, INTAKE_DRAFT_URL, intakeUrl } from '../lib/intake';
 import { PRACTICE_AREAS } from '../lib/practiceAreas';
 import { consultingServices, knowledgeBase, insightsArticles } from '../data/mockData';
 import HeroStory from '../components/HeroStory';
@@ -9,11 +9,14 @@ import HeroStory from '../components/HeroStory';
  * Home page, Option A "front door" (chosen 31 Oct 2026, confirmed and built
  * 16 Nov 2026; design: canvas "Acooya UI Uplift — Review Before Build", 1a).
  *
- * The brief box: three situation cards, each a quote from the platform's
- * src/lib/intake/situations.ts word for word, linked by id (ids only in a
- * URL, never typed text). Change the card on the platform first. The line
- * under them names no consultant and says nothing about AI either way;
- * "A senior consultant reads every brief" is true of the intake today.
+ * The brief box: a box to type in, then three situation cards. What the
+ * visitor types is posted to the platform (INTAKE_DRAFT_URL) and arrives in
+ * the intake's "The problem" field; it never travels in a URL (Build 2,
+ * 17 Nov 2026). Each card is a quote from the platform's
+ * src/lib/intake/situations.ts word for word, linked by id. Change the card
+ * on the platform first. The line beside Continue names no consultant and
+ * says nothing about AI either way; "A senior consultant reads every brief"
+ * is true of the intake today.
  *
  * Honesty rules carried over: the About band shows only claimable facts
  * (counted from the data, not typed); "approved by a person", because on AI
@@ -44,6 +47,14 @@ const THUMB = [
 ];
 
 const HomePage: React.FC = () => {
+  // Nothing typed: go to the intake as before, instead of posting an empty box.
+  const onBriefSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const typed = new FormData(e.currentTarget).get('problem');
+    if (typeof typed !== 'string' || typed.trim() === '') {
+      e.preventDefault();
+      window.location.href = INTAKE_URL;
+    }
+  };
   const priceOf = (id: string) => consultingServices.find((s) => s.id === id)?.priceRange ?? '';
   const offeringCount = consultingServices.reduce((n, s) => n + s.offerings.length, 0);
   const scorecard = knowledgeBase.find((r) => r.id === 'kb3');
@@ -68,18 +79,22 @@ const HomePage: React.FC = () => {
           <h1 className="text-[36px] leading-[1.08] md:text-[clamp(2.4rem,5vw,4rem)] md:leading-[1.05] font-bold tracking-[-0.02em]">Human-AI Synergy for Enterprise Transformation</h1>
           <p className="mt-3.5 md:mt-5 mx-auto max-w-[640px] font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C]">Senior consultants and AI agents work together as one team, with human review on every output.</p>
 
-          <div className="mt-7 md:mt-10 mx-auto max-w-[640px] bg-white md:bg-white/80 border border-[#D1D1D1] rounded-[22px] p-3.5 md:p-[18px] text-left shadow-[0_8px_30px_rgba(26,26,27,0.08)]">
-            <h2 className="mb-3 text-[15px] font-semibold">What’s happening in your organisation?</h2>
-            <div className="flex flex-col gap-2">
-              {SITUATIONS.map((s) => (
-                <a key={s.id} href={`${INTAKE_URL}?situation=${s.id}`} className="block px-3.5 py-3 rounded-xl bg-[#F4F7FB] hover:bg-[#E9EEF5] text-[#1A1A1B] text-sm leading-snug transition-colors">“{s.quote}”</a>
-              ))}
+          <form method="post" action={INTAKE_DRAFT_URL} onSubmit={onBriefSubmit} className="mt-7 md:mt-10 mx-auto max-w-[640px] bg-white md:bg-white/80 border border-[#D1D1D1] rounded-[22px] p-3.5 md:p-[18px] text-left shadow-[0_8px_30px_rgba(26,26,27,0.08)]">
+            <h2 id="brief-box-title" className="mb-3 text-[15px] font-semibold">What’s happening in your organisation?</h2>
+            <textarea name="problem" rows={3} maxLength={2000} aria-labelledby="brief-box-title" placeholder="Our programme is late and the steering committee doesn’t trust the numbers." className="block w-full resize-none rounded-xl border border-[#D1D1D1] bg-white px-3.5 py-3 text-base md:text-[15px] leading-snug text-[#1A1A1B] placeholder:text-[#8A8A8A] focus:outline-none focus:border-[#3498DB] focus:ring-2 focus:ring-[#3498DB]/30"></textarea>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-3">
+              <span className="text-[13px] leading-snug text-[#555555]">A senior consultant reads every brief.</span>
+              <button type="submit" className="shrink-0 min-h-[44px] inline-flex items-center justify-center px-5 rounded-full bg-[#1A1A1B] hover:bg-black text-white text-sm font-semibold transition-colors">Continue</button>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-3.5">
-              <span className="text-[13px] leading-snug text-[#555555]">Not quite your situation? Tell us in your own words. A senior consultant reads every brief.</span>
-              <a href={INTAKE_URL} className="shrink-0 min-h-[44px] inline-flex items-center justify-center px-5 rounded-full bg-[#1A1A1B] hover:bg-black text-white text-sm font-semibold transition-colors">Start a Brief</a>
+            <div className="mt-4 pt-3.5 border-t border-[#E4E4E4]">
+              <p className="mb-2 text-[13px] text-[#555555]">Or start from a situation like yours</p>
+              <div className="flex flex-col gap-2">
+                {SITUATIONS.map((s) => (
+                  <a key={s.id} href={`${INTAKE_URL}?situation=${s.id}`} className="block px-3.5 py-3 rounded-xl bg-[#F4F7FB] hover:bg-[#E9EEF5] text-[#1A1A1B] text-sm leading-snug transition-colors">“{s.quote}”</a>
+                ))}
+              </div>
             </div>
-          </div>
+          </form>
 
           {/* Desktop: three ways in. Phone: start from a practice area. */}
           <div className="hidden md:flex flex-wrap justify-center gap-3 mt-6">
