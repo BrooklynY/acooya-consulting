@@ -270,7 +270,7 @@ body {
 }
 
 .tab-active {
-  @apply bg-[#1A1A1B] text-white;
+  @apply bg-[#E3F0FA] text-[#0F4C75];
 }
 
 .tab-inactive {
@@ -292,4 +292,25 @@ body {
    room. Used by ScrollManager and by native #links on the legal pages. */
 [id] {
   scroll-margin-top: 6rem;
+}
+
+/* Colour washes: the home hero's three logo colours, quieter, for every other page. */
+.hero-wash {
+  background:
+    radial-gradient(ellipse 72% 95% at 68% 0%, rgba(52, 152, 219, 0.28), rgba(52, 152, 219, 0) 70%),
+    radial-gradient(ellipse 42% 70% at 6% 100%, rgba(233, 30, 99, 0.12), rgba(233, 30, 99, 0) 70%),
+    radial-gradient(ellipse 42% 70% at 97% 80%, rgba(243, 156, 18, 0.16), rgba(243, 156, 18, 0) 70%),
+    #F4F7FB;
+}
+
+.band-wash {
+  background:
+    radial-gradient(ellipse 60% 90% at 50% 110%, rgba(52, 152, 219, 0.22), rgba(52, 152, 219, 0) 70%),
+    radial-gradient(ellipse 36% 70% at 12% 0%, rgba(243, 156, 18, 0.13), rgba(243, 156, 18, 0) 70%),
+    radial-gradient(ellipse 36% 70% at 90% 8%, rgba(233, 30, 99, 0.10), rgba(233, 30, 99, 0) 70%),
+    #F4F7FB;
+}
+
+.btn-soft {
+  @apply bg-[#E3F0FA] text-[#0F4C75] hover:bg-[#D3E7F7];
 }

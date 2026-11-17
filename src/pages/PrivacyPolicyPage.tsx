@@ -35,7 +35,7 @@ const PrivacyPolicyPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
+      <section className="hero-wash text-[#1A1A1B] py-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-6">

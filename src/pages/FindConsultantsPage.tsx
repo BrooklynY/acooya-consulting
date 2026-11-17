@@ -19,6 +19,22 @@ import {
 import { aiAgents } from '../data/mockData';
 import { useConsultants } from '../hooks/use-consultants';
 
+// Card tile colours: the practice-area tints, in rotation.
+const TILE_TINTS: [string, string][] = [
+  ['#E3F0FA', '#0F4C75'],
+  ['#FDF0DC', '#7A4A00'],
+  ['#FCE4EC', '#880E4F'],
+  ['#EDEDED', '#3A3A3C'],
+];
+
+// Each agent's tile carries its own brand colour, quietly.
+const agentTint = (name: string): [string, string] =>
+  name.startsWith('Atlas') ? ['#E3F0FA', '#0F4C75']
+  : name.startsWith('Nova') ? ['#FDF0DC', '#7A4A00']
+  : name.startsWith('Aria') ? ['#FCE4EC', '#880E4F']
+  : name.startsWith('Zenith') ? ['#E3F6EA', '#1B6B3A']
+  : ['#EDEDED', '#3A3A3C'];
+
 const FindConsultantsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'human' | 'ai'>('human');
   const [searchQuery, setSearchQuery] = useState('');
@@ -41,7 +57,7 @@ const FindConsultantsPage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
+      <section className="hero-wash text-[#1A1A1B] py-16">
         <div className="container-custom">
           <div className="max-w-3xl">
             <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Talent Network</span>
@@ -113,7 +129,7 @@ const FindConsultantsPage: React.FC = () => {
         <div className="container-custom">
           {activeTab === 'human' ? (
             <div className="grid md:grid-cols-2 gap-6">
-              {filteredHumans.map((consultant) => (
+              {filteredHumans.map((consultant, i) => (
                 <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#BDBDBD] transition-all">
                   <div className="flex items-start gap-4 mb-4">
                     {consultant.isLive && consultant.image ? (
@@ -123,8 +139,8 @@ const FindConsultantsPage: React.FC = () => {
                         className="w-20 h-20 rounded-xl object-cover"
                       />
                     ) : (
-                      <div className="w-20 h-20 rounded-xl bg-[#1A1A1B] flex items-center justify-center">
-                        <Briefcase className="w-10 h-10 text-white" />
+                      <div className="w-20 h-20 rounded-xl flex items-center justify-center" style={{ backgroundColor: TILE_TINTS[i % TILE_TINTS.length]![0] }}>
+                        <Briefcase className="w-10 h-10" style={{ color: TILE_TINTS[i % TILE_TINTS.length]![1] }} />
                       </div>
                     )}
                     <div className="flex-1">
@@ -179,7 +195,7 @@ const FindConsultantsPage: React.FC = () => {
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       ) : (
-                        <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${consultant.title}`)}`} className="btn btn-primary">
+                        <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${consultant.title}`)}`} className="btn btn-soft">
                           Join Waitlist
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
@@ -194,8 +210,8 @@ const FindConsultantsPage: React.FC = () => {
               {aiAgents.map((agent) => (
                 <div key={agent.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#BDBDBD] transition-all">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-20 h-20 rounded-xl bg-[#1A1A1B] flex items-center justify-center">
-                      <Bot className="w-10 h-10 text-white" />
+                    <div className="w-20 h-20 rounded-xl flex items-center justify-center" style={{ backgroundColor: agentTint(agent.name)[0] }}>
+                      <Bot className="w-10 h-10" style={{ color: agentTint(agent.name)[1] }} />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-start justify-between">

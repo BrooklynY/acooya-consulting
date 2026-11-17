@@ -179,7 +179,7 @@ const PricingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white font-geist text-[#1A1A1B]">
       {/* Hero Section */}
-      <div className="bg-[#F4F7FB] px-5 md:px-6 lg:px-8 pt-10 md:pt-16 pb-10 md:pb-14 mb-10 md:mb-14">
+      <div className="hero-wash px-5 md:px-6 lg:px-8 pt-10 md:pt-16 pb-10 md:pb-14 mb-10 md:mb-14">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-[34px] leading-[1.08] md:text-5xl md:leading-[1.05] font-bold tracking-[-0.02em] text-[#1A1A1B] mb-4">
             Simple, Transparent Pricing
@@ -196,7 +196,7 @@ const PricingPage: React.FC = () => {
             <button
               onClick={() => setIsAnnual(!isAnnual)}
               className={`relative w-14 h-7 rounded-full transition-colors ${
-                isAnnual ? 'bg-[#1A1A1B]' : 'bg-gray-300'
+                isAnnual ? 'bg-[#1F6FA8]' : 'bg-gray-300'
               }`}
               aria-label="Toggle billing period"
             >
@@ -230,13 +230,13 @@ const PricingPage: React.FC = () => {
                 key={tier.id}
                 className={`relative flex flex-col bg-white rounded-[20px] ${
                   tier.highlighted
-                    ? 'border-2 border-[#1A1A1B] z-10'
+                    ? 'border-2 border-[#3498DB] z-10'
                     : 'border border-[#E4E4E4]'
                 }`}
               >
                 {tier.highlighted && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-[#1A1A1B] text-white text-sm font-semibold px-4 py-1 rounded-full">
+                    <span className="bg-[#1F6FA8] text-white text-sm font-semibold px-4 py-1 rounded-full">
                       Recommended
                     </span>
                   </div>
@@ -246,10 +246,10 @@ const PricingPage: React.FC = () => {
                   {/* Tier Header */}
                   <div className="mb-6">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${
-                      tier.highlighted ? 'bg-[#1A1A1B]' : 'bg-[#F4F7FB]'
+                      tier.highlighted ? 'bg-[#E3F0FA]' : 'bg-[#F4F7FB]'
                     }`}>
                       <Icon className={`w-6 h-6 ${
-                        tier.highlighted ? 'text-white' : 'text-[#1A1A1B]'
+                        tier.highlighted ? 'text-[#0F4C75]' : 'text-[#1A1A1B]'
                       }`} />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900">{tier.name}</h3>
@@ -481,29 +481,29 @@ const PricingPage: React.FC = () => {
           <div className="bg-white rounded-[20px] border border-[#E4E4E4] p-6 md:p-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               <div className="text-center">
-                <div className="w-12 h-12 bg-[#F4F7FB] rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Shield className="w-6 h-6 text-[#1A1A1B]" />
+                <div className="w-12 h-12 bg-[#E3F0FA] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Shield className="w-6 h-6 text-[#0F4C75]" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Designed to SOC 2 standards</h4>
                 <p className="text-xs md:text-sm text-gray-600">Enterprise-grade security</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-[#F4F7FB] rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Zap className="w-6 h-6 text-[#1A1A1B]" />
+                <div className="w-12 h-12 bg-[#FDF0DC] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Zap className="w-6 h-6 text-[#7A4A00]" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Managed Infrastructure</h4>
                 <p className="text-xs md:text-sm text-gray-600">Built on enterprise cloud providers</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-[#F4F7FB] rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-[#1A1A1B]" />
+                <div className="w-12 h-12 bg-[#FCE4EC] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Users className="w-6 h-6 text-[#880E4F]" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Human Experts</h4>
                 <p className="text-xs md:text-sm text-gray-600">Senior-led engagements</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-[#F4F7FB] rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Bot className="w-6 h-6 text-[#1A1A1B]" />
+                <div className="w-12 h-12 bg-[#EDEDED] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Bot className="w-6 h-6 text-[#3A3A3C]" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Specialist AI Agents</h4>
                 <p className="text-xs md:text-sm text-gray-600">Purpose-built for consulting</p>

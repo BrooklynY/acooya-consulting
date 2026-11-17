@@ -189,7 +189,7 @@ const ResourceDetailPage: React.FC = () => {
       )}
 
       {/* Hero Section */}
-      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
+      <section className="hero-wash text-[#1A1A1B] py-16">
         <div className="container-custom">
           <Link to="/knowledge" onClick={(e) => backTo('/knowledge', ['/resources'], e)} className="flex w-fit items-center gap-2 text-[#1F6FA8] hover:text-[#0F4C75] mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" />
@@ -446,7 +446,7 @@ const ResourceDetailPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-12 md:py-16">
+      <section className="band-wash text-[#1A1A1B] py-12 md:py-16">
         <div className="container-custom text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Want to apply this to your organisation?</h2>
           <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-6 md:mb-8 max-w-2xl mx-auto">

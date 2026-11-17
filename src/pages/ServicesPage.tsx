@@ -28,7 +28,7 @@ const ServicesPage: React.FC = () => {
   return (
     <div className="font-geist text-[#1A1A1B] bg-white">
       {/* Hero */}
-      <section className="bg-[#F4F7FB] px-5 md:px-6 lg:px-8 py-12 md:py-20">
+      <section className="hero-wash px-5 md:px-6 lg:px-8 py-12 md:py-20">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl">
             <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#1F6FA8]">Our Services</span>
@@ -192,7 +192,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#F4F7FB] px-5 md:px-6 lg:px-8 py-12 md:py-20">
+      <section className="band-wash px-5 md:px-6 lg:px-8 py-12 md:py-20">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-[26px] md:text-4xl font-bold tracking-[-0.01em] mb-4">Ready to Get Started?</h2>
           <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8 max-w-2xl mx-auto">

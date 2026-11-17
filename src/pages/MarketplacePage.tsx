@@ -17,6 +17,22 @@ import {
 import { aiAgents } from '../data/mockData';
 import { useConsultants } from '../hooks/use-consultants';
 
+// Card tile colours: the practice-area tints, in rotation.
+const TILE_TINTS: [string, string][] = [
+  ['#E3F0FA', '#0F4C75'],
+  ['#FDF0DC', '#7A4A00'],
+  ['#FCE4EC', '#880E4F'],
+  ['#EDEDED', '#3A3A3C'],
+];
+
+// Each agent's tile carries its own brand colour, quietly.
+const agentTint = (name: string): [string, string] =>
+  name.startsWith('Atlas') ? ['#E3F0FA', '#0F4C75']
+  : name.startsWith('Nova') ? ['#FDF0DC', '#7A4A00']
+  : name.startsWith('Aria') ? ['#FCE4EC', '#880E4F']
+  : name.startsWith('Zenith') ? ['#E3F6EA', '#1B6B3A']
+  : ['#EDEDED', '#3A3A3C'];
+
 const MarketplacePage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState<'human' | 'ai'>('human');
@@ -48,7 +64,7 @@ const MarketplacePage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
+      <section className="hero-wash text-[#1A1A1B] py-16">
         <div className="container-custom">
           <div className="max-w-3xl">
             <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Talent Network</span>
@@ -71,28 +87,28 @@ const MarketplacePage: React.FC = () => {
                 onClick={() => setActiveTab('human')}
                 className={`px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center ${
                   activeTab === 'human'
-                    ? 'bg-[#1A1A1B] text-white'
+                    ? 'bg-[#E3F0FA] text-[#0F4C75]'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
                 <Users className="w-4 h-4 mr-2" />
                 Human Consultants
                 <span className={`ml-2 px-2 py-0.5 rounded text-xs ${
-                  activeTab === 'human' ? 'bg-white/20' : 'bg-gray-200'
+                  activeTab === 'human' ? 'bg-white/70' : 'bg-gray-200'
                 }`}>{consultants.length}</span>
               </button>
               <button
                 onClick={() => setActiveTab('ai')}
                 className={`px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center ${
                   activeTab === 'ai'
-                    ? 'bg-[#1A1A1B] text-white'
+                    ? 'bg-[#E3F0FA] text-[#0F4C75]'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
                 <Bot className="w-4 h-4 mr-2" />
                 AI Agents
                 <span className={`ml-2 px-2 py-0.5 rounded text-xs ${
-                  activeTab === 'ai' ? 'bg-white/20' : 'bg-gray-200'
+                  activeTab === 'ai' ? 'bg-white/70' : 'bg-gray-200'
                 }`}>{aiAgents.length}</span>
               </button>
             </div>
@@ -132,7 +148,7 @@ const MarketplacePage: React.FC = () => {
         <div className="container-custom">
           {activeTab === 'human' ? (
             <div className="grid md:grid-cols-2 gap-6">
-              {filteredHumans.map((consultant) => (
+              {filteredHumans.map((consultant, i) => (
                 <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#BDBDBD] transition-all">
                   <div className="flex items-start gap-4 mb-4">
                     {consultant.isLive && consultant.image ? (
@@ -142,8 +158,8 @@ const MarketplacePage: React.FC = () => {
                         className="w-20 h-20 rounded-xl object-cover"
                       />
                     ) : (
-                      <div className="w-20 h-20 rounded-xl bg-[#1A1A1B] flex items-center justify-center">
-                        <Briefcase className="w-10 h-10 text-white" />
+                      <div className="w-20 h-20 rounded-xl flex items-center justify-center" style={{ backgroundColor: TILE_TINTS[i % TILE_TINTS.length]![0] }}>
+                        <Briefcase className="w-10 h-10" style={{ color: TILE_TINTS[i % TILE_TINTS.length]![1] }} />
                       </div>
                     )}
                     <div className="flex-1">
@@ -204,7 +220,7 @@ const MarketplacePage: React.FC = () => {
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       ) : (
-                        <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${consultant.title}`)}`} className="px-5 py-2.5 bg-[#1A1A1B] text-white text-sm font-semibold rounded-full whitespace-nowrap hover:opacity-90 transition-colors flex items-center">
+                        <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${consultant.title}`)}`} className="btn btn-soft">
                           Join Waitlist
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
@@ -241,13 +257,13 @@ const MarketplacePage: React.FC = () => {
                   >
                     <div className="flex items-start gap-4 mb-4">
                       <div
-                        className={`w-20 h-20 rounded-xl flex items-center justify-center${agent.availability === 'Available' ? '' : ' bg-[#1A1A1B] opacity-60'}`}
-                        style={agent.availability === 'Available' ? { backgroundColor: '#E91E63' } : undefined}
+                        className="w-20 h-20 rounded-xl flex items-center justify-center"
+                        style={{ backgroundColor: agent.availability === 'Available' ? '#E91E63' : agentTint(agent.name)[0] }}
                       >
                         {agent.name.startsWith('Aria') && agent.availability === 'Available' ? (
                           <img src="/aria-mark.svg" alt="" className="w-12 h-12" />
                         ) : (
-                          <Bot className="w-10 h-10 text-white" />
+                          <Bot className="w-10 h-10" style={{ color: agent.availability === 'Available' ? '#FFFFFF' : agentTint(agent.name)[1] }} />
                         )}
                       </div>
                       <div className="flex-1">
@@ -297,7 +313,7 @@ const MarketplacePage: React.FC = () => {
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Link>
                         ) : (
-                          <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${agent.name}`)}`} className="px-5 py-2.5 bg-[#1A1A1B] text-white text-sm font-semibold rounded-full whitespace-nowrap hover:opacity-90 transition-colors flex items-center">
+                          <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${agent.name}`)}`} className="btn btn-soft">
                             Join Waitlist
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Link>
