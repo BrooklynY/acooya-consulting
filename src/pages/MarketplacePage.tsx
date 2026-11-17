@@ -48,14 +48,14 @@ const MarketplacePage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-16">
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Talent Network</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Talent Network</span>
             <h1 className="text-4xl lg:text-5xl font-bold mt-4 mb-6">
               Find Your Perfect Consulting Partner
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8">
               Choose senior human consultants, purpose-built AI agents, or both together, with a person approving every AI output.
             </p>
           </div>
@@ -71,7 +71,7 @@ const MarketplacePage: React.FC = () => {
                 onClick={() => setActiveTab('human')}
                 className={`px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center ${
                   activeTab === 'human'
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-[#1A1A1B] text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -85,7 +85,7 @@ const MarketplacePage: React.FC = () => {
                 onClick={() => setActiveTab('ai')}
                 className={`px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center ${
                   activeTab === 'ai'
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-[#1A1A1B] text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -105,7 +105,7 @@ const MarketplacePage: React.FC = () => {
                   placeholder="Search by name or expertise..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full sm:w-80 pl-10 pr-4 py-2.5 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                  className="w-full sm:w-80 pl-10 pr-4 py-2.5 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-[#3498DB] focus:bg-white transition-all"
                 />
               </div>
 
@@ -113,7 +113,7 @@ const MarketplacePage: React.FC = () => {
                 <select
                   value={selectedExpertise || ''}
                   onChange={(e) => setSelectedExpertise(e.target.value || null)}
-                  className="w-full sm:w-48 px-4 py-2.5 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
+                  className="w-full sm:w-48 px-4 py-2.5 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-[#3498DB] appearance-none cursor-pointer"
                 >
                   <option value="">All Expertise</option>
                   {allExpertise.map((exp) => (
@@ -133,7 +133,7 @@ const MarketplacePage: React.FC = () => {
           {activeTab === 'human' ? (
             <div className="grid md:grid-cols-2 gap-6">
               {filteredHumans.map((consultant) => (
-                <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 transition-all hover:shadow-lg">
+                <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#BDBDBD] transition-all">
                   <div className="flex items-start gap-4 mb-4">
                     {consultant.isLive && consultant.image ? (
                       <img
@@ -142,7 +142,7 @@ const MarketplacePage: React.FC = () => {
                         className="w-20 h-20 rounded-xl object-cover"
                       />
                     ) : (
-                      <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                      <div className="w-20 h-20 rounded-xl bg-[#1A1A1B] flex items-center justify-center">
                         <Briefcase className="w-10 h-10 text-white" />
                       </div>
                     )}
@@ -150,20 +150,20 @@ const MarketplacePage: React.FC = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <div className="flex items-center gap-2">
-                            {consultant.profileUrl ? (<h3 className="text-xl font-semibold"><a href={consultant.profileUrl} className="hover:text-blue-600 transition-colors">{consultant.name}</a></h3>) : (<h3 className="text-xl font-semibold">{consultant.name}</h3>)}
+                            {consultant.profileUrl ? (<h3 className="text-xl font-semibold"><a href={consultant.profileUrl} className="hover:text-[#0F4C75] transition-colors">{consultant.name}</a></h3>) : (<h3 className="text-xl font-semibold">{consultant.name}</h3>)}
                             {consultant.linkedinUrl && (
-                              <a href={consultant.linkedinUrl} target="_blank" rel="noopener noreferrer" title={`${consultant.name} on LinkedIn`} aria-label={`${consultant.name} on LinkedIn`} className="text-gray-400 hover:text-blue-600 transition-colors">
+                              <a href={consultant.linkedinUrl} target="_blank" rel="noopener noreferrer" title={`${consultant.name} on LinkedIn`} aria-label={`${consultant.name} on LinkedIn`} className="text-gray-400 hover:text-[#0F4C75] transition-colors">
                                 <Linkedin className="w-4 h-4" />
                               </a>
                             )}
                           </div>
                           <p className="text-gray-600">{consultant.title}</p>
                         </div>
-                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
                           consultant.availability === 'Available Now'
-                            ? 'bg-green-100 text-green-700'
+                            ? 'bg-[#E3F0FA] text-[#0F4C75]'
                             : consultant.availability === 'Joining Soon'
-                              ? 'bg-purple-100 text-purple-700'
+                              ? 'bg-[#EDEDED] text-[#3A3A3C]'
                               : 'bg-amber-100 text-amber-700'
                         }`}>
                           {consultant.availability}
@@ -171,7 +171,7 @@ const MarketplacePage: React.FC = () => {
                       </div>
                       <div className="flex items-center gap-4 mt-2">
                         <span className="text-sm text-gray-500">{consultant.experience}</span>
-                        {consultant.profileUrl && (<a href={consultant.profileUrl} className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">View profile →</a>)}
+                        {consultant.profileUrl && (<a href={consultant.profileUrl} className="text-sm font-medium text-[#1F6FA8] hover:text-[#0F4C75] transition-colors">View profile →</a>)}
                       </div>
                     </div>
                   </div>
@@ -182,11 +182,11 @@ const MarketplacePage: React.FC = () => {
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {consultant.expertise.map((exp, i) => (
-                      <span key={i} className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-lg">{exp}</span>
+                      <span key={i} className="px-3 py-1 bg-[#F4F7FB] text-[#3A3A3C] text-xs font-medium rounded-lg">{exp}</span>
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#E4E4E4]">
                     <div>
                       <p className="text-sm text-gray-500">Rate</p>
                       <p className="font-bold text-lg">Rate on Enquiry</p>
@@ -199,12 +199,12 @@ const MarketplacePage: React.FC = () => {
                         <Calendar className="w-4 h-4" />
                       </Link>
                       {consultant.isLive ? (
-                        <Link to={`/get-started?interest=${encodeURIComponent(consultant.name)}`} className="px-5 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center">
+                        <Link to={`/get-started?interest=${encodeURIComponent(consultant.name)}`} className="px-5 py-2.5 bg-[#1A1A1B] text-white text-sm font-semibold rounded-full whitespace-nowrap hover:bg-black transition-colors flex items-center">
                           Engage
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       ) : (
-                        <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${consultant.title}`)}`} className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
+                        <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${consultant.title}`)}`} className="px-5 py-2.5 bg-[#1A1A1B] text-white text-sm font-semibold rounded-full whitespace-nowrap hover:opacity-90 transition-colors flex items-center">
                           Join Waitlist
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
@@ -217,16 +217,16 @@ const MarketplacePage: React.FC = () => {
           ) : (
             <>
               {/* Pricing Info Banner */}
-              <div className="mb-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100">
+              <div className="mb-8 bg-[#EDEDED] rounded-2xl p-6 border border-[#E4E4E4]">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
-                    <Bot className="w-6 h-6 text-purple-600" />
+                  <div className="w-12 h-12 rounded-xl bg-[#EDEDED] flex items-center justify-center flex-shrink-0">
+                    <Bot className="w-6 h-6 text-[#1F6FA8]" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">AI Agent Pricing</h3>
                     <p className="text-gray-600 text-sm">
                       Using our AI agents yourself comes with a subscription (Growth, Professional or Enterprise, from A$49 a month), and each plan includes a monthly credit allowance. On a consulting engagement the agents work through your consultant and are included in the engagement fee, so no plan is needed.{' '}
-                      <Link to="/pricing" className="font-semibold text-purple-700 hover:text-purple-800 whitespace-nowrap">Compare plans</Link>
+                      <Link to="/pricing" className="font-semibold text-[#3A3A3C] hover:text-[#0F4C75] whitespace-nowrap">Compare plans</Link>
                     </p>
                   </div>
                 </div>
@@ -236,12 +236,12 @@ const MarketplacePage: React.FC = () => {
                 {aiAgents.map((agent) => (
                   <div
                     key={agent.id}
-                    className={`bg-white rounded-2xl p-6 border transition-all hover:shadow-lg relative ${agent.availability === 'Available' ? '' : 'border-gray-200 hover:border-purple-300'}`}
+                    className={`bg-white rounded-2xl p-6 border transition-all relative ${agent.availability === 'Available' ? '' : 'border-gray-200 hover:border-[#BDBDBD]'}`}
                     style={agent.availability === 'Available' ? { borderColor: '#E91E63' } : undefined}
                   >
                     <div className="flex items-start gap-4 mb-4">
                       <div
-                        className={`w-20 h-20 rounded-xl flex items-center justify-center${agent.availability === 'Available' ? '' : ' bg-gradient-to-br from-purple-500 to-pink-500 opacity-60'}`}
+                        className={`w-20 h-20 rounded-xl flex items-center justify-center${agent.availability === 'Available' ? '' : ' bg-[#1A1A1B] opacity-60'}`}
                         style={agent.availability === 'Available' ? { backgroundColor: '#E91E63' } : undefined}
                       >
                         {agent.name.startsWith('Aria') && agent.availability === 'Available' ? (
@@ -271,13 +271,13 @@ const MarketplacePage: React.FC = () => {
                     <div className="space-y-2 mb-4">
                       {agent.capabilities.map((cap, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-4 h-4 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-600">{cap}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex items-start justify-between pt-4 border-t border-gray-100 gap-4">
+                    <div className="flex flex-wrap items-start justify-between pt-4 border-t border-[#E4E4E4] gap-4">
                       <div className="flex-1">
                         <p className="text-sm font-semibold text-gray-700 mb-2">Credit cost per task</p>
                         <div className="space-y-1">
@@ -292,12 +292,12 @@ const MarketplacePage: React.FC = () => {
                           <Bot className="w-4 h-4" />
                         </Link>
                         {agent.availability === 'Available' ? (
-                          <Link to={`/get-started?interest=${encodeURIComponent(agent.name)}`} className="px-5 py-2.5 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center" style={{ backgroundColor: '#E91E63' }}>
+                          <Link to={`/get-started?interest=${encodeURIComponent(agent.name)}`} className="px-5 py-2.5 text-white text-sm font-semibold rounded-full whitespace-nowrap hover:opacity-90 transition-colors flex items-center" style={{ backgroundColor: '#E91E63' }}>
                             Get started
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Link>
                         ) : (
-                          <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${agent.name}`)}`} className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:opacity-90 transition-colors flex items-center">
+                          <Link to={`/get-started?interest=${encodeURIComponent(`Waitlist — ${agent.name}`)}`} className="px-5 py-2.5 bg-[#1A1A1B] text-white text-sm font-semibold rounded-full whitespace-nowrap hover:opacity-90 transition-colors flex items-center">
                             Join Waitlist
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Link>
@@ -333,8 +333,8 @@ const MarketplacePage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 rounded-xl bg-[#E3F0FA] flex items-center justify-center">
+                  <Users className="w-6 h-6 text-[#1F6FA8]" />
                 </div>
                 <h3 className="text-xl font-semibold">Human Consultants Excel At</h3>
               </div>
@@ -348,7 +348,7 @@ const MarketplacePage: React.FC = () => {
                   'Judgment calls requiring deep domain experience'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                     <span className="text-gray-600">{item}</span>
                   </li>
                 ))}
@@ -357,8 +357,8 @@ const MarketplacePage: React.FC = () => {
 
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
-                  <Bot className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 rounded-xl bg-[#EDEDED] flex items-center justify-center">
+                  <Bot className="w-6 h-6 text-[#1F6FA8]" />
                 </div>
                 <h3 className="text-xl font-semibold">AI Agents Excel At</h3>
               </div>
@@ -371,7 +371,7 @@ const MarketplacePage: React.FC = () => {
                   'Consistent, repeatable analysis across every engagement'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                     <span className="text-gray-600">{item}</span>
                   </li>
                 ))}
@@ -380,7 +380,7 @@ const MarketplacePage: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <a href={INTAKE_URL} className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:opacity-90 transition-opacity text-lg">
+            <a href={INTAKE_URL} className="inline-flex items-center px-8 py-4 bg-[#1A1A1B] text-white font-medium rounded-xl hover:opacity-90 transition-opacity text-lg">
               Start a Brief
               <ArrowRight className="w-5 h-5 ml-2" />
             </a>

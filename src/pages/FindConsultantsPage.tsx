@@ -41,14 +41,14 @@ const FindConsultantsPage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-16">
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Talent Network</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Talent Network</span>
             <h1 className="text-4xl lg:text-5xl font-bold mt-4 mb-6">
               Find Your Perfect Consulting Partner
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8">
               Choose senior human consultants, purpose-built AI agents, or both together, with a person approving every AI output.
             </p>
           </div>
@@ -86,7 +86,7 @@ const FindConsultantsPage: React.FC = () => {
                   placeholder="Search by name or expertise..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="input pl-10 w-full sm:w-80"
+                  className="input !pl-10 w-full sm:w-80"
                 />
               </div>
 
@@ -114,7 +114,7 @@ const FindConsultantsPage: React.FC = () => {
           {activeTab === 'human' ? (
             <div className="grid md:grid-cols-2 gap-6">
               {filteredHumans.map((consultant) => (
-                <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 transition-all hover:shadow-lg">
+                <div key={consultant.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#BDBDBD] transition-all">
                   <div className="flex items-start gap-4 mb-4">
                     {consultant.isLive && consultant.image ? (
                       <img
@@ -123,7 +123,7 @@ const FindConsultantsPage: React.FC = () => {
                         className="w-20 h-20 rounded-xl object-cover"
                       />
                     ) : (
-                      <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                      <div className="w-20 h-20 rounded-xl bg-[#1A1A1B] flex items-center justify-center">
                         <Briefcase className="w-10 h-10 text-white" />
                       </div>
                     )}
@@ -131,9 +131,9 @@ const FindConsultantsPage: React.FC = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <div className="flex items-center gap-2">
-                            {consultant.profileUrl ? (<h3 className="text-xl font-semibold"><a href={consultant.profileUrl} className="hover:text-blue-600 transition-colors">{consultant.name}</a></h3>) : (<h3 className="text-xl font-semibold">{consultant.name}</h3>)}
+                            {consultant.profileUrl ? (<h3 className="text-xl font-semibold"><a href={consultant.profileUrl} className="hover:text-[#0F4C75] transition-colors">{consultant.name}</a></h3>) : (<h3 className="text-xl font-semibold">{consultant.name}</h3>)}
                             {consultant.linkedinUrl && (
-                              <a href={consultant.linkedinUrl} target="_blank" rel="noopener noreferrer" title={`${consultant.name} on LinkedIn`} aria-label={`${consultant.name} on LinkedIn`} className="text-gray-400 hover:text-blue-600 transition-colors">
+                              <a href={consultant.linkedinUrl} target="_blank" rel="noopener noreferrer" title={`${consultant.name} on LinkedIn`} aria-label={`${consultant.name} on LinkedIn`} className="text-gray-400 hover:text-[#0F4C75] transition-colors">
                                 <Linkedin className="w-4 h-4" />
                               </a>
                             )}
@@ -146,7 +146,7 @@ const FindConsultantsPage: React.FC = () => {
                       </div>
                       <div className="flex items-center gap-4 mt-2">
                         <span className="text-sm text-gray-500">{consultant.experience}</span>
-                        {consultant.profileUrl && (<a href={consultant.profileUrl} className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">View profile →</a>)}
+                        {consultant.profileUrl && (<a href={consultant.profileUrl} className="text-sm font-medium text-[#1F6FA8] hover:text-[#0F4C75] transition-colors">View profile →</a>)}
                       </div>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ const FindConsultantsPage: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#E4E4E4]">
                     <div>
                       <p className="text-sm text-gray-500">Rate</p>
                       <p className="font-bold text-lg">Rate on Enquiry</p>
@@ -192,9 +192,9 @@ const FindConsultantsPage: React.FC = () => {
           ) : (
             <div className="grid md:grid-cols-2 gap-6">
               {aiAgents.map((agent) => (
-                <div key={agent.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-purple-300 transition-all hover:shadow-lg">
+                <div key={agent.id} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#BDBDBD] transition-all">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-xl bg-[#1A1A1B] flex items-center justify-center">
                       <Bot className="w-10 h-10 text-white" />
                     </div>
                     <div className="flex-1">
@@ -218,13 +218,13 @@ const FindConsultantsPage: React.FC = () => {
                   <div className="space-y-2 mb-4">
                     {agent.capabilities.map((cap, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-gray-600">{cap}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#E4E4E4]">
                     <div>
                       <p className="text-sm text-gray-500">Pricing</p>
                       <p className="text-sm font-semibold text-gray-700">Credits, included in plans</p>
@@ -234,12 +234,12 @@ const FindConsultantsPage: React.FC = () => {
                         <Bot className="w-4 h-4" />
                       </button>
                       {agent.availability === 'Available' ? (
-                        <Link to="/pricing" className="btn btn-primary bg-purple-600 hover:bg-purple-700">
+                        <Link to="/pricing" className="btn btn-primary bg-[#1A1A1B] hover:bg-black">
                           Get started
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       ) : (
-                        <button className="btn btn-primary bg-purple-600 hover:bg-purple-700">
+                        <button className="btn btn-primary bg-[#1A1A1B] hover:bg-black">
                           Join Waitlist
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </button>
@@ -274,8 +274,8 @@ const FindConsultantsPage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-2xl p-8 border border-gray-200">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 rounded-xl bg-[#E3F0FA] flex items-center justify-center">
+                  <Users className="w-6 h-6 text-[#1F6FA8]" />
                 </div>
                 <h3 className="text-xl font-semibold">Human Consultants Excel At</h3>
               </div>
@@ -289,7 +289,7 @@ const FindConsultantsPage: React.FC = () => {
                   'Judgment calls requiring deep domain experience'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                     <span className="text-gray-600">{item}</span>
                   </li>
                 ))}
@@ -298,8 +298,8 @@ const FindConsultantsPage: React.FC = () => {
 
             <div className="bg-white rounded-2xl p-8 border border-gray-200">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center">
-                  <Bot className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 rounded-xl bg-[#EDEDED] flex items-center justify-center">
+                  <Bot className="w-6 h-6 text-[#1F6FA8]" />
                 </div>
                 <h3 className="text-xl font-semibold">AI Agents Excel At</h3>
               </div>
@@ -312,7 +312,7 @@ const FindConsultantsPage: React.FC = () => {
                   'Consistent, repeatable analysis across every engagement'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                     <span className="text-gray-600">{item}</span>
                   </li>
                 ))}

@@ -77,7 +77,7 @@ const InsightDetailPage: React.FC = () => {
       {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 z-50">
         <div
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-150"
+          className="h-full bg-[#3498DB] transition-all duration-150"
           style={{ width: `${readingProgress}%` }}
         />
       </div>
@@ -97,7 +97,7 @@ const InsightDetailPage: React.FC = () => {
               Back to Resources
             </Link>
             <div className="flex flex-wrap items-center gap-4 mb-4">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-400/30">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-white/15 text-white border border-white/30">
                 <FileText className="w-4 h-4" />
                 {article.category}
               </span>
@@ -129,7 +129,7 @@ const InsightDetailPage: React.FC = () => {
                   <img
                     src={article.content.authorImage}
                     alt={article.content.author}
-                    className="w-16 h-16 rounded-full object-cover ring-4 ring-blue-50"
+                    className="w-16 h-16 rounded-full object-cover ring-4 ring-[#F4F7FB]"
                   />
                   <div>
                     <p className="font-semibold text-gray-900">{article.content.author}</p>
@@ -141,7 +141,7 @@ const InsightDetailPage: React.FC = () => {
               {/* Introduction */}
               <div className="bg-white rounded-2xl p-8 mb-8 border border-gray-200">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <BookOpen className="w-6 h-6 text-blue-600" />
+                  <BookOpen className="w-6 h-6 text-[#1F6FA8]" />
                   Introduction
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
@@ -158,7 +158,7 @@ const InsightDetailPage: React.FC = () => {
                       className="w-full p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex items-center gap-4">
-                        <span className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">
+                        <span className="w-10 h-10 rounded-xl bg-[#E3F0FA] text-[#1F6FA8] font-bold flex items-center justify-center text-sm">
                           {index + 1}
                         </span>
                         <h3 className="text-xl font-bold text-gray-900 text-left">{section.title}</h3>
@@ -181,7 +181,7 @@ const InsightDetailPage: React.FC = () => {
                               {section.subsections.map((sub, subIndex) => (
                                 <div key={subIndex} className="bg-gray-50 rounded-xl p-5">
                                   <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                                    <span className="w-6 h-6 rounded-lg bg-purple-100 text-purple-600 text-xs flex items-center justify-center font-medium">
+                                    <span className="w-6 h-6 rounded-lg bg-[#EDEDED] text-[#1F6FA8] text-xs flex items-center justify-center font-medium">
                                       {String.fromCharCode(65 + subIndex)}
                                     </span>
                                     {sub.title}
@@ -201,7 +201,7 @@ const InsightDetailPage: React.FC = () => {
               </div>
 
               {/* Key Takeaways */}
-              <div className="mt-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+              <div className="mt-8 bg-[#F4F7FB] border border-[#E4E4E4] rounded-2xl p-8 text-[#1A1A1B]">
                 <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
                   <Lightbulb className="w-6 h-6" />
                   Key Takeaways
@@ -209,8 +209,8 @@ const InsightDetailPage: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   {article.content.keyTakeaways.map((takeaway, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90">{takeaway}</span>
+                      <CheckCircle className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
+                      <span className="text-[#3A3A3C]">{takeaway}</span>
                     </div>
                   ))}
                 </div>
@@ -223,7 +223,7 @@ const InsightDetailPage: React.FC = () => {
                   <ol className="space-y-3 list-decimal pl-5">
                     {article.content.sources.map((source, index) => (
                       <li key={index} className="text-sm text-gray-600">
-                        <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{source.title}</a>
+                        <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-[#1F6FA8] hover:underline">{source.title}</a>
                         <span className="text-gray-500"> · {source.publisher}, {source.date}</span>
                       </li>
                     ))}
@@ -253,7 +253,7 @@ const InsightDetailPage: React.FC = () => {
                       onClick={() => setBookmarked(!bookmarked)}
                       className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-colors ${
                         bookmarked
-                          ? 'bg-blue-100 text-blue-700 border border-blue-300'
+                          ? 'bg-[#E3F0FA] text-[#3A3A3C] border border-[#BDBDBD]'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -296,7 +296,7 @@ const InsightDetailPage: React.FC = () => {
                             className="w-20 h-20 rounded-lg object-cover flex-shrink-0"
                           />
                           <div>
-                            <p className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                            <p className="text-sm font-medium text-gray-900 group-hover:text-[#0F4C75] transition-colors line-clamp-2">
                               {related.title}
                             </p>
                             <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
@@ -310,12 +310,12 @@ const InsightDetailPage: React.FC = () => {
                 </div>
 
                 {/* Newsletter CTA */}
-                <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-2xl p-6 text-white">
+                <div className="bg-[#F4F7FB] text-[#1A1A1B] border border-[#E4E4E4] rounded-2xl p-6">
                   <h3 className="font-bold mb-2">Stay Informed</h3>
-                  <p className="text-sm text-gray-300 mb-4">
+                  <p className="text-sm text-[#3A3A3C] mb-4">
                     New articles are published as they are written. Tell us what you are working on and we will send them to you.
                   </p>
-                  <Link to={'/get-started?interest=' + encodeURIComponent('Insights updates')} className="w-full btn bg-white text-blue-600 hover:bg-gray-100 text-sm py-2 flex justify-center">
+                  <Link to={'/get-started?interest=' + encodeURIComponent('Insights updates')} className="w-full btn btn-primary text-sm py-2 flex justify-center">
                     Get in Touch
                   </Link>
                 </div>
@@ -343,7 +343,7 @@ const InsightDetailPage: React.FC = () => {
               </span>
               <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
+                  className="h-full bg-[#3498DB]"
                   style={{ width: `${readingProgress}%` }}
                 />
               </div>

@@ -82,15 +82,15 @@ const ResourceDetailPage: React.FC = () => {
   const getCategoryColor = (category: string) => {
     switch (category) {
       case 'Assessment Tools':
-        return 'from-blue-500 to-blue-600';
+        return 'from-[#1A1A1B] to-[#1A1A1B]';
       case 'Templates':
-        return 'from-purple-500 to-purple-600';
+        return 'from-[#1A1A1B] to-[#1A1A1B]';
       case 'Methodology':
-        return 'from-green-500 to-green-600';
+        return 'from-[#1A1A1B] to-[#1A1A1B]';
       case 'Toolkits':
-        return 'from-orange-500 to-orange-600';
+        return 'from-[#1A1A1B] to-[#1A1A1B]';
       default:
-        return 'from-blue-500 to-purple-500';
+        return 'from-[#1A1A1B] to-[#1A1A1B]';
     }
   };
 
@@ -182,30 +182,30 @@ const ResourceDetailPage: React.FC = () => {
 
       {/* Share Toast */}
       {showShareToast && (
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2">
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 bg-[#1A1A1B] text-white px-6 py-3 rounded-lg z-50 flex items-center gap-2">
           <CheckCircle className="w-5 h-5" />
           Link copied to clipboard!
         </div>
       )}
 
       {/* Hero Section */}
-      <section className={`bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-16`}>
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
         <div className="container-custom">
-          <Link to="/knowledge" onClick={(e) => backTo('/knowledge', ['/resources'], e)} className="flex w-fit items-center gap-2 text-blue-300 hover:text-white mb-8 transition-colors">
+          <Link to="/knowledge" onClick={(e) => backTo('/knowledge', ['/resources'], e)} className="flex w-fit items-center gap-2 text-[#1F6FA8] hover:text-[#0F4C75] mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Back to Knowledge Base
           </Link>
 
           <div className="max-w-4xl">
             <div className="flex items-center gap-3 mb-4">
-              <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r ${getCategoryColor(resource.category)}`}>
+              <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-[#E3F0FA] text-[#0F4C75]`}>
                 {getCategoryIcon(resource.category)}
                 {resource.category}
               </span>
             </div>
 
             <h1 className="text-3xl lg:text-4xl font-bold mb-4">{resource.title}</h1>
-            <p className="text-xl text-gray-300 mb-6">{resource.description}</p>
+            <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-6">{resource.description}</p>
 
           </div>
         </div>
@@ -224,7 +224,7 @@ const ResourceDetailPage: React.FC = () => {
                     onClick={() => setActiveTab('overview')}
                     className={`flex-1 px-6 py-4 text-sm font-medium transition-colors ${
                       activeTab === 'overview'
-                        ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50'
+                        ? 'text-[#1F6FA8] border-b-2 border-[#1A1A1B] bg-[#F4F7FB]'
                         : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                   >
@@ -234,7 +234,7 @@ const ResourceDetailPage: React.FC = () => {
                     onClick={() => setActiveTab('methodology')}
                     className={`flex-1 px-6 py-4 text-sm font-medium transition-colors ${
                       activeTab === 'methodology'
-                        ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50'
+                        ? 'text-[#1F6FA8] border-b-2 border-[#1A1A1B] bg-[#F4F7FB]'
                         : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                   >
@@ -244,7 +244,7 @@ const ResourceDetailPage: React.FC = () => {
                     onClick={() => setActiveTab('outcomes')}
                     className={`flex-1 px-6 py-4 text-sm font-medium transition-colors ${
                       activeTab === 'outcomes'
-                        ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50'
+                        ? 'text-[#1F6FA8] border-b-2 border-[#1A1A1B] bg-[#F4F7FB]'
                         : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                   >
@@ -260,9 +260,9 @@ const ResourceDetailPage: React.FC = () => {
                         {resource.content.overview}
                       </p>
 
-                      <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 md:p-6 mb-6 md:mb-8">
+                      <div className="bg-[#F4F7FB] rounded-xl p-4 md:p-6 mb-6 md:mb-8">
                         <div className="flex items-center gap-3 mb-4">
-                          <Target className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
+                          <Target className="w-5 h-5 md:w-6 md:h-6 text-[#1F6FA8]" />
                           <h3 className="text-base md:text-lg font-semibold text-gray-900">Key Sections</h3>
                         </div>
                         <p className="text-gray-600 text-sm md:text-base">
@@ -271,7 +271,7 @@ const ResourceDetailPage: React.FC = () => {
                         <ul className="mt-4 space-y-2">
                           {resource.content.sections.map((section, index) => (
                             <li key={index} className="flex items-start gap-2">
-                              <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                              <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-[#1F6FA8] mt-0.5 flex-shrink-0" />
                               <span className="text-gray-700 text-sm md:text-base">
                                 <strong>{section.title}</strong>: {section.description}
                               </span>
@@ -301,13 +301,13 @@ const ResourceDetailPage: React.FC = () => {
                             </button>
 
                             {expandedSections.includes(section.title) && (
-                              <div className="px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-100">
+                              <div className="px-4 md:px-6 pb-4 md:pb-6 border-t border-[#E4E4E4]">
                                 <p className="text-gray-600 mb-3 md:mb-4 pt-3 md:pt-4 text-sm md:text-base">{section.description}</p>
                                 <ContentFigure id={section.figure} />
                                 <div className="grid sm:grid-cols-2 gap-2 md:gap-3">
                                   {section.items.map((item, itemIndex) => (
                                     <div key={itemIndex} className="flex items-start gap-2 text-sm">
-                                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
+                                      <div className="w-1.5 h-1.5 rounded-full bg-[#3498DB] mt-2 flex-shrink-0" />
                                       <span className="text-gray-700">{item}</span>
                                     </div>
                                   ))}
@@ -323,9 +323,9 @@ const ResourceDetailPage: React.FC = () => {
                   {activeTab === 'methodology' && (
                     <div className="prose prose-blue max-w-none">
                       <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Methodology</h2>
-                      <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-4 md:p-6 mb-6 md:mb-8">
+                      <div className="bg-white rounded-xl p-4 md:p-6 mb-6 md:mb-8">
                         <div className="flex items-center gap-3 mb-4">
-                          <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+                          <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-[#1F6FA8]" />
                           <h3 className="text-base md:text-lg font-semibold text-gray-900">How It Is Used</h3>
                         </div>
                         <p className="text-gray-600 leading-relaxed text-sm md:text-base">{resource.content.methodology}</p>
@@ -334,7 +334,7 @@ const ResourceDetailPage: React.FC = () => {
                                             <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6">
                         <p className="text-xs font-medium uppercase tracking-wider text-gray-500 mb-1">Related service</p>
                         <p className="text-gray-600 text-sm md:text-base mb-3">This resource is used in the {resource.relatedService.label}. Ask us about it, or request the resource and use it yourself.</p>
-                        <Link to={resource.relatedService.href} className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline">{resource.relatedService.label}<ArrowRight className="w-4 h-4" /></Link>
+                        <Link to={resource.relatedService.href} className="inline-flex items-center gap-2 text-[#1F6FA8] font-medium hover:underline">{resource.relatedService.label}<ArrowRight className="w-4 h-4" /></Link>
                       </div>
                     </div>
                   )}
@@ -370,13 +370,13 @@ const ResourceDetailPage: React.FC = () => {
                       <Link
                         key={r.id}
                         to={`/resource/${r.id}`}
-                        className="flex items-start gap-3 md:gap-4 p-3 md:p-4 border border-gray-200 rounded-xl hover:border-blue-300 hover:bg-blue-50 transition-colors group"
+                        className="flex items-start gap-3 md:gap-4 p-3 md:p-4 border border-gray-200 rounded-xl hover:border-[#BDBDBD] hover:bg-[#F4F7FB] transition-colors group"
                       >
                         <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br ${getCategoryColor(r.category)} flex items-center justify-center text-white flex-shrink-0`}>
                           {getCategoryIcon(r.category)}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors truncate text-sm md:text-base">
+                          <h4 className="font-medium text-gray-900 group-hover:text-[#0F4C75] transition-colors truncate text-sm md:text-base">
                             {r.title}
                           </h4>
                           <p className="text-xs md:text-sm text-gray-500 mt-1">
@@ -408,12 +408,12 @@ const ResourceDetailPage: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-gray-100 space-y-2">
+                <div className="mt-6 pt-6 border-t border-[#E4E4E4] space-y-2">
                   <button
                     onClick={handleBookmark}
                     className={`flex items-center gap-2 w-full justify-center px-4 py-2.5 rounded-lg transition-colors ${
                       bookmarked
-                        ? 'bg-blue-100 text-blue-600 border border-blue-300'
+                        ? 'bg-[#E3F0FA] text-[#1F6FA8] border border-[#BDBDBD]'
                         : 'text-gray-600 hover:bg-gray-100 border border-transparent'
                     }`}
                   >
@@ -430,7 +430,7 @@ const ResourceDetailPage: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-6 p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
+                <div className="mt-6 p-4 bg-[#F4F7FB] rounded-xl">
                   <h4 className="font-semibold text-gray-900 mb-2">Want help applying it?</h4>
                   <p className="text-sm text-gray-600 mb-4">
                     A free 30-minute Discovery Call maps your problem to the right engagement.
@@ -446,17 +446,17 @@ const ResourceDetailPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-12 md:py-16">
         <div className="container-custom text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Want to apply this to your organisation?</h2>
-          <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto">
+          <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-6 md:mb-8 max-w-2xl mx-auto">
             Send a short brief and a senior consultant will reply by email.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-            <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
+            <a href={INTAKE_URL} className="btn btn-primary text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
               Start a Brief
             </a>
-            <Link to="/marketplace" className="btn border-2 border-white/30 text-white hover:bg-white/10 text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
+            <Link to="/marketplace" className="btn btn-secondary text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
               Explore Services
             </Link>
           </div>
