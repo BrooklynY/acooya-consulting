@@ -255,7 +255,7 @@ const AboutPage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section id="overview" className="bg-[#F4F7FB] text-[#1A1A1B] py-24">
+      <section id="overview" className="hero-wash text-[#1A1A1B] py-24">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">About Acooya</span>
@@ -394,8 +394,8 @@ const AboutPage: React.FC = () => {
 
             {/* CTO - Recruiting */}
             <div className="text-center bg-[#E3F0FA] rounded-2xl p-6 border border-[#E4E4E4]">
-              <div className="w-24 h-24 rounded-2xl mx-auto bg-[#1A1A1B] flex items-center justify-center mb-6">
-                <Code2 className="w-12 h-12 text-white" />
+              <div className="w-24 h-24 rounded-2xl mx-auto bg-white border border-[#E4E4E4] flex items-center justify-center mb-6">
+                <Code2 className="w-12 h-12 text-[#0F4C75]" />
               </div>
               <h3 className="text-xl font-bold mb-1">Chief Technology Officer</h3>
               <p className="text-sm text-gray-600 mb-4">We are recruiting a senior technology leader to drive Acooya's AI infrastructure, platform architecture, and engineering excellence.</p>
@@ -409,8 +409,8 @@ const AboutPage: React.FC = () => {
 
             {/* CDIO - Recruiting */}
             <div className="text-center bg-[#EDEDED] rounded-2xl p-6 border border-[#E4E4E4]">
-              <div className="w-24 h-24 rounded-2xl mx-auto bg-[#1A1A1B] flex items-center justify-center mb-6">
-                <Database className="w-12 h-12 text-white" />
+              <div className="w-24 h-24 rounded-2xl mx-auto bg-white border border-[#E4E4E4] flex items-center justify-center mb-6">
+                <Database className="w-12 h-12 text-[#3A3A3C]" />
               </div>
               <h3 className="text-xl font-bold mb-1">Chief Data & Insight Officer</h3>
               <p className="text-sm text-gray-600 mb-4">We are recruiting a data and insight leader to shape how Acooya turns complex information into strategic advantage for our clients.</p>
@@ -424,8 +424,8 @@ const AboutPage: React.FC = () => {
 
             {/* COO - Recruiting */}
             <div className="text-center bg-[#FDF0DC] rounded-2xl p-6 border border-[#E4E4E4]">
-              <div className="w-24 h-24 rounded-2xl mx-auto bg-[#1A1A1B] flex items-center justify-center mb-6">
-                <Settings className="w-12 h-12 text-white" />
+              <div className="w-24 h-24 rounded-2xl mx-auto bg-white border border-[#E4E4E4] flex items-center justify-center mb-6">
+                <Settings className="w-12 h-12 text-[#7A4A00]" />
               </div>
               <h3 className="text-xl font-bold mb-1">Chief Operating Officer</h3>
               <p className="text-sm text-gray-600 mb-4">We are recruiting an operations leader to scale Acooya's delivery model and client experience globally.</p>
@@ -450,7 +450,7 @@ const AboutPage: React.FC = () => {
       )}
 
       {/* Technology */}
-      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
+      <section className="band-wash text-[#1A1A1B] py-20">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>

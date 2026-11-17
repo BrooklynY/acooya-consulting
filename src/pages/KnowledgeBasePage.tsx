@@ -77,7 +77,7 @@ const KnowledgeBasePage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section id="overview" className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
+      <section id="overview" className="hero-wash text-[#1A1A1B] py-20">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Free Resources</span>
@@ -199,7 +199,7 @@ const KnowledgeBasePage: React.FC = () => {
                   </button>
                   <Link
                     to={`/resource/${resource.id}`}
-                    className="btn btn-primary text-sm py-2"
+                    className="btn btn-soft"
                   >
                     View Details
                   </Link>
@@ -261,7 +261,7 @@ const KnowledgeBasePage: React.FC = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
+      <section className="band-wash text-[#1A1A1B] py-20">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Stay in Touch</span>

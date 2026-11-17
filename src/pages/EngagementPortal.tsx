@@ -53,7 +53,7 @@ const EngagementPortal: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section id="overview" className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
+      <section id="overview" className="hero-wash text-[#1A1A1B] py-16">
         <div className="container-custom">
           <div className="max-w-3xl">
             <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Engagements</span>
@@ -142,7 +142,7 @@ const EngagementPortal: React.FC = () => {
       </section>
 
       {/* Closing */}
-      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
+      <section className="band-wash text-[#1A1A1B] py-16">
         <div className="container-custom text-center">
           <h2 className="text-3xl font-bold mb-4">Ready when you are</h2>
           <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8 max-w-2xl mx-auto">A few minutes to describe the problem. No commitment until you approve a charter.</p>
