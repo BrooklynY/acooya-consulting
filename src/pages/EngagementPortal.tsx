@@ -43,8 +43,8 @@ const WAYS = [
 ] as const;
 
 const NEXT_STEPS = [
-  { icon: FileText, title: 'Brief received', desc: 'Brooklyn reads your brief personally' },
-  { icon: Clipboard, title: 'Draft charter', desc: 'Prepared from your brief by Brooklyn' },
+  { icon: FileText, title: 'Brief received', desc: 'Read personally by a senior consultant' },
+  { icon: Clipboard, title: 'Draft charter', desc: 'Prepared from your brief by that consultant' },
   { icon: MessageSquare, title: 'Discovery Call', desc: '30 minutes, free, to walk through it' },
   { icon: Shield, title: 'G0: you approve', desc: 'Nothing starts until you do' },
 ];
@@ -59,7 +59,7 @@ const EngagementPortal: React.FC = () => {
             <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Engagements</span>
             <h1 className="text-4xl lg:text-5xl font-bold mt-4 mb-6">How Engagements Work</h1>
             <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8">
-              Tell us what you need solved in a short brief. Brooklyn reads it and prepares a draft charter, and nothing starts until you approve it.
+              Tell us what you need solved in a short brief. A senior consultant reads every brief personally and prepares a draft charter, and nothing starts until you approve it.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href={INTAKE_URL} className="btn btn-primary">
