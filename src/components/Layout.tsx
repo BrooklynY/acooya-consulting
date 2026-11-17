@@ -119,7 +119,7 @@ const Layout: React.FC = () => {
       </header>
       {launcherOpen && <LauncherSheet onClose={() => setLauncherOpen(false)} />}
 
-      <main className="min-h-screen flex flex-col">
+      <main className="min-h-screen flex flex-col text-[#1A1A1B]">
         <Outlet />
       </main>
 

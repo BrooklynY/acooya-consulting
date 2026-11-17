@@ -19,7 +19,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, defaultO
       >
         <span className="text-lg font-semibold text-gray-900">{title}</span>
         {isOpen ? (
-          <ChevronUp className="w-5 h-5 text-blue-600" />
+          <ChevronUp className="w-5 h-5 text-[#1F6FA8]" />
         ) : (
           <ChevronDown className="w-5 h-5 text-gray-400" />
         )}
@@ -34,17 +34,17 @@ const TermsOfServicePage: React.FC = () => {
   const effectiveDate = "13 April 2026";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white py-20">
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-full mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-6">
               <FileText className="w-8 h-8" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Terms of Service</h1>
-            <p className="text-xl text-purple-100 mb-2">Last Updated: {lastUpdated}</p>
-            <p className="text-purple-200 max-w-2xl mx-auto">
+            <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-2">Last Updated: {lastUpdated}</p>
+            <p className="text-[#3A3A3C] max-w-2xl mx-auto">
               These Terms of Service govern your use of Acooya Consulting's platform and services. By accessing or using our services, you agree to be bound by these terms.
             </p>
           </div>
@@ -52,18 +52,18 @@ const TermsOfServicePage: React.FC = () => {
       </section>
 
       {/* Quick Navigation */}
-      <section className="bg-white border-b sticky top-20 z-40 shadow-sm">
+      <section className="bg-white border-b sticky top-20 z-40">
         <div className="container-custom py-4">
           <div className="flex flex-wrap gap-4 justify-center text-sm">
-            <a href="#acceptance" className="text-blue-600 hover:text-blue-800 font-medium">Acceptance</a>
-            <a href="#services" className="text-gray-600 hover:text-blue-800">Our Services</a>
-            <a href="#accounts" className="text-gray-600 hover:text-blue-800">User Accounts</a>
-            <a href="#consultants" className="text-gray-600 hover:text-blue-800">Service Providers</a>
-            <a href="#payments" className="text-gray-600 hover:text-blue-800">Payments</a>
-            <a href="#intellectual-property" className="text-gray-600 hover:text-blue-800">Intellectual Property</a>
-            <a href="#liability" className="text-gray-600 hover:text-blue-800">Liability</a>
-            <a href="#disputes" className="text-gray-600 hover:text-blue-800">Disputes</a>
-            <a href="#contact" className="text-gray-600 hover:text-blue-800">Contact</a>
+            <a href="#acceptance" className="text-[#1F6FA8] hover:text-[#0F4C75] font-medium">Acceptance</a>
+            <a href="#services" className="text-gray-600 hover:text-[#0F4C75]">Our Services</a>
+            <a href="#accounts" className="text-gray-600 hover:text-[#0F4C75]">User Accounts</a>
+            <a href="#consultants" className="text-gray-600 hover:text-[#0F4C75]">Service Providers</a>
+            <a href="#payments" className="text-gray-600 hover:text-[#0F4C75]">Payments</a>
+            <a href="#intellectual-property" className="text-gray-600 hover:text-[#0F4C75]">Intellectual Property</a>
+            <a href="#liability" className="text-gray-600 hover:text-[#0F4C75]">Liability</a>
+            <a href="#disputes" className="text-gray-600 hover:text-[#0F4C75]">Disputes</a>
+            <a href="#contact" className="text-gray-600 hover:text-[#0F4C75]">Contact</a>
           </div>
         </div>
       </section>
@@ -74,10 +74,10 @@ const TermsOfServicePage: React.FC = () => {
           <div className="max-w-4xl mx-auto">
 
             {/* Compliance Notice */}
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 mb-12 border border-blue-100">
+            <div className="bg-[#F4F7FB] rounded-xl p-6 mb-12 border border-[#E4E4E4]">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Globe className="w-5 h-5 text-blue-600" />
+                <div className="flex-shrink-0 w-10 h-10 bg-[#E3F0FA] rounded-full flex items-center justify-center">
+                  <Globe className="w-5 h-5 text-[#1F6FA8]" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-2">International Compliance Notice</h3>
@@ -89,9 +89,9 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Introduction */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8" id="acceptance">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]" id="acceptance">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <Scale className="w-6 h-6 text-blue-600" />
+                <Scale className="w-6 h-6 text-[#1F6FA8]" />
                 Acceptance of Terms
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
@@ -117,7 +117,7 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Definitions */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Definitions</h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-4 rounded-lg">
@@ -148,9 +148,9 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Our Services */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8" id="services">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]" id="services">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Users className="w-6 h-6 text-green-600" />
+                <Users className="w-6 h-6 text-[#1F6FA8]" />
                 Our Services
               </h2>
 
@@ -169,17 +169,17 @@ const TermsOfServicePage: React.FC = () => {
 
               <AccordionItem title="Service Categories">
                 <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Business Architecture</h4>
-                    <p className="text-sm text-blue-700">Operating model design, organisational structure, process optimisation</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Business Architecture</h4>
+                    <p className="text-sm text-[#3A3A3C]">Operating model design, organisational structure, process optimisation</p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-900 mb-2">Delivery Enablement</h4>
-                    <p className="text-sm text-green-700">Project management, implementation support, change management</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Delivery Enablement</h4>
+                    <p className="text-sm text-[#3A3A3C]">Project management, implementation support, change management</p>
                   </div>
-                  <div className="bg-purple-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-purple-900 mb-2">Strategic Insights</h4>
-                    <p className="text-sm text-purple-700">Market analysis, reporting, decision support, research</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Strategic Insights</h4>
+                    <p className="text-sm text-[#3A3A3C]">Market analysis, reporting, decision support, research</p>
                   </div>
                 </div>
               </AccordionItem>
@@ -213,9 +213,9 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* User Accounts */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8" id="accounts">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]" id="accounts">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Shield className="w-6 h-6 text-purple-600" />
+                <Shield className="w-6 h-6 text-[#1F6FA8]" />
                 User Accounts
               </h2>
 
@@ -234,17 +234,17 @@ const TermsOfServicePage: React.FC = () => {
 
               <AccordionItem title="Account Types">
                 <div className="space-y-4">
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Client Accounts</h4>
-                    <p className="text-sm text-blue-700">For individuals or organisations seeking consulting services. Clients can browse, engage Service Providers, manage payments, and track engagement history.</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Client Accounts</h4>
+                    <p className="text-sm text-[#3A3A3C]">For individuals or organisations seeking consulting services. Clients can browse, engage Service Providers, manage payments, and track engagement history.</p>
                   </div>
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-green-900 mb-2">Consultant Accounts</h4>
-                    <p className="text-sm text-green-700">For human consulting professionals. Consultants can create profiles, offer services, manage engagements, and receive payments.</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Consultant Accounts</h4>
+                    <p className="text-sm text-[#3A3A3C]">For human consulting professionals. Consultants can create profiles, offer services, manage engagements, and receive payments.</p>
                   </div>
-                  <div className="bg-purple-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-purple-900 mb-2">AI Developer Accounts</h4>
-                    <p className="text-sm text-purple-700">For developers creating AI agents. Developers can build, deploy, and manage AI Agents on the Platform.</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">AI Developer Accounts</h4>
+                    <p className="text-sm text-[#3A3A3C]">For developers creating AI agents. Developers can build, deploy, and manage AI Agents on the Platform.</p>
                   </div>
                   <div className="bg-orange-50 p-4 rounded-lg">
                     <h4 className="font-semibold text-orange-900 mb-2">Founder Accounts</h4>
@@ -286,7 +286,7 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Service Provider Terms */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8" id="consultants">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]" id="consultants">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Users className="w-6 h-6 text-teal-600" />
                 Service Provider Terms
@@ -334,21 +334,21 @@ const TermsOfServicePage: React.FC = () => {
                   We maintain quality standards through:
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Rating System</h4>
-                    <p className="text-sm text-blue-700">Clients rate Service Providers after engagements. Low ratings may result in reduced visibility or account review.</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Rating System</h4>
+                    <p className="text-sm text-[#3A3A3C]">Clients rate Service Providers after engagements. Low ratings may result in reduced visibility or account review.</p>
                   </div>
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Verification Process</h4>
-                    <p className="text-sm text-blue-700">Identity, qualifications, and background checks (where applicable) help ensure trust on the Platform.</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Verification Process</h4>
+                    <p className="text-sm text-[#3A3A3C]">Identity, qualifications, and background checks (where applicable) help ensure trust on the Platform.</p>
                   </div>
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Dispute Resolution</h4>
-                    <p className="text-sm text-blue-700">We provide mechanisms to resolve disputes between Clients and Service Providers.</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Dispute Resolution</h4>
+                    <p className="text-sm text-[#3A3A3C]">We provide mechanisms to resolve disputes between Clients and Service Providers.</p>
                   </div>
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Compliance Audits</h4>
-                    <p className="text-sm text-blue-700">Periodic reviews ensure ongoing compliance with Platform standards and Terms.</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Compliance Audits</h4>
+                    <p className="text-sm text-[#3A3A3C]">Periodic reviews ensure ongoing compliance with Platform standards and Terms.</p>
                   </div>
                 </div>
               </AccordionItem>
@@ -366,9 +366,9 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Payments */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8" id="payments">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]" id="payments">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <CreditCard className="w-6 h-6 text-green-600" />
+                <CreditCard className="w-6 h-6 text-[#1F6FA8]" />
                 Payments and Billing
               </h2>
 
@@ -627,7 +627,7 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Intellectual Property */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8" id="intellectual-property">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]" id="intellectual-property">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Intellectual Property</h2>
 
               <AccordionItem title="Platform Intellectual Property" defaultOpen={true}>
@@ -666,9 +666,9 @@ const TermsOfServicePage: React.FC = () => {
                   Ownership of deliverables created during engagements depends on the engagement terms:
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Work Made for Hire</h4>
-                    <p className="text-sm text-blue-700">Where separately agreed, deliverables become Client property upon payment.</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Work Made for Hire</h4>
+                    <p className="text-sm text-[#3A3A3C]">Where separately agreed, deliverables become Client property upon payment.</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <h4 className="font-semibold text-gray-900 mb-2">Licensed Deliverables</h4>
@@ -694,7 +694,7 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Limitation of Liability */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8" id="liability">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]" id="liability">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <AlertTriangle className="w-6 h-6 text-red-600" />
                 Limitation of Liability
@@ -765,9 +765,9 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Disputes and Governing Law */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8" id="disputes">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]" id="disputes">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Scale className="w-6 h-6 text-indigo-600" />
+                <Scale className="w-6 h-6 text-[#1F6FA8]" />
                 Disputes and Governing Law
               </h2>
 
@@ -776,13 +776,13 @@ const TermsOfServicePage: React.FC = () => {
                   These Terms are governed by and construed in accordance with the laws of:
                 </p>
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Primary Jurisdiction</h4>
-                    <p className="text-sm text-blue-700">New South Wales, Australia (where Acooya is registered)</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Primary Jurisdiction</h4>
+                    <p className="text-sm text-[#3A3A3C]">New South Wales, Australia (where Acooya is registered)</p>
                   </div>
-                  <div className="bg-purple-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-purple-900 mb-2">Consumer Protections</h4>
-                    <p className="text-sm text-purple-700">Applicable consumer protection laws of your location</p>
+                  <div className="bg-[#F4F7FB] p-4 rounded-lg">
+                    <h4 className="font-semibold text-[#1A1A1B] mb-2">Consumer Protections</h4>
+                    <p className="text-sm text-[#3A3A3C]">Applicable consumer protection laws of your location</p>
                   </div>
                 </div>
                 <p className="text-sm text-gray-500">
@@ -796,28 +796,28 @@ const TermsOfServicePage: React.FC = () => {
                 </p>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">1</div>
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#E3F0FA] rounded-full flex items-center justify-center text-[#1F6FA8] font-bold">1</div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Direct Negotiation</h4>
                       <p className="text-sm text-gray-600">Parties attempt to resolve dispute through good-faith negotiation (14 days)</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">2</div>
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#E3F0FA] rounded-full flex items-center justify-center text-[#1F6FA8] font-bold">2</div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Platform Mediation</h4>
                       <p className="text-sm text-gray-600">Acooya provides mediation services to facilitate resolution (14 days)</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">3</div>
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#E3F0FA] rounded-full flex items-center justify-center text-[#1F6FA8] font-bold">3</div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Arbitration</h4>
                       <p className="text-sm text-gray-600">Dispute submitted to binding arbitration (Australian Disputes Centre or similar)</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">4</div>
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#E3F0FA] rounded-full flex items-center justify-center text-[#1F6FA8] font-bold">4</div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Court Proceedings</h4>
                       <p className="text-sm text-gray-600">If arbitration fails, either party may seek court intervention</p>
@@ -853,7 +853,7 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Additional Terms */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <div className="bg-white rounded-2xl p-8 mb-8 border border-[#E4E4E4]">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Additional Terms</h2>
 
               <AccordionItem title="Confidentiality" defaultOpen={true}>
@@ -941,13 +941,13 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="bg-gradient-to-br from-indigo-900 to-blue-900 text-white rounded-2xl p-8" id="contact">
+            <div className="bg-[#F4F7FB] text-[#1A1A1B] border border-[#E4E4E4] rounded-2xl p-8" id="contact">
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
                 <Mail className="w-6 h-6" />
                 Contact Us
               </h2>
 
-              <p className="text-indigo-200 mb-6">
+              <p className="text-[#3A3A3C] mb-6">
                 If you have any questions about these Terms of Service, please contact our legal team.
               </p>
 
@@ -956,24 +956,24 @@ const TermsOfServicePage: React.FC = () => {
                   <h3 className="font-semibold mb-4">General Legal Enquiries</h3>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <Mail className="w-5 h-5 text-indigo-300" />
+                      <Mail className="w-5 h-5 text-[#1F6FA8]" />
                       <span>contact@acooyaconsulting.com</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Phone className="w-5 h-5 text-indigo-300" />
+                      <Phone className="w-5 h-5 text-[#1F6FA8]" />
                       <span>+61 428 112 376</span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-indigo-300 mt-1" />
+                      <MapPin className="w-5 h-5 text-[#1F6FA8] mt-1" />
                       <span>Unit 18, 224 Coward Street<br />Mascot NSW 2020<br />Australia</span>
                     </div>
                   </div>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-4">Business Hours</h3>
-                  <p className="text-indigo-200 mb-2">Monday - Friday: 9:00 AM - 6:00 PM AEST</p>
-                  <p className="text-indigo-200">Saturday - Sunday: Closed</p>
-                  <p className="text-indigo-300 text-sm mt-4">
+                  <p className="text-[#3A3A3C] mb-2">Monday - Friday: 9:00 AM - 6:00 PM AEST</p>
+                  <p className="text-[#3A3A3C]">Saturday - Sunday: Closed</p>
+                  <p className="text-[#1F6FA8] text-sm mt-4">
                     Response times may vary. We endeavour to respond to all enquiries within 2 business days.
                   </p>
                 </div>
@@ -981,12 +981,12 @@ const TermsOfServicePage: React.FC = () => {
             </div>
 
             {/* Acknowledgement */}
-            <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
-              <h3 className="font-semibold text-blue-900 mb-3">Acknowledgement</h3>
-              <p className="text-sm text-blue-700 mb-4">
+            <div className="mt-8 bg-[#F4F7FB] border border-[#E4E4E4] rounded-xl p-6">
+              <h3 className="font-semibold text-[#1A1A1B] mb-3">Acknowledgement</h3>
+              <p className="text-sm text-[#3A3A3C] mb-4">
                 By using Acooya Consulting's Platform, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
               </p>
-              <p className="text-xs text-blue-600">
+              <p className="text-xs text-[#1F6FA8]">
                 Last Updated: {lastUpdated} | Effective Date: {effectiveDate}
               </p>
             </div>
@@ -1008,7 +1008,7 @@ const TermsOfServicePage: React.FC = () => {
       {/* Back to Home */}
       <section className="py-8 bg-gray-50">
         <div className="container-custom text-center">
-          <Link to="/" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium">
+          <Link to="/" className="inline-flex items-center gap-2 text-[#1F6FA8] hover:text-[#0F4C75] font-medium">
             ← Back to Home
           </Link>
         </div>

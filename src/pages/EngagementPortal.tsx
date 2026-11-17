@@ -53,20 +53,20 @@ const EngagementPortal: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section id="overview" className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-16">
+      <section id="overview" className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Engagements</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Engagements</span>
             <h1 className="text-4xl lg:text-5xl font-bold mt-4 mb-6">How Engagements Work</h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8">
               Tell us what you need solved in a short brief. Brooklyn reads it and prepares a draft charter, and nothing starts until you approve it.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4">
+              <a href={INTAKE_URL} className="btn btn-primary">
                 Start a Brief
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
-              <Link to="/services" className="btn border-2 border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4">
+              <Link to="/services" className="btn btn-secondary">
                 See Services
               </Link>
             </div>
@@ -83,24 +83,24 @@ const EngagementPortal: React.FC = () => {
             <div className="grid md:grid-cols-3 gap-6">
               {WAYS.map((w) => (
                 <div key={w.title} className="p-8 rounded-2xl border-2 border-gray-200 flex flex-col">
-                  <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
-                    <w.icon className="w-7 h-7 text-blue-600" />
+                  <div className="w-14 h-14 rounded-xl bg-[#E3F0FA] flex items-center justify-center mb-4">
+                    <w.icon className="w-7 h-7 text-[#1F6FA8]" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{w.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">{w.desc}</p>
                   <ul className="space-y-2 text-sm text-gray-600 mb-6">
                     {w.points.map((p) => (
                       <li key={p} className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-[#1F6FA8] flex-shrink-0" />
                         {p}
                       </li>
                     ))}
                   </ul>
                   <div className="mt-auto">
                     {'href' in w.cta ? (
-                      <a href={w.cta.href} className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium hover:underline">{w.cta.label}<ArrowRight className="w-4 h-4" /></a>
+                      <a href={w.cta.href} className="inline-flex items-center gap-1 text-sm text-[#1F6FA8] font-medium hover:underline">{w.cta.label}<ArrowRight className="w-4 h-4" /></a>
                     ) : (
-                      <Link to={w.cta.to} className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium hover:underline">{w.cta.label}<ArrowRight className="w-4 h-4" /></Link>
+                      <Link to={w.cta.to} className="inline-flex items-center gap-1 text-sm text-[#1F6FA8] font-medium hover:underline">{w.cta.label}<ArrowRight className="w-4 h-4" /></Link>
                     )}
                   </div>
                 </div>
@@ -118,8 +118,8 @@ const EngagementPortal: React.FC = () => {
             <div className="grid md:grid-cols-4 gap-6">
               {NEXT_STEPS.map((item) => (
                 <div key={item.title} className="text-center">
-                  <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mx-auto mb-3">
-                    <item.icon className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 rounded-xl bg-[#E3F0FA] flex items-center justify-center mx-auto mb-3">
+                    <item.icon className="w-6 h-6 text-[#1F6FA8]" />
                   </div>
                   <h4 className="font-semibold mb-1">{item.title}</h4>
                   <p className="text-sm text-gray-600">{item.desc}</p>
@@ -142,11 +142,11 @@ const EngagementPortal: React.FC = () => {
       </section>
 
       {/* Closing */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
         <div className="container-custom text-center">
           <h2 className="text-3xl font-bold mb-4">Ready when you are</h2>
-          <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">A few minutes to describe the problem. No commitment until you approve a charter.</p>
-          <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
+          <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8 max-w-2xl mx-auto">A few minutes to describe the problem. No commitment until you approve a charter.</p>
+          <a href={INTAKE_URL} className="btn btn-primary">
             Start a Brief
             <ArrowRight className="w-5 h-5 ml-2" />
           </a>
