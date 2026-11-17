@@ -75,7 +75,7 @@ export function LauncherSheet({ onClose }: { onClose: () => void }) {
         </nav>
         <div className="mt-auto grid grid-cols-2 gap-2.5 shrink-0">
           <a href={LOGIN_URL} className="min-h-[48px] flex items-center justify-center border border-[#D1D1D1] rounded-full text-[15px] text-[#1A1A1B]">Sign in</a>
-          <a href={INTAKE_URL} className="min-h-[48px] flex items-center justify-center rounded-full bg-[#1A1A1B] text-white text-[15px] font-semibold">Start a Brief</a>
+          <Link to="/get-started" onClick={onClose} className="min-h-[48px] flex items-center justify-center rounded-full bg-[#1A1A1B] text-white text-[15px] font-semibold">Get Started</Link>
         </div>
       </div>
     </div>

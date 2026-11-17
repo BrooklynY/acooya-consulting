@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { INTAKE_URL } from '../lib/intake';
 import { Briefcase, Users, Bot, Check, Mail, UserPlus, Award, Info, Shield } from 'lucide-react';
 
 type EnquiryRole = 'client' | 'consultant' | 'developer';
@@ -340,6 +341,9 @@ const GetStartedPage: React.FC = () => {
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-1">{config.heading}</h2>
                   <p className="text-gray-600">{config.subheading}</p>
+                  {role === 'client' && (
+                    <p className="mt-3 text-sm text-[#3A3A3C]">Already know what you need solved? <a href={INTAKE_URL} className="font-medium text-[#1F6FA8] hover:underline">Start a brief</a></p>
+                  )}
                 </div>
 
                 <div>

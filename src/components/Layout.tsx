@@ -7,7 +7,7 @@ import { LauncherPopover, LauncherSheet } from './SiteLauncher';
 
 /**
  * Site chrome (home page direction, 31 Oct 2026; built 16 Nov 2026): the mark
- * beside the ACOOYA wordmark, five links, Sign in, Start a Brief and the grid
+ * beside the ACOOYA wordmark, five links, Sign in, Get Started and the grid
  * launcher; a trimmed footer with one SOC 2 line. The mark is Brooklyn's own
  * export (public/acooya-mark-sm.png, the file the platform header uses).
  */
@@ -52,8 +52,8 @@ const AcooyaLinks = () => (
 
 const ContactLinks = () => (
   <>
-    <a href={INTAKE_URL} className="text-white font-semibold hover:underline">Start a Brief</a>
-    <Link to="/get-started" className={footerLink}>Ask a question</Link>
+    <Link to="/get-started" className="text-white font-semibold hover:underline">Get Started</Link>
+    <a href={INTAKE_URL} className={footerLink}>Start a Brief</a>
     <a href="mailto:contact@acooyaconsulting.com" className={footerLink}>contact@acooyaconsulting.com</a>
     <span>+61 428 112 376</span>
     <span>Sydney, NSW, Australia</span>
@@ -109,7 +109,7 @@ const Layout: React.FC = () => {
 
           <div ref={launcherRef} className="ml-auto flex items-center gap-1.5 md:gap-2 relative">
             <a href={LOGIN_URL} className="px-2 md:px-3.5 py-3 text-sm text-[#3A3A3C] hover:text-[#1A1A1B]">Sign in</a>
-            <a href={INTAKE_URL} className="hidden sm:inline-flex items-center min-h-[44px] px-4 rounded-full bg-[#1A1A1B] text-white text-sm font-semibold hover:bg-black transition-colors">Start a Brief</a>
+            <Link to="/get-started" className="hidden sm:inline-flex items-center min-h-[44px] px-4 rounded-full bg-[#1A1A1B] text-white text-sm font-semibold hover:bg-black transition-colors">Get Started</Link>
             <button type="button" aria-label="Acooya menu" aria-expanded={launcherOpen} onClick={() => setLauncherOpen((o) => !o)} className={`w-11 h-11 rounded-full flex items-center justify-center transition-colors ${launcherOpen ? 'bg-[#E3E8EF]' : isHome ? 'bg-white/75 hover:bg-white' : 'bg-[#F2F2F0] hover:bg-[#E9E9E6]'}`}>
               <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><g fill="#3A3A3C"><circle cx="4" cy="4" r="2" /><circle cx="10" cy="4" r="2" /><circle cx="16" cy="4" r="2" /><circle cx="4" cy="10" r="2" /><circle cx="10" cy="10" r="2" /><circle cx="16" cy="10" r="2" /><circle cx="4" cy="16" r="2" /><circle cx="10" cy="16" r="2" /><circle cx="16" cy="16" r="2" /></g></svg>
             </button>
@@ -158,7 +158,7 @@ const Layout: React.FC = () => {
         {/* Phone: one button, then three sections that open on tap */}
         <div className="md:hidden px-5 pt-8 pb-7 flex flex-col gap-5 text-sm">
           <Link to="/" aria-label="Acooya Consulting, home" className="flex items-center"><Wordmark light /></Link>
-          <a href={INTAKE_URL} className="min-h-[48px] flex items-center justify-center rounded-full bg-white text-[#1A1A1B] font-semibold">Start a Brief</a>
+          <Link to="/get-started" className="min-h-[48px] flex items-center justify-center rounded-full bg-white text-[#1A1A1B] font-semibold">Get Started</Link>
           <details className="border-t border-[#333335] pt-3.5">
             <summary className="min-h-[32px] text-white font-semibold cursor-pointer">Services</summary>
             <div className="flex flex-col gap-3 pt-2 pb-1"><ServicesLinks /></div>
