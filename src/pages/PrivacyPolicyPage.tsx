@@ -30,7 +30,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, defaultO
 };
 
 const PrivacyPolicyPage: React.FC = () => {
-  const lastUpdated = "16 November 2026";
+  const lastUpdated = "17 November 2026";
 
   return (
     <div className="min-h-screen bg-white">
@@ -548,7 +548,7 @@ const PrivacyPolicyPage: React.FC = () => {
               </h2>
 
               <p className="text-gray-600 leading-relaxed">
-                We use only the cookies needed to run the platform (one keeps you signed in, one remembers a layout choice), and we count website visits with Vercel Web Analytics, which sets no cookies. We use no advertising or marketing cookies. Our <Link to="/cookie-policy" className="text-[#1F6FA8] hover:text-[#0F4C75] font-medium">Cookie Policy</Link> lists each cookie and what your browser stores.
+                We use only the cookies needed to run the platform (one keeps you signed in, one remembers a layout choice, and one briefly carries a brief you start on our home page to the brief page), and we count website visits with Vercel Web Analytics, which sets no cookies. We use no advertising or marketing cookies. Our <Link to="/cookie-policy" className="text-[#1F6FA8] hover:text-[#0F4C75] font-medium">Cookie Policy</Link> lists each cookie and what your browser stores.
               </p>
             </div>
 
