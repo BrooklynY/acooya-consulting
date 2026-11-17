@@ -30,25 +30,25 @@ const PLATFORM_COOKIES = [
 ];
 
 const CookiePolicyPage: React.FC = () => (
-  <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+  <div className="min-h-screen bg-white">
     {/* Hero Section */}
-    <section className="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white py-20">
+    <section className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-full mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-6">
             <Cookie className="w-8 h-8" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Cookie Policy</h1>
-          <p className="text-xl text-blue-100">Last updated: {LAST_UPDATED}</p>
+          <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C]">Last updated: {LAST_UPDATED}</p>
         </div>
       </div>
     </section>
 
     <section className="py-12">
       <div className="container-custom">
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-10">
+        <div className="max-w-4xl mx-auto bg-white rounded-2xl border border-gray-200 p-8 md:p-10">
           <p className="text-gray-600 leading-relaxed mb-8">
-            This policy explains what Acooya Pty Ltd (ABN 83 618 415 768), trading as Acooya Consulting, stores on your device, and which other services your browser contacts, when you use our website (www.acooyaconsulting.com) and our platform (app.acooyaconsulting.com). Our <Link to="/privacy-policy" className="text-blue-600 hover:text-blue-800 font-medium">Privacy Policy</Link> explains how we handle personal information more broadly.
+            This policy explains what Acooya Pty Ltd (ABN 83 618 415 768), trading as Acooya Consulting, stores on your device, and which other services your browser contacts, when you use our website (www.acooyaconsulting.com) and our platform (app.acooyaconsulting.com). Our <Link to="/privacy-policy" className="text-[#1F6FA8] hover:text-[#0F4C75] font-medium">Privacy Policy</Link> explains how we handle personal information more broadly.
           </p>
 
           <Section id="in-short" title="In short">
@@ -118,13 +118,13 @@ const CookiePolicyPage: React.FC = () => (
         </div>
 
         {/* Contact Information */}
-        <div className="max-w-4xl mx-auto mt-8 bg-gradient-to-br from-blue-900 to-indigo-900 text-white rounded-2xl p-8" id="contact">
+        <div className="bg-[#F4F7FB] text-[#1A1A1B] border border-[#E4E4E4] max-w-4xl mx-auto mt-8 rounded-2xl p-8" id="contact">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3"><Mail className="w-6 h-6" />Contact Us</h2>
-          <p className="text-blue-100 mb-6">If you have any questions about this policy, please contact us:</p>
+          <p className="text-[#3A3A3C] mb-6">If you have any questions about this policy, please contact us:</p>
           <div className="space-y-3">
-            <div className="flex items-center gap-3"><Mail className="w-5 h-5 text-blue-300" /><span>contact@acooyaconsulting.com</span></div>
-            <div className="flex items-center gap-3"><Phone className="w-5 h-5 text-blue-300" /><span>+61 428 112 376</span></div>
-            <div className="flex items-start gap-3"><MapPin className="w-5 h-5 text-blue-300 mt-1" /><span>Unit 18, 224 Coward Street<br />Mascot NSW 2020<br />Australia</span></div>
+            <div className="flex items-center gap-3"><Mail className="w-5 h-5 text-[#1F6FA8]" /><span>contact@acooyaconsulting.com</span></div>
+            <div className="flex items-center gap-3"><Phone className="w-5 h-5 text-[#1F6FA8]" /><span>+61 428 112 376</span></div>
+            <div className="flex items-start gap-3"><MapPin className="w-5 h-5 text-[#1F6FA8] mt-1" /><span>Unit 18, 224 Coward Street<br />Mascot NSW 2020<br />Australia</span></div>
           </div>
         </div>
       </div>
@@ -136,9 +136,9 @@ const CookiePolicyPage: React.FC = () => (
         <div className="max-w-4xl mx-auto">
           <h3 className="font-semibold text-gray-900 mb-4 text-center">Related Policies</h3>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/privacy-policy" className="text-blue-600 hover:text-blue-800 font-medium">Privacy Policy →</Link>
-            <Link to="/terms-of-service" className="text-blue-600 hover:text-blue-800 font-medium">Terms of Service →</Link>
-            <Link to="/" className="text-blue-600 hover:text-blue-800 font-medium">Back to Home →</Link>
+            <Link to="/privacy-policy" className="text-[#1F6FA8] hover:text-[#0F4C75] font-medium">Privacy Policy →</Link>
+            <Link to="/terms-of-service" className="text-[#1F6FA8] hover:text-[#0F4C75] font-medium">Terms of Service →</Link>
+            <Link to="/" className="text-[#1F6FA8] hover:text-[#0F4C75] font-medium">Back to Home →</Link>
           </div>
         </div>
       </div>

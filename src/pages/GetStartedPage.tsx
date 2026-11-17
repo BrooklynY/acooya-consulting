@@ -22,7 +22,6 @@ interface RoleConfig {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   accent: string;
   accentDark: string;
-  ctaTextColor: string;
   heading: string;
   subheading: string;
   emailLabel: string;
@@ -44,7 +43,6 @@ const roleConfigs: Record<EnquiryRole, RoleConfig> = {
     icon: Briefcase,
     accent: '#3498DB',
     accentDark: '#1B6699',
-    ctaTextColor: '#FFFFFF',
     heading: 'Book a discovery call',
     subheading: 'Free 30 minutes. No commitment, no card.',
     emailLabel: 'Work email',
@@ -80,7 +78,6 @@ const roleConfigs: Record<EnquiryRole, RoleConfig> = {
     icon: Users,
     accent: '#F39C12',
     accentDark: '#B37A0C',
-    ctaTextColor: '#412402',
     heading: 'Join the Acooya consultant network',
     subheading: 'Free to join, free to list — you earn only when you deliver.',
     emailLabel: 'Professional email',
@@ -135,7 +132,6 @@ const roleConfigs: Record<EnquiryRole, RoleConfig> = {
     icon: Bot,
     accent: '#E91E63',
     accentDark: '#993556',
-    ctaTextColor: '#FFFFFF',
     heading: 'List your AI agent on Acooya',
     subheading: 'Free account, free listing. Zero commission on your first A$5,000.',
     emailLabel: 'Developer email',
@@ -241,18 +237,18 @@ const GetStartedPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+    <div className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Get started with Acooya</h1>
             <p className="text-gray-600">Tell us who you are and we&apos;ll take it from there.</p>
             {interest && (
-              <p className="mt-3 inline-block rounded-full bg-blue-50 px-4 py-1.5 text-sm text-blue-800">Enquiring about <span className="font-medium">{interest}</span></p>
+              <p className="mt-3 inline-block rounded-full bg-[#F4F7FB] px-4 py-1.5 text-sm text-[#0F4C75]">Enquiring about <span className="font-medium">{interest}</span></p>
             )}
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+          <div className="bg-white rounded-2xl border border-[#E4E4E4] p-8">
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-3">I am a...</label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -355,7 +351,7 @@ const GetStartedPage: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3498DB] focus:border-transparent transition-shadow"
                     placeholder="Alexandra Mitchell"
                   />
                 </div>
@@ -369,7 +365,7 @@ const GetStartedPage: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3498DB] focus:border-transparent transition-shadow"
                     placeholder={config.emailPlaceholder}
                   />
                 </div>
@@ -384,7 +380,7 @@ const GetStartedPage: React.FC = () => {
                         value={extras[field.key] || ''}
                         onChange={(e) => setExtra(field.key, e.target.value)}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow bg-white"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3498DB] focus:border-transparent transition-shadow bg-white"
                       >
                         <option value="">{field.placeholder}</option>
                         {(field.options || []).map((opt) => (
@@ -399,7 +395,7 @@ const GetStartedPage: React.FC = () => {
                         onChange={(e) => setExtra(field.key, e.target.value)}
                         required
                         rows={3}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3498DB] focus:border-transparent transition-shadow"
                         placeholder={field.placeholder}
                       />
                     ) : (
@@ -408,7 +404,7 @@ const GetStartedPage: React.FC = () => {
                         value={extras[field.key] || ''}
                         onChange={(e) => setExtra(field.key, e.target.value)}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3498DB] focus:border-transparent transition-shadow"
                         placeholder={field.placeholder}
                       />
                     )}
@@ -417,8 +413,7 @@ const GetStartedPage: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-lg font-semibold transition-opacity hover:opacity-90"
-                  style={{ backgroundColor: config.accent, color: config.ctaTextColor }}
+                  className="btn btn-primary w-full"
                 >
                   {config.ctaLabel}
                 </button>
@@ -489,12 +484,12 @@ const GetStartedPage: React.FC = () => {
               <a
                 href="https://app.acooyaconsulting.com/login"
                 className="font-medium"
-                style={{ color: '#3498DB' }}
+                style={{ color: '#1F6FA8' }}
               >
                 Sign in
               </a>
               {' · '}
-              <Link to="/pricing" className="font-medium" style={{ color: '#3498DB' }}>
+              <Link to="/pricing" className="font-medium" style={{ color: '#1F6FA8' }}>
                 See pricing
               </Link>
             </p>

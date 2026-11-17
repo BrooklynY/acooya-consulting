@@ -77,9 +77,9 @@ const InterestModal: React.FC<{ role: typeof leadershipRoles[0]; isOpen: boolean
   };
 
   const colorClasses = {
-    blue: 'bg-blue-600 hover:bg-blue-700',
-    purple: 'bg-purple-600 hover:bg-purple-700',
-    green: 'bg-green-600 hover:bg-green-700'
+    blue: 'bg-[#1A1A1B] hover:bg-black',
+    purple: 'bg-[#1A1A1B] hover:bg-black',
+    green: 'bg-[#1A1A1B] hover:bg-black'
   };
 
   return (
@@ -95,8 +95,8 @@ const InterestModal: React.FC<{ role: typeof leadershipRoles[0]; isOpen: boolean
 
         {submitted ? (
           <div className="p-8 text-center">
-            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-8 h-8 text-green-600" />
+            <div className="w-16 h-16 rounded-full bg-[#EDEDED] flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="w-8 h-8 text-[#1F6FA8]" />
             </div>
             <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
             <p className="text-gray-600 mb-6">
@@ -109,9 +109,9 @@ const InterestModal: React.FC<{ role: typeof leadershipRoles[0]; isOpen: boolean
         ) : (
           <>
             <div className={`p-6 rounded-t-2xl bg-gradient-to-r ${
-              role.color === 'blue' ? 'from-blue-500 to-blue-600' :
-              role.color === 'purple' ? 'from-purple-500 to-purple-600' :
-              'from-green-500 to-green-600'
+              role.color === 'blue' ? 'from-[#1A1A1B] to-[#1A1A1B]' :
+              role.color === 'purple' ? 'from-[#1A1A1B] to-[#1A1A1B]' :
+              'from-[#1A1A1B] to-[#1A1A1B]'
             } text-white`}>
               <role.icon className="w-10 h-10 mb-3" />
               <h3 className="text-xl font-bold">{role.title}</h3>
@@ -255,22 +255,22 @@ const AboutPage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section id="overview" className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-24">
+      <section id="overview" className="bg-[#F4F7FB] text-[#1A1A1B] py-24">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">About Acooya</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">About Acooya</span>
             <h1 className="text-4xl lg:text-6xl font-bold mt-4 mb-6">
               Pioneering the Future of Consulting
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-300 mb-10 leading-relaxed">
+            <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-10">
               We're building the bridge between senior human expertise and purpose-built AI agents, with a person accountable for every output.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={INTAKE_URL} className="btn bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-4">
+              <a href={INTAKE_URL} className="btn btn-primary">
                 Start a Brief
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
-              <Link to="/services" className="btn border-2 border-white/30 text-white hover:bg-white/10 text-lg px-10 py-4">
+              <Link to="/services" className="btn btn-secondary">
                 Explore Our Services
               </Link>
             </div>
@@ -283,7 +283,7 @@ const AboutPage: React.FC = () => {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Story</span>
+              <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Our Story</span>
               <h2 className="text-3xl lg:text-4xl font-bold mt-4 mb-6">
                 Born from Frustration with Traditional Consulting
               </h2>
@@ -294,37 +294,37 @@ const AboutPage: React.FC = () => {
                 Acooya combines senior strategic expertise with purpose-built AI agents, with a named consultant approving every AI output before it reaches you.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                The consulting industry is overdue for reinvention. <span className="font-semibold text-blue-600">Acooya is that reinvention.</span>
+                The consulting industry is overdue for reinvention. <span className="font-semibold text-[#1F6FA8]">Acooya is that reinvention.</span>
               </p>
             </div>
 
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+              <div className="absolute inset-0 hidden rounded-[20px] blur-2xl"></div>
+              <div className="relative bg-white rounded-[20px] p-8 border border-[#E4E4E4]">
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6">
-                    <Target className="w-10 h-10 text-blue-600 mb-4" />
+                  <div className="bg-[#E3F0FA] rounded-2xl p-6">
+                    <Target className="w-10 h-10 text-[#1F6FA8] mb-4" />
                     <h3 className="font-bold text-lg mb-2">Our Mission</h3>
                     <p className="text-gray-600 text-sm">
                       Make senior strategic thinking affordable through human-AI collaboration.
                     </p>
                   </div>
-                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6">
-                    <Lightbulb className="w-10 h-10 text-purple-600 mb-4" />
+                  <div className="bg-[#EDEDED] rounded-2xl p-6">
+                    <Lightbulb className="w-10 h-10 text-[#1F6FA8] mb-4" />
                     <h3 className="font-bold text-lg mb-2">Our Vision</h3>
                     <p className="text-gray-600 text-sm">
                       Every organisation—from startups to enterprises—deserves transformative strategic guidance.
                     </p>
                   </div>
-                  <div className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-6">
+                  <div className="bg-[#FCE4EC] rounded-2xl p-6">
                     <Heart className="w-10 h-10 text-pink-600 mb-4" />
                     <h3 className="font-bold text-lg mb-2">Our Values</h3>
                     <p className="text-gray-600 text-sm">
                       Excellence, innovation, integrity, security, and genuine partnership in everything we do.
                     </p>
                   </div>
-                  <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6">
-                    <Globe className="w-10 h-10 text-green-600 mb-4" />
+                  <div className="bg-[#FDF0DC] rounded-2xl p-6">
+                    <Globe className="w-10 h-10 text-[#1F6FA8] mb-4" />
                     <h3 className="font-bold text-lg mb-2">Our Promise</h3>
                     <p className="text-gray-600 text-sm">
                       No AI output reaches you without a named consultant’s approval, enforced by the platform.
@@ -338,10 +338,10 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-gray-900 text-white">
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-16">
         <div className="container-custom">
           <div className="text-center mb-8">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Where We Are Today</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Where We Are Today</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -351,9 +351,9 @@ const AboutPage: React.FC = () => {
               { value: '100%', label: 'AI outputs approved by a person before release', icon: Award },
             ].map((stat, i) => (
               <div key={i} className="text-center">
-                <stat.icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+                <stat.icon className="w-8 h-8 text-[#1F6FA8] mx-auto mb-3" />
                 <p className="text-4xl lg:text-5xl font-bold mb-2">{stat.value}</p>
-                <p className="text-gray-400">{stat.label}</p>
+                <p className="text-[#555555]">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -364,7 +364,7 @@ const AboutPage: React.FC = () => {
       <section className="py-20">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Leadership Team</span>
+            <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Leadership Team</span>
             <h2 className="text-3xl lg:text-4xl font-bold mt-4">Founded with Purpose. Built for the Future.</h2>
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
               Acooya is building its senior leadership team. If you are an experienced executive who believes in the power of human-AI collaboration, we would love to hear from you.
@@ -378,60 +378,60 @@ const AboutPage: React.FC = () => {
                 <img
                   src="/brooklyn-yang.jpg"
                   alt="Brooklyn Yang"
-                  className="w-48 h-48 rounded-2xl mx-auto object-cover shadow-lg group-hover:shadow-xl transition-shadow"
+                  className="w-48 h-48 rounded-2xl mx-auto object-cover group- transition-shadow"
                 />
                 <a
                   href="https://www.linkedin.com/in/brooklynyang/"
-                  className="absolute bottom-4 right-4 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute bottom-4 right-4 w-10 h-10 bg-[#1A1A1B] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   <Linkedin className="w-5 h-5 text-white" />
                 </a>
               </div>
               <h3 className="text-xl font-bold">Brooklyn Yang</h3>
-              <p className="text-blue-600 font-medium mb-2">Founder</p>
+              <p className="text-[#1F6FA8] font-medium mb-2">Founder</p>
               <p className="text-sm text-gray-600">Thought Leader and Lead Consultant</p>
             </div>
 
             {/* CTO - Recruiting */}
-            <div className="text-center bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-100">
-              <div className="w-24 h-24 rounded-2xl mx-auto bg-blue-600 flex items-center justify-center mb-6 shadow-lg">
+            <div className="text-center bg-[#E3F0FA] rounded-2xl p-6 border border-[#E4E4E4]">
+              <div className="w-24 h-24 rounded-2xl mx-auto bg-[#1A1A1B] flex items-center justify-center mb-6">
                 <Code2 className="w-12 h-12 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-1">Chief Technology Officer</h3>
               <p className="text-sm text-gray-600 mb-4">We are recruiting a senior technology leader to drive Acooya's AI infrastructure, platform architecture, and engineering excellence.</p>
               <button
                 onClick={() => setSelectedRole(leadershipRoles[0])}
-                className="inline-flex items-center text-blue-600 font-medium text-sm hover:text-blue-700 transition-colors"
+                className="inline-flex items-center text-[#1F6FA8] font-medium text-sm hover:text-[#0F4C75] transition-colors"
               >
                 Express Interest <ArrowUpRight className="w-4 h-4 ml-1" />
               </button>
             </div>
 
             {/* CDIO - Recruiting */}
-            <div className="text-center bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 border border-purple-100">
-              <div className="w-24 h-24 rounded-2xl mx-auto bg-purple-600 flex items-center justify-center mb-6 shadow-lg">
+            <div className="text-center bg-[#EDEDED] rounded-2xl p-6 border border-[#E4E4E4]">
+              <div className="w-24 h-24 rounded-2xl mx-auto bg-[#1A1A1B] flex items-center justify-center mb-6">
                 <Database className="w-12 h-12 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-1">Chief Data & Insight Officer</h3>
               <p className="text-sm text-gray-600 mb-4">We are recruiting a data and insight leader to shape how Acooya turns complex information into strategic advantage for our clients.</p>
               <button
                 onClick={() => setSelectedRole(leadershipRoles[1])}
-                className="inline-flex items-center text-purple-600 font-medium text-sm hover:text-purple-700 transition-colors"
+                className="inline-flex items-center text-[#1F6FA8] font-medium text-sm hover:text-[#0F4C75] transition-colors"
               >
                 Express Interest <ArrowUpRight className="w-4 h-4 ml-1" />
               </button>
             </div>
 
             {/* COO - Recruiting */}
-            <div className="text-center bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border border-green-100">
-              <div className="w-24 h-24 rounded-2xl mx-auto bg-green-600 flex items-center justify-center mb-6 shadow-lg">
+            <div className="text-center bg-[#FDF0DC] rounded-2xl p-6 border border-[#E4E4E4]">
+              <div className="w-24 h-24 rounded-2xl mx-auto bg-[#1A1A1B] flex items-center justify-center mb-6">
                 <Settings className="w-12 h-12 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-1">Chief Operating Officer</h3>
               <p className="text-sm text-gray-600 mb-4">We are recruiting an operations leader to scale Acooya's delivery model and client experience globally.</p>
               <button
                 onClick={() => setSelectedRole(leadershipRoles[2])}
-                className="inline-flex items-center text-green-600 font-medium text-sm hover:text-green-700 transition-colors"
+                className="inline-flex items-center text-[#1F6FA8] font-medium text-sm hover:text-[#0F4C75] transition-colors"
               >
                 Express Interest <ArrowUpRight className="w-4 h-4 ml-1" />
               </button>
@@ -450,15 +450,15 @@ const AboutPage: React.FC = () => {
       )}
 
       {/* Technology */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+      <section className="bg-[#F4F7FB] text-[#1A1A1B] py-20">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-blue-400 font-semibold text-sm uppercase tracking-wider">Our Technology</span>
+              <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Our Technology</span>
               <h2 className="text-3xl lg:text-4xl font-bold mt-4 mb-6">
                 Enterprise-Grade AI Built for Strategic Consulting
               </h2>
-              <p className="text-lg text-gray-300 mb-6">
+              <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-6">
                 Our platform combines cutting-edge AI technology with rigorous security and compliance standards, ensuring you get the best of both worlds—powerful insights with enterprise-grade protection.
               </p>
 
@@ -470,34 +470,34 @@ const AboutPage: React.FC = () => {
                   { icon: BarChart3, title: 'Advanced Analytics', desc: 'Comprehensive insights and KPI tracking for engagement performance' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-blue-400" />
+                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-6 h-6 text-[#1F6FA8]" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">{item.title}</h4>
-                      <p className="text-gray-400 text-sm">{item.desc}</p>
+                      <p className="text-[#555555] text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+            <div className="bg-white  rounded-[20px] p-8 border border-[#E4E4E4]">
               <h3 className="font-bold mb-6">Built on Enterprise Infrastructure</h3>
               <div className="space-y-4">
                 {[
-                  { icon: Bot, color: 'text-blue-400', title: 'AI & Agent Framework', desc: 'Purpose-built agent workflows on enterprise LLM infrastructure' },
-                  { icon: Lock, color: 'text-green-400', title: 'Security Architecture', desc: 'AES-256 encryption, role-based access controls, full audit logging' },
-                  { icon: Zap, color: 'text-yellow-400', title: 'Document-Grounded Analysis', desc: 'Agents reason over your engagement documents, with PII screened before any model sees them' },
-                  { icon: Link2, color: 'text-purple-400', title: 'PII Screening', desc: 'Documents are screened for personal information before any AI model sees them' },
-                  { icon: Server, color: 'text-cyan-400', title: 'Asia-Pacific Data Residency', desc: 'Data hosted in Singapore on enterprise infrastructure, with row-level isolation between every engagement' },
-                  { icon: Eye, color: 'text-pink-400', title: 'Full Observability', desc: 'Complete traceability of every AI output for governance and accountability' },
+                  { icon: Bot, color: 'text-[#1F6FA8]', title: 'AI & Agent Framework', desc: 'Purpose-built agent workflows on enterprise LLM infrastructure' },
+                  { icon: Lock, color: 'text-[#1F6FA8]', title: 'Security Architecture', desc: 'AES-256 encryption, role-based access controls, full audit logging' },
+                  { icon: Zap, color: 'text-[#1F6FA8]', title: 'Document-Grounded Analysis', desc: 'Agents reason over your engagement documents, with PII screened before any model sees them' },
+                  { icon: Link2, color: 'text-[#1F6FA8]', title: 'PII Screening', desc: 'Documents are screened for personal information before any AI model sees them' },
+                  { icon: Server, color: 'text-[#1F6FA8]', title: 'Asia-Pacific Data Residency', desc: 'Data hosted in Singapore on enterprise infrastructure, with row-level isolation between every engagement' },
+                  { icon: Eye, color: 'text-[#1F6FA8]', title: 'Full Observability', desc: 'Complete traceability of every AI output for governance and accountability' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+                  <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-xl hover:bg-white transition-colors">
                     <item.icon className={`w-8 h-8 ${item.color} flex-shrink-0 mt-1`} />
                     <div>
                       <h4 className="font-semibold mb-1">{item.title}</h4>
-                      <p className="text-gray-400 text-sm">{item.desc}</p>
+                      <p className="text-[#555555] text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -508,34 +508,34 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Contact */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
+              <span className="text-[#1F6FA8] font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
               <h2 className="text-3xl lg:text-4xl font-bold mt-4">Ready to Transform Your Business?</h2>
               <p className="text-gray-600 mt-4">Book a free 30-minute strategy consultation—no commitment required</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
-                <Mail className="w-10 h-10 text-blue-600 mx-auto mb-4" />
+              <div className="text-center p-6 bg-white rounded-2xl border border-[#E4E4E4]">
+                <Mail className="w-10 h-10 text-[#1F6FA8] mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">Email Us</h3>
                 <p className="text-gray-600">contact@acooyaconsulting.com</p>
               </div>
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
-                <Phone className="w-10 h-10 text-blue-600 mx-auto mb-4" />
+              <div className="text-center p-6 bg-white rounded-2xl border border-[#E4E4E4]">
+                <Phone className="w-10 h-10 text-[#1F6FA8] mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">Call Us</h3>
                 <p className="text-gray-600">+61 428 112 376</p>
               </div>
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
-                <MapPin className="w-10 h-10 text-blue-600 mx-auto mb-4" />
+              <div className="text-center p-6 bg-white rounded-2xl border border-[#E4E4E4]">
+                <MapPin className="w-10 h-10 text-[#1F6FA8] mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">Visit Us</h3>
                 <p className="text-gray-600">Sydney, NSW, Australia</p>
               </div>
             </div>
 
-            <form className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100" onSubmit={handleContactSubmit}>
+            <form className="bg-white rounded-[20px] p-8 border border-[#E4E4E4]" onSubmit={handleContactSubmit}>
   <div className="grid md:grid-cols-2 gap-6 mb-6">
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
