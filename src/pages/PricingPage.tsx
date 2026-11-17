@@ -171,20 +171,20 @@ const PricingPage: React.FC = () => {
   };
 
   const renderFeatureValue = (value: boolean | string) => {
-    if (value === true) return <Check className="w-5 h-5 text-green-500 mx-auto" />;
+    if (value === true) return <Check className="w-5 h-5 text-[#1F6FA8] mx-auto" />;
     if (value === false) return <X className="w-5 h-5 text-gray-300 mx-auto" />;
     return <span className="text-sm font-medium text-gray-700">{value}</span>;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-      <div className="container mx-auto px-4 py-8 md:py-12">
-        {/* Hero Section */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+    <div className="min-h-screen bg-white font-geist text-[#1A1A1B]">
+      {/* Hero Section */}
+      <div className="bg-[#F4F7FB] px-5 md:px-6 lg:px-8 pt-10 md:pt-16 pb-10 md:pb-14 mb-10 md:mb-14">
+        <div className="text-center max-w-3xl mx-auto">
+          <h1 className="text-[34px] leading-[1.08] md:text-5xl md:leading-[1.05] font-bold tracking-[-0.02em] text-[#1A1A1B] mb-4">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-8">
+          <p className="font-serif4 text-lg md:text-[21px] leading-[1.45] text-[#3A3A3C] mb-8">
             Choose the plan that fits your organisation. Every plan includes the self-service AI workspace, with purpose-built AI agents and a human approval step on every output. Consulting engagements are priced separately and need no plan.
           </p>
 
@@ -196,7 +196,7 @@ const PricingPage: React.FC = () => {
             <button
               onClick={() => setIsAnnual(!isAnnual)}
               className={`relative w-14 h-7 rounded-full transition-colors ${
-                isAnnual ? 'bg-blue-600' : 'bg-gray-300'
+                isAnnual ? 'bg-[#1A1A1B]' : 'bg-gray-300'
               }`}
               aria-label="Toggle billing period"
             >
@@ -208,12 +208,14 @@ const PricingPage: React.FC = () => {
             </button>
             <span className={`text-sm font-medium ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
               Annual
-              <span className="ml-2 px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+              <span className="ml-2 px-2 py-0.5 bg-[#E3F0FA] text-[#0F4C75] text-xs font-semibold rounded-full">
                 Save 15%
               </span>
             </span>
           </div>
         </div>
+      </div>
+      <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8 pb-12 md:pb-20">
 
         {/* Pricing Cards */}
         <div id="overview" className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-16">
@@ -226,15 +228,15 @@ const PricingPage: React.FC = () => {
             return (
               <div
                 key={tier.id}
-                className={`relative flex flex-col bg-white rounded-2xl ${
+                className={`relative flex flex-col bg-white rounded-[20px] ${
                   tier.highlighted
-                    ? 'ring-2 ring-blue-600 shadow-2xl md:scale-105 z-10'
-                    : 'shadow-lg border border-gray-200'
+                    ? 'border-2 border-[#1A1A1B] z-10'
+                    : 'border border-[#E4E4E4]'
                 }`}
               >
                 {tier.highlighted && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg">
+                    <span className="bg-[#1A1A1B] text-white text-sm font-semibold px-4 py-1 rounded-full">
                       Recommended
                     </span>
                   </div>
@@ -243,15 +245,11 @@ const PricingPage: React.FC = () => {
                 <div className="p-6 md:p-8 flex flex-col flex-1">
                   {/* Tier Header */}
                   <div className="mb-6">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-                      tier.highlighted
-                        ? 'bg-gradient-to-br from-blue-500 to-purple-600'
-                        : tier.color === 'slate'
-                        ? 'bg-slate-100'
-                        : 'bg-purple-100'
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${
+                      tier.highlighted ? 'bg-[#1A1A1B]' : 'bg-[#F4F7FB]'
                     }`}>
                       <Icon className={`w-6 h-6 ${
-                        tier.highlighted ? 'text-white' : tier.color === 'slate' ? 'text-slate-600' : 'text-purple-600'
+                        tier.highlighted ? 'text-white' : 'text-[#1A1A1B]'
                       }`} />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900">{tier.name}</h3>
@@ -261,7 +259,7 @@ const PricingPage: React.FC = () => {
                   {/* Price */}
                   <div className="mb-6">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-gray-900">
+                      <span className="text-4xl font-bold tracking-[-0.02em] text-[#1A1A1B]">
                         A${monthlyEquivalent.toLocaleString()}
                       </span>
                       <span className="text-gray-500">/mo</span>
@@ -272,7 +270,7 @@ const PricingPage: React.FC = () => {
                       </p>
                     )}
                     {!isAnnual && (
-                      <p className="text-sm text-green-600 mt-1 font-medium">
+                      <p className="text-sm text-[#1F6FA8] mt-1 font-medium">
                         Or A${Math.round(tier.annualPrice / 12).toLocaleString()}/mo billed annually
                       </p>
                     )}
@@ -282,17 +280,15 @@ const PricingPage: React.FC = () => {
                   <button
                     onClick={() => handleSelectPlan(tier.id)}
                     disabled={isLoading === tier.id}
-                    className={`w-full py-3 px-4 rounded-xl font-semibold transition-all mb-6 flex items-center justify-center gap-2 cursor-pointer ${
+                    className={`w-full min-h-[48px] px-4 rounded-full text-sm font-semibold transition-colors mb-6 flex items-center justify-center gap-2 cursor-pointer ${
                       tier.highlighted
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
-                        : tier.id === 'enterprise'
-                        ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
-                        : 'bg-gradient-to-r from-slate-600 to-gray-700 text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]'
+                        ? 'bg-[#1A1A1B] text-white hover:bg-black'
+                        : 'border border-[#BDBDBD] bg-white text-[#1A1A1B] hover:bg-[#F4F7FB]'
                     } ${isLoading === tier.id ? 'opacity-75 cursor-wait' : ''}`}
                   >
                     {isLoading === tier.id ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
                         Processing...
                       </>
                     ) : tier.id === 'starter' ? (
@@ -319,7 +315,7 @@ const PricingPage: React.FC = () => {
                     <ul className="space-y-3">
                       {(showAllFeatures === tier.id ? features : features.slice(0, 6)).map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-sm">
-                          <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                          <Check className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                           <span className="text-gray-600">{feature}</span>
                         </li>
                       ))}
@@ -327,7 +323,7 @@ const PricingPage: React.FC = () => {
                         <li>
                           <button
                             onClick={() => setShowAllFeatures(showAllFeatures === tier.id ? null : tier.id)}
-                            className="flex items-center gap-2 text-sm text-blue-600 font-medium hover:text-blue-700"
+                            className="flex items-center gap-2 min-h-[44px] text-sm text-[#1F6FA8] font-medium hover:text-[#0F4C75]"
                           >
                             {showAllFeatures === tier.id ? (
                               <>
@@ -354,12 +350,12 @@ const PricingPage: React.FC = () => {
         {/* Consulting is bought per engagement, never through a plan (Pricing v3.3, section 01) */}
         <p className="max-w-6xl mx-auto -mt-6 mb-12 px-4 text-center text-sm md:text-base text-gray-600">
           Want a consultant? Engagements are priced separately; no subscription needed.{' '}
-          <Link to="/services" className="font-semibold text-blue-600 hover:text-blue-700 whitespace-nowrap">See our services</Link>
+          <Link to="/services" className="font-semibold text-[#1F6FA8] hover:text-[#0F4C75] hover:underline whitespace-nowrap">See our services</Link>
         </p>
 
         {/* Value Proposition Comparison Banner */}
         <div className="max-w-6xl mx-auto mb-8">
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 md:p-8 border border-green-200">
+          <div className="bg-[#F4F7FB] rounded-[20px] p-5 md:p-8 border border-[#E4E4E4]">
             <div className="text-center mb-6">
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
                 Up to 75% lower cost than traditional consulting — built into every engagement
@@ -373,25 +369,25 @@ const PricingPage: React.FC = () => {
                 <thead>
                   <tr className="border-b border-gray-200">
                     <th className="text-left p-3 font-semibold text-gray-700">Traditional Firm</th>
-                    <th className="text-center p-3 font-semibold text-green-700 bg-green-100">Acooya</th>
-                    <th className="text-center p-3 font-semibold text-green-700 bg-green-100">You Save</th>
+                    <th className="text-center p-3 font-semibold text-[#0F4C75] bg-[#E3F0FA]">Acooya</th>
+                    <th className="text-center p-3 font-semibold text-[#0F4C75] bg-[#E3F0FA]">You Save</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-100">
                     <td className="p-3 text-gray-700">Advisory Session: A$1,200–1,800</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$450</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 64%</td>
+                    <td className="p-3 text-center font-medium text-[#0F4C75] bg-[#EEF5FB]">from A$450</td>
+                    <td className="p-3 text-center font-medium text-[#0F4C75] bg-[#EEF5FB]">Up to 64%</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="p-3 text-gray-700">Sprint Engagement: A$15k–25k</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$4,500</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 70%</td>
+                    <td className="p-3 text-center font-medium text-[#0F4C75] bg-[#EEF5FB]">from A$4,500</td>
+                    <td className="p-3 text-center font-medium text-[#0F4C75] bg-[#EEF5FB]">Up to 70%</td>
                   </tr>
                   <tr>
                     <td className="p-3 text-gray-700">Full Engagement: A$45k–120k</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">from A$12,000</td>
-                    <td className="p-3 text-center font-medium text-green-700 bg-green-50">Up to 75%</td>
+                    <td className="p-3 text-center font-medium text-[#0F4C75] bg-[#EEF5FB]">from A$12,000</td>
+                    <td className="p-3 text-center font-medium text-[#0F4C75] bg-[#EEF5FB]">Up to 75%</td>
                   </tr>
                 </tbody>
               </table>
@@ -402,7 +398,7 @@ const PricingPage: React.FC = () => {
 
         {/* Credit Explanation Block */}
         <div className="max-w-6xl mx-auto mb-8">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 border border-blue-200">
+          <div className="bg-white rounded-[20px] p-5 md:p-8 border border-[#E4E4E4]">
             <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
               How AI Agent Credits Work
             </h3>
@@ -411,15 +407,15 @@ const PricingPage: React.FC = () => {
             </p>
             <ul className="space-y-3 mb-4">
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                <Check className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700"><strong>Micro tasks (0.5 credits)</strong> — Quick, single-step tasks such as summaries, simple Q&A, or data formatting.</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                <Check className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700"><strong>Standard tasks (1 credit)</strong> — Multi-step tasks such as research briefs, strategy memos, competitive summaries, or KPI reports.</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                <Check className="w-5 h-5 text-[#1F6FA8] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700"><strong>Deep tasks (3 credits)</strong> — Complex, multi-source analyses such as full competitive landscapes, strategic reports, or orchestrated workflows involving multiple agents.</span>
               </li>
             </ul>
@@ -431,9 +427,9 @@ const PricingPage: React.FC = () => {
 
         {/* Feature Comparison Table */}
         <div className="max-w-6xl mx-auto mb-16">
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+          <div className="bg-white rounded-[20px] border border-[#E4E4E4] overflow-hidden">
             <div className="p-6 md:p-8 border-b border-gray-200">
-              <h2 className="text-xl md:text-2xl font-bold text-gray-900 text-center">
+              <h2 className="text-[22px] md:text-[28px] font-semibold text-[#1A1A1B] text-center">
                 Compare All Features
               </h2>
             </div>
@@ -442,9 +438,9 @@ const PricingPage: React.FC = () => {
                 <thead>
                   <tr className="border-b border-gray-200">
                     <th className="text-left p-4 font-semibold text-gray-900 w-2/5 md:w-1/4">Feature</th>
-                    <th className="text-center p-4 font-semibold text-slate-600 w-1/5">Growth</th>
-                    <th className="text-center p-4 font-semibold text-blue-600 bg-blue-50/50 w-1/5">Professional</th>
-                    <th className="text-center p-4 font-semibold text-purple-600 w-1/5">Enterprise</th>
+                    <th className="text-center p-4 font-semibold text-[#1A1A1B] w-1/5">Growth</th>
+                    <th className="text-center p-4 font-semibold text-[#1A1A1B] bg-[#F4F7FB] w-1/5">Professional</th>
+                    <th className="text-center p-4 font-semibold text-[#1A1A1B] w-1/5">Enterprise</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -464,7 +460,7 @@ const PricingPage: React.FC = () => {
                           <td className="p-4 text-center">
                             {renderFeatureValue(feature.starter)}
                           </td>
-                          <td className="p-4 text-center bg-blue-50/30">
+                          <td className="p-4 text-center bg-[#F4F7FB]/60">
                             {renderFeatureValue(feature.professional)}
                           </td>
                           <td className="p-4 text-center">
@@ -482,32 +478,32 @@ const PricingPage: React.FC = () => {
 
         {/* Trust Badges */}
         <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8">
+          <div className="bg-white rounded-[20px] border border-[#E4E4E4] p-6 md:p-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               <div className="text-center">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Shield className="w-6 h-6 text-green-600" />
+                <div className="w-12 h-12 bg-[#F4F7FB] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Shield className="w-6 h-6 text-[#1A1A1B]" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Designed to SOC 2 standards</h4>
                 <p className="text-xs md:text-sm text-gray-600">Enterprise-grade security</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Zap className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-[#F4F7FB] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Zap className="w-6 h-6 text-[#1A1A1B]" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Managed Infrastructure</h4>
                 <p className="text-xs md:text-sm text-gray-600">Built on enterprise cloud providers</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-amber-600" />
+                <div className="w-12 h-12 bg-[#F4F7FB] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Users className="w-6 h-6 text-[#1A1A1B]" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Human Experts</h4>
                 <p className="text-xs md:text-sm text-gray-600">Senior-led engagements</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Bot className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 bg-[#F4F7FB] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Bot className="w-6 h-6 text-[#1A1A1B]" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Specialist AI Agents</h4>
                 <p className="text-xs md:text-sm text-gray-600">Purpose-built for consulting</p>
@@ -518,14 +514,14 @@ const PricingPage: React.FC = () => {
 
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto mb-16">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 text-center mb-8">
+          <h2 className="text-[22px] md:text-[28px] font-semibold text-[#1A1A1B] text-center mb-8">
             Frequently Asked Questions
           </h2>
           <div className="space-y-3">
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl border border-gray-200 overflow-hidden"
+                className="bg-white rounded-2xl border border-[#E4E4E4] overflow-hidden"
               >
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
@@ -559,14 +555,14 @@ const PricingPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => { window.location.href = 'mailto:contact@acooyaconsulting.com?subject=Acooya%20pilot%20enquiry'; }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg"
+              className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 rounded-full bg-[#1A1A1B] hover:bg-black text-white text-sm font-semibold transition-colors"
             >
               Enquire About a Pilot
               <ArrowRight className="w-5 h-5" />
             </button>
             <button
               onClick={() => navigate('/get-started?interest=Pricing question')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-50 transition-colors border border-gray-300"
+              className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 rounded-full border border-[#BDBDBD] bg-white hover:bg-[#F4F7FB] text-[#1A1A1B] text-sm font-semibold transition-colors"
             >
               <HelpCircle className="w-5 h-5" />
               Ask About Pricing
